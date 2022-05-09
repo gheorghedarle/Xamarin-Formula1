@@ -6,6 +6,9 @@ using Prism.Ioc;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
+[assembly: ExportFont("FontAwesome-Regular.ttf", Alias = "FontAwesome_Regular")]
+[assembly: ExportFont("FontAwesome-Solid.ttf", Alias = "FontAwesome_Solid")]
+
 namespace Formula1
 {
     public partial class App : PrismApplication

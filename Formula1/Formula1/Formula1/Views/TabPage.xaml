@@ -12,10 +12,12 @@
             TabIndicatorColor="#FF1801"
             TabContentBackgroundColor="#F0F0F0">
             <xct:TabViewItem
-                Text="Home"
-                TextColor="White"
+                Text="&#xf015;"
+                TextColor="#212121"
                 TextColorSelected="#FF1801"
-                FontSize="12">
+                FontFamily="FontAwesome_Solid"
+                FontSizeSelected="24"
+                FontSize="20">
                 <Grid>
                     <Label
                         HorizontalOptions="Center"
@@ -24,10 +26,12 @@
                 </Grid>
             </xct:TabViewItem>
             <xct:TabViewItem
-                Text="Schedule"
-                TextColor="White"
+                Text="&#xf783;"
+                TextColor="#212121"
                 TextColorSelected="#FF1801"
-                FontSize="12">
+                FontFamily="FontAwesome_Solid"
+                FontSizeSelected="24"
+                FontSize="20">
                 <Grid>
                     <Label    
                         HorizontalOptions="Center"
@@ -36,10 +40,12 @@
                 </Grid>
             </xct:TabViewItem>
             <xct:TabViewItem
-                Text="Drivers"
-                TextColor="White"
+                Text="&#xf007;"
+                TextColor="#212121"
                 TextColorSelected="#FF1801"
-                FontSize="12">
+                FontFamily="FontAwesome_Solid"
+                FontSizeSelected="24"
+                FontSize="20">
                 <Grid>
                     <Label
                         HorizontalOptions="Center"
@@ -48,10 +54,12 @@
                 </Grid>
             </xct:TabViewItem>
             <xct:TabViewItem
-                Text="Teams"
-                TextColor="White"
+                Text="&#xf1b9;"
+                TextColor="#212121"
                 TextColorSelected="#FF1801"
-                FontSize="12">
+                FontFamily="FontAwesome_Solid"
+                FontSizeSelected="24"
+                FontSize="20">
                 <Grid>
                     <Label    
                         HorizontalOptions="Center"
@@ -60,10 +68,12 @@
                 </Grid>
             </xct:TabViewItem>
             <xct:TabViewItem
-                Text="History"
-                TextColor="White"
+                Text="&#xf07b;"
+                TextColor="#212121"
                 TextColorSelected="#FF1801"
-                FontSize="12">
+                FontFamily="FontAwesome_Solid"
+                FontSizeSelected="24"
+                FontSize="20">
                 <Grid>
                     <Label    
                         HorizontalOptions="Center"
