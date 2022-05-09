@@ -123,6 +123,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Prism.DryIoc.Forms">
+      <Version>8.1.97</Version>
+    </PackageReference>
     <PackageReference Include="Prism.Forms">
       <Version>8.1.97</Version>
     </PackageReference>

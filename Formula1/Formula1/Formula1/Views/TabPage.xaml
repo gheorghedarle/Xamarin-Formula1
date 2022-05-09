@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Formula1.Views.TabPage"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <xct:TabView
+            TabStripPlacement="Bottom"
+            TabStripBackgroundColor="#ffffff"
+            TabStripHeight="60"
+            TabIndicatorColor="#FF1801"
+            TabContentBackgroundColor="#F0F0F0">
+            <xct:TabViewItem
+                Text="Home"
+                TextColor="White"
+                TextColorSelected="#FF1801"
+                FontSize="12">
+                <Grid>
+                    <Label
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="Home" />
+                </Grid>
+            </xct:TabViewItem>
+            <xct:TabViewItem
+                Text="Schedule"
+                TextColor="White"
+                TextColorSelected="#FF1801"
+                FontSize="12">
+                <Grid>
+                    <Label    
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="Schedule" />
+                </Grid>
+            </xct:TabViewItem>
+            <xct:TabViewItem
+                Text="Drivers"
+                TextColor="White"
+                TextColorSelected="#FF1801"
+                FontSize="12">
+                <Grid>
+                    <Label
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="Drivers" />
+                </Grid>
+            </xct:TabViewItem>
+            <xct:TabViewItem
+                Text="Teams"
+                TextColor="White"
+                TextColorSelected="#FF1801"
+                FontSize="12">
+                <Grid>
+                    <Label    
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="Teams" />
+                </Grid>
+            </xct:TabViewItem>
+            <xct:TabViewItem
+                Text="History"
+                TextColor="White"
+                TextColorSelected="#FF1801"
+                FontSize="12">
+                <Grid>
+                    <Label    
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="History"/>
+                </Grid>
+            </xct:TabViewItem>
+        </xct:TabView>
+    </Grid>
+</ContentPage>
