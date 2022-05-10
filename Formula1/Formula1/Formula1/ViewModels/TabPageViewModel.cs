@@ -1,10 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Prism.Navigation;
 
 namespace Formula1.ViewModels
 {
-    public class TabPageViewModel
+    public class TabPageViewModel : BaseViewModel
     {
+        #region Constructors
+
+        public TabPageViewModel(INavigationService navigationService) : base(navigationService)
+        {
+        }
+
+        #endregion
     }
 }

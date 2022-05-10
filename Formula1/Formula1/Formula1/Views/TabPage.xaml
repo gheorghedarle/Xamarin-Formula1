@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:tabViews="clr-namespace:Formula1.Views.TabViews"
+             xmlns:prism="http://prismlibrary.com"
              x:Class="Formula1.Views.TabPage"
              NavigationPage.HasNavigationBar="False">
     <Grid>

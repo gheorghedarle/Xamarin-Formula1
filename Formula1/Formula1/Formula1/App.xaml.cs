@@ -1,5 +1,7 @@
 ﻿using Formula1.ViewModels;
+using Formula1.ViewModels.TabViews;
 using Formula1.Views;
+using Formula1.Views.TabViews;
 using Prism;
 using Prism.DryIoc;
 using Prism.Ioc;
@@ -33,6 +35,7 @@ namespace Formula1
             containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>("WelcomePage");
             containerRegistry.RegisterForNavigation<TabPage, TabPageViewModel>("TabPage");
+            containerRegistry.RegisterForNavigation<DriverDetailsPage, DriverDetailsPageViewModel>("DriverDetailsPage");
         }
 
         protected override void OnStart()
