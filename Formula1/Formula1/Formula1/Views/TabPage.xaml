@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:tabViews="clr-namespace:Formula1.Views.TabViews"
              x:Class="Formula1.Views.TabPage"
              NavigationPage.HasNavigationBar="False">
     <Grid>
@@ -9,6 +10,7 @@
             TabStripPlacement="Bottom"
             TabStripBackgroundColor="#ffffff"
             TabStripHeight="60"
+            TabIndicatorHeight="0"
             TabIndicatorColor="#FF1801"
             TabContentBackgroundColor="#F0F0F0">
             <xct:TabViewItem
@@ -18,12 +20,7 @@
                 FontFamily="FontAwesome_Solid"
                 FontSizeSelected="24"
                 FontSize="20">
-                <Grid>
-                    <Label
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Text="Home" />
-                </Grid>
+                <tabViews:HomeView></tabViews:HomeView>
             </xct:TabViewItem>
             <xct:TabViewItem
                 Text="&#xf783;"
@@ -32,12 +29,7 @@
                 FontFamily="FontAwesome_Solid"
                 FontSizeSelected="24"
                 FontSize="20">
-                <Grid>
-                    <Label    
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Text="Schedule" />
-                </Grid>
+                <tabViews:ScheduleView></tabViews:ScheduleView>
             </xct:TabViewItem>
             <xct:TabViewItem
                 Text="&#xf007;"
@@ -46,12 +38,7 @@
                 FontFamily="FontAwesome_Solid"
                 FontSizeSelected="24"
                 FontSize="20">
-                <Grid>
-                    <Label
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Text="Drivers" />
-                </Grid>
+                <tabViews:DriversView></tabViews:DriversView>
             </xct:TabViewItem>
             <xct:TabViewItem
                 Text="&#xf1b9;"
@@ -60,12 +47,7 @@
                 FontFamily="FontAwesome_Solid"
                 FontSizeSelected="24"
                 FontSize="20">
-                <Grid>
-                    <Label    
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Text="Teams" />
-                </Grid>
+                <tabViews:TeamsView></tabViews:TeamsView>
             </xct:TabViewItem>
             <xct:TabViewItem
                 Text="&#xf07b;"
@@ -74,12 +56,7 @@
                 FontFamily="FontAwesome_Solid"
                 FontSizeSelected="24"
                 FontSize="20">
-                <Grid>
-                    <Label    
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Text="History"/>
-                </Grid>
+                <tabViews:HistoryView></tabViews:HistoryView>
             </xct:TabViewItem>
         </xct:TabView>
     </Grid>

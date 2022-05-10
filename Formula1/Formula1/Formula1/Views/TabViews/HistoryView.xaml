@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Formula1.Views.TabViews.HistoryView"
+             RowDefinitions="Auto, *">
+    <Label 
+        Grid.Row="0"
+        Text="History"/>
+    <xct:TabView
+        Grid.Row="1"
+        TabStripPlacement="Top"
+        TabStripBackgroundColor="#F0F0F0"
+        TabStripHeight="60"
+        TabIndicatorColor="#FF1801"
+        TabContentBackgroundColor="#F0F0F0">
+        <xct:TabViewItem
+            Text="Drivers"
+            TextColor="#212121"
+            TextColorSelected="#FF1801"
+            FontSizeSelected="16"
+            FontSize="14">
+            <Grid>
+                <Label
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="Drivers" />
+            </Grid>
+        </xct:TabViewItem>
+        <xct:TabViewItem
+            Text="Teams"
+            TextColor="#212121"
+            TextColorSelected="#FF1801"
+            FontSizeSelected="16"
+            FontSize="14">
+            <Grid>
+                <Label    
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="Teams" />
+            </Grid>
+        </xct:TabViewItem>
+    </xct:TabView>
+</Grid>
