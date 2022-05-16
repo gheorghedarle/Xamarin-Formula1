@@ -5,6 +5,7 @@ using Formula1.Views.TabViews;
 using Prism;
 using Prism.DryIoc;
 using Prism.Ioc;
+using Prism.Mvvm;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -36,6 +37,12 @@ namespace Formula1
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>("WelcomePage");
             containerRegistry.RegisterForNavigation<TabPage, TabPageViewModel>("TabPage");
             containerRegistry.RegisterForNavigation<DriverDetailsPage, DriverDetailsPageViewModel>("DriverDetailsPage");
+
+            ViewModelLocationProvider.Register<HomeView, HomeViewModel>();
+            ViewModelLocationProvider.Register<ScheduleView, ScheduleViewModel>();
+            ViewModelLocationProvider.Register<DriversView, DriversViewModel>();
+            ViewModelLocationProvider.Register<TeamsView, TeamsViewModel>();
+            ViewModelLocationProvider.Register<HistoryView, HistoryViewModel>();
         }
 
         protected override void OnStart()

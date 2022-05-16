@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:tabViews="clr-namespace:Formula1.Views.TabViews"
-             xmlns:prism="http://prismlibrary.com"
              x:Class="Formula1.Views.TabPage"
              NavigationPage.HasNavigationBar="False">
     <Grid>
@@ -39,7 +38,9 @@
                 FontFamily="FontAwesome_Solid"
                 FontSizeSelected="24"
                 FontSize="20">
-                <tabViews:DriversView></tabViews:DriversView>
+                <xct:TabViewItem.Content>
+                    <tabViews:DriversView />
+                </xct:TabViewItem.Content>
             </xct:TabViewItem>
             <xct:TabViewItem
                 Text="&#xf1b9;"

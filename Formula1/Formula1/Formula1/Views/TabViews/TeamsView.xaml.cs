@@ -4,7 +4,7 @@ using Xamarin.Forms.Xaml;
 namespace Formula1.Views.TabViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TeamsView : Grid
+    public partial class TeamsView : ContentView
     {
         public TeamsView()
         {

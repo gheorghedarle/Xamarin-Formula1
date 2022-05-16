@@ -6,6 +6,7 @@ namespace Formula1.ViewModels.TabViews
 {
     public class DriversViewModel : BaseViewModel
     {
+
         #region Commands
 
         public Command DriverDetailsCommand { get; set; }
@@ -17,6 +18,8 @@ namespace Formula1.ViewModels.TabViews
         public DriversViewModel(INavigationService navigationService) : base(navigationService)
         {
             DriverDetailsCommand = new Command(DriverDetailsCommandHandler);
+
+            Title = "Drivers";
         }
 
         #endregion
