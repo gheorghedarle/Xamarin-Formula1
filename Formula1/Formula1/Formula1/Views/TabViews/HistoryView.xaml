@@ -17,17 +17,17 @@
             Grid.Row="1"
             Margin="0, -10, 0, 0"
             TabStripPlacement="Top"
-            TabStripBackgroundColor="#F0F0F0"
-            TabStripHeight="50"
+            TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
+            TabStripHeight="40"
             TabIndicatorColor="{StaticResource AccentColor}"
-            TabContentBackgroundColor="#F0F0F0">
+            TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
             <xct:TabViewItem
                 Text="Drivers"
-                TextColor="#212121"
+                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                 TextColorSelected="{StaticResource AccentColor}"
                 FontFamily="Exo_Regular"
                 FontFamilySelected="Exo_Medium"
-                FontSizeSelected="16"
+                FontSizeSelected="14"
                 FontSize="14">
                 <Grid>
                     <Label
@@ -38,11 +38,11 @@
             </xct:TabViewItem>
             <xct:TabViewItem
                 Text="Teams"
-                TextColor="#212121"
+                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                 TextColorSelected="{StaticResource AccentColor}"
                 FontFamily="Exo_Regular"
                 FontFamilySelected="Exo_Medium"
-                FontSizeSelected="16"
+                FontSizeSelected="14"
                 FontSize="14">
                 <Grid>
                     <Label    
