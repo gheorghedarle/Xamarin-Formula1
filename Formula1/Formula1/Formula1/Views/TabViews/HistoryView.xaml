@@ -9,21 +9,26 @@
     <Grid
         RowDefinitions="Auto, *">
         <Label 
-        Grid.Row="0"
-        Text="History"/>
+            Text="{Binding Title}"
+            Style="{StaticResource Headline3_ExoBold}"
+            TextColor="{StaticResource AccentColor}"
+            Margin="15, 10, 0, 10"/>
         <xct:TabView
-        Grid.Row="1"
-        TabStripPlacement="Top"
-        TabStripBackgroundColor="#F0F0F0"
-        TabStripHeight="60"
-        TabIndicatorColor="#FF1801"
-        TabContentBackgroundColor="#F0F0F0">
+            Grid.Row="1"
+            Margin="0, -10, 0, 0"
+            TabStripPlacement="Top"
+            TabStripBackgroundColor="#F0F0F0"
+            TabStripHeight="50"
+            TabIndicatorColor="{StaticResource AccentColor}"
+            TabContentBackgroundColor="#F0F0F0">
             <xct:TabViewItem
-            Text="Drivers"
-            TextColor="#212121"
-            TextColorSelected="#FF1801"
-            FontSizeSelected="16"
-            FontSize="14">
+                Text="Drivers"
+                TextColor="#212121"
+                TextColorSelected="{StaticResource AccentColor}"
+                FontFamily="Exo_Regular"
+                FontFamilySelected="Exo_Medium"
+                FontSizeSelected="16"
+                FontSize="14">
                 <Grid>
                     <Label
                     HorizontalOptions="Center"
@@ -32,16 +37,18 @@
                 </Grid>
             </xct:TabViewItem>
             <xct:TabViewItem
-            Text="Teams"
-            TextColor="#212121"
-            TextColorSelected="#FF1801"
-            FontSizeSelected="16"
-            FontSize="14">
+                Text="Teams"
+                TextColor="#212121"
+                TextColorSelected="{StaticResource AccentColor}"
+                FontFamily="Exo_Regular"
+                FontFamilySelected="Exo_Medium"
+                FontSizeSelected="16"
+                FontSize="14">
                 <Grid>
                     <Label    
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Text="Teams" />
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="Teams" />
                 </Grid>
             </xct:TabViewItem>
         </xct:TabView>

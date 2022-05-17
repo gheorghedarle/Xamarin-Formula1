@@ -7,6 +7,18 @@
       NavigationPage.HasNavigationBar="False">
     <StackLayout>
         <Label 
-            Text="{Binding Title}"/>
+            Margin="15, 10, 0, 10">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span
+                        Text="{Binding Title}"
+                        Style="{StaticResource Headline3_ExoBold}"
+                        TextColor="{StaticResource AccentColor}"></Span>
+                    <Span
+                        Text=" Stadings"
+                        Style="{StaticResource Headline3_ExoRegular}"></Span>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
     </StackLayout>
 </ContentView>

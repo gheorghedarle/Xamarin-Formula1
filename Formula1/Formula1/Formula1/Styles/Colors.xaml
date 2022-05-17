@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Formula1.Styles.Colors">
+    <Color x:Key="PrimaryColor">#212121</Color>
+    <Color x:Key="AccentColor">#FF1801</Color>
+
+    <Color x:Key="FailColor">#D04C41</Color>
+    <Color x:Key="SuccessColor">#00AF49</Color>
+
+    <!--App Theme Light-->
+    <Color x:Key="LightPrimaryTextColor">#212121</Color>
+    <Color x:Key="LightSecondaryTextColor">#757575</Color>
+
+    <Color x:Key="LightPageBackgroundColor">#F0F0F0</Color>
+    <Color x:Key="LightCardBackgroundColor">#F5F5F5</Color>
+    <Color x:Key="LightCardUnselectedBackgroundColor">#E1E1E1</Color>
+
+    <Color x:Key="LightTransparentBackgroundColor">#99F0F0F0</Color>
+
+    <!--App Theme Dark-->
+    <Color x:Key="DarkPrimaryTextColor">#F5F5F5</Color>
+    <Color x:Key="DarkSecondaryTextColor">#BDBDBD</Color>
+
+    <Color x:Key="DarkPageBackgroundColor">#001F3D</Color>
+    <Color x:Key="DarkCardBackgroundColor">#002952</Color>
+    <Color x:Key="DarkCardUnselectedBackgroundColor">#001A33</Color>
+
+    <Color x:Key="DarkTransparentBackgroundColor">#99003366</Color>
+</ResourceDictionary>

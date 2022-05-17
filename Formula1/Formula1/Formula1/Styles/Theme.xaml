@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:styles="clr-namespace:Formula1.Styles"
+             x:Class="Formula1.Styles.Theme">
+    <ResourceDictionary.MergedDictionaries>
+        <styles:Colors></styles:Colors>
+        <styles:Fonts></styles:Fonts>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="Headline3_ExoBold" TargetType="Label">
+        <Setter Property="FontFamily" Value="Exo_Bold" />
+        <Setter Property="FontSize" Value="{StaticResource Headline3FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    <Style x:Key="Headline3_ExoRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="Exo_Regular" />
+        <Setter Property="FontSize" Value="{StaticResource Headline3FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+</ResourceDictionary>
