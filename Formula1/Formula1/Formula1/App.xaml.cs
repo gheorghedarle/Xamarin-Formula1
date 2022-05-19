@@ -33,7 +33,15 @@ namespace Formula1
             InitializeComponent();
             SetAppTheme();
 
-            await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(TabPage)}");
+            VersionTracking.Track();
+            if (VersionTracking.IsFirstLaunchEver)
+            {
+                await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(WelcomePage)}");
+            }
+            else
+            {
+                await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(TabPage)}");
+            }
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
