@@ -20,8 +20,60 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <Button 
-            Text="Hello"
-            Command="{Binding DriverDetailsCommand}"/>
+        <CollectionView
+            ItemsSource="{Binding DriversList}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        RowDefinitions="Auto, Auto"
+                        ColumnDefinitions="Auto, 60, *, Auto"
+                        Padding="15, 10, 15, 10"
+                        RowSpacing="2">
+                        <Label
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Text="{Binding Position}"
+                            Margin="5"
+                            Style="{StaticResource Body1FontSize_ExoRegular}"
+                            VerticalOptions="CenterAndExpand"></Label>
+                        <Image
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            Source="{Binding Image}"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            Aspect="AspectFill"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Image.Clip>
+                                <EllipseGeometry
+                                    Center="25,25"
+                                    RadiusX="25"
+                                    RadiusY="25"/>
+                            </Image.Clip>
+                        </Image>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Text="{Binding Name}"
+                            Style="{StaticResource Subtitle1FontSize_ExoBold}"></Label>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Text="{Binding Team}"
+                            Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
+                        <Label
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="3"
+                            Text="{Binding Points, StringFormat='{0} pts'}"
+                            Style="{StaticResource Body1FontSize_ExoBold}"
+                            VerticalOptions="CenterAndExpand"></Label>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </StackLayout>
 </StackLayout>
