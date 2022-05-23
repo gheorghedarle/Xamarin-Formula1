@@ -24,6 +24,11 @@
         <Setter Property="FontSize" Value="{StaticResource Subtitle1FontSize}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
     </Style>
+    <Style x:Key="Subtitle1FontSize_ExoRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="Exo_Regular" />
+        <Setter Property="FontSize" Value="{StaticResource Subtitle1FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
 
     <Style x:Key="Body1FontSize_ExoRegular" TargetType="Label">
         <Setter Property="FontFamily" Value="Exo_Regular" />
@@ -39,6 +44,12 @@
     <Style x:Key="Body2FontSize_ExoRegular" TargetType="Label">
         <Setter Property="FontFamily" Value="Exo_Regular" />
         <Setter Property="FontSize" Value="{StaticResource Body2FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="Button_Exo_Regular" TargetType="Label">
+        <Setter Property="FontFamily" Value="Exo_Regular" />
+        <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
     </Style>
 </ResourceDictionary>

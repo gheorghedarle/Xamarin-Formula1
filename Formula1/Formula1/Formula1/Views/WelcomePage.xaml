@@ -4,10 +4,58 @@
              x:Class="Formula1.Views.WelcomePage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
+        <Grid
+            RowDefinitions="Auto, *"
+            RowSpacing="0"
+            BackgroundColor="{StaticResource PrimaryColor}">
+            <!--<fragments:ConnectionView
+                Grid.Row="0"/>-->
+            <Grid
+                Grid.Row="1"
+                RowDefinitions="*, Auto, Auto"
+                RowSpacing="0">
+                <Image
+                    Grid.Row="0"
+                    Aspect="AspectFill"
+                    Source="welcome.png"></Image>
+                <StackLayout 
+                    Grid.Row="1"
+                    VerticalOptions="End">
+                    <Label
+                        Margin="20, 10"
+                        Text="Welcome to your Formula 1 App">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="Welcome to your&#x0a;"
+                                    Style="{StaticResource Headline3_ExoRegular}"
+                                    TextColor="{StaticResource DarkPrimaryTextColor}"></Span>
+                                <Span
+                                    Text="Formula 1 App"
+                                    Style="{StaticResource Headline3_ExoBold}"
+                                    TextColor="{StaticResource DarkPrimaryTextColor}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Margin="20, 10, 20, 30"
+                        Text="Drivers | Teams | Results"
+                        LineHeight="0.85"
+                        Style="{StaticResource Subtitle1FontSize_ExoRegular}"
+                        TextColor="{StaticResource DarkPrimaryTextColor}"/>
+                </StackLayout>
+                <Button
+                    Grid.Row="2"
+                    Text="LET'S START"
+                    FontFamily="Exo_Bold"
+                    FontSize="{StaticResource ButtonFontSize}"
+                    BackgroundColor="{StaticResource AccentColor}"
+                    TextColor="{StaticResource DarkPrimaryTextColor}"
+                    Padding="15, 20"
+                    Margin="15, 15, 15, 30"
+                    Command="{Binding LetsStartCommand}"
+                    CornerRadius="36"></Button>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

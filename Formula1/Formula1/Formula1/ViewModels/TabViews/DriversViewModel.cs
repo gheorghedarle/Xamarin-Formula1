@@ -8,7 +8,7 @@ namespace Formula1.ViewModels.TabViews
 {
     public class DriversViewModel : BaseViewModel
     {
-        #region Commands
+        #region Properties
 
         public ObservableCollection<DriverModel> DriversList { get; set; }
 
@@ -33,18 +33,18 @@ namespace Formula1.ViewModels.TabViews
                 new DriverModel()
                 {
                     Position = 1,
-                    Name = "Charles LECLERC",
-                    Team = "Ferrari",
-                    Points = 104,
-                    Image = "https://www.formula1.com/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.png.transform/2col/image.png"
+                    Name = "Max VERSTAPPEN",
+                    Team = "Red Bull Racing",
+                    Points = 110,
+                    Image = "https://www.formula1.com/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png"
                 },
                 new DriverModel()
                 {
                     Position = 2,
-                    Name = "Max VERSTAPPEN",
-                    Team = "Red Bull Racing",
-                    Points = 90,
-                    Image = "https://www.formula1.com/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/2col/image.png"
+                    Name = "Charles LECLERC",
+                    Team = "Ferrari",
+                    Points = 104,
+                    Image = "https://www.formula1.com/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.png"
                 },
                 new DriverModel()
                 {
@@ -52,7 +52,7 @@ namespace Formula1.ViewModels.TabViews
                     Name = "George RUSSEL",
                     Team = "Mercedes",
                     Points = 80,
-                    Image = "https://www.formula1.com/content/dam/fom-website/drivers/G/GEORUS01_George_Russell/georus01.png.transform/2col/image.png"
+                    Image = "https://www.formula1.com/content/dam/fom-website/drivers/G/GEORUS01_George_Russell/georus01.png"
                 }
             };
         }

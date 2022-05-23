@@ -139,4 +139,7 @@
       <Name>Formula1</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\welcome.png" />
+  </ItemGroup>
 </Project>

@@ -14,7 +14,7 @@ namespace Formula1.Droid
 {
 	
 	
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "12.3.99.43")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "12.3.0.26")]
 	public partial class Resource
 	{
 		
@@ -25837,6 +25837,9 @@ namespace Formula1.Droid
 			
 			// aapt resource value: 0x7F07008F
 			public const int tooltip_frame_light = 2131165327;
+			
+			// aapt resource value: 0x7F070090
+			public const int welcome = 2131165328;
 			
 			static Drawable()
 			{
