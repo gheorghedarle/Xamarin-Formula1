@@ -20,5 +20,32 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <CollectionView
+            ItemsSource="{Binding TeamsList}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        ColumnDefinitions="Auto, *, Auto"
+                        Padding="15, 10, 15, 10"
+                        RowSpacing="2">
+                        <Label
+                            Grid.Column="0"
+                            Text="{Binding Position}"
+                            Margin="5, 2, 5, 0"
+                            Style="{StaticResource Body1FontSize_ExoRegular}"
+                            VerticalOptions="CenterAndExpand"></Label>
+                        <Label
+                            Grid.Column="1"
+                            Text="{Binding Name}"
+                            Style="{StaticResource Subtitle1FontSize_ExoBold}"></Label>
+                        <Label
+                            Grid.Column="2"
+                            Text="{Binding Points, StringFormat='{0} pts'}"
+                            Style="{StaticResource Body1FontSize_ExoBold}"
+                            VerticalOptions="CenterAndExpand"></Label>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </StackLayout>
 </ContentView>
