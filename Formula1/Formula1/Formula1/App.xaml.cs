@@ -1,4 +1,6 @@
-﻿using Formula1.ViewModels;
+﻿using Formula1.Core;
+using Formula1.Services.Ergast;
+using Formula1.ViewModels;
 using Formula1.ViewModels.TabViews;
 using Formula1.Views;
 using Formula1.Views.TabViews;
@@ -46,6 +48,9 @@ namespace Formula1
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterInstance(new HttpClientFactory());
+            containerRegistry.Register<IErgastService, ErgastService>();
+
             containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>("WelcomePage");
             containerRegistry.RegisterForNavigation<TabPage, TabPageViewModel>("TabPage");
