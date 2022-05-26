@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Formula1.Models
+﻿namespace Formula1.Models
 {
     public class DriverModel
     {
-        public int Position { get; set; }
-        public string Name { get; set; }
-        public string Team { get; set; }
-        public double Points { get; set; }
         public string Image { get; set; }
+        public string GivenName { get; set; }
+        public string FamilyName { get; set; }
+        public string Nationality { get; set; }
+        public int PermanentNumber { get; set; }
+        public string Code { get; set; }
+        public string DateOfBirth { get; set; }
     }
 }

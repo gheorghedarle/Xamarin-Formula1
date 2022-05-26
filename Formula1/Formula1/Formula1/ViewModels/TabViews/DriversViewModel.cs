@@ -1,4 +1,5 @@
-﻿using Formula1.Models;
+﻿using Formula1.Helpers;
+using Formula1.Models;
 using Formula1.Services.Ergast;
 using Formula1.Views;
 using Prism.Navigation;
@@ -21,7 +22,7 @@ namespace Formula1.ViewModels.TabViews
 
         public Task Init { get; }
 
-        public ObservableCollection<DriverModel> DriversList { get; set; }
+        public ObservableCollection<DriverStadingsModel> DriversList { get; set; }
 
         #endregion
 
@@ -41,7 +42,7 @@ namespace Formula1.ViewModels.TabViews
 
             _ergastService = ergastService;
 
-            DriverDetailsCommand = new Command(DriverDetailsCommandHandler);
+            DriverDetailsCommand = new Command<DriverStadingsModel>(DriverDetailsCommandHandler);
 
             Init = Initialize();
         }
@@ -50,7 +51,7 @@ namespace Formula1.ViewModels.TabViews
 
         #region Command Handlers
 
-        private async void DriverDetailsCommandHandler()
+        private async void DriverDetailsCommandHandler(DriverStadingsModel driver)
         {
             await _navigationService.NavigateAsync(nameof(DriverDetailsPage));
         }
@@ -62,6 +63,7 @@ namespace Formula1.ViewModels.TabViews
         private async Task Initialize()
         {
             var res = await _ergastService.GetDriverStadings();
+            DriversList = new ObservableCollection<DriverStadingsModel>(res);
         }
 
         #endregion

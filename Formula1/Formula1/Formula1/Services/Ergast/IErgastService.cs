@@ -6,6 +6,6 @@ namespace Formula1.Services.Ergast
 {
     public interface IErgastService
     {
-        Task<List<DriverModel>> GetDriverStadings();
+        Task<List<DriverStadingsModel>> GetDriverStadings();
     }
 }
