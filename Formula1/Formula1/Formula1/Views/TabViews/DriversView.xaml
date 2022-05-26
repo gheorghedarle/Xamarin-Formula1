@@ -21,8 +21,8 @@
             </Label.FormattedText>
         </Label>
         <CollectionView
-            ItemsSource="{Binding DriversList}"
-            Margin="0, 0, 0, 20">
+            x:Name="driversList"
+            ItemsSource="{Binding DriversList}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid
@@ -30,6 +30,11 @@
                         ColumnDefinitions="30, 50, *, Auto"
                         Padding="15, 10, 15, 10"
                         RowSpacing="2">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Path=BindingContext.DriverDetailsCommand, Source={x:Reference driversList}}"
+                                CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
                         <Label
                             Grid.Row="0"
                             Grid.RowSpan="2"
@@ -63,10 +68,10 @@
                                 <FormattedString>
                                     <Span
                                         Text="{Binding Driver.GivenName}"
-                                        Style="{StaticResource Subtitle1FontSize_ExoRegular}"></Span>
+                                        Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
                                     <Span
                                         Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
-                                        Style="{StaticResource Subtitle1FontSize_ExoBold}"></Span>
+                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -74,7 +79,7 @@
                             Grid.Row="1"
                             Grid.Column="2"
                             Text="{Binding Constructors[0].Name}"
-                            Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
+                            Style="{StaticResource Body1FontSize_ExoRegular}"></Label>
                         <Label
                             Grid.Row="0"
                             Grid.RowSpan="2"
@@ -84,10 +89,10 @@
                                 <FormattedString>
                                     <Span
                                         Text="{Binding Points}"
-                                        Style="{StaticResource Subtitle1FontSize_ExoBold}"></Span>
+                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
                                     <Span
                                         Text=" pts"
-                                        Style="{StaticResource Subtitle1FontSize_ExoRegular}"></Span>
+                                        Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>

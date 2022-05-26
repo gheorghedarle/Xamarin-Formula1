@@ -38,9 +38,7 @@
                 FontFamily="FontAwesome_Solid"
                 FontSizeSelected="24"
                 FontSize="20">
-                <xct:TabViewItem.Content>
-                    <tabViews:DriversView />
-                </xct:TabViewItem.Content>
+                <tabViews:DriversView></tabViews:DriversView>
             </xct:TabViewItem>
             <xct:TabViewItem
                 Text="&#xf1b9;"

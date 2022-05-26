@@ -1,6 +1,53 @@
-﻿namespace Formula1.ViewModels
+﻿using Formula1.Models;
+using Prism.Navigation;
+using Xamarin.Forms;
+
+namespace Formula1.ViewModels
 {
-    internal class DriverDetailsPageViewModel
+    public class DriverDetailsPageViewModel: BaseViewModel
     {
+        #region Properties
+
+        public DriverStadingsModel DriverStading { get; set; }
+
+        #endregion
+
+        #region Commands
+
+        public Command BackCommand { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        public DriverDetailsPageViewModel(
+            INavigationService navigationService) : base(navigationService)
+        {
+            BackCommand = new Command(BackCommandHandler);
+        }
+
+        #endregion
+
+        #region Command Handlers
+
+        private async void BackCommandHandler()
+        {
+            await _navigationService.GoBackAsync();
+        }
+
+        #endregion
+
+        #region Navigation Handlers
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            var driver = parameters.GetValue<DriverStadingsModel>("driver");
+            if(driver != null)
+            {
+                DriverStading = driver;
+            }
+        }
+
+        #endregion
     }
 }

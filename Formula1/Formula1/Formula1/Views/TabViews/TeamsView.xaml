@@ -46,10 +46,10 @@
                                 <FormattedString>
                                     <Span
                                         Text="{Binding Points}"
-                                        Style="{StaticResource Subtitle1FontSize_ExoBold}"></Span>
+                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
                                     <Span
                                         Text=" pts"
-                                        Style="{StaticResource Subtitle1FontSize_ExoRegular}"></Span>
+                                        Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>

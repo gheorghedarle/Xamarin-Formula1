@@ -1,12 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Formula1.Views.DriverDetailsPage">
+             x:Class="Formula1.Views.DriverDetailsPage"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid
+            RowDefinitions="150, *"
+            BackgroundColor="#F0F0F0">
+            <Grid
+                Grid.Row="0"
+                BackgroundColor="#FFFFFF"
+                Padding="20, 20, 20, 0">
+                <StackLayout
+                    Grid.Row="0"
+                    Padding="0, 8, 8, 8"
+                    HorizontalOptions="Start"
+                    Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Text="&#xf060;"
+                        FontSize="{StaticResource Subtitle1FontSize}"
+                        FontFamily="FontAwesome_Solid"
+                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                        HorizontalOptions="Start"></Label>
+                </StackLayout>
+                <StackLayout
+                    Spacing="0"
+                    Margin="0, 0, 0, 20"
+                    VerticalOptions="End">
+                    <Label
+                        Text="{Binding DriverStading.Driver.GivenName}"
+                        Style="{StaticResource Subtitle1FontSize_ExoRegular}">
+                    </Label>
+                    <Label
+                        Text="{Binding DriverStading.Driver.FamilyName}"
+                        Style="{StaticResource Subtitle1FontSize_ExoBold}">
+                    </Label>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="{Binding DriverStading.Driver.PermanentNumber}"
+                                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                                <Span
+                                    Text="{Binding DriverStading.Constructors[0].Name, StringFormat=' | {0}'}"
+                                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <Image
+                    Source="{Binding DriverStading.Driver.Image}"
+                    WidthRequest="120"
+                    HeightRequest="120"
+                    Aspect="AspectFill"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="End">
+                </Image>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
