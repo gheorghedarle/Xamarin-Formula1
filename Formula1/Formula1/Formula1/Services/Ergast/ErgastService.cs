@@ -31,5 +31,19 @@ namespace Formula1.Services.Ergast
             }
             return null;
         }
+
+        public async Task<List<ConstructorStadingsModel>> GetTeamStadings()
+        {
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructorStandings.json");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                var json = JObject.Parse(result);
+                var res = json["MRData"]["StandingsTable"]["StandingsLists"].First["ConstructorStandings"].ToString();
+                var r = JsonConvert.DeserializeObject<List<ConstructorStadingsModel>>(res);
+                return r;
+            }
+            return null;
+        }
     }
 }

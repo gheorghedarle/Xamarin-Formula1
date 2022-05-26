@@ -4,10 +4,12 @@ using System.Text;
 
 namespace Formula1.Models
 {
-    public class TeamModel
+    public class ConstructorModel
     {
         public int Position { get; set; }
         public string Name { get; set; }
+        public string Nationality { get; set; }
         public double Points { get; set; }
+        public int Wins { get; set; }
     }
 }

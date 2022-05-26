@@ -79,9 +79,18 @@
                             Grid.Row="0"
                             Grid.RowSpan="2"
                             Grid.Column="3"
-                            Text="{Binding Points, StringFormat='{0} pts'}"
-                            Style="{StaticResource Body1FontSize_ExoBold}"
-                            VerticalOptions="CenterAndExpand"></Label>
+                            VerticalOptions="CenterAndExpand">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="{Binding Points}"
+                                        Style="{StaticResource Subtitle1FontSize_ExoBold}"></Span>
+                                    <Span
+                                        Text=" pts"
+                                        Style="{StaticResource Subtitle1FontSize_ExoRegular}"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

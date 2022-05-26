@@ -1,44 +1,48 @@
 ﻿using Formula1.Models;
+using Formula1.Services.Ergast;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace Formula1.ViewModels.TabViews
 {
     public class TeamsViewModel: BaseViewModel
     {
+        #region Fields
+
+        private readonly IErgastService _ergastService;
+
+        #endregion
+
         #region Properties
 
-        public ObservableCollection<TeamModel> TeamsList { get; set; }
+        public Task Init { get; }
+
+        public ObservableCollection<ConstructorStadingsModel> TeamsList { get; set; }
 
         #endregion
 
         #region Constructors
 
-        public TeamsViewModel(INavigationService navigationService) : base(navigationService)
+        public TeamsViewModel(
+            INavigationService navigationService,
+            IErgastService ergastService) : base(navigationService)
         {
             Title = "Teams";
 
-            TeamsList = new ObservableCollection<TeamModel>()
-            {
-                new TeamModel()
-                {
-                    Position = 1,
-                    Name = "Red Bull",
-                    Points = 195,
-                },
-                new TeamModel()
-                {
-                    Position = 2,
-                    Name = "Ferrari",
-                    Points = 169,
-                },
-                new TeamModel()
-                {
-                    Position = 3,
-                    Name = "Mercedes",
-                    Points = 120,
-                }
-            };
+            _ergastService = ergastService;
+
+            Init = Initialize();
+        }
+
+        #endregion
+
+        #region Private Functionality
+
+        private async Task Initialize()
+        {
+            var res = await _ergastService.GetTeamStadings();
+            TeamsList = new ObservableCollection<ConstructorStadingsModel>(res);
         }
 
         #endregion

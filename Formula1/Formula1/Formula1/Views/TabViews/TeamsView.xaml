@@ -7,7 +7,7 @@
       NavigationPage.HasNavigationBar="False">
     <StackLayout>
         <Label 
-            Margin="15, 10, 0, 10">
+            Margin="15, 10, 0, 5">
             <Label.FormattedText>
                 <FormattedString>
                     <Span
@@ -21,28 +21,38 @@
             </Label.FormattedText>
         </Label>
         <CollectionView
-            ItemsSource="{Binding TeamsList}">
+            ItemsSource="{Binding TeamsList}"
+            Margin="0, 0, 0, 20">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid
-                        ColumnDefinitions="Auto, *, Auto"
+                        ColumnDefinitions="30, *, Auto"
                         Padding="15, 10, 15, 10"
                         RowSpacing="2">
                         <Label
                             Grid.Column="0"
                             Text="{Binding Position}"
-                            Margin="5, 2, 5, 0"
                             Style="{StaticResource Body1FontSize_ExoRegular}"
-                            VerticalOptions="CenterAndExpand"></Label>
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"></Label>
                         <Label
                             Grid.Column="1"
-                            Text="{Binding Name}"
+                            Text="{Binding Constructor.Name}"
                             Style="{StaticResource Subtitle1FontSize_ExoBold}"></Label>
                         <Label
                             Grid.Column="2"
-                            Text="{Binding Points, StringFormat='{0} pts'}"
-                            Style="{StaticResource Body1FontSize_ExoBold}"
-                            VerticalOptions="CenterAndExpand"></Label>
+                            VerticalOptions="CenterAndExpand">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="{Binding Points}"
+                                        Style="{StaticResource Subtitle1FontSize_ExoBold}"></Span>
+                                    <Span
+                                        Text=" pts"
+                                        Style="{StaticResource Subtitle1FontSize_ExoRegular}"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
