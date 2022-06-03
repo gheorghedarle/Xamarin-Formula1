@@ -17,9 +17,9 @@ namespace Formula1.Services.Ergast
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<List<DriverStadingsModel>> GetDriverStadings()
+        public async Task<List<DriverStadingsModel>> GetDriverStadings(string year)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/driverStandings.json");
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/driverStandings.json");
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();
@@ -32,9 +32,9 @@ namespace Formula1.Services.Ergast
             return null;
         }
 
-        public async Task<List<ConstructorStadingsModel>> GetTeamStadings()
+        public async Task<List<ConstructorStadingsModel>> GetTeamStadings(string year)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructorStandings.json");
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/constructorStandings.json");
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();

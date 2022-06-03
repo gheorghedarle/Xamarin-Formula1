@@ -36,7 +36,7 @@ namespace Formula1.ViewModels.TabViews
             INavigationService navigationService,
             IErgastService ergastService) : base(navigationService)
         {
-            Title = "Drivers";
+            Title = "Driver";
 
             _ergastService = ergastService;
 
@@ -64,7 +64,7 @@ namespace Formula1.ViewModels.TabViews
 
         private async Task Initialize()
         {
-            var res = await _ergastService.GetDriverStadings();
+            var res = await _ergastService.GetDriverStadings("current");
             DriversList = new ObservableCollection<DriverStadingsModel>(res);
         }
 

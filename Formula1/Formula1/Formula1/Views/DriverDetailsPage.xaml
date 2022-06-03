@@ -42,10 +42,10 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span
-                                    Text="{Binding DriverStading.Driver.PermanentNumber}"
+                                    Text="{Binding DriverStading.Driver.PermanentNumber, StringFormat='{0} | '}"
                                     Style="{StaticResource Body2FontSize_ExoBold}"></Span>
                                 <Span
-                                    Text="{Binding DriverStading.Constructors[0].Name, StringFormat=' | {0}'}"
+                                    Text="{Binding DriverStading.Constructors[0].Name}"
                                     Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
                             </FormattedString>
                         </Label.FormattedText>

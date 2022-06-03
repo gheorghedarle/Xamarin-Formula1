@@ -6,7 +6,7 @@ namespace Formula1.Services.Ergast
 {
     public interface IErgastService
     {
-        Task<List<DriverStadingsModel>> GetDriverStadings();
-        Task<List<ConstructorStadingsModel>> GetTeamStadings();
+        Task<List<DriverStadingsModel>> GetDriverStadings(string year);
+        Task<List<ConstructorStadingsModel>> GetTeamStadings(string year);
     }
 }

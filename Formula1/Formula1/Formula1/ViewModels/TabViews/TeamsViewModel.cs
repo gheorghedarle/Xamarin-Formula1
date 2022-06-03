@@ -28,7 +28,7 @@ namespace Formula1.ViewModels.TabViews
             INavigationService navigationService,
             IErgastService ergastService) : base(navigationService)
         {
-            Title = "Teams";
+            Title = "Team";
 
             _ergastService = ergastService;
 
@@ -41,7 +41,7 @@ namespace Formula1.ViewModels.TabViews
 
         private async Task Initialize()
         {
-            var res = await _ergastService.GetTeamStadings();
+            var res = await _ergastService.GetTeamStadings("current");
             TeamsList = new ObservableCollection<ConstructorStadingsModel>(res);
         }
 
