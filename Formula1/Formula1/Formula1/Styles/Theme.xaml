@@ -52,9 +52,15 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
     </Style>
 
-    <Style x:Key="Button_Exo_Regular" TargetType="Label">
+    <Style x:Key="Button_ExoRegular" TargetType="Label">
         <Setter Property="FontFamily" Value="Exo_Regular" />
         <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="CaptionFontSize_ExoRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="Exo_Regular" />
+        <Setter Property="FontSize" Value="{StaticResource CaptionFontSize}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
     </Style>
 </ResourceDictionary>

@@ -45,5 +45,19 @@ namespace Formula1.Services.Ergast
             }
             return null;
         }
+
+        public async Task<List<ScheduleModel>> GetSchedule(string year)
+        {
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}.json");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                var json = JObject.Parse(result);
+                var res = json["MRData"]["RaceTable"]["Races"].ToString();
+                var r = JsonConvert.DeserializeObject<List<ScheduleModel>>(res);
+                return r;
+            }
+            return null;
+        }
     }
 }
