@@ -55,6 +55,7 @@ namespace Formula1
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>("WelcomePage");
             containerRegistry.RegisterForNavigation<TabPage, TabPageViewModel>("TabPage");
             containerRegistry.RegisterForNavigation<DriverDetailsPage, DriverDetailsPageViewModel>("DriverDetailsPage");
+            containerRegistry.RegisterForNavigation<CircuitDetailsPage, CircuitDetailsPageViewModel>("CircuitDetailsPage");
 
             ViewModelLocationProvider.Register<HomeView, HomeViewModel>();
             ViewModelLocationProvider.Register<ScheduleView, ScheduleViewModel>();

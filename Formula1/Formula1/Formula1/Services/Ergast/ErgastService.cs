@@ -56,6 +56,7 @@ namespace Formula1.Services.Ergast
                 var res = json["MRData"]["RaceTable"]["Races"].ToString();
                 var r = JsonConvert.DeserializeObject<List<ScheduleModel>>(res);
                 r.ForEach(c => c.Circuit.Location.Flag = $"{Constants.ImageApiBaseUrl}countries/{c.Circuit.Location.Country}.png");
+                r.ForEach(c => c.Circuit.Map = $"{Constants.ImageApiBaseUrl}circuits/{c.Circuit.CircuitId}.png");
                 return r;
             }
             return null;

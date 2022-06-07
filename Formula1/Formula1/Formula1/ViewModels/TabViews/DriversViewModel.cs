@@ -37,7 +37,6 @@ namespace Formula1.ViewModels.TabViews
             IErgastService ergastService) : base(navigationService)
         {
             Title = "Driver";
-
             _ergastService = ergastService;
 
             DriverDetailsCommand = new Command<DriverStadingsModel>(DriverDetailsCommandHandler);

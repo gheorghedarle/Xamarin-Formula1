@@ -12,6 +12,7 @@
             TextColor="{StaticResource AccentColor}"
             Margin="15, 10, 0, 10"/>
         <CollectionView
+            x:Name="circuitsList"
             ItemsSource="{Binding Schedule}"
             Margin="0, 0, 0, 20">
             <CollectionView.ItemTemplate>
@@ -20,7 +21,12 @@
                         RowDefinitions="Auto, Auto, Auto"
                         ColumnDefinitions="50, *, Auto"
                         Padding="15, 10, 15, 10"
-                        RowSpacing="2">
+                        RowSpacing="0">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Path=BindingContext.CircuitDetailsCommand, Source={x:Reference circuitsList}}"
+                                CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
                         <Image
                             Grid.Row="0"
                             Grid.RowSpan="3"
@@ -55,7 +61,7 @@
                             Grid.Row="2"
                             Grid.Column="1"
                             Text="{Binding Circuit.CircuitName}"
-                            Style="{StaticResource Body1FontSize_ExoRegular}"
+                            Style="{StaticResource Body2FontSize_ExoRegular}"
                             VerticalOptions="Center"></Label>
                         <Label
                             Grid.Row="0"

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Formula1.Views.CircuitDetailsPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid
+            RowDefinitions="Auto, *"
+            BackgroundColor="#F0F0F0">
+            <Grid
+                Grid.Row="0"
+                RowDefinitions="Auto, Auto"
+                BackgroundColor="#FFFFFF">
+                <Image
+                    Grid.Row="0"
+                    Aspect="AspectFit"
+                    Margin="5, 5, 5, 0"
+                    HeightRequest="250"
+                    Source="{Binding Circuit.Circuit.Map}"></Image>
+                <StackLayout
+                    Grid.Row="0"
+                    Padding="0, 8, 8, 8"
+                    Margin="20, 20, 0, 0"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Text="&#xf060;"
+                        FontSize="{StaticResource Subtitle1FontSize}"
+                        FontFamily="FontAwesome_Solid"
+                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                        HorizontalOptions="Start"></Label>
+                </StackLayout>
+                <Grid
+                    Grid.Row="1"
+                    ColumnDefinitions="*, 50"
+                    Margin="20, 0, 20, 10"
+                    VerticalOptions="End">
+                    <StackLayout
+                        Grid.Column="0"
+                        Spacing="0">
+                        <Label
+                            Text="{Binding Circuit.Round, StringFormat='Round {0}'}"
+                            Style="{StaticResource CaptionFontSize_ExoRegular}"
+                            TextColor="{StaticResource AccentColor}"
+                            VerticalOptions="Center">
+                        </Label>
+                        <Label
+                            Text="{Binding Circuit.RaceName}"
+                            Style="{StaticResource Body1FontSize_ExoBold}"
+                            VerticalOptions="Center">
+                        </Label>
+                        <Label
+                            Text="{Binding Circuit.Circuit.CircuitName}"
+                            Style="{StaticResource Body2FontSize_ExoRegular}"
+                            VerticalOptions="Center">
+                        </Label>
+                        <Label
+                            Text="{Binding Circuit.Date}"
+                            Style="{StaticResource Body2FontSize_ExoRegular}"
+                            VerticalOptions="Center">
+                        </Label>
+                    </StackLayout>
+                    <Image
+                        Grid.Column="1"
+                        Source="{Binding Circuit.Circuit.Location.Flag}"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Aspect="AspectFill"
+                        HorizontalOptions="Center"
+                        VerticalOptions="CenterAndExpand">
+                        <Image.Clip>
+                            <EllipseGeometry
+                                Center="20,20"
+                                RadiusX="20"
+                                RadiusY="20"/>
+                        </Image.Clip>
+                    </Image>
+                </Grid>
+                <Image
+                    Source="{Binding DriverStading.Driver.Image}"
+                    WidthRequest="120"
+                    HeightRequest="120"
+                    Aspect="AspectFill"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="End">
+                </Image>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
