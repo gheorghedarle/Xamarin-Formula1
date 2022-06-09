@@ -58,8 +58,8 @@
                             VerticalOptions="Center">
                         </Label>
                         <Label
-                            Text="{Binding Circuit.Date}"
-                            Style="{StaticResource Body2FontSize_ExoRegular}"
+                            Text="{Binding Circuit.Date, StringFormat='{0:dd MMM yyyy}'}"
+                            Style="{StaticResource CaptionFontSize_ExoRegular}"
                             VerticalOptions="Center">
                         </Label>
                     </StackLayout>

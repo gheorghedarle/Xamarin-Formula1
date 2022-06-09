@@ -67,7 +67,7 @@
                             Grid.Row="0"
                             Grid.RowSpan="3"
                             Grid.Column="2"
-                            Text="{Binding Date}"
+                            Text="{Binding Date, StringFormat='{0:dd MMM yyyy}'}"
                             Style="{StaticResource CaptionFontSize_ExoRegular}"
                             HorizontalOptions="End"
                             VerticalOptions="Center"></Label>
