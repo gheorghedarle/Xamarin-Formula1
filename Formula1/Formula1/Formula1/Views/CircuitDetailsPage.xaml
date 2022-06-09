@@ -58,7 +58,7 @@
                             VerticalOptions="Center">
                         </Label>
                         <Label
-                            Text="{Binding Circuit.Date, StringFormat='{0:dd MMM yyyy}'}"
+                            Text="{Binding Circuit.Date, StringFormat='{0:d MMM yyyy}'}"
                             Style="{StaticResource CaptionFontSize_ExoRegular}"
                             VerticalOptions="Center">
                         </Label>

@@ -42,7 +42,8 @@
                 FontSize="14">
                 <CollectionView
                     x:Name="driversList"
-                    ItemsSource="{Binding DriversList}">
+                    ItemsSource="{Binding DriversList}"
+                    Margin="0, 0, 0, 20">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid
@@ -82,7 +83,7 @@
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     Text="{Binding Constructors[0].Name}"
-                                    Style="{StaticResource Body1FontSize_ExoRegular}"></Label>
+                                    Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
                                 <Label
                                     Grid.Row="0"
                                     Grid.RowSpan="2"
