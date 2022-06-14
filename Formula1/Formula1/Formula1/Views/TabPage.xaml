@@ -13,7 +13,7 @@
             TabIndicatorHeight="0"
             TabIndicatorColor="#FF1801"
             TabContentBackgroundColor="#F0F0F0">
-            <xct:TabViewItem
+            <!--<xct:TabViewItem
                 Text="&#xf015;"
                 TextColor="#212121"
                 TextColorSelected="#FF1801"
@@ -21,8 +21,8 @@
                 FontSizeSelected="24"
                 FontSize="20">
                 <tabViews:HomeView></tabViews:HomeView>
-            </xct:TabViewItem>
-            <xct:TabViewItem
+            </xct:TabViewItem>-->
+            <!--<xct:TabViewItem
                 Text="&#xf783;"
                 TextColor="#212121"
                 TextColorSelected="#FF1801"
@@ -30,8 +30,8 @@
                 FontSizeSelected="24"
                 FontSize="20">
                 <tabViews:ScheduleView></tabViews:ScheduleView>
-            </xct:TabViewItem>
-            <xct:TabViewItem
+            </xct:TabViewItem>-->
+            <!--<xct:TabViewItem
                 Text="&#xf007;"
                 TextColor="#212121"
                 TextColorSelected="#FF1801"
@@ -39,8 +39,8 @@
                 FontSizeSelected="24"
                 FontSize="20">
                 <tabViews:DriversView></tabViews:DriversView>
-            </xct:TabViewItem>
-            <xct:TabViewItem
+            </xct:TabViewItem>-->
+            <!--<xct:TabViewItem
                 Text="&#xf1b9;"
                 TextColor="#212121"
                 TextColorSelected="#FF1801"
@@ -57,7 +57,7 @@
                 FontSizeSelected="24"
                 FontSize="20">
                 <tabViews:HistoryView></tabViews:HistoryView>
-            </xct:TabViewItem>
+            </xct:TabViewItem>-->
         </xct:TabView>
     </Grid>
 </ContentPage>

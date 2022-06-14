@@ -1,5 +1,4 @@
 ﻿using Formula1.Views;
-using Prism.Navigation;
 using Xamarin.Forms;
 
 namespace Formula1.ViewModels
@@ -14,7 +13,7 @@ namespace Formula1.ViewModels
 
         #region Constructors
 
-        public WelcomePageViewModel(INavigationService navigationService) : base(navigationService)
+        public WelcomePageViewModel()
         {
             LetsStartCommand = new Command(LetsStartCommandHandler);
         }
@@ -25,7 +24,7 @@ namespace Formula1.ViewModels
 
         private async void LetsStartCommandHandler()
         {
-            await _navigationService.NavigateAsync(nameof(TabPage));
+            //await _navigationService.NavigateAsync(nameof(TabPage));
         }
 
         #endregion

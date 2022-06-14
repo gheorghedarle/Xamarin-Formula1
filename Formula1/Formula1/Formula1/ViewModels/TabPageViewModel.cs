@@ -1,5 +1,4 @@
 ﻿using Formula1.ViewModels.TabViews;
-using Prism.Navigation;
 
 namespace Formula1.ViewModels
 {
@@ -8,7 +7,7 @@ namespace Formula1.ViewModels
 
         #region Constructors
 
-        public TabPageViewModel(INavigationService navigationService) : base(navigationService)
+        public TabPageViewModel()
         {
         }
 

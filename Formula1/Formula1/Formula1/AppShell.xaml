@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabViews="clr-namespace:Formula1.Views.TabViews"
+             Shell.NavBarIsVisible="False"
+             x:Class="Formula1.AppShell">
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="White" />
+                <Setter Property="Shell.ForegroundColor" Value="#212121" />
+                <Setter Property="Shell.TitleColor" Value="#FF1801" />
+                <Setter Property="Shell.DisabledColor" Value="#212121" />
+                <Setter Property="Shell.UnselectedColor" Value="#FF212121" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="White" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="#212121"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#FF212121"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="#FF1801"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar>
+        <Tab Title="Home">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf015;"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate tabViews:HomeView}" />
+        </Tab>
+        <Tab Title="Schedule">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf783;"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate tabViews:ScheduleView}" />
+        </Tab>
+        <Tab Title="Drivers">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf007;"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate tabViews:DriversView}" />
+        </Tab>
+        <Tab Title="Teams">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf1b9;"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate tabViews:TeamsView}" />
+        </Tab>
+        <Tab Title="History">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf07b;"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate tabViews:HistoryView}" />
+        </Tab>
+    </TabBar>
+</Shell>

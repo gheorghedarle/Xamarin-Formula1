@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-      xmlns:prism="http://prismlibrary.com"
       x:Class="Formula1.Views.TabViews.TeamsView"
-      prism:ViewModelLocator.AutowireViewModel="True"
+      BindingContext="{Binding TeamsView, Source={StaticResource ViewModelLocator}}"
       NavigationPage.HasNavigationBar="False">
     <StackLayout>
         <Label 
@@ -58,4 +57,4 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </StackLayout>
-</ContentView>
+</ContentPage>

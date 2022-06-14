@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"     
-    xmlns:prism="http://prismlibrary.com"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Formula1.Views.TabViews.DriversView"
-    prism:ViewModelLocator.AutowireViewModel="True"
+    BindingContext="{Binding DriversView, Source={StaticResource ViewModelLocator}}"
     NavigationPage.HasNavigationBar="False">
     <StackLayout>
         <Label 
@@ -102,4 +101,4 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </StackLayout>
-</StackLayout>
+</ContentPage>

@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="Formula1.Views.TabViews.HistoryView"
-             prism:ViewModelLocator.AutowireViewModel="True"
+             BindingContext="{Binding HistoryView, Source={StaticResource ViewModelLocator}}"
              NavigationPage.HasNavigationBar="False">
     <Grid
         RowDefinitions="Auto, *">
@@ -153,4 +152,4 @@
             </xct:TabViewItem>
         </xct:TabView>
     </Grid>
-</ContentView>
+</ContentPage>

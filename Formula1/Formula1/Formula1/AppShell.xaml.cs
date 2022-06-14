@@ -1,12 +1,12 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Formula1.Views.TabViews
+namespace Formula1
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DriversView : ContentPage
+    public partial class AppShell : Shell
     {
-        public DriversView()
+        public AppShell()
         {
             InitializeComponent();
         }

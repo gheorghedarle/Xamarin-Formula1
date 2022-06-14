@@ -1,16 +1,12 @@
-﻿using Prism.AppModel;
-using Prism.Navigation;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
 
 namespace Formula1.ViewModels
 {
-    public class BaseViewModel : INavigationAware, IPageLifecycleAware, INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         #region Private & Protected
-
-        protected INavigationService _navigationService { get; set; }
 
         #endregion
 
@@ -26,9 +22,8 @@ namespace Formula1.ViewModels
 
         #region Constructor
 
-        public BaseViewModel(INavigationService navigationService)
+        public BaseViewModel()
         {
-            _navigationService = navigationService;
             Connectivity.ConnectivityChanged += ConnectivityChanged;
             HasNoInternetConnection = !Connectivity.NetworkAccess.Equals(NetworkAccess.Internet);
         }
@@ -43,23 +38,5 @@ namespace Formula1.ViewModels
         }
 
         #endregion
-
-        #region INavigationAware
-
-        public virtual void OnNavigatingTo(INavigationParameters parameters) { }
-
-        public virtual void OnNavigatedTo(INavigationParameters parameters) { }
-
-        public virtual void OnNavigatedFrom(INavigationParameters parameters) { }
-
-        #endregion INavigationAware
-
-        #region IPageLifecycleAware
-
-        public virtual void OnAppearing() { }
-
-        public virtual void OnDisappearing() { }
-
-        #endregion IPageLifecycleAware
     }
 }

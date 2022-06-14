@@ -1,5 +1,4 @@
 ﻿using Formula1.Models;
-using Prism.Navigation;
 using Xamarin.Forms;
 
 namespace Formula1.ViewModels
@@ -20,8 +19,7 @@ namespace Formula1.ViewModels
 
         #region Constructors
 
-        public CircuitDetailsPageViewModel(
-            INavigationService navigationService) : base(navigationService)
+        public CircuitDetailsPageViewModel()
         {
             BackCommand = new Command(BackCommandHandler);
         }
@@ -32,21 +30,22 @@ namespace Formula1.ViewModels
 
         private async void BackCommandHandler()
         {
-            await _navigationService.GoBackAsync();
+            //await _navigationService.GoBackAsync();
+            await Shell.Current.Navigation.PopAsync();
         }
 
         #endregion
 
         #region Navigation Handlers
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
-        {
-            var circuit = parameters.GetValue<ScheduleModel>("circuit");
-            if (circuit != null)
-            {
-                Circuit = circuit;
-            }
-        }
+        //public override void OnNavigatedTo(INavigationParameters parameters)
+        //{
+        //    var circuit = parameters.GetValue<ScheduleModel>("circuit");
+        //    if (circuit != null)
+        //    {
+        //        Circuit = circuit;
+        //    }
+        //}
 
         #endregion
     }

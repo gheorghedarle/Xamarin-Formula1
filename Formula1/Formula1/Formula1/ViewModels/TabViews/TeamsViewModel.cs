@@ -1,6 +1,5 @@
 ﻿using Formula1.Models;
 using Formula1.Services.Ergast;
-using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
@@ -25,8 +24,7 @@ namespace Formula1.ViewModels.TabViews
         #region Constructors
 
         public TeamsViewModel(
-            INavigationService navigationService,
-            IErgastService ergastService) : base(navigationService)
+            IErgastService ergastService)
         {
             Title = "Team";
 

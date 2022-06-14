@@ -4,10 +4,6 @@ using Formula1.ViewModels;
 using Formula1.ViewModels.TabViews;
 using Formula1.Views;
 using Formula1.Views.TabViews;
-using Prism;
-using Prism.DryIoc;
-using Prism.Ioc;
-using Prism.Mvvm;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -21,48 +17,28 @@ using Xamarin.Forms;
 
 namespace Formula1
 {
-    public partial class App : PrismApplication
+    public partial class App : Application
     {
-        public App() : this(null) { }
-
-        public App(IPlatformInitializer initializer) : base(initializer)
-        { }
-
-        public new static App Current => Application.Current as App;
-
-        protected override async void OnInitialized()
-        {
+        public App() {
             InitializeComponent();
-            SetAppTheme();
-
-            VersionTracking.Track();
-            if (VersionTracking.IsFirstLaunchEver)
-            {
-                await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(WelcomePage)}");
-            }
-            else
-            {
-                await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(TabPage)}");
-            }
+            MainPage = new AppShell();
         }
 
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        {
-            containerRegistry.RegisterInstance(new HttpClientFactory());
-            containerRegistry.Register<IErgastService, ErgastService>();
+        //protected override async void OnInitialized()
+        //{
+        //    InitializeComponent();
+        //    SetAppTheme();
 
-            containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
-            containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>("WelcomePage");
-            containerRegistry.RegisterForNavigation<TabPage, TabPageViewModel>("TabPage");
-            containerRegistry.RegisterForNavigation<DriverDetailsPage, DriverDetailsPageViewModel>("DriverDetailsPage");
-            containerRegistry.RegisterForNavigation<CircuitDetailsPage, CircuitDetailsPageViewModel>("CircuitDetailsPage");
-
-            ViewModelLocationProvider.Register<HomeView, HomeViewModel>();
-            ViewModelLocationProvider.Register<ScheduleView, ScheduleViewModel>();
-            ViewModelLocationProvider.Register<DriversView, DriversViewModel>();
-            ViewModelLocationProvider.Register<TeamsView, TeamsViewModel>();
-            ViewModelLocationProvider.Register<HistoryView, HistoryViewModel>();
-        }
+        //    VersionTracking.Track();
+        //    if (VersionTracking.IsFirstLaunchEver)
+        //    {
+        //        await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(WelcomePage)}");
+        //    }
+        //    else
+        //    {
+        //        await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(TabPage)}");
+        //    }
+        //}
 
         protected override void OnStart()
         {
