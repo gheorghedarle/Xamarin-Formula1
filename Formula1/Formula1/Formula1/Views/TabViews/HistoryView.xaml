@@ -28,7 +28,7 @@
             Margin="0, -5, 0, 0"
             TabStripPlacement="Top"
             TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
-            TabStripHeight="40"
+            TabStripHeight="60"
             TabIndicatorColor="{StaticResource AccentColor}"
             TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
             <xct:TabViewItem

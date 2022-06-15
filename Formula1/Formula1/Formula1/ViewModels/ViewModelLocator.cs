@@ -22,6 +22,8 @@ namespace Formula1.ViewModels
         public ScheduleViewModel ScheduleView => new ScheduleViewModel(ergastService.Value);
         public DriversViewModel DriversView => new DriversViewModel(ergastService.Value);
         public TeamsViewModel TeamsView => new TeamsViewModel(ergastService.Value);
-        public HistoryViewModel History => new HistoryViewModel(ergastService.Value);
+        public HistoryViewModel HistoryView => new HistoryViewModel(ergastService.Value);
+        public DriverDetailsPageViewModel DriverDetailsPage => new DriverDetailsPageViewModel();
+        public CircuitDetailsPageViewModel CircuitDetailsPage => new CircuitDetailsPageViewModel();
     }
 }
