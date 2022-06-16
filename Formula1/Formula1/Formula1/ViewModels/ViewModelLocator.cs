@@ -2,8 +2,6 @@
 using Formula1.Services.Ergast;
 using Formula1.ViewModels.TabViews;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Formula1.ViewModels
 {
@@ -18,6 +16,7 @@ namespace Formula1.ViewModels
             ergastService = new Lazy<IErgastService>(() => new ErgastService(httpClientFactory.Value));
         }
 
+        public WelcomePageViewModel WelcomePage => new WelcomePageViewModel();
         public HomeViewModel HomeView => new HomeViewModel();
         public ScheduleViewModel ScheduleView => new ScheduleViewModel(ergastService.Value);
         public DriversViewModel DriversView => new DriversViewModel(ergastService.Value);

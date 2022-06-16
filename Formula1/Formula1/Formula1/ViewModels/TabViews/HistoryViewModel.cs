@@ -1,6 +1,6 @@
 ﻿using Formula1.Models;
 using Formula1.Services.Ergast;
-using Formula1.Views;
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -49,11 +49,7 @@ namespace Formula1.ViewModels.TabViews
 
         private async void DriverDetailsCommandHandler(DriverStadingsModel driver)
         {
-            //var param = new NavigationParameters()
-            //{
-            //    { "driver", driver }
-            //};
-            //await _navigationService.NavigateAsync(nameof(DriverDetailsPage), param);
+            await Shell.Current.GoToAsync($"driverdetails?driver={JsonConvert.SerializeObject(driver)}");
         }
 
         #endregion

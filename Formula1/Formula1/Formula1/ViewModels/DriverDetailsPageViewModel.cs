@@ -1,9 +1,12 @@
 ﻿using Formula1.Models;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Web;
 using Xamarin.Forms;
 
 namespace Formula1.ViewModels
 {
-    public class DriverDetailsPageViewModel: BaseViewModel
+    public class DriverDetailsPageViewModel: BaseViewModel, IQueryAttributable
     {
         #region Properties
 
@@ -30,22 +33,19 @@ namespace Formula1.ViewModels
 
         private async void BackCommandHandler()
         {
-            //await _navigationService.GoBackAsync();
             await Shell.Current.Navigation.PopAsync();
         }
 
         #endregion
 
-        #region Navigation Handlers
+        #region IQueryAttributable
 
-        //public override void OnNavigatedTo(INavigationParameters parameters)
-        //{
-        //    var driver = parameters.GetValue<DriverStadingsModel>("driver");
-        //    if(driver != null)
-        //    {
-        //        DriverStading = driver;
-        //    }
-        //}
+        public void ApplyQueryAttributes(IDictionary<string, string> query)
+        {
+            string driverString = HttpUtility.UrlDecode(query["driver"]);
+            var driver = JsonConvert.DeserializeObject<DriverStadingsModel>(driverString);
+            DriverStading = driver;
+        }
 
         #endregion
     }

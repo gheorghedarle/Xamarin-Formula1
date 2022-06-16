@@ -42,7 +42,7 @@
                 <CollectionView
                     x:Name="driversList"
                     ItemsSource="{Binding DriversList}"
-                    Margin="0, 0, 0, 20">
+                    Margin="0, 10, 0, 10">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid
@@ -114,7 +114,7 @@
                 FontSize="14">
                 <CollectionView
                     ItemsSource="{Binding TeamsList}"
-                    Margin="0, 0, 0, 20">
+                    Margin="0, 10, 0, 10">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid

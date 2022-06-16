@@ -1,9 +1,12 @@
 ﻿using Formula1.Models;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Web;
 using Xamarin.Forms;
 
 namespace Formula1.ViewModels
 {
-    public class CircuitDetailsPageViewModel : BaseViewModel
+    public class CircuitDetailsPageViewModel : BaseViewModel, IQueryAttributable
     {
         #region Properties
 
@@ -30,22 +33,19 @@ namespace Formula1.ViewModels
 
         private async void BackCommandHandler()
         {
-            //await _navigationService.GoBackAsync();
             await Shell.Current.Navigation.PopAsync();
         }
 
         #endregion
 
-        #region Navigation Handlers
+        #region IQueryAttributable
 
-        //public override void OnNavigatedTo(INavigationParameters parameters)
-        //{
-        //    var circuit = parameters.GetValue<ScheduleModel>("circuit");
-        //    if (circuit != null)
-        //    {
-        //        Circuit = circuit;
-        //    }
-        //}
+        public void ApplyQueryAttributes(IDictionary<string, string> query)
+        {
+            string circuitString = HttpUtility.UrlDecode(query["circuit"]);
+            var circuit = JsonConvert.DeserializeObject<ScheduleModel>(circuitString);
+            Circuit = circuit;
+        }
 
         #endregion
     }

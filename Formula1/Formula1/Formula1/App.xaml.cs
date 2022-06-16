@@ -19,26 +19,12 @@ namespace Formula1
 {
     public partial class App : Application
     {
-        public App() {
+        public App() 
+        {
             InitializeComponent();
+            SetAppTheme();
             MainPage = new AppShell();
         }
-
-        //protected override async void OnInitialized()
-        //{
-        //    InitializeComponent();
-        //    SetAppTheme();
-
-        //    VersionTracking.Track();
-        //    if (VersionTracking.IsFirstLaunchEver)
-        //    {
-        //        await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(WelcomePage)}");
-        //    }
-        //    else
-        //    {
-        //        await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(TabPage)}");
-        //    }
-        //}
 
         protected override void OnStart()
         {
