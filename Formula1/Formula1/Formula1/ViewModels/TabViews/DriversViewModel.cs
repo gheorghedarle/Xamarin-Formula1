@@ -3,6 +3,7 @@ using Formula1.Services.Ergast;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 
 namespace Formula1.ViewModels.TabViews
@@ -57,8 +58,10 @@ namespace Formula1.ViewModels.TabViews
 
         private async Task Initialize()
         {
+            MainState = LayoutState.Loading;
             var res = await _ergastService.GetDriverStadings("current");
             DriversList = new ObservableCollection<DriverStadingsModel>(res);
+            MainState = LayoutState.None;
         }
 
         #endregion
