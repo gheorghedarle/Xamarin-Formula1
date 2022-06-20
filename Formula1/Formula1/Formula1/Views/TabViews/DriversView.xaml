@@ -52,24 +52,24 @@
                                 CommandParameter="{Binding .}"></TapGestureRecognizer>
                             </Grid.GestureRecognizers>
                             <Label
-                            Grid.Row="0"
-                            Grid.RowSpan="2"
-                            Grid.Column="0"
-                            Text="{Binding Position}"
-                            Margin="5"
-                            Style="{StaticResource Body1FontSize_ExoRegular}"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"></Label>
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="0"
+                                Text="{Binding Position}"
+                                Margin="5"
+                                Style="{StaticResource Body1FontSize_ExoRegular}"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"></Label>
                             <Image
-                            Grid.Row="0"
-                            Grid.RowSpan="2"
-                            Grid.Column="1"
-                            Source="{Binding Driver.Image}"
-                            WidthRequest="40"
-                            HeightRequest="40"
-                            Aspect="AspectFill"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                Source="{Binding Driver.Image}"
+                                WidthRequest="40"
+                                HeightRequest="40"
+                                Aspect="AspectFill"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
                                 <Image.Clip>
                                     <EllipseGeometry
                                     Center="20,20"
@@ -78,8 +78,8 @@
                                 </Image.Clip>
                             </Image>
                             <Label
-                            Grid.Row="0"
-                            Grid.Column="2">
+                                Grid.Row="0"
+                                Grid.Column="2">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span
@@ -92,15 +92,15 @@
                                 </Label.FormattedText>
                             </Label>
                             <Label
-                            Grid.Row="1"
-                            Grid.Column="2"
-                            Text="{Binding Constructors[0].Name}"
-                            Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Text="{Binding Constructors[0].Name}"
+                                Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
                             <Label
-                            Grid.Row="0"
-                            Grid.RowSpan="2"
-                            Grid.Column="3"
-                            VerticalOptions="CenterAndExpand">
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="3"
+                                VerticalOptions="CenterAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span

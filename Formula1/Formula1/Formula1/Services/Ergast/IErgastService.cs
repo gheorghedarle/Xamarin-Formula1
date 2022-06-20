@@ -9,5 +9,6 @@ namespace Formula1.Services.Ergast
         Task<List<DriverStadingsModel>> GetDriverStadings(string year);
         Task<List<ConstructorStadingsModel>> GetTeamStadings(string year);
         Task<List<ScheduleModel>> GetSchedule(string year);
+        Task<List<ScheduleModel>> GetRaceResults(string year, string round);
     }
 }

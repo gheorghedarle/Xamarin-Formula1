@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Formula1.Models
 {
@@ -14,5 +15,6 @@ namespace Formula1.Models
         public EventModel ThirdPractice { get; set; }
         public EventModel Qualifying { get; set; }
         public EventModel Sprint { get; set; }
+        public List<RaceResultModel> Results { get; set; }
     }
 }

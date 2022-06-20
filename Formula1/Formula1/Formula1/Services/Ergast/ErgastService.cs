@@ -4,6 +4,7 @@ using Formula1.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Formula1.Services.Ergast
@@ -57,6 +58,21 @@ namespace Formula1.Services.Ergast
                 var r = JsonConvert.DeserializeObject<List<ScheduleModel>>(res);
                 r.ForEach(c => c.Circuit.Location.Flag = $"{Constants.ImageApiBaseUrl}countries/{c.Circuit.Location.Country}.png");
                 r.ForEach(c => c.Circuit.Map = $"{Constants.ImageApiBaseUrl}circuits/{c.Circuit.CircuitId}.png");
+                return r;
+            }
+            return null;
+        }
+
+        public async Task<List<ScheduleModel>> GetRaceResults(string year, string round)
+        {
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}/results.json");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                var json = JObject.Parse(result);
+                var res = json["MRData"]["RaceTable"]["Races"].ToString();
+                var r = JsonConvert.DeserializeObject<List<ScheduleModel>>(res);
+                r.First().Results.ForEach(d => d.Driver.Image = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png");
                 return r;
             }
             return null;

@@ -23,6 +23,6 @@ namespace Formula1.ViewModels
         public TeamsViewModel TeamsView => new TeamsViewModel(ergastService.Value);
         public HistoryViewModel HistoryView => new HistoryViewModel(ergastService.Value);
         public DriverDetailsPageViewModel DriverDetailsPage => new DriverDetailsPageViewModel();
-        public CircuitDetailsPageViewModel CircuitDetailsPage => new CircuitDetailsPageViewModel();
+        public CircuitDetailsPageViewModel CircuitDetailsPage => new CircuitDetailsPageViewModel(ergastService.Value);
     }
 }
