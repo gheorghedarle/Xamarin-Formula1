@@ -4,6 +4,7 @@ using Formula1.Views;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 
 namespace Formula1.ViewModels.TabViews
@@ -59,8 +60,10 @@ namespace Formula1.ViewModels.TabViews
 
         private async Task Initialize()
         {
+            MainState = LayoutState.Loading;
             var res = await _ergastService.GetSchedule("current");
             Schedule = new ObservableCollection<ScheduleModel>(res);
+            MainState = LayoutState.None;
         }
 
         #endregion

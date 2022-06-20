@@ -2,6 +2,7 @@
 using Formula1.Services.Ergast;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.UI.Views;
 
 namespace Formula1.ViewModels.TabViews
 {
@@ -39,8 +40,10 @@ namespace Formula1.ViewModels.TabViews
 
         private async Task Initialize()
         {
+            MainState = LayoutState.Loading;
             var res = await _ergastService.GetTeamStadings("current");
             TeamsList = new ObservableCollection<ConstructorStadingsModel>(res);
+            MainState = LayoutState.None;
         }
 
         #endregion

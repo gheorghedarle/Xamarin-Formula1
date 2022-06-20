@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+      xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
       x:Class="Formula1.Views.TabViews.TeamsView"
       BindingContext="{Binding TeamsView, Source={StaticResource ViewModelLocator}}"
       NavigationPage.HasNavigationBar="False">
@@ -19,42 +21,58 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <CollectionView
-            ItemsSource="{Binding TeamsList}"
-            Margin="0, 0, 0, 20">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid
-                        ColumnDefinitions="30, *, Auto"
-                        Padding="15, 10, 15, 10"
-                        RowSpacing="2">
-                        <Label
-                            Grid.Column="0"
-                            Text="{Binding Position}"
-                            Style="{StaticResource Body1FontSize_ExoRegular}"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"></Label>
-                        <Label
-                            Grid.Column="1"
-                            Text="{Binding Constructor.Name}"
-                            Style="{StaticResource Subtitle1FontSize_ExoBold}"></Label>
-                        <Label
-                            Grid.Column="2"
-                            VerticalOptions="CenterAndExpand">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span
-                                        Text="{Binding Points}"
-                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                    <Span
-                                        Text=" pts"
-                                        Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <StackLayout
+            xct:StateLayout.CurrentState="{Binding MainState}"
+            VerticalOptions="FillAndExpand">
+            <xct:StateLayout.StateViews>
+                <xct:StateView 
+                    StateKey="Loading"
+                    VerticalOptions="FillAndExpand">
+                    <fragments:LoadingView></fragments:LoadingView>
+                </xct:StateView>
+                <xct:StateView 
+                    StateKey="Error"
+                    VerticalOptions="FillAndExpand">
+                    <Label Text="Error"></Label>
+                </xct:StateView>
+            </xct:StateLayout.StateViews>
+            <CollectionView
+                ItemsSource="{Binding TeamsList}"
+                Margin="0, 0, 0, 20">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            ColumnDefinitions="30, *, Auto"
+                            Padding="15, 10, 15, 10"
+                            RowSpacing="2">
+                            <Label
+                                Grid.Column="0"
+                                Text="{Binding Position}"
+                                Style="{StaticResource Body1FontSize_ExoRegular}"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"></Label>
+                            <Label
+                                Grid.Column="1"
+                                Text="{Binding Constructor.Name}"
+                                Style="{StaticResource Subtitle1FontSize_ExoBold}"></Label>
+                            <Label
+                                Grid.Column="2"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            Text="{Binding Points}"
+                                            Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                        <Span
+                                            Text=" pts"
+                                            Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

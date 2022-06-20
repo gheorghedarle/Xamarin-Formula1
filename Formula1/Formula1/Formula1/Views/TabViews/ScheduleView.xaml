@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+      xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
       x:Class="Formula1.Views.TabViews.ScheduleView"
       BindingContext="{Binding ScheduleView, Source={StaticResource ViewModelLocator}}"
       NavigationPage.HasNavigationBar="False">
@@ -10,69 +12,85 @@
             Style="{StaticResource Headline3_ExoBold}"
             TextColor="{StaticResource AccentColor}"
             Margin="15, 10, 0, 10"/>
-        <CollectionView
-            x:Name="circuitsList"
-            ItemsSource="{Binding Schedule}"
-            Margin="0, 0, 0, 20">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid
-                        RowDefinitions="Auto, Auto, Auto"
-                        ColumnDefinitions="50, *, Auto"
-                        Padding="15, 10, 15, 10"
-                        RowSpacing="0">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Command="{Binding Path=BindingContext.CircuitDetailsCommand, Source={x:Reference circuitsList}}"
-                                CommandParameter="{Binding .}"></TapGestureRecognizer>
-                        </Grid.GestureRecognizers>
-                        <Image
-                            Grid.Row="0"
-                            Grid.RowSpan="3"
-                            Grid.Column="0"
-                            Source="{Binding Circuit.Location.Flag}"
-                            WidthRequest="40"
-                            HeightRequest="40"
-                            Aspect="AspectFill"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Image.Clip>
-                                <EllipseGeometry
-                                    Center="20,20"
-                                    RadiusX="20"
-                                    RadiusY="20"/>
-                            </Image.Clip>
-                        </Image>
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Text="{Binding Round, StringFormat='Round {0}'}"
-                            Style="{StaticResource CaptionFontSize_ExoRegular}"
-                            TextColor="{StaticResource AccentColor}"
-                            VerticalOptions="Center"></Label>
-                        <Label
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Text="{Binding Circuit.Location.Country}"
-                            Style="{StaticResource Body1FontSize_ExoBold}"
-                            VerticalOptions="Center"></Label>
-                        <Label
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            Text="{Binding Circuit.CircuitName}"
-                            Style="{StaticResource Body2FontSize_ExoRegular}"
-                            VerticalOptions="Center"></Label>
-                        <Label
-                            Grid.Row="0"
-                            Grid.RowSpan="3"
-                            Grid.Column="2"
-                            Text="{Binding Date, StringFormat='{0:d MMM yyyy}'}"
-                            Style="{StaticResource CaptionFontSize_ExoRegular}"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"></Label>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <StackLayout
+            xct:StateLayout.CurrentState="{Binding MainState}"
+            VerticalOptions="FillAndExpand">
+            <xct:StateLayout.StateViews>
+                <xct:StateView 
+                    StateKey="Loading"
+                    VerticalOptions="FillAndExpand">
+                    <fragments:LoadingView></fragments:LoadingView>
+                </xct:StateView>
+                <xct:StateView 
+                    StateKey="Error"
+                    VerticalOptions="FillAndExpand">
+                    <Label Text="Error"></Label>
+                </xct:StateView>
+            </xct:StateLayout.StateViews>
+            <CollectionView
+                x:Name="circuitsList"
+                ItemsSource="{Binding Schedule}"
+                Margin="0, 0, 0, 20">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            RowDefinitions="Auto, Auto, Auto"
+                            ColumnDefinitions="50, *, Auto"
+                            Padding="15, 10, 15, 10"
+                            RowSpacing="0">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Path=BindingContext.CircuitDetailsCommand, Source={x:Reference circuitsList}}"
+                                    CommandParameter="{Binding .}"></TapGestureRecognizer>
+                            </Grid.GestureRecognizers>
+                            <Image
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Grid.Column="0"
+                                Source="{Binding Circuit.Location.Flag}"
+                                WidthRequest="40"
+                                HeightRequest="40"
+                                Aspect="AspectFill"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Image.Clip>
+                                    <EllipseGeometry
+                                        Center="20,20"
+                                        RadiusX="20"
+                                        RadiusY="20"/>
+                                </Image.Clip>
+                            </Image>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="{Binding Round, StringFormat='Round {0}'}"
+                                Style="{StaticResource CaptionFontSize_ExoRegular}"
+                                TextColor="{StaticResource AccentColor}"
+                                VerticalOptions="Center"></Label>
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding Circuit.Location.Country}"
+                                Style="{StaticResource Body1FontSize_ExoBold}"
+                                VerticalOptions="Center"></Label>
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding Circuit.CircuitName}"
+                                Style="{StaticResource Body2FontSize_ExoRegular}"
+                                VerticalOptions="Center"></Label>
+                            <Label
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Grid.Column="2"
+                                Text="{Binding Date, StringFormat='{0:d MMM yyyy}'}"
+                                Style="{StaticResource CaptionFontSize_ExoRegular}"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center"></Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

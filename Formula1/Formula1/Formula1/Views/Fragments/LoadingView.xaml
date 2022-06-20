@@ -11,6 +11,6 @@
     <Label 
         Text="Loading..." 
         TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
-        Style="{StaticResource Body1FontSize_ExoRegular}"
+        Style="{StaticResource CaptionFontSize_ExoRegular}"
         HorizontalOptions="Center"/>
 </StackLayout>

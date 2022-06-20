@@ -30,7 +30,7 @@
                 </StackLayout>
                 <Grid
                     ColumnDefinitions="*, 50"
-                    Margin="20, 0, 20, 10"
+                    Margin="20, 0, 20, 0"
                     VerticalOptions="End">
                     <StackLayout
                         Grid.Column="0"
@@ -104,82 +104,86 @@
                     FontFamilySelected="Exo_Medium"
                     FontSizeSelected="14"
                     FontSize="14">
-                    <CollectionView
-                        Margin="0, 10, 0, 10"
-                        x:Name="driversList"
-                        ItemsSource="{Binding RaceResults}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid
-                                    RowDefinitions="Auto, Auto"
-                                    ColumnDefinitions="30, 50, *, Auto"
-                                    Padding="15, 10, 15, 10"
-                                    RowSpacing="2">
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.RowSpan="2"
-                                        Grid.Column="0"
-                                        Text="{Binding Position}"
-                                        Margin="5"
-                                        Style="{StaticResource Body1FontSize_ExoRegular}"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"></Label>
-                                    <Image
-                                        Grid.Row="0"
-                                        Grid.RowSpan="2"
-                                        Grid.Column="1"
-                                        Source="{Binding Driver.Image}"
-                                        WidthRequest="40"
-                                        HeightRequest="40"
-                                        Aspect="AspectFill"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center">
-                                        <Image.Clip>
-                                            <EllipseGeometry
-                                                Center="20,20"
-                                                RadiusX="20"
-                                                RadiusY="20"/>
-                                        </Image.Clip>
-                                    </Image>
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="2">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span
-                                                    Text="{Binding Driver.GivenName}"
-                                                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                                <Span
-                                                    Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
-                                                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label
-                                        Grid.Row="1"
-                                        Grid.Column="2"
-                                        Text="{Binding Constructor.Name}"
-                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.RowSpan="2"
-                                        Grid.Column="3"
-                                        VerticalOptions="CenterAndExpand">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span
-                                                    Text="{Binding Points}"
-                                                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                                <Span
-                                                    Text=" pts"
-                                                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                    <StackLayout>
+                        <Label
+                            Text="Race"></Label>
+                        <CollectionView
+                            Margin="0, 10, 0, 10"
+                            x:Name="driversList"
+                            ItemsSource="{Binding RaceResults}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid
+                                        RowDefinitions="Auto, Auto"
+                                        ColumnDefinitions="30, 50, *, Auto"
+                                        Padding="15, 10, 15, 10"
+                                        RowSpacing="2">
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Text="{Binding Position}"
+                                            Margin="5"
+                                            Style="{StaticResource Body1FontSize_ExoRegular}"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"></Label>
+                                        <Image
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            Grid.Column="1"
+                                            Source="{Binding Driver.Image}"
+                                            WidthRequest="40"
+                                            HeightRequest="40"
+                                            Aspect="AspectFill"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center">
+                                            <Image.Clip>
+                                                <EllipseGeometry
+                                                    Center="20,20"
+                                                    RadiusX="20"
+                                                    RadiusY="20"/>
+                                            </Image.Clip>
+                                        </Image>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="2">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span
+                                                        Text="{Binding Driver.GivenName}"
+                                                        Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                                                    <Span
+                                                        Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
+                                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="2"
+                                            Text="{Binding Constructor.Name}"
+                                            Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            Grid.Column="3"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span
+                                                        Text="{Binding Points}"
+                                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                                    <Span
+                                                        Text=" pts"
+                                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
                 </xct:TabViewItem>
             </xct:TabView>
         </Grid>
