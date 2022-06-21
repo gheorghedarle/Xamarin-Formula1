@@ -104,11 +104,11 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span
-                                        Text="{Binding Points}"
-                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                            Text="{Binding Points}"
+                                            Style="{StaticResource Body1FontSize_ExoBold}"></Span>
                                         <Span
-                                        Text=" pts"
-                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                                            Text=" pts"
+                                            Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>

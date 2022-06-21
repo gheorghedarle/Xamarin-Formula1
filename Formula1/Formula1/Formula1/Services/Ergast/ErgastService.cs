@@ -72,8 +72,15 @@ namespace Formula1.Services.Ergast
                 var json = JObject.Parse(result);
                 var res = json["MRData"]["RaceTable"]["Races"].ToString();
                 var r = JsonConvert.DeserializeObject<List<ScheduleModel>>(res);
-                r.First().Results.ForEach(d => d.Driver.Image = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png");
-                return r;
+                if(r.Count > 0 && r.First().Results.Count > 0)
+                {
+                    r.First().Results.ForEach(d => d.Driver.Image = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png");
+                    return r;
+                }
+                else
+                {
+                    return null;
+                }
             }
             return null;
         }

@@ -24,6 +24,8 @@ namespace Formula1.ViewModels
         public ObservableCollection<RaceResultModel> RaceResults { get; set; }
         public ScheduleModel Circuit { get; set; }
 
+        public LayoutState ResultsState { get; set; }
+
         #endregion
 
         #region Commands
@@ -69,10 +71,18 @@ namespace Formula1.ViewModels
 
         private async Task GetResults()
         {
-            MainState = LayoutState.Loading;
+            ResultsState = LayoutState.Loading;
             var res = await _ergastService.GetRaceResults("current", Circuit.Round.ToString());
-            RaceResults = new ObservableCollection<RaceResultModel>(res.First().Results);
-            MainState = LayoutState.None;
+            if(res != null)
+            {
+                RaceResults = new ObservableCollection<RaceResultModel>(res.First().Results);
+                ResultsState = LayoutState.None;
+            }
+            else
+            {
+                RaceResults = null;
+                ResultsState = LayoutState.Empty;
+            }
         }
 
         #endregion
