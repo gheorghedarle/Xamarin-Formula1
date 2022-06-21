@@ -22,7 +22,7 @@ namespace Formula1.ViewModels
         public DriversViewModel DriversView => new DriversViewModel(ergastService.Value);
         public TeamsViewModel TeamsView => new TeamsViewModel(ergastService.Value);
         public HistoryViewModel HistoryView => new HistoryViewModel(ergastService.Value);
-        public DriverDetailsPageViewModel DriverDetailsPage => new DriverDetailsPageViewModel();
+        public DriverDetailsPageViewModel DriverDetailsPage => new DriverDetailsPageViewModel(ergastService.Value);
         public CircuitDetailsPageViewModel CircuitDetailsPage => new CircuitDetailsPageViewModel(ergastService.Value);
     }
 }

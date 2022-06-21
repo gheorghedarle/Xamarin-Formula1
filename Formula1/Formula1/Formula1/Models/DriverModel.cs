@@ -2,6 +2,7 @@
 {
     public class DriverModel
     {
+        public string DriverId { get; set; }
         public string Image { get; set; }
         public string GivenName { get; set; }
         public string FamilyName { get; set; }

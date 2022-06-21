@@ -6,7 +6,8 @@
              BindingContext="{Binding HistoryView, Source={StaticResource ViewModelLocator}}"
              NavigationPage.HasNavigationBar="False">
     <Grid
-        RowDefinitions="Auto, *">
+        RowDefinitions="Auto, *"
+        BackgroundColor="#F0F0F0">
         <Grid
             ColumnDefinitions="*, Auto">
             <Label 
@@ -14,21 +15,20 @@
                 Text="{Binding Title}"
                 Style="{StaticResource Headline3_ExoBold}"
                 TextColor="{StaticResource AccentColor}"
-                Margin="15, 10, 0, 10"/>
+                Margin="15, 10, 0, 0"/>
             <Label 
                 Grid.Column="1"
                 Text="Season 1990"
                 Style="{StaticResource Body1FontSize_ExoRegular}"
                 TextColor="{StaticResource PrimaryColor}"
                 VerticalOptions="Center"
-                Margin="0, 15, 15, 10"/>
+                Margin="0, 15, 15, 5"/>
         </Grid>
         <xct:TabView
             Grid.Row="1"
-            Margin="0, -5, 0, 0"
             TabStripPlacement="Top"
             TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
-            TabStripHeight="60"
+            TabStripHeight="40"
             TabIndicatorColor="{StaticResource AccentColor}"
             TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
             <xct:TabViewItem
@@ -41,14 +41,13 @@
                 FontSize="14">
                 <CollectionView
                     x:Name="driversList"
-                    ItemsSource="{Binding DriversList}"
-                    Margin="0, 10, 0, 10">
+                    ItemsSource="{Binding DriversList}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid
                                 RowDefinitions="Auto, Auto"
                                 ColumnDefinitions="30, *, Auto"
-                                Padding="15, 10, 15, 10"
+                                Padding="15, 0, 15, 10"
                                 RowSpacing="2">
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer
@@ -113,13 +112,12 @@
                 FontSizeSelected="14"
                 FontSize="14">
                 <CollectionView
-                    ItemsSource="{Binding TeamsList}"
-                    Margin="0, 10, 0, 10">
+                    ItemsSource="{Binding TeamsList}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid
                                 ColumnDefinitions="30, *, Auto"
-                                Padding="15, 10, 15, 10"
+                                Padding="15, 0, 15, 10"
                                 RowSpacing="2">
                                 <Label
                                     Grid.Column="0"

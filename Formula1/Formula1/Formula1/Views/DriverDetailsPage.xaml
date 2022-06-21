@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
              x:Class="Formula1.Views.DriverDetailsPage"
              BindingContext="{Binding DriverDetailsPage, Source={StaticResource ViewModelLocator}}"
              NavigationPage.HasNavigationBar="False">
@@ -62,6 +64,133 @@
                     VerticalOptions="End">
                 </Image>
             </Grid>
+            <xct:TabView
+                Grid.Row="1"
+                TabStripPlacement="Top"
+                TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
+                TabStripHeight="40"
+                TabIndicatorColor="{StaticResource AccentColor}"
+                TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+                <xct:TabViewItem
+                    Text="Informations"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                    TextColorSelected="{StaticResource AccentColor}"
+                    FontFamily="Exo_Regular"
+                    FontFamilySelected="Exo_Medium"
+                    FontSizeSelected="14"
+                    FontSize="14">
+                    <Label
+                        Text="Basic Informations"
+                        Style="{StaticResource Body1FontSize_ExoBold}"
+                        Margin="20, 0, 20, 0"></Label>
+                </xct:TabViewItem>
+                <xct:TabViewItem
+                    Text="Results"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                    TextColorSelected="{StaticResource AccentColor}"
+                    FontFamily="Exo_Regular"
+                    FontFamilySelected="Exo_Medium"
+                    FontSizeSelected="14"
+                    FontSize="14">
+                    <StackLayout
+                        xct:StateLayout.CurrentState="{Binding ResultsState}">
+                        <xct:StateLayout.StateViews>
+                            <xct:StateView 
+                                StateKey="Loading"
+                                VerticalOptions="FillAndExpand">
+                                <fragments:LoadingView></fragments:LoadingView>
+                            </xct:StateView>
+                            <xct:StateView 
+                                StateKey="Error"
+                                VerticalOptions="FillAndExpand">
+                                <Label Text="Error"></Label>
+                            </xct:StateView>
+                            <xct:StateView 
+                                StateKey="Empty"
+                                VerticalOptions="FillAndExpand">
+                                <Label Text="Empty"></Label>
+                            </xct:StateView>
+                        </xct:StateLayout.StateViews>
+                        <Label
+                            Text="Current Season"
+                            Style="{StaticResource Body1FontSize_ExoBold}"
+                            Margin="20, 0, 20, 0"></Label>
+                        <CollectionView
+                            Margin="0, 0, 0, 10"
+                            x:Name="resultsList"
+                            ItemsSource="{Binding RaceResults}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid
+                                        RowDefinitions="Auto, Auto"
+                                        ColumnDefinitions="100, *, Auto"
+                                        Padding="20, 5, 20, 5"
+                                        RowSpacing="0">
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Text="{Binding Round, StringFormat='Round {0}'}"
+                                            Style="{StaticResource CaptionFontSize_ExoRegular}"
+                                            TextColor="{StaticResource AccentColor}"
+                                            VerticalOptions="Center"></Label>
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Text="{Binding Circuit.Location.Country}"
+                                            Style="{StaticResource Body2FontSize_ExoBold}"></Label>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            Grid.Column="1"
+                                            Text="{Binding Results[0].Constructor.Name}"
+                                            Style="{StaticResource Body2FontSize_ExoRegular}"
+                                            VerticalOptions="Center"></Label>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="3"
+                                            HorizontalOptions="EndAndExpand">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span
+                                                        Text="Position "
+                                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                                                    <Span
+                                                        Text="{Binding Results[0].Position}"
+                                                        Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
+                                            IsVisible="{Binding Results[0].Status, Converter={xct:EqualConverter}, ConverterParameter='Finished'}"
+                                            Grid.Row="1"
+                                            Grid.Column="3"
+                                            HorizontalOptions="EndAndExpand">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span
+                                                        Text="{Binding Results[0].Points}"
+                                                        Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                                                    <Span
+                                                        Text=" pts"
+                                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
+                                            IsVisible="{Binding Results[0].Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
+                                            Grid.Row="1"
+                                            Grid.Column="3"
+                                            Text="{Binding Results[0].Status, StringFormat='DNF | {0}'}"
+                                            Style="{StaticResource Body2FontSize_ExoBold}"
+                                            HorizontalOptions="EndAndExpand">
+                                        </Label>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </xct:TabViewItem>
+            </xct:TabView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -90,12 +90,21 @@
                     FontFamilySelected="Exo_Medium"
                     FontSizeSelected="14"
                     FontSize="14">
-                    <Image
-                        Grid.Row="0"
-                        Aspect="AspectFit"
-                        Margin="5, 5, 5, 0"
-                        HeightRequest="250"
-                        Source="{Binding Circuit.Circuit.Map}"></Image>
+                    <StackLayout>
+                        <Label
+                            Text="Map"
+                            Style="{StaticResource Body1FontSize_ExoBold}"
+                            Margin="20, 0, 20, 0"></Label>
+                        <Image
+                            Aspect="AspectFit"
+                            Margin="5, 5, 5, 0"
+                            HeightRequest="150"
+                            Source="{Binding Circuit.Circuit.Map}"></Image>
+                        <Label
+                            Text="Basic Informations"
+                            Style="{StaticResource Body1FontSize_ExoBold}"
+                            Margin="20, 0, 20, 0"></Label>
+                    </StackLayout>
                 </xct:TabViewItem>
                 <xct:TabViewItem
                     Text="Results"
@@ -130,7 +139,7 @@
                             Margin="20, 0, 20, 0"></Label>
                         <CollectionView
                             Margin="0, 0, 0, 10"
-                            x:Name="driversList"
+                            x:Name="resultsList"
                             ItemsSource="{Binding RaceResults}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
@@ -189,17 +198,9 @@
                                             Grid.Row="0"
                                             Grid.RowSpan="2"
                                             Grid.Column="3"
+                                            Text="{Binding Time.Time}"
+                                            Style="{StaticResource Body2FontSize_ExoBold}"
                                             VerticalOptions="CenterAndExpand">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span
-                                                        Text="{Binding Points}"
-                                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                                    <Span
-                                                        Text=" pts"
-                                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
                                         </Label>
                                         <Label
                                             IsVisible="{Binding Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
@@ -207,7 +208,7 @@
                                             Grid.RowSpan="2"
                                             Grid.Column="3"
                                             Text="{Binding Status}"
-                                            Style="{StaticResource Body1FontSize_ExoBold}"
+                                            Style="{StaticResource Body2FontSize_ExoBold}"
                                             VerticalOptions="CenterAndExpand">
                                         </Label>
                                     </Grid>

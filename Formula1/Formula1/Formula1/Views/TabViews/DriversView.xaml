@@ -6,7 +6,8 @@
     x:Class="Formula1.Views.TabViews.DriversView"
     BindingContext="{Binding DriversView, Source={StaticResource ViewModelLocator}}"
     NavigationPage.HasNavigationBar="False">
-    <StackLayout>
+    <StackLayout
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
         <Label 
             Margin="15, 10, 0, 5">
             <Label.FormattedText>

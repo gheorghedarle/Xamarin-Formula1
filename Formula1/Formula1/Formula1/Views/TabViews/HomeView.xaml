@@ -4,7 +4,8 @@
       x:Class="Formula1.Views.TabViews.HomeView"
       BindingContext="{Binding HomeView, Source={StaticResource ViewModelLocator}}"
       NavigationPage.HasNavigationBar="False">
-    <StackLayout>
+    <StackLayout
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
         <Label 
             Text="{Binding Title}"/>
     </StackLayout>

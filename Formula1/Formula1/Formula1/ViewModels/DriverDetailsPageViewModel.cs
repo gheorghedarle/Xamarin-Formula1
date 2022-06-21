@@ -1,16 +1,30 @@
 ﻿using Formula1.Models;
+using Formula1.Services.Ergast;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 
 namespace Formula1.ViewModels
 {
     public class DriverDetailsPageViewModel: BaseViewModel, IQueryAttributable
     {
-        #region Properties
+        #region Fields
 
+        private readonly IErgastService _ergastService;
+
+        #endregion
+
+        #region Properties
+        
+        public ObservableCollection<ScheduleModel> RaceResults { get; set; }
         public DriverStadingsModel DriverStading { get; set; }
+
+        public LayoutState ResultsState { get; set; }
 
         #endregion
 
@@ -22,8 +36,11 @@ namespace Formula1.ViewModels
 
         #region Constructors
 
-        public DriverDetailsPageViewModel()
+        public DriverDetailsPageViewModel(
+            IErgastService ergastService)
         {
+            _ergastService = ergastService;
+
             BackCommand = new Command(BackCommandHandler);
         }
 
@@ -40,11 +57,32 @@ namespace Formula1.ViewModels
 
         #region IQueryAttributable
 
-        public void ApplyQueryAttributes(IDictionary<string, string> query)
+        public async void ApplyQueryAttributes(IDictionary<string, string> query)
         {
             string driverString = HttpUtility.UrlDecode(query["driver"]);
             var driver = JsonConvert.DeserializeObject<DriverStadingsModel>(driverString);
             DriverStading = driver;
+            await GetResults();
+        }
+
+        #endregion
+
+        #region Private Functionality
+
+        private async Task GetResults()
+        {
+            ResultsState = LayoutState.Loading;
+            var res = await _ergastService.GetResultsByDriver("current", DriverStading.Driver.DriverId);
+            if (res != null)
+            {
+                RaceResults = new ObservableCollection<ScheduleModel>(res);
+                ResultsState = LayoutState.None;
+            }
+            else
+            {
+                RaceResults = null;
+                ResultsState = LayoutState.Empty;
+            }
         }
 
         #endregion
