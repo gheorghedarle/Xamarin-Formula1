@@ -6,7 +6,8 @@
       x:Class="Formula1.Views.TabViews.ScheduleView"
       BindingContext="{Binding ScheduleView, Source={StaticResource ViewModelLocator}}"
       NavigationPage.HasNavigationBar="False">
-    <StackLayout>
+    <StackLayout
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
         <Label 
             Text="{Binding Title}"
             Style="{StaticResource Headline3_ExoBold}"

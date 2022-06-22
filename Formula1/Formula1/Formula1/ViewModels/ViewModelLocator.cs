@@ -1,5 +1,6 @@
 ﻿using Formula1.Core;
 using Formula1.Services.Ergast;
+using Formula1.ViewModels.Popups;
 using Formula1.ViewModels.TabViews;
 using System;
 
@@ -24,5 +25,6 @@ namespace Formula1.ViewModels
         public HistoryViewModel HistoryView => new HistoryViewModel(ergastService.Value);
         public DriverDetailsPageViewModel DriverDetailsPage => new DriverDetailsPageViewModel(ergastService.Value);
         public CircuitDetailsPageViewModel CircuitDetailsPage => new CircuitDetailsPageViewModel(ergastService.Value);
+        public SeasonPopupPageViewModel SeasonPopupPage => new SeasonPopupPageViewModel();
     }
 }

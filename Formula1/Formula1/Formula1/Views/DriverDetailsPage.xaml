@@ -180,7 +180,7 @@
                                             IsVisible="{Binding Results[0].Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
                                             Grid.Row="1"
                                             Grid.Column="3"
-                                            Text="{Binding Results[0].Status, StringFormat='DNF | {0}'}"
+                                            Text="{Binding Results[0].Status}"
                                             Style="{StaticResource Body2FontSize_ExoBold}"
                                             HorizontalOptions="EndAndExpand">
                                         </Label>

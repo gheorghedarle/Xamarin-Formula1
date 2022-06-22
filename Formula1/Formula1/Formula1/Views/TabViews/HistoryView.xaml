@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
              x:Class="Formula1.Views.TabViews.HistoryView"
              BindingContext="{Binding HistoryView, Source={StaticResource ViewModelLocator}}"
              NavigationPage.HasNavigationBar="False">
@@ -18,17 +19,22 @@
                 Margin="15, 10, 0, 0"/>
             <Label 
                 Grid.Column="1"
-                Text="Season 1990"
+                Text="{Binding SelectedSeason, StringFormat='Season {0}'}"
                 Style="{StaticResource Body1FontSize_ExoRegular}"
                 TextColor="{StaticResource PrimaryColor}"
                 VerticalOptions="Center"
-                Margin="0, 15, 15, 5"/>
+                Margin="0, 15, 15, 5">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectSeasonCommand}"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
         </Grid>
         <xct:TabView
             Grid.Row="1"
             TabStripPlacement="Top"
             TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
             TabStripHeight="40"
+            SelectedIndex="0"
             TabIndicatorColor="{StaticResource AccentColor}"
             TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
             <xct:TabViewItem
@@ -39,69 +45,85 @@
                 FontFamilySelected="Exo_Medium"
                 FontSizeSelected="14"
                 FontSize="14">
-                <CollectionView
-                    x:Name="driversList"
-                    ItemsSource="{Binding DriversList}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid
-                                RowDefinitions="Auto, Auto"
-                                ColumnDefinitions="30, *, Auto"
-                                Padding="15, 0, 15, 10"
-                                RowSpacing="2">
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        Command="{Binding Path=BindingContext.DriverDetailsCommand, Source={x:Reference driversList}}"
-                                        CommandParameter="{Binding .}"></TapGestureRecognizer>
-                                </Grid.GestureRecognizers>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2"
-                                    Grid.Column="0"
-                                    Text="{Binding Position}"
-                                    Margin="5"
-                                    Style="{StaticResource Body1FontSize_ExoRegular}"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center"></Label>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span
-                                                Text="{Binding Driver.GivenName}"
-                                                Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                            <Span
-                                                Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
-                                                Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    Text="{Binding Constructors[0].Name}"
-                                    Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2"
-                                    Grid.Column="2"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span
-                                                Text="{Binding Points}"
-                                                Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                            <Span
-                                                Text=" pts"
-                                                Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <StackLayout
+                    xct:StateLayout.CurrentState="{Binding DriversState}"
+                    VerticalOptions="FillAndExpand">
+                    <xct:StateLayout.StateViews>
+                        <xct:StateView 
+                            StateKey="Loading"
+                            VerticalOptions="FillAndExpand">
+                            <fragments:LoadingView></fragments:LoadingView>
+                        </xct:StateView>
+                        <xct:StateView 
+                            StateKey="Error"
+                            VerticalOptions="FillAndExpand">
+                            <Label Text="Error"></Label>
+                        </xct:StateView>
+                    </xct:StateLayout.StateViews>
+                    <CollectionView
+                        x:Name="driversList"
+                        ItemsSource="{Binding DriversList}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    RowDefinitions="Auto, Auto"
+                                    ColumnDefinitions="30, *, Auto"
+                                    Padding="15, 0, 15, 10"
+                                    RowSpacing="2">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Path=BindingContext.DriverDetailsCommand, Source={x:Reference driversList}}"
+                                            CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="0"
+                                        Text="{Binding Position}"
+                                        Margin="5"
+                                        Style="{StaticResource Body1FontSize_ExoRegular}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"></Label>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    Text="{Binding Driver.GivenName}"
+                                                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                                                <Span
+                                                    Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
+                                                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding Constructors[0].Name}"
+                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="2"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    Text="{Binding Points}"
+                                                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                                <Span
+                                                    Text=" pts"
+                                                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
             </xct:TabViewItem>
             <xct:TabViewItem
                 Text="Teams"
@@ -111,42 +133,58 @@
                 FontFamilySelected="Exo_Medium"
                 FontSizeSelected="14"
                 FontSize="14">
-                <CollectionView
-                    ItemsSource="{Binding TeamsList}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid
-                                ColumnDefinitions="30, *, Auto"
-                                Padding="15, 0, 15, 10"
-                                RowSpacing="2">
-                                <Label
-                                    Grid.Column="0"
-                                    Text="{Binding Position}"
-                                    Style="{StaticResource Body1FontSize_ExoRegular}"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center"></Label>
-                                <Label
-                                    Grid.Column="1"
-                                    Text="{Binding Constructor.Name}"
-                                    Style="{StaticResource Subtitle1FontSize_ExoBold}"></Label>
-                                <Label
-                                    Grid.Column="2"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span
-                                                Text="{Binding Points}"
-                                                Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                            <Span
-                                                Text=" pts"
-                                                Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <StackLayout
+                    xct:StateLayout.CurrentState="{Binding DriversState}"
+                    VerticalOptions="FillAndExpand">
+                    <xct:StateLayout.StateViews>
+                        <xct:StateView 
+                            StateKey="Loading"
+                            VerticalOptions="FillAndExpand">
+                            <fragments:LoadingView></fragments:LoadingView>
+                        </xct:StateView>
+                        <xct:StateView 
+                            StateKey="Error"
+                            VerticalOptions="FillAndExpand">
+                            <Label Text="Error"></Label>
+                        </xct:StateView>
+                    </xct:StateLayout.StateViews>
+                    <CollectionView
+                        ItemsSource="{Binding TeamsList}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    ColumnDefinitions="30, *, Auto"
+                                    Padding="15, 0, 15, 10"
+                                    RowSpacing="2">
+                                    <Label
+                                        Grid.Column="0"
+                                        Text="{Binding Position}"
+                                        Style="{StaticResource Body1FontSize_ExoRegular}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"></Label>
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="{Binding Constructor.Name}"
+                                        Style="{StaticResource Subtitle1FontSize_ExoBold}"></Label>
+                                    <Label
+                                        Grid.Column="2"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    Text="{Binding Points}"
+                                                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                                <Span
+                                                    Text=" pts"
+                                                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
             </xct:TabViewItem>
         </xct:TabView>
     </Grid>
