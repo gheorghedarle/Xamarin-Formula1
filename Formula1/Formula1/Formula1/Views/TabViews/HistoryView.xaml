@@ -19,11 +19,19 @@
                 Margin="15, 10, 0, 0"/>
             <Label 
                 Grid.Column="1"
-                Text="{Binding SelectedSeason, StringFormat='Season {0}'}"
-                Style="{StaticResource Body1FontSize_ExoRegular}"
                 TextColor="{StaticResource PrimaryColor}"
                 VerticalOptions="Center"
                 Margin="0, 15, 15, 5">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            Text="Season "
+                            Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                        <Span
+                            Text="{Binding SelectedSeason}"
+                            Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding SelectSeasonCommand}"></TapGestureRecognizer>
                 </Label.GestureRecognizers>
@@ -70,11 +78,6 @@
                                     ColumnDefinitions="30, *, Auto"
                                     Padding="15, 0, 15, 10"
                                     RowSpacing="2">
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Path=BindingContext.DriverDetailsCommand, Source={x:Reference driversList}}"
-                                            CommandParameter="{Binding .}"></TapGestureRecognizer>
-                                    </Grid.GestureRecognizers>
                                     <Label
                                         Grid.Row="0"
                                         Grid.RowSpan="2"

@@ -1,8 +1,7 @@
 ﻿using Formula1.Helpers;
-using System.Collections.Generic;
+using Formula1.Views.Popups;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
 
 namespace Formula1.ViewModels.Popups
@@ -35,10 +34,9 @@ namespace Formula1.ViewModels.Popups
 
         #region Command Handlers
 
-        private async void SelectSeasonCommandHandler(int season)
+        private void SelectSeasonCommandHandler(int season)
         {
-            Dismiss
-            await Shell.Current.Navigation.PopModalAsync();
+            MessagingCenter.Send<SeasonPopupPageViewModel, string>(this, "Dismiss", season.ToString());
         }
 
         #endregion

@@ -1,4 +1,7 @@
-﻿using Xamarin.Forms.Xaml;
+﻿using Formula1.ViewModels.Popups;
+using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Formula1.Views.Popups
 {
@@ -8,6 +11,11 @@ namespace Formula1.Views.Popups
         public SeasonPopupPage()
         {
             InitializeComponent();
+
+            MessagingCenter.Subscribe<SeasonPopupPageViewModel, string>(this.BindingContext, "Dismiss", (sender, args) =>
+            {
+                Dismiss(args);
+            });
         }
     }
 }

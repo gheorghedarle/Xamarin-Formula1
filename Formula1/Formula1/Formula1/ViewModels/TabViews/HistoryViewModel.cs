@@ -1,7 +1,7 @@
 ﻿using Formula1.Models;
 using Formula1.Services.Ergast;
 using Formula1.Views.Popups;
-using Newtonsoft.Json;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.Extensions;
@@ -34,7 +34,6 @@ namespace Formula1.ViewModels.TabViews
 
         #region Commands
 
-        public Command DriverDetailsCommand { get; set; }
         public Command SelectSeasonCommand { get; set; }
 
         #endregion
@@ -47,7 +46,6 @@ namespace Formula1.ViewModels.TabViews
 
             _ergastService = ergastService;
 
-            DriverDetailsCommand = new Command<DriverStadingsModel>(DriverDetailsCommandHandler);
             SelectSeasonCommand = new Command(SelectSeasonCommandHandler);
 
             Init = Initialize();
@@ -57,14 +55,12 @@ namespace Formula1.ViewModels.TabViews
 
         #region Command Handlers
 
-        private async void DriverDetailsCommandHandler(DriverStadingsModel driver)
-        {
-            await Shell.Current.GoToAsync($"driverdetails?driver={JsonConvert.SerializeObject(driver)}");
-        }
-
         private async void SelectSeasonCommandHandler()
         {
-            var res = await Shell.Current.Navigation.ShowPopupAsync(new SeasonPopupPage());
+            var season = await Shell.Current.Navigation.ShowPopupAsync(new SeasonPopupPage());
+            SelectedSeason = Convert.ToInt32(season);
+            await GetDrivers(SelectedSeason.ToString());
+            await GetTeams(SelectedSeason.ToString());
         }
 
         #endregion
@@ -74,19 +70,19 @@ namespace Formula1.ViewModels.TabViews
         private async Task Initialize()
         {
             SelectedSeason = 2021;
-            await GetDrivers();
-            await GetTeams();
+            await GetDrivers(SelectedSeason.ToString());
+            await GetTeams(SelectedSeason.ToString());
         }
 
-        private async Task GetDrivers()
+        private async Task GetDrivers(string season)
         {
             DriversState = LayoutState.Loading;
-            var resDrivers = await _ergastService.GetDriverStadings(SelectedSeason.ToString());
+            var resDrivers = await _ergastService.GetDriverStadings(season);
             DriversList = new ObservableCollection<DriverStadingsModel>(resDrivers);
             DriversState = LayoutState.None;
         }
 
-        private async Task GetTeams()
+        private async Task GetTeams(string season)
         {
             TeamsState = LayoutState.Loading;
             var resTeams = await _ergastService.GetTeamStadings(SelectedSeason.ToString());

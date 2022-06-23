@@ -30,8 +30,7 @@
             </xct:StateLayout.StateViews>
             <CollectionView
                 x:Name="circuitsList"
-                ItemsSource="{Binding Schedule}"
-                Margin="0, 0, 0, 20">
+                ItemsSource="{Binding Schedule}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
