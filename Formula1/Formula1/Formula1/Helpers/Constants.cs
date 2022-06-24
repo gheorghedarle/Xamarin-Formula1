@@ -37,5 +37,14 @@ namespace Formula1.Helpers
         }
 
         #endregion
+
+        #region Race Types
+
+        public static List<string> GetRaceTypesList()
+        {
+            return new List<string>() { "Race", "Qualification", "Sprint", "First Practice", "Second Practice", "Third Practice" };
+        }
+
+        #endregion
     }
 }

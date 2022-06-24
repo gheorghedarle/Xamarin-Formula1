@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:helpers="clr-namespace:Formula1.Helpers"
+             x:Class="Formula1.Views.Popups.RaceTypePopupPage"           
+             Size="{x:Static helpers:Constants.PopupSizeMedium}"
+             BindingContext="{Binding RaceTypePopupPage, Source={StaticResource ViewModelLocator}}"
+             Color="Transparent">
+    <Frame
+        CornerRadius="30"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+        <StackLayout>
+            <Label
+                Text="Seasons"
+                Style="{StaticResource Headline3_ExoBold}"
+                Margin="10, 0, 10, 0"></Label>
+            <CollectionView
+                x:Name="raceTypesList"
+                ItemsSource="{Binding RaceTypesList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout
+                            Padding="15, 10, 15, 10">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer
+                                Command="{Binding Path=BindingContext.SelectRaceTypeCommand, Source={x:Reference raceTypesList}}"
+                                CommandParameter="{Binding .}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label
+                                Text="{Binding .}"
+                                Style="{StaticResource Body1FontSize_ExoRegular}"></Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </Frame>
+</xct:Popup>

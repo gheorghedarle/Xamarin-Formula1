@@ -5,13 +5,13 @@ using Xamarin.Forms.Xaml;
 namespace Formula1.Views.Popups
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SeasonPopupPage
+    public partial class RaceTypePopupPage
     {
-        public SeasonPopupPage()
+        public RaceTypePopupPage()
         {
             InitializeComponent();
 
-            MessagingCenter.Subscribe<SeasonPopupPageViewModel, string>(this.BindingContext, "Dismiss", (sender, args) =>
+            MessagingCenter.Subscribe<RaceTypePopupPageViewModel, string>(this.BindingContext, "Dismiss", (sender, args) =>
             {
                 Dismiss(args);
             });

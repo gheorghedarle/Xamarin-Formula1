@@ -1,11 +1,13 @@
 ﻿using Formula1.Models;
 using Formula1.Services.Ergast;
+using Formula1.Views.Popups;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 
@@ -23,6 +25,7 @@ namespace Formula1.ViewModels
 
         public ObservableCollection<RaceResultModel> RaceResults { get; set; }
         public ScheduleModel Circuit { get; set; }
+        public string SelectedRaceType { get; set; }
 
         public LayoutState ResultsState { get; set; }
 
@@ -31,6 +34,7 @@ namespace Formula1.ViewModels
         #region Commands
 
         public Command BackCommand { get; set; }
+        public Command SelectRaceTypeCommand { get; set; }
 
         #endregion
 
@@ -42,6 +46,7 @@ namespace Formula1.ViewModels
             _ergastService = ergastService;
 
             BackCommand = new Command(BackCommandHandler);
+            SelectRaceTypeCommand = new Command(SelectRaceTypeCommandHandler);
         }
 
         #endregion
@@ -51,6 +56,12 @@ namespace Formula1.ViewModels
         private async void BackCommandHandler()
         {
             await Shell.Current.Navigation.PopAsync();
+        }
+
+        private async void SelectRaceTypeCommandHandler()
+        {
+            var raceType = await Shell.Current.Navigation.ShowPopupAsync(new RaceTypePopupPage());
+            SelectedRaceType = raceType.ToString();
         }
 
         #endregion
@@ -72,7 +83,7 @@ namespace Formula1.ViewModels
         private async Task GetResults()
         {
             ResultsState = LayoutState.Loading;
-            var res = await _ergastService.GetRaceResults("current", Circuit.Round.ToString());
+            var res = await _ergastService.GetResults("current", Circuit.Round.ToString(), "results");
             if(res != null)
             {
                 RaceResults = new ObservableCollection<RaceResultModel>(res.First().Results);

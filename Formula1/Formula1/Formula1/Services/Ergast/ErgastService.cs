@@ -63,9 +63,9 @@ namespace Formula1.Services.Ergast
             return null;
         }
 
-        public async Task<List<ScheduleModel>> GetRaceResults(string year, string round)
+        public async Task<List<ScheduleModel>> GetResults(string year, string round, string raceType)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}/results.json");
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}/{raceType}.json");
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();

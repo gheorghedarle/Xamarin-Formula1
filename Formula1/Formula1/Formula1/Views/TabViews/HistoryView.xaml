@@ -189,6 +189,15 @@
                     </CollectionView>
                 </StackLayout>
             </xct:TabViewItem>
+            <xct:TabViewItem
+                Text="Schedule"
+                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                TextColorSelected="{StaticResource AccentColor}"
+                FontFamily="Exo_Regular"
+                FontFamilySelected="Exo_Medium"
+                FontSizeSelected="14"
+                FontSize="14">
+            </xct:TabViewItem>
         </xct:TabView>
     </Grid>
 </ContentPage>
