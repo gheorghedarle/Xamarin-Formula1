@@ -134,9 +134,13 @@
                             </xct:StateView>
                         </xct:StateLayout.StateViews>
                         <Label
-                            Text="Race"
+                            Text="{Binding SelectedRaceType}"
                             Style="{StaticResource Body1FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0"></Label>
+                            Margin="20, 0, 20, 0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectRaceTypeCommand}"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
                         <CollectionView
                             Margin="0, 0, 0, 10"
                             x:Name="resultsList"

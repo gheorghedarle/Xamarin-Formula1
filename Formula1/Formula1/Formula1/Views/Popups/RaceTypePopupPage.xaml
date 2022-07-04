@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:helpers="clr-namespace:Formula1.Helpers"
-             x:Class="Formula1.Views.Popups.RaceTypePopupPage"           
+             x:Class="Formula1.Views.Popups.RaceTypePopupPage"
              Size="{x:Static helpers:Constants.PopupSizeMedium}"
              BindingContext="{Binding RaceTypePopupPage, Source={StaticResource ViewModelLocator}}"
              Color="Transparent">
@@ -12,7 +12,7 @@
         BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
         <StackLayout>
             <Label
-                Text="Seasons"
+                Text="Race types"
                 Style="{StaticResource Headline3_ExoBold}"
                 Margin="10, 0, 10, 0"></Label>
             <CollectionView

@@ -73,6 +73,7 @@ namespace Formula1.ViewModels
             string circuitString = HttpUtility.UrlDecode(query["circuit"]);
             var circuit = JsonConvert.DeserializeObject<ScheduleModel>(circuitString);
             Circuit = circuit;
+            SelectedRaceType = "Race";
             await GetResults();
         }
 
@@ -83,7 +84,7 @@ namespace Formula1.ViewModels
         private async Task GetResults()
         {
             ResultsState = LayoutState.Loading;
-            var res = await _ergastService.GetResults("current", Circuit.Round.ToString(), "results");
+            var res = await _ergastService.GetResults("current", Circuit.Round.ToString(), ConvertNameToRaceType(SelectedRaceType));
             if(res != null)
             {
                 RaceResults = new ObservableCollection<RaceResultModel>(res.First().Results);
@@ -93,6 +94,17 @@ namespace Formula1.ViewModels
             {
                 RaceResults = null;
                 ResultsState = LayoutState.Empty;
+            }
+        }
+
+        private string ConvertNameToRaceType(string name)
+        {
+            switch(name.ToLower())
+            {
+                case "race": return "results";
+                case "qualification": return "qualifying";
+                case "sprint": return "sprint";
+                default: return "results";
             }
         }
 

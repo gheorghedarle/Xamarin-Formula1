@@ -26,6 +26,6 @@ namespace Formula1.ViewModels
         public DriverDetailsPageViewModel DriverDetailsPage => new DriverDetailsPageViewModel(ergastService.Value);
         public CircuitDetailsPageViewModel CircuitDetailsPage => new CircuitDetailsPageViewModel(ergastService.Value);
         public SeasonPopupPageViewModel SeasonPopupPage => new SeasonPopupPageViewModel();
-        public SeasonPopupPageViewModel RaceTypePopupPage => new SeasonPopupPageViewModel();
+        public RaceTypePopupPageViewModel RaceTypePopupPage => new RaceTypePopupPageViewModel();
     }
 }
