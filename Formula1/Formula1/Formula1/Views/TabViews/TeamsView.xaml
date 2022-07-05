@@ -44,7 +44,7 @@
                     <DataTemplate>
                         <Grid
                             ColumnDefinitions="30, *, Auto"
-                            Padding="15, 10, 15, 10"
+                            Padding="15, 5, 15, 5"
                             RowSpacing="2">
                             <Label
                                 Grid.Column="0"

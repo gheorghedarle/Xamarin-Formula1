@@ -26,9 +26,11 @@ namespace Formula1.ViewModels.TabViews
 
         public ObservableCollection<DriverStadingsModel> DriversList { get; set; }
         public ObservableCollection<ConstructorStadingsModel> TeamsList { get; set; }
+        public ObservableCollection<RaceEventModel> ScheduleList { get; set; }
 
         public LayoutState DriversState { get; set; }
         public LayoutState TeamsState { get; set; }
+        public LayoutState ScheduleState { get; set; }
 
         #endregion
 
@@ -61,6 +63,7 @@ namespace Formula1.ViewModels.TabViews
             SelectedSeason = Convert.ToInt32(season);
             await GetDrivers(SelectedSeason.ToString());
             await GetTeams(SelectedSeason.ToString());
+            await GetSchedule(SelectedSeason.ToString());
         }
 
         #endregion
@@ -72,6 +75,7 @@ namespace Formula1.ViewModels.TabViews
             SelectedSeason = 2021;
             await GetDrivers(SelectedSeason.ToString());
             await GetTeams(SelectedSeason.ToString());
+            await GetSchedule(SelectedSeason.ToString());
         }
 
         private async Task GetDrivers(string season)
@@ -88,6 +92,14 @@ namespace Formula1.ViewModels.TabViews
             var resTeams = await _ergastService.GetTeamStadings(SelectedSeason.ToString());
             TeamsList = new ObservableCollection<ConstructorStadingsModel>(resTeams);
             TeamsState = LayoutState.None;
+        }
+
+        private async Task GetSchedule(string season)
+        {
+            ScheduleState = LayoutState.Loading;
+            var resSchedule = await _ergastService.GetSchedule(SelectedSeason.ToString());
+            ScheduleList = new ObservableCollection<RaceEventModel>(resSchedule.PastRaceEvents);
+            ScheduleState = LayoutState.None;
         }
 
         #endregion

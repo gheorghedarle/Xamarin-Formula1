@@ -76,7 +76,7 @@
                                 <Grid
                                     RowDefinitions="Auto, Auto"
                                     ColumnDefinitions="30, *, Auto"
-                                    Padding="15, 0, 15, 10"
+                                    Padding="15, 5, 15, 5"
                                     RowSpacing="2">
                                     <Label
                                         Grid.Row="0"
@@ -157,7 +157,7 @@
                             <DataTemplate>
                                 <Grid
                                     ColumnDefinitions="30, *, Auto"
-                                    Padding="15, 0, 15, 10"
+                                    Padding="15, 5, 15, 5"
                                     RowSpacing="2">
                                     <Label
                                         Grid.Column="0"
@@ -197,6 +197,62 @@
                 FontFamilySelected="Exo_Medium"
                 FontSizeSelected="14"
                 FontSize="14">
+                <StackLayout
+                    xct:StateLayout.CurrentState="{Binding ScheduleState}"
+                    VerticalOptions="FillAndExpand">
+                    <xct:StateLayout.StateViews>
+                        <xct:StateView 
+                            StateKey="Loading"
+                            VerticalOptions="FillAndExpand">
+                            <fragments:LoadingView></fragments:LoadingView>
+                        </xct:StateView>
+                        <xct:StateView 
+                            StateKey="Error"
+                            VerticalOptions="FillAndExpand">
+                            <Label Text="Error"></Label>
+                        </xct:StateView>
+                    </xct:StateLayout.StateViews>
+                    <CollectionView
+                        ItemsSource="{Binding ScheduleList}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    RowDefinitions="Auto, Auto, Auto"
+                                    ColumnDefinitions="Auto, Auto"
+                                    Padding="15, 5, 15, 5"
+                                    RowSpacing="0">
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Text="{Binding Round, StringFormat='Round {0}'}"
+                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
+                                        TextColor="{StaticResource AccentColor}"
+                                        VerticalOptions="Center"></Label>
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Text="{Binding Circuit.Location.Country}"
+                                        Style="{StaticResource Body1FontSize_ExoBold}"
+                                        VerticalOptions="Center"></Label>
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Text="{Binding Circuit.CircuitName}"
+                                        Style="{StaticResource Body2FontSize_ExoRegular}"
+                                        VerticalOptions="Center"></Label>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="2"
+                                        Text="{Binding Date, StringFormat='{0:d MMM yyyy}'}"
+                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"></Label>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
             </xct:TabViewItem>
         </xct:TabView>
     </Grid>

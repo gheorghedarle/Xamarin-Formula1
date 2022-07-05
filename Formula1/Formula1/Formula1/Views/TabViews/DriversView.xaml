@@ -45,7 +45,7 @@
                         <Grid
                             RowDefinitions="Auto, Auto"
                             ColumnDefinitions="30, 50, *, Auto"
-                            Padding="15, 10, 15, 10"
+                            Padding="15, 5, 15, 5"
                             RowSpacing="2">
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer
