@@ -43,6 +43,20 @@ namespace Formula1.Services.Ergast
                 var json = JObject.Parse(result);
                 var res = json["MRData"]["StandingsTable"]["StandingsLists"].First["ConstructorStandings"].ToString();
                 var r = JsonConvert.DeserializeObject<List<ConstructorStadingsModel>>(res);
+                if(year == "current")
+                {
+                    foreach (var a in r)
+                    {
+                        var dResponse = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructors/{a.Constructor.ConstructorId}/drivers.json");
+                        if (dResponse.IsSuccessStatusCode)
+                        {
+                            var dResult = await dResponse.Content.ReadAsStringAsync();
+                            var dJson = JObject.Parse(dResult);
+                            var dRes = dJson["MRData"]["DriverTable"]["Drivers"].ToString();
+                            a.Drivers = JsonConvert.DeserializeObject<List<DriverModel>>(dRes);
+                        }
+                    }
+                }
                 return r;
             }
             return null;

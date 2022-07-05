@@ -168,7 +168,7 @@
                                     <Label
                                         Grid.Column="1"
                                         Text="{Binding Constructor.Name}"
-                                        Style="{StaticResource Subtitle1FontSize_ExoBold}"></Label>
+                                        Style="{StaticResource Body1FontSize_ExoBold}"></Label>
                                     <Label
                                         Grid.Column="2"
                                         VerticalOptions="CenterAndExpand">

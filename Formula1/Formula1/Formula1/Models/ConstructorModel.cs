@@ -6,6 +6,7 @@ namespace Formula1.Models
 {
     public class ConstructorModel
     {
+        public string ConstructorId { get; set; }
         public int Position { get; set; }
         public string Name { get; set; }
         public string Nationality { get; set; }
