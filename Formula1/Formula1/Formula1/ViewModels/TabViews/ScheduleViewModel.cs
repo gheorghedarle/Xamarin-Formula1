@@ -20,10 +20,10 @@ namespace Formula1.ViewModels.TabViews
 
         public Task Init { get; }
 
-        public ObservableCollection<ScheduleModel> Schedule { get; set; }
+        public ObservableCollection<RaceEventModel> UpcomingRaceEventList { get; set; }
+        public ObservableCollection<RaceEventModel> PastRaceEventList { get; set; }
 
         #endregion
-
 
         #region Commands
 
@@ -39,7 +39,7 @@ namespace Formula1.ViewModels.TabViews
             Title = "Schedule";
             _ergastService = ergastService;
 
-            CircuitDetailsCommand = new Command<ScheduleModel>(CircuitDetailsCommandHandler);
+            CircuitDetailsCommand = new Command<RaceEventModel>(CircuitDetailsCommandHandler);
 
             Init = Initialize();
         }
@@ -48,7 +48,7 @@ namespace Formula1.ViewModels.TabViews
 
         #region Command Handlers
 
-        private async void CircuitDetailsCommandHandler(ScheduleModel circuit)
+        private async void CircuitDetailsCommandHandler(RaceEventModel circuit)
         {
             await Shell.Current.GoToAsync($"circuitdetails?circuit={JsonConvert.SerializeObject(circuit)}");
         }
@@ -61,7 +61,8 @@ namespace Formula1.ViewModels.TabViews
         {
             MainState = LayoutState.Loading;
             var res = await _ergastService.GetSchedule("current");
-            Schedule = new ObservableCollection<ScheduleModel>(res);
+            UpcomingRaceEventList = new ObservableCollection<RaceEventModel>(res.UpcomingRaceEvents);
+            PastRaceEventList = new ObservableCollection<RaceEventModel>(res.PastRaceEvents);
             MainState = LayoutState.None;
         }
 

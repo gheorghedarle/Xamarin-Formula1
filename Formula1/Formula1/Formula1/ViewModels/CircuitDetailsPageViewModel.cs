@@ -24,7 +24,7 @@ namespace Formula1.ViewModels
         #region Properties
 
         public ObservableCollection<RaceResultModel> RaceResults { get; set; }
-        public ScheduleModel Circuit { get; set; }
+        public RaceEventModel Circuit { get; set; }
         public string SelectedRaceType { get; set; }
 
         public LayoutState ResultsState { get; set; }
@@ -71,7 +71,7 @@ namespace Formula1.ViewModels
         public async void ApplyQueryAttributes(IDictionary<string, string> query)
         {
             string circuitString = HttpUtility.UrlDecode(query["circuit"]);
-            var circuit = JsonConvert.DeserializeObject<ScheduleModel>(circuitString);
+            var circuit = JsonConvert.DeserializeObject<RaceEventModel>(circuitString);
             Circuit = circuit;
             SelectedRaceType = "Race";
             await GetResults();

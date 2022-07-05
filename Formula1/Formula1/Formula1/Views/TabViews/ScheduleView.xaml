@@ -28,69 +28,158 @@
                     <Label Text="Error"></Label>
                 </xct:StateView>
             </xct:StateLayout.StateViews>
-            <CollectionView
-                x:Name="circuitsList"
-                ItemsSource="{Binding Schedule}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid
-                            RowDefinitions="Auto, Auto, Auto"
-                            ColumnDefinitions="50, *, Auto"
-                            Padding="15, 10, 15, 10"
-                            RowSpacing="0">
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Path=BindingContext.CircuitDetailsCommand, Source={x:Reference circuitsList}}"
-                                    CommandParameter="{Binding .}"></TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
-                            <Image
-                                Grid.Row="0"
-                                Grid.RowSpan="3"
-                                Grid.Column="0"
-                                Source="{Binding Circuit.Location.Flag}"
-                                WidthRequest="40"
-                                HeightRequest="40"
-                                Aspect="AspectFill"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center">
-                                <Image.Clip>
-                                    <EllipseGeometry
-                                        Center="20,20"
-                                        RadiusX="20"
-                                        RadiusY="20"/>
-                                </Image.Clip>
-                            </Image>
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Text="{Binding Round, StringFormat='Round {0}'}"
-                                Style="{StaticResource CaptionFontSize_ExoRegular}"
-                                TextColor="{StaticResource AccentColor}"
-                                VerticalOptions="Center"></Label>
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Text="{Binding Circuit.Location.Country}"
-                                Style="{StaticResource Body1FontSize_ExoBold}"
-                                VerticalOptions="Center"></Label>
-                            <Label
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                Text="{Binding Circuit.CircuitName}"
-                                Style="{StaticResource Body2FontSize_ExoRegular}"
-                                VerticalOptions="Center"></Label>
-                            <Label
-                                Grid.Row="0"
-                                Grid.RowSpan="3"
-                                Grid.Column="2"
-                                Text="{Binding Date, StringFormat='{0:d MMM yyyy}'}"
-                                Style="{StaticResource CaptionFontSize_ExoRegular}"
-                                HorizontalOptions="End"
-                                VerticalOptions="Center"></Label>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <xct:TabView
+                TabStripPlacement="Top"
+                TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
+                TabStripHeight="40"
+                SelectedIndex="0"
+                TabIndicatorColor="{StaticResource AccentColor}"
+                TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+                <xct:TabViewItem
+                    Text="Upcoming"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                    TextColorSelected="{StaticResource AccentColor}"
+                    FontFamily="Exo_Regular"
+                    FontFamilySelected="Exo_Medium"
+                    FontSizeSelected="14"
+                    FontSize="14">
+                    <CollectionView
+                        x:Name="upcomingList"
+                        ItemsSource="{Binding UpcomingRaceEventList}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    RowDefinitions="Auto, Auto, Auto"
+                                    ColumnDefinitions="50, *, Auto"
+                                    Padding="15, 10, 15, 10"
+                                    RowSpacing="0">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Path=BindingContext.CircuitDetailsCommand, Source={x:Reference upcomingList}}"
+                                            CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="0"
+                                        Source="{Binding Circuit.Location.Flag}"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                        <Image.Clip>
+                                            <EllipseGeometry
+                                                Center="20,20"
+                                                RadiusX="20"
+                                                RadiusY="20"/>
+                                        </Image.Clip>
+                                    </Image>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Text="{Binding Round, StringFormat='Round {0}'}"
+                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
+                                        TextColor="{StaticResource AccentColor}"
+                                        VerticalOptions="Center"></Label>
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding Circuit.Location.Country}"
+                                        Style="{StaticResource Body1FontSize_ExoBold}"
+                                        VerticalOptions="Center"></Label>
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Text="{Binding Circuit.CircuitName}"
+                                        Style="{StaticResource Body2FontSize_ExoRegular}"
+                                        VerticalOptions="Center"></Label>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="2"
+                                        Text="{Binding Date, StringFormat='{0:d MMM yyyy}'}"
+                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"></Label>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </xct:TabViewItem>
+                <xct:TabViewItem
+                    Text="Past"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                    TextColorSelected="{StaticResource AccentColor}"
+                    FontFamily="Exo_Regular"
+                    FontFamilySelected="Exo_Medium"
+                    FontSizeSelected="14"
+                    FontSize="14">
+                    <CollectionView
+                        x:Name="pastList"
+                        ItemsSource="{Binding PastRaceEventList}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    RowDefinitions="Auto, Auto, Auto"
+                                    ColumnDefinitions="50, *, Auto"
+                                    Padding="15, 10, 15, 10"
+                                    RowSpacing="0">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Path=BindingContext.CircuitDetailsCommand, Source={x:Reference pastList}}"
+                                            CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="0"
+                                        Source="{Binding Circuit.Location.Flag}"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                        <Image.Clip>
+                                            <EllipseGeometry
+                                                Center="20,20"
+                                                RadiusX="20"
+                                                RadiusY="20"/>
+                                        </Image.Clip>
+                                    </Image>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Text="{Binding Round, StringFormat='Round {0}'}"
+                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
+                                        TextColor="{StaticResource AccentColor}"
+                                        VerticalOptions="Center"></Label>
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding Circuit.Location.Country}"
+                                        Style="{StaticResource Body1FontSize_ExoBold}"
+                                        VerticalOptions="Center"></Label>
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Text="{Binding Circuit.CircuitName}"
+                                        Style="{StaticResource Body2FontSize_ExoRegular}"
+                                        VerticalOptions="Center"></Label>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="2"
+                                        Text="{Binding Date, StringFormat='{0:d MMM yyyy}'}"
+                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"></Label>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </xct:TabViewItem>
+            </xct:TabView>
         </StackLayout>
     </StackLayout>
 </ContentPage>

@@ -3,6 +3,7 @@ using Formula1.Helpers;
 using Formula1.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -47,7 +48,7 @@ namespace Formula1.Services.Ergast
             return null;
         }
 
-        public async Task<List<ScheduleModel>> GetSchedule(string year)
+        public async Task<ScheduleModel> GetSchedule(string year)
         {
             var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}.json");
             if (response.IsSuccessStatusCode)
@@ -55,15 +56,19 @@ namespace Formula1.Services.Ergast
                 var result = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(result);
                 var res = json["MRData"]["RaceTable"]["Races"].ToString();
-                var r = JsonConvert.DeserializeObject<List<ScheduleModel>>(res);
+                var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
                 r.ForEach(c => c.Circuit.Location.Flag = $"{Constants.ImageApiBaseUrl}countries/{c.Circuit.Location.Country}.png");
                 r.ForEach(c => c.Circuit.Map = $"{Constants.ImageApiBaseUrl}circuits/{c.Circuit.CircuitId}.png");
-                return r;
+                return new ScheduleModel()
+                {
+                    UpcomingRaceEvents = r.Where(a => a.Date > DateTime.Now).ToList(),
+                    PastRaceEvents = r.Where(a => a.Date <= DateTime.Now).ToList()
+                };
             }
             return null;
         }
 
-        public async Task<List<ScheduleModel>> GetResults(string year, string round, string raceType)
+        public async Task<List<RaceEventModel>> GetResults(string year, string round, string raceType)
         {
             var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}/{raceType}.json");
             if (response.IsSuccessStatusCode)
@@ -71,7 +76,7 @@ namespace Formula1.Services.Ergast
                 var result = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(result);
                 var res = json["MRData"]["RaceTable"]["Races"].ToString();
-                var r = JsonConvert.DeserializeObject<List<ScheduleModel>>(res);
+                var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
                 if(r.Count > 0 && r.First().Results.Count > 0)
                 {
                     r.First().Results.ForEach(d => d.Driver.Image = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png");
@@ -85,7 +90,7 @@ namespace Formula1.Services.Ergast
             return null;
         }
 
-        public async Task<List<ScheduleModel>> GetResultsByDriver(string year, string driver)
+        public async Task<List<RaceEventModel>> GetResultsByDriver(string year, string driver)
         {
             var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/drivers/{driver}/results.json");
             if (response.IsSuccessStatusCode)
@@ -93,7 +98,7 @@ namespace Formula1.Services.Ergast
                 var result = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(result);
                 var res = json["MRData"]["RaceTable"]["Races"].ToString();
-                var r = JsonConvert.DeserializeObject<List<ScheduleModel>>(res);
+                var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
                 if (r.Count > 0)
                 {
                     return r;

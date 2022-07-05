@@ -21,7 +21,7 @@ namespace Formula1.ViewModels
 
         #region Properties
         
-        public ObservableCollection<ScheduleModel> RaceResults { get; set; }
+        public ObservableCollection<RaceEventModel> RaceResults { get; set; }
         public DriverStadingsModel DriverStading { get; set; }
 
         public LayoutState ResultsState { get; set; }
@@ -75,7 +75,7 @@ namespace Formula1.ViewModels
             var res = await _ergastService.GetResultsByDriver("current", DriverStading.Driver.DriverId);
             if (res != null)
             {
-                RaceResults = new ObservableCollection<ScheduleModel>(res);
+                RaceResults = new ObservableCollection<RaceEventModel>(res);
                 ResultsState = LayoutState.None;
             }
             else
