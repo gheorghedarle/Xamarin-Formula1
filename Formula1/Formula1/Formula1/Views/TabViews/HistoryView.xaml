@@ -7,8 +7,8 @@
              BindingContext="{Binding HistoryView, Source={StaticResource ViewModelLocator}}"
              NavigationPage.HasNavigationBar="False">
     <Grid
-        RowDefinitions="Auto, *"
-        BackgroundColor="#F0F0F0">
+        RowDefinitions="Auto, *"        
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
         <Grid
             ColumnDefinitions="*, Auto">
             <Label 

@@ -9,10 +9,9 @@
     <ContentPage.Content>
         <Grid
             RowDefinitions="150, *"
-            BackgroundColor="#F0F0F0">
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
             <Grid
                 Grid.Row="0"
-                BackgroundColor="#FFFFFF"
                 Padding="20, 20, 20, 0">
                 <StackLayout
                     Grid.Row="0"

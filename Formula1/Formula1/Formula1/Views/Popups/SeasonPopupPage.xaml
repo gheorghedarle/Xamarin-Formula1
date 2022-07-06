@@ -18,6 +18,9 @@
             <CollectionView
                 x:Name="seasonsList"
                 ItemsSource="{Binding SeasonsList}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="3"></GridItemsLayout>
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout

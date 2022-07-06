@@ -2,6 +2,7 @@
 using Formula1.Services.Ergast;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
@@ -62,7 +63,7 @@ namespace Formula1.ViewModels.TabViews
             MainState = LayoutState.Loading;
             var res = await _ergastService.GetSchedule("current");
             UpcomingRaceEventList = new ObservableCollection<RaceEventModel>(res.UpcomingRaceEvents);
-            PastRaceEventList = new ObservableCollection<RaceEventModel>(res.PastRaceEvents);
+            PastRaceEventList = new ObservableCollection<RaceEventModel>(res.PastRaceEvents.OrderByDescending(r => r.Round));
             MainState = LayoutState.None;
         }
 

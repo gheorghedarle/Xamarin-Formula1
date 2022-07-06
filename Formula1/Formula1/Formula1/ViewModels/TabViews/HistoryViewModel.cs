@@ -60,10 +60,13 @@ namespace Formula1.ViewModels.TabViews
         private async void SelectSeasonCommandHandler()
         {
             var season = await Shell.Current.Navigation.ShowPopupAsync(new SeasonPopupPage());
-            SelectedSeason = Convert.ToInt32(season);
-            await GetDrivers(SelectedSeason.ToString());
-            await GetTeams(SelectedSeason.ToString());
-            await GetSchedule(SelectedSeason.ToString());
+            if(season != null)
+            {
+                SelectedSeason = Convert.ToInt32(season);
+                await GetDrivers(SelectedSeason.ToString());
+                await GetTeams(SelectedSeason.ToString());
+                await GetSchedule(SelectedSeason.ToString());
+            }
         }
 
         #endregion
