@@ -61,7 +61,10 @@ namespace Formula1.ViewModels
         private async void SelectRaceTypeCommandHandler()
         {
             var raceType = await Shell.Current.Navigation.ShowPopupAsync(new RaceTypePopupPage());
-            SelectedRaceType = raceType.ToString();
+            if(raceType != null)
+            {
+                SelectedRaceType = raceType.ToString();
+            }
         }
 
         #endregion

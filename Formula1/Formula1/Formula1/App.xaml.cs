@@ -40,15 +40,15 @@ namespace Formula1
 
         private void SetAppTheme()
         {
-            //var theme = Preferences.Get("theme", string.Empty);
-            //if (string.IsNullOrEmpty(theme) || theme == "light")
-            //{
-            //    Application.Current.UserAppTheme = OSAppTheme.Light;
-            //}
-            //else
-            //{
+            var theme = Preferences.Get("theme", string.Empty);
+            if (string.IsNullOrEmpty(theme) || theme == "light")
+            {
+                Application.Current.UserAppTheme = OSAppTheme.Light;
+            }
+            else
+            {
                 Application.Current.UserAppTheme = OSAppTheme.Dark;
-            //}
+            }
         }
     }
 }

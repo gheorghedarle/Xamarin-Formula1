@@ -18,13 +18,17 @@ namespace Formula1.ViewModels
         }
 
         public WelcomePageViewModel WelcomePage => new WelcomePageViewModel();
+        public ProfilePageViewModel ProfilePage => new ProfilePageViewModel();
+
         public HomeViewModel HomeView => new HomeViewModel();
         public ScheduleViewModel ScheduleView => new ScheduleViewModel(ergastService.Value);
         public DriversViewModel DriversView => new DriversViewModel(ergastService.Value);
         public TeamsViewModel TeamsView => new TeamsViewModel(ergastService.Value);
         public HistoryViewModel HistoryView => new HistoryViewModel(ergastService.Value);
+        
         public DriverDetailsPageViewModel DriverDetailsPage => new DriverDetailsPageViewModel(ergastService.Value);
         public CircuitDetailsPageViewModel CircuitDetailsPage => new CircuitDetailsPageViewModel(ergastService.Value);
+        
         public SeasonPopupPageViewModel SeasonPopupPage => new SeasonPopupPageViewModel();
         public RaceTypePopupPageViewModel RaceTypePopupPage => new RaceTypePopupPageViewModel();
     }

@@ -6,7 +6,38 @@
       NavigationPage.HasNavigationBar="False">
     <StackLayout
         BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
-        <Label 
-            Text="{Binding Title}"/>
+        <Grid
+            ColumnDefinitions="*, Auto"
+            RowDefinitions="Auto, Auto"
+            RowSpacing="0"
+            Margin="15">
+            <Label
+                Grid.Column="0"
+                Grid.Row="0"
+                Style="{StaticResource Body1FontSize_ExoRegular}"
+                Text="Hello"
+                TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"></Label>
+            <Label
+                Grid.Column="0"
+                Grid.Row="1"
+                Style="{StaticResource Body1FontSize_ExoBold}"
+                Text="Formula 1 Fan"
+                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></Label>
+            <Label
+                Grid.Column="1"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Text="&#xf2bd;"
+                TextColor="{StaticResource AccentColor}"
+                FontSize="{StaticResource Headline2FontSize}"
+                FontFamily="FontAwesome_Solid"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Margin="5, 0, 5, 0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ProfileCommand}"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
     </StackLayout>
 </ContentPage>

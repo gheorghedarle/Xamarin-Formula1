@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Formula1.Views.ProfilePage"
+             BindingContext="{Binding ProfilePage, Source={StaticResource ViewModelLocator}}"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid
+            RowDefinitions="Auto, Auto"
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+            <StackLayout
+                Grid.Row="0"
+                Padding="0, 5, 5, 5"
+                Margin="15, 15, 0, 0"
+                HorizontalOptions="Start"
+                VerticalOptions="Start">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"></TapGestureRecognizer>
+                </StackLayout.GestureRecognizers>
+                <Label
+                    Text="&#xf060;"
+                    FontSize="{StaticResource Subtitle1FontSize}"
+                    FontFamily="FontAwesome_Solid"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                    HorizontalOptions="Start"></Label>
+            </StackLayout>
+            <StackLayout
+                Grid.Row="1"
+                Orientation="Horizontal"
+                Margin="15, 5, 10, 5">
+                <Label
+                    Style="{StaticResource Body1FontSize_ExoRegular}"
+                    Text="Dark mode"
+                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"></Label>
+                <Switch
+                    IsToggled="{Binding IsDarkMode}"
+                    HorizontalOptions="EndAndExpand"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
+                    ThumbColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                    OnColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
+                    <Switch.Behaviors>
+                        <xct:EventToCommandBehavior EventName="Toggled" Command="{Binding DarkModeToggleCommand}"></xct:EventToCommandBehavior>
+                    </Switch.Behaviors>
+                </Switch>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
