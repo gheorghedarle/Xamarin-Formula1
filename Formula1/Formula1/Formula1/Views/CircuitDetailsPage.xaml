@@ -254,7 +254,8 @@
                             </Label.GestureRecognizers>
                         </Label>
                         <StackLayout
-                            xct:StateLayout.CurrentState="{Binding ResultsState}">
+                            xct:StateLayout.CurrentState="{Binding ResultsState}"
+                            VerticalOptions="FillAndExpand">
                             <xct:StateLayout.StateViews>
                                 <xct:StateView 
                                     StateKey="Loading"
@@ -269,7 +270,7 @@
                                 <xct:StateView 
                                     StateKey="Empty"
                                     VerticalOptions="FillAndExpand">
-                                    <Label Text="Empty"></Label>
+                                    <fragments:EmptyRaceResults></fragments:EmptyRaceResults>
                                 </xct:StateView>
                             </xct:StateLayout.StateViews>
                             <CollectionView
