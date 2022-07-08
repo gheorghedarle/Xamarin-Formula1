@@ -23,7 +23,7 @@ namespace Formula1.ViewModels
 
         #region Properties
 
-        public ObservableCollection<RaceResultModel> RaceResults { get; set; }
+        public RaceEventResultsModel Results { get; set; }
         public RaceEventModel Circuit { get; set; }
         public string SelectedRaceType { get; set; }
 
@@ -64,6 +64,7 @@ namespace Formula1.ViewModels
             if(raceType != null)
             {
                 SelectedRaceType = raceType.ToString();
+                await GetResults();
             }
         }
 
@@ -88,14 +89,18 @@ namespace Formula1.ViewModels
         {
             ResultsState = LayoutState.Loading;
             var res = await _ergastService.GetResults("current", Circuit.Round.ToString(), ConvertNameToRaceType(SelectedRaceType));
-            if(res != null)
+            if (res != null)
             {
-                RaceResults = new ObservableCollection<RaceResultModel>(res.First().Results);
+                Results = new RaceEventResultsModel()
+                {
+                    RaceResults = res.First().Results != null ? new ObservableCollection<RaceResultModel>(res.First().Results) : null,
+                    QualifyingResults = res.First().QualifyingResults != null ? new ObservableCollection<QualifyingResultModel>(res.First().QualifyingResults) : null
+                };
                 ResultsState = LayoutState.None;
             }
             else
             {
-                RaceResults = null;
+                Results = null;
                 ResultsState = LayoutState.Empty;
             }
         }

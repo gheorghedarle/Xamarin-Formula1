@@ -274,9 +274,9 @@
                                 </xct:StateView>
                             </xct:StateLayout.StateViews>
                             <CollectionView
+                                IsVisible="{Binding Results.RaceResults, Converter={xct:IsNotNullOrEmptyConverter}}"
                                 Margin="0, 0, 0, 10"
-                                x:Name="resultsList"
-                                ItemsSource="{Binding RaceResults}">
+                                ItemsSource="{Binding Results.RaceResults}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid
@@ -348,6 +348,114 @@
                                                 VerticalOptions="CenterAndExpand">
                                             </Label>
                                         </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <CollectionView
+                                IsVisible="{Binding Results.QualifyingResults, Converter={xct:IsNotNullOrEmptyConverter}}"
+                                Margin="0, 0, 0, 10"
+                                ItemsSource="{Binding Results.QualifyingResults}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout
+                                            Padding="15, 5, 15, 5">
+                                            <Grid
+                                                RowDefinitions="Auto, Auto"
+                                                ColumnDefinitions="30, 50, *">
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="2"
+                                                    Grid.Column="0"
+                                                    Text="{Binding Position}"
+                                                    Margin="5"
+                                                    Style="{StaticResource Body1FontSize_ExoRegular}"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"></Label>
+                                                <Image
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="2"
+                                                    Grid.Column="1"
+                                                    Source="{Binding Driver.Image}"
+                                                    WidthRequest="40"
+                                                    HeightRequest="40"
+                                                    Aspect="AspectFill"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry
+                                                            Center="20,20"
+                                                            RadiusX="20"
+                                                            RadiusY="20"/>
+                                                    </Image.Clip>
+                                                </Image>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="2">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span
+                                                                Text="{Binding Driver.GivenName}"
+                                                                Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                                                            <Span
+                                                                Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
+                                                                Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                    <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="2"
+                                                    Text="{Binding Constructor.Name}"
+                                                    Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
+                                            </Grid>
+                                            <Grid      
+                                                ColumnDefinitions="*, *, *">
+                                                <Label
+                                                    Grid.Column="0"
+                                                    HorizontalTextAlignment="Center">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span
+                                                                Text="Q1: "
+                                                                Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                                                            <Span
+                                                                Text="{Binding Q1}"
+                                                                Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
+                                                    IsVisible="{Binding Q2, Converter={xct:IsNotNullOrEmptyConverter}}"
+                                                    Grid.Column="1"
+                                                    HorizontalTextAlignment="Center">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span
+                                                                Text="Q2: "
+                                                                Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                                                            <Span
+                                                                Text="{Binding Q2}"
+                                                                Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
+                                                    IsVisible="{Binding Q3, Converter={xct:IsNotNullOrEmptyConverter}}"
+                                                    Grid.Column="2"
+                                                    HorizontalTextAlignment="Center">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span
+                                                                Text="Q3: "
+                                                                Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                                                            <Span
+                                                                Text="{Binding Q3}"
+                                                                Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </Grid>
+                                        </StackLayout>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>

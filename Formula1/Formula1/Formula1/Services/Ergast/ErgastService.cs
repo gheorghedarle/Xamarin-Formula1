@@ -91,15 +91,34 @@ namespace Formula1.Services.Ergast
                 var json = JObject.Parse(result);
                 var res = json["MRData"]["RaceTable"]["Races"].ToString();
                 var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
-                if(r.Count > 0 && r.First().Results.Count > 0)
+                switch(raceType)
                 {
-                    r.First().Results.ForEach(d => d.Driver.Image = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png");
-                    return r;
+                    case "results":
+                        {
+                            if (r.Count > 0 && r.First().Results.Count > 0)
+                            {
+                                r.First().Results.ForEach(d => d.Driver.Image = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png");
+                                return r;
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                    case "qualifying":
+                        {
+                            if (r.Count > 0 && r.First().QualifyingResults.Count > 0)
+                            {
+                                r.First().QualifyingResults.ForEach(d => d.Driver.Image = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png");
+                                return r;
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
                 }
-                else
-                {
-                    return null;
-                }
+
             }
             return null;
         }

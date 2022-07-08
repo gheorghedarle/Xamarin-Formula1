@@ -16,5 +16,6 @@ namespace Formula1.Models
         public EventModel Qualifying { get; set; }
         public EventModel Sprint { get; set; }
         public List<RaceResultModel> Results { get; set; }
+        public List<QualifyingResultModel> QualifyingResults { get; set; }
     }
 }
