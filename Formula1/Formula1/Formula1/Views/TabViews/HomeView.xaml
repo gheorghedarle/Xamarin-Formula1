@@ -10,7 +10,7 @@
             ColumnDefinitions="*, Auto"
             RowDefinitions="Auto, Auto"
             RowSpacing="0"
-            Margin="15">
+            Margin="20, 10, 20, 5">
             <Label
                 Grid.Column="0"
                 Grid.Row="0"
@@ -39,5 +39,77 @@
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
+        <Label
+            Text="Latest results"
+            Style="{StaticResource Body1FontSize_ExoBold}"
+            Margin="20, 0, 20, 0"></Label>
+        <Label
+            Text="Latest results"
+            Style="{StaticResource Body2FontSize_ExoRegular}"
+            Margin="20, 0, 20, 0"></Label>
+        <CollectionView
+            ItemsSource="{Binding LatestResults}"
+            HeightRequest="120"
+            Margin="20, 0, 20, 5">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
+                    Orientation="Horizontal"
+                    ItemSpacing="10"></LinearItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        CornerRadius="20"
+                        Margin="5, 10, 5, 10"
+                        Padding="0">
+                        <Grid
+                            RowDefinitions="Auto, Auto, Auto, Auto"
+                            ColumnDefinitions="Auto, Auto"
+                            RowSpacing="0">
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="{Binding Position}"
+                                Style="{StaticResource Headline2_ExoBold}"
+                                TextColor="{StaticResource AccentColor}"
+                                Margin="10, 0, 0, 0"></Label>
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="{Binding Driver.GivenName}"
+                                Style="{StaticResource Body1FontSize_ExoRegular}"
+                                Margin="10, 0, 0, 0">
+                            </Label>
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Text="{Binding Driver.FamilyName}"
+                                Style="{StaticResource Body1FontSize_ExoBold}"
+                                Margin="10, 0, 0, 0">
+                            </Label>
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Text="{Binding Constructor.Name}"
+                                Style="{StaticResource CaptionFontSize_ExoRegular}"
+                                Margin="10, 0, 0, 0">
+                            </Label>
+                            <Image
+                                Grid.Row="0"
+                                Grid.RowSpan="4"
+                                Grid.Column="1"
+                                Source="{Binding Driver.Image}"
+                                WidthRequest="100"
+                                HeightRequest="100"
+                                Aspect="AspectFill"
+                                HorizontalOptions="End"
+                                VerticalOptions="End"
+                                Margin="10, 0, 0, -10">
+                            </Image>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </StackLayout>
 </ContentPage>

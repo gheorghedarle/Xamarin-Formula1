@@ -20,7 +20,7 @@ namespace Formula1.ViewModels
         public WelcomePageViewModel WelcomePage => new WelcomePageViewModel();
         public ProfilePageViewModel ProfilePage => new ProfilePageViewModel();
 
-        public HomeViewModel HomeView => new HomeViewModel();
+        public HomeViewModel HomeView => new HomeViewModel(ergastService.Value);
         public ScheduleViewModel ScheduleView => new ScheduleViewModel(ergastService.Value);
         public DriversViewModel DriversView => new DriversViewModel(ergastService.Value);
         public TeamsViewModel TeamsView => new TeamsViewModel(ergastService.Value);
