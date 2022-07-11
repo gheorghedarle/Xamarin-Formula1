@@ -49,8 +49,8 @@
                             RowSpacing="2">
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer
-                                Command="{Binding Path=BindingContext.DriverDetailsCommand, Source={x:Reference driversList}}"
-                                CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    Command="{Binding Path=BindingContext.DriverDetailsCommand, Source={x:Reference driversList}}"
+                                    CommandParameter="{Binding .}"></TapGestureRecognizer>
                             </Grid.GestureRecognizers>
                             <Label
                                 Grid.Row="0"

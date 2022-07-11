@@ -64,6 +64,13 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
     </Style>
 
+    <Style x:Key="Link_ExoRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="Exo_Regular" />
+        <Setter Property="TextDecorations" Value="Underline" />
+        <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
     <Style x:Key="CaptionFontSize_ExoRegular" TargetType="Label">
         <Setter Property="FontFamily" Value="Exo_Regular" />
         <Setter Property="FontSize" Value="{StaticResource CaptionFontSize}" />

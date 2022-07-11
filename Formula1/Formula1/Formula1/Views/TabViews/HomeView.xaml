@@ -13,118 +13,312 @@
             <templateSelector:HomeScheduleTemplateSelector x:Key="HomeScheduleTemplateSelector" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
-        <Grid
-            ColumnDefinitions="*, Auto"
-            RowDefinitions="Auto, Auto"
-            RowSpacing="0"
-            Margin="20, 10, 20, 5">
+    <ScrollView>
+        <StackLayout
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+            <Grid
+                ColumnDefinitions="*, Auto"
+                RowDefinitions="Auto, Auto"
+                RowSpacing="0"
+                Margin="20, 10, 20, 5">
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Style="{StaticResource Body1FontSize_ExoRegular}"
+                    Text="Hello"
+                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"></Label>
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Style="{StaticResource Body1FontSize_ExoBold}"
+                    Text="Formula 1 Fan"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></Label>
+                <Label
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Text="&#xf2bd;"
+                    TextColor="{StaticResource AccentColor}"
+                    FontSize="{StaticResource Headline2FontSize}"
+                    FontFamily="FontAwesome_Solid"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Margin="5, 0, 5, 0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ProfileCommand}"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
             <Label
-                Grid.Column="0"
-                Grid.Row="0"
-                Style="{StaticResource Body1FontSize_ExoRegular}"
-                Text="Hello"
-                TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"></Label>
-            <Label
-                Grid.Column="0"
-                Grid.Row="1"
+                Text="Latest results"
                 Style="{StaticResource Body1FontSize_ExoBold}"
-                Text="Formula 1 Fan"
-                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></Label>
+                Margin="20, 0, 20, 0"></Label>
             <Label
-                Grid.Column="1"
-                Grid.Row="0"
-                Grid.RowSpan="2"
-                Text="&#xf2bd;"
-                TextColor="{StaticResource AccentColor}"
-                FontSize="{StaticResource Headline2FontSize}"
-                FontFamily="FontAwesome_Solid"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Margin="5, 0, 5, 0">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ProfileCommand}"></TapGestureRecognizer>
-                </Label.GestureRecognizers>
-            </Label>
-        </Grid>
-        <Label
-            Text="Latest results"
-            Style="{StaticResource Body1FontSize_ExoBold}"
-            Margin="20, 0, 20, 0"></Label>
-        <Label
-            Text="{Binding LatestRace}"
-            Style="{StaticResource Body2FontSize_ExoRegular}"
-            Margin="20, 0, 20, 0"></Label>
-        <StackLayout
-            xct:StateLayout.CurrentState="{Binding ResultsState}"
-            HeightRequest="120"
-            Margin="20, 0, 20, 5">
-            <xct:StateLayout.StateViews>
-                <xct:StateView 
-                    StateKey="Loading"
-                    VerticalOptions="FillAndExpand">
-                    <fragments:LoadingView></fragments:LoadingView>
-                </xct:StateView>
-                <xct:StateView 
-                    StateKey="Error"
-                    VerticalOptions="FillAndExpand">
-                    <Label Text="Error"></Label>
-                </xct:StateView>
-                <xct:StateView 
-                    StateKey="Empty"
-                    VerticalOptions="FillAndExpand">
-                    <Label Text="Empty"></Label>
-                </xct:StateView>
-            </xct:StateLayout.StateViews>
-            <CollectionView
-                ItemsSource="{Binding LatestResults}"
-                ItemTemplate="{StaticResource HomeResultsTemplateSelector}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout
-                        Orientation="Horizontal"
-                        ItemSpacing="10"></LinearItemsLayout>
-                </CollectionView.ItemsLayout>
-            </CollectionView>
+                Text="{Binding LatestRace}"
+                Style="{StaticResource Body2FontSize_ExoRegular}"
+                Margin="20, 0, 20, 0"></Label>
+            <StackLayout
+                xct:StateLayout.CurrentState="{Binding ResultsState}"
+                HeightRequest="120"
+                Margin="20, 0, 20, 5">
+                <xct:StateLayout.StateViews>
+                    <xct:StateView 
+                        StateKey="Loading"
+                        VerticalOptions="FillAndExpand">
+                        <fragments:LoadingView></fragments:LoadingView>
+                    </xct:StateView>
+                    <xct:StateView 
+                        StateKey="Error"
+                        VerticalOptions="FillAndExpand">
+                        <Label Text="Error"></Label>
+                    </xct:StateView>
+                    <xct:StateView 
+                        StateKey="Empty"
+                        VerticalOptions="FillAndExpand">
+                        <Label Text="Empty"></Label>
+                    </xct:StateView>
+                </xct:StateLayout.StateViews>
+                <CollectionView
+                    ItemsSource="{Binding LatestResults}"
+                    ItemTemplate="{StaticResource HomeResultsTemplateSelector}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            Orientation="Horizontal"
+                            ItemSpacing="10"></LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+            </StackLayout>
+            <Label
+                Text="Next races"
+                Style="{StaticResource Body1FontSize_ExoBold}"
+                Margin="20, 0, 20, 0"></Label>
+            <StackLayout
+                xct:StateLayout.CurrentState="{Binding ScheduleState}"
+                HeightRequest="80"
+                Margin="20, 0, 20, 5">
+                <xct:StateLayout.StateViews>
+                    <xct:StateView 
+                        StateKey="Loading"
+                        VerticalOptions="FillAndExpand">
+                        <fragments:LoadingView></fragments:LoadingView>
+                    </xct:StateView>
+                    <xct:StateView 
+                        StateKey="Error"
+                        VerticalOptions="FillAndExpand">
+                        <Label Text="Error"></Label>
+                    </xct:StateView>
+                    <xct:StateView 
+                        StateKey="Empty"
+                        VerticalOptions="FillAndExpand">
+                        <Label Text="Empty"></Label>
+                    </xct:StateView>
+                </xct:StateLayout.StateViews>
+                <CollectionView
+                    ItemsSource="{Binding UpcomingRaceEventList}"
+                    ItemTemplate="{StaticResource HomeScheduleTemplateSelector}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            Orientation="Horizontal"
+                            ItemSpacing="10"></LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+            </StackLayout>
+            <Label
+                Text="Driver Stadings"
+                Style="{StaticResource Body1FontSize_ExoBold}"
+                Margin="20, 0, 20, 0"></Label>
+            <StackLayout
+                xct:StateLayout.CurrentState="{Binding DriverStadingsState}">
+                <xct:StateLayout.StateViews>
+                    <xct:StateView 
+                        StateKey="Loading"
+                        VerticalOptions="FillAndExpand">
+                        <fragments:LoadingView></fragments:LoadingView>
+                    </xct:StateView>
+                    <xct:StateView 
+                        StateKey="Error"
+                        VerticalOptions="FillAndExpand">
+                        <Label Text="Error"></Label>
+                    </xct:StateView>
+                    <xct:StateView 
+                        StateKey="Empty"
+                        VerticalOptions="FillAndExpand">
+                        <Label Text="Empty"></Label>
+                    </xct:StateView>
+                </xct:StateLayout.StateViews>
+                <StackLayout
+                    x:Name="driversList"
+                    BindableLayout.ItemsSource="{Binding DriversList}"
+                    Margin="20, 0, 20, 0">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                RowDefinitions="Auto, Auto"
+                                ColumnDefinitions="30, 50, *, Auto"
+                                Padding="0, 5, 15, 5"
+                                RowSpacing="0">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Path=BindingContext.DriverDetailsCommand, Source={x:Reference driversList}}"
+                                        CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="0"
+                                    Text="{Binding Position}"
+                                    Margin="5"
+                                    Style="{StaticResource Body1FontSize_ExoRegular}"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"></Label>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    Source="{Binding Driver.Image}"
+                                    WidthRequest="40"
+                                    HeightRequest="40"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Image.Clip>
+                                        <EllipseGeometry
+                                            Center="20,20"
+                                            RadiusX="20"
+                                            RadiusY="20"/>
+                                    </Image.Clip>
+                                </Image>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="2">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                Text="{Binding Driver.GivenName}"
+                                                Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                                            <Span
+                                                Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
+                                                Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Text="{Binding Constructors[0].Name}"
+                                    Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="3"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                Text="{Binding Points}"
+                                                Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                            <Span
+                                                Text=" pts"
+                                                Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <Label
+                    Text="See full stadings"
+                    Style="{StaticResource Link_ExoRegular}"
+                    Margin="30, 0, 20, 0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding SeeDriversCommand}"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <Label
+                Text="Team Stadings"
+                Style="{StaticResource Body1FontSize_ExoBold}"
+                Margin="20, 0, 20, 0"></Label>
+            <StackLayout
+                xct:StateLayout.CurrentState="{Binding TeamStadingsState}">
+                <xct:StateLayout.StateViews>
+                    <xct:StateView 
+                            StateKey="Loading"
+                            VerticalOptions="FillAndExpand">
+                        <fragments:LoadingView></fragments:LoadingView>
+                    </xct:StateView>
+                    <xct:StateView 
+                            StateKey="Error"
+                            VerticalOptions="FillAndExpand">
+                        <Label Text="Error"></Label>
+                    </xct:StateView>
+                    <xct:StateView 
+                            StateKey="Empty"
+                            VerticalOptions="FillAndExpand">
+                        <Label Text="Empty"></Label>
+                    </xct:StateView>
+                </xct:StateLayout.StateViews>
+                <StackLayout
+                    x:Name="teamsList"
+                    BindableLayout.ItemsSource="{Binding TeamsList}"
+                    Margin="20, 0, 20, 0">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                RowDefinitions="Auto, Auto"
+                                ColumnDefinitions="30, *, Auto"
+                                Padding="0, 5, 15, 5"
+                                RowSpacing="0">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="0"
+                                    Text="{Binding Position}"
+                                    Style="{StaticResource Body1FontSize_ExoRegular}"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"></Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding Constructor.Name}"
+                                    Style="{StaticResource Body1FontSize_ExoBold}"></Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding DriversName}"
+                                    Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                Text="{Binding Points}"
+                                                Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                            <Span
+                                                Text=" pts"
+                                                Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <Label
+                    Text="See full stadings"
+                    Style="{StaticResource Link_ExoRegular}"
+                    Margin="30, 0, 20, 10">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding SeeTeamsCommand}"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
         </StackLayout>
-        <Label
-            Text="Next races"
-            Style="{StaticResource Body1FontSize_ExoBold}"
-            Margin="20, 0, 20, 0"></Label>
-        <StackLayout
-            xct:StateLayout.CurrentState="{Binding ScheduleState}"
-            HeightRequest="80"
-            Margin="20, 0, 20, 5">
-            <xct:StateLayout.StateViews>
-                <xct:StateView 
-                    StateKey="Loading"
-                    VerticalOptions="FillAndExpand">
-                    <fragments:LoadingView></fragments:LoadingView>
-                </xct:StateView>
-                <xct:StateView 
-                    StateKey="Error"
-                    VerticalOptions="FillAndExpand">
-                    <Label Text="Error"></Label>
-                </xct:StateView>
-                <xct:StateView 
-                    StateKey="Empty"
-                    VerticalOptions="FillAndExpand">
-                    <Label Text="Empty"></Label>
-                </xct:StateView>
-            </xct:StateLayout.StateViews>
-            <CollectionView
-                ItemsSource="{Binding UpcomingRaceEventList}"
-                ItemTemplate="{StaticResource HomeScheduleTemplateSelector}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout
-                        Orientation="Horizontal"
-                        ItemSpacing="10"></LinearItemsLayout>
-                </CollectionView.ItemsLayout>
-            </CollectionView>
-        </StackLayout>
-        <Label
-            Text="Stadings"
-            Style="{StaticResource Body1FontSize_ExoBold}"
-            Margin="20, 0, 20, 0"></Label>
-    </StackLayout>
+    </ScrollView>
 </ContentPage>

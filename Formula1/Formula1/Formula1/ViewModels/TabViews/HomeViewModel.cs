@@ -27,9 +27,13 @@ namespace Formula1.ViewModels.TabViews
         public string LatestRace { get; set; }
         public ObservableCollection<RaceResultModel> LatestResults { get; set; }
         public ObservableCollection<RaceEventModel> UpcomingRaceEventList { get; set; }
+        public ObservableCollection<DriverStadingsModel> DriversList { get; set; }
+        public ObservableCollection<ConstructorStadingsModel> TeamsList { get; set; }
 
         public LayoutState ResultsState { get; set; }
         public LayoutState ScheduleState { get; set; }
+        public LayoutState DriverStadingsState { get; set; }
+        public LayoutState TeamStadingsState { get; set; }
 
         #endregion
 
@@ -40,6 +44,8 @@ namespace Formula1.ViewModels.TabViews
         public Command SeeMoreResultsCommand { get; set; }
         public Command SeeEventCommand { get; set; }
         public Command SeeMoreScheduleCommand { get; set; }
+        public Command SeeDriversCommand { get; set; }
+        public Command SeeTeamsCommand { get; set; }
 
         #endregion
 
@@ -56,6 +62,8 @@ namespace Formula1.ViewModels.TabViews
             SeeMoreResultsCommand = new Command(SeeMoreResultsCommandHandler);
             SeeEventCommand = new Command<RaceEventModel>(SeeEventCommandHandler);
             SeeMoreScheduleCommand = new Command(SeeMoreScheduleCommandHandler);
+            SeeDriversCommand = new Command(SeeDriversCommandHandler);
+            SeeTeamsCommand = new Command(SeeTeamsCommandHandler);
 
             Init = Initialize();
         }
@@ -95,6 +103,17 @@ namespace Formula1.ViewModels.TabViews
             await Shell.Current.GoToAsync($"//main/schedule");
         }
 
+        private async void SeeDriversCommandHandler()
+        {
+            await Shell.Current.GoToAsync($"//main/drivers");
+        }
+
+        private async void SeeTeamsCommandHandler()
+        {
+            await Shell.Current.GoToAsync($"//main/teams");
+        }
+
+
         #endregion
 
         #region Private Functionality
@@ -103,8 +122,12 @@ namespace Formula1.ViewModels.TabViews
         {
             ResultsState = LayoutState.Loading;
             ScheduleState = LayoutState.Loading;
+            DriverStadingsState = LayoutState.Loading;
+            TeamStadingsState = LayoutState.Loading;
             await GetResults();
             await GetSchedule();
+            await GetDriverStadings();
+            await GetTeamStadings();
         }
 
         private async Task GetResults()
@@ -124,6 +147,20 @@ namespace Formula1.ViewModels.TabViews
             UpcomingRaceEventList = new ObservableCollection<RaceEventModel>(res.UpcomingRaceEvents.Take(3));
             UpcomingRaceEventList.Add(new RaceEventModel());
             ScheduleState = LayoutState.None;
+        }
+
+        private async Task GetDriverStadings()
+        {
+            var res = await _ergastService.GetDriverStadings("current", "&limit=3");
+            DriversList = new ObservableCollection<DriverStadingsModel>(res);
+            DriverStadingsState = LayoutState.None;
+        }
+
+        private async Task GetTeamStadings()
+        {
+            var res = await _ergastService.GetTeamStadings("current", "&limit=3");
+            TeamsList = new ObservableCollection<ConstructorStadingsModel>(res);
+            TeamStadingsState = LayoutState.None;
         }
 
         #endregion
