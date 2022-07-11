@@ -12,6 +12,7 @@
             BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
             <StackLayout
                 Grid.Row="0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
                 Spacing="0">
                 <StackLayout
                     Padding="0, 5, 5, 5"

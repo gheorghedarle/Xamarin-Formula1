@@ -20,7 +20,12 @@ namespace Formula1.ViewModels.TabViews
 
         public Task Init { get; }
 
+        public string LatestRace { get; set; }
         public ObservableCollection<RaceResultModel> LatestResults { get; set; }
+        public ObservableCollection<RaceEventModel> UpcomingRaceEventList { get; set; }
+
+        public LayoutState ResultsState { get; set; }
+        public LayoutState ScheduleState { get; set; }
 
         #endregion
 
@@ -59,10 +64,25 @@ namespace Formula1.ViewModels.TabViews
 
         private async Task Initialize()
         {
-            MainState = LayoutState.Loading;
+            await GetResults();
+            await GetSchedule();
+        }
+
+        private async Task GetResults()
+        {
+            ResultsState = LayoutState.Loading;
             var res = await _ergastService.GetResults("current", "last", "results");
+            LatestRace = $"Round {res.First().Round} - {res.First().Circuit.Location.Country} ({res.First().Circuit.CircuitName})";
             LatestResults = new ObservableCollection<RaceResultModel>(res.First().Results);
-            MainState = LayoutState.None;
+            ResultsState = LayoutState.None;
+        }
+
+        private async Task GetSchedule()
+        {
+            ScheduleState = LayoutState.Loading;
+            var res = await _ergastService.GetSchedule("current");
+            UpcomingRaceEventList = new ObservableCollection<RaceEventModel>(res.UpcomingRaceEvents);
+            ScheduleState = LayoutState.None;
         }
 
         #endregion
