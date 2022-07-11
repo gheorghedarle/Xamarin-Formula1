@@ -3,9 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
       xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
       xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
+      xmlns:templateSelector="clr-namespace:Formula1.Helpers.TemplateSelectors"
       x:Class="Formula1.Views.TabViews.HomeView"
       BindingContext="{Binding HomeView, Source={StaticResource ViewModelLocator}}"
       NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <templateSelector:HomeResultsTemplateSelector x:Key="HomeResultsTemplateSelector" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout
         BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
         <Grid
@@ -71,70 +77,13 @@
                 </xct:StateView>
             </xct:StateLayout.StateViews>
             <CollectionView
-                ItemsSource="{Binding LatestResults}">
+                ItemsSource="{Binding LatestResults}"
+                ItemTemplate="{StaticResource HomeResultsTemplateSelector}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout
                         Orientation="Horizontal"
                         ItemSpacing="10"></LinearItemsLayout>
                 </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout
-                            Padding="0, 0, 0, 5">
-                            <Frame
-                                BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
-                                CornerRadius="20"
-                                Padding="0">
-                                <Grid
-                                    RowDefinitions="Auto, Auto, Auto, Auto"
-                                    ColumnDefinitions="Auto, Auto"
-                                    RowSpacing="0"
-                                    Margin="5, 0, 5, 0">
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Text="{Binding Position}"
-                                        Style="{StaticResource Headline2_ExoBold}"
-                                        TextColor="{StaticResource AccentColor}"
-                                        Margin="10, 0, 0, 0"></Label>
-                                    <Label
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        Text="{Binding Driver.GivenName}"
-                                        Style="{StaticResource Body1FontSize_ExoRegular}"
-                                        Margin="10, 0, 0, 0">
-                                    </Label>
-                                    <Label
-                                        Grid.Row="2"
-                                        Grid.Column="0"
-                                        Text="{Binding Driver.FamilyName}"
-                                        Style="{StaticResource Body1FontSize_ExoBold}"
-                                        Margin="10, 0, 0, 0">
-                                    </Label>
-                                    <Label
-                                        Grid.Row="3"
-                                        Grid.Column="0"
-                                        Text="{Binding Constructor.Name}"
-                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
-                                        Margin="10, 0, 0, 5">
-                                    </Label>
-                                    <Image
-                                        Grid.Row="0"
-                                        Grid.RowSpan="4"
-                                        Grid.Column="1"
-                                        Source="{Binding Driver.Image}"
-                                        WidthRequest="100"
-                                        HeightRequest="100"
-                                        Aspect="AspectFill"
-                                        HorizontalOptions="End"
-                                        VerticalOptions="End"
-                                        Margin="10, 0, 0, -11">
-                                    </Image>
-                                </Grid>
-                            </Frame>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
         <Label
@@ -167,7 +116,7 @@
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout
                         Orientation="Horizontal"
-                        ItemSpacing="10"></LinearItemsLayout>
+                        ItemSpacing="5"></LinearItemsLayout>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

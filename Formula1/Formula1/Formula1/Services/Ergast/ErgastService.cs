@@ -62,9 +62,9 @@ namespace Formula1.Services.Ergast
             return null;
         }
 
-        public async Task<ScheduleModel> GetSchedule(string year)
+        public async Task<ScheduleModel> GetSchedule(string year, string queryParams = null)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}.json");
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}.json?{queryParams}");
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();
@@ -82,9 +82,9 @@ namespace Formula1.Services.Ergast
             return null;
         }
 
-        public async Task<List<RaceEventModel>> GetResults(string year, string round, string raceType)
+        public async Task<List<RaceEventModel>> GetResults(string year, string round, string raceType, string queryParams = null)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}/{raceType}.json");
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}/{raceType}.json?{queryParams}");
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();

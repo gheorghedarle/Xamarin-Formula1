@@ -82,6 +82,7 @@
             </StackLayout>
             <xct:TabView
                 Grid.Row="1"
+                SelectedIndex="{Binding SelectedTab}"
                 TabStripPlacement="Top"
                 TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
                 TabStripHeight="40"

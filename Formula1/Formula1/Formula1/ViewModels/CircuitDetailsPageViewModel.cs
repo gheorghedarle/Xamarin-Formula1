@@ -2,6 +2,7 @@
 using Formula1.Services.Ergast;
 using Formula1.Views.Popups;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace Formula1.ViewModels
         public RaceEventResultsModel Results { get; set; }
         public RaceEventModel Circuit { get; set; }
         public string SelectedRaceType { get; set; }
+        public int SelectedTab { get; set; }
 
         public LayoutState ResultsState { get; set; }
 
@@ -75,9 +77,11 @@ namespace Formula1.ViewModels
         public async void ApplyQueryAttributes(IDictionary<string, string> query)
         {
             string circuitString = HttpUtility.UrlDecode(query["circuit"]);
+            string seledctedTabString = HttpUtility.UrlDecode(query["selectedTab"]);
             var circuit = JsonConvert.DeserializeObject<RaceEventModel>(circuitString);
             Circuit = circuit;
             SelectedRaceType = "Race";
+            SelectedTab = string.IsNullOrEmpty(seledctedTabString) ? 0 : Convert.ToInt32(seledctedTabString);
             await GetResults();
         }
 
