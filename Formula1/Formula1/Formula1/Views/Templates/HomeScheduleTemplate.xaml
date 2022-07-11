@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="Formula1.Views.Templates.HomeScheduleTemplate"
+        Padding="0, 0, 0, 5"
+        x:Name="template">
+    <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer 
+            Command="{Binding Parent.BindingContext.SeeEventCommand, Source={x:Reference template}}"
+            CommandParameter="{Binding BindingContext, Source={x:Reference template}}"
+            NumberOfTapsRequired="1"></TapGestureRecognizer>
+    </StackLayout.GestureRecognizers>
+    <Frame
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
+        CornerRadius="20"
+        Padding="5, 10">
+        <Grid
+            RowDefinitions="Auto, Auto, Auto"
+            ColumnDefinitions="Auto, Auto"
+            RowSpacing="0"
+            Margin="5, 0, 5, 0"
+            VerticalOptions="Center">
+            <Image
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Grid.Column="0"
+                Source="{Binding Circuit.Location.Flag}"
+                WidthRequest="40"
+                HeightRequest="40"
+                Margin="10, 0, 10, 0"
+                Aspect="AspectFill"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <Image.Clip>
+                    <EllipseGeometry
+                        Center="20,20"
+                        RadiusX="20"
+                        RadiusY="20"/>
+                </Image.Clip>
+            </Image>
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="{Binding Round, StringFormat='Round {0}'}"
+                Style="{StaticResource CaptionFontSize_ExoRegular}"
+                TextColor="{StaticResource AccentColor}"></Label>
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="{Binding Circuit.Location.Country}"
+                Style="{StaticResource Body1FontSize_ExoBold}">
+            </Label>
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                Style="{StaticResource CaptionFontSize_ExoRegular}">
+                <Label.Text>
+                    <MultiBinding StringFormat="{}{0:d MMM} - {1:d MMM yyyy}">
+                        <Binding Path="FirstPractice.Date" />
+                        <Binding Path="Date" />
+                    </MultiBinding>
+                </Label.Text>
+            </Label>
+        </Grid>
+    </Frame>
+</StackLayout>

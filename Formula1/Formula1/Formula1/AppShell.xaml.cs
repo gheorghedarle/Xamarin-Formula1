@@ -16,8 +16,8 @@ namespace Formula1
         void RegisterRoutes()
         {
             Routing.RegisterRoute("profile", typeof(ProfilePage));
-            Routing.RegisterRoute("circuitdetails", typeof(CircuitDetailsPage));
-            Routing.RegisterRoute("driverdetails", typeof(DriverDetailsPage));
+            Routing.RegisterRoute("schedule/details", typeof(CircuitDetailsPage));
+            Routing.RegisterRoute("drivers/details", typeof(DriverDetailsPage));
         }
     }
 }

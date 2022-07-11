@@ -50,7 +50,7 @@ namespace Formula1.ViewModels
 
         private async void BackCommandHandler()
         {
-            await Shell.Current.Navigation.PopAsync();
+            await Shell.Current.GoToAsync("..");
         }
 
         #endregion
@@ -59,10 +59,14 @@ namespace Formula1.ViewModels
 
         public async void ApplyQueryAttributes(IDictionary<string, string> query)
         {
-            string driverString = HttpUtility.UrlDecode(query["driver"]);
-            var driver = JsonConvert.DeserializeObject<DriverStadingsModel>(driverString);
-            DriverStading = driver;
-            await GetResults();
+            query.TryGetValue("driver", out var driverParam);
+            string driverString = HttpUtility.UrlDecode(driverParam);
+            if(!string.IsNullOrEmpty(driverString))
+            {
+                var driver = JsonConvert.DeserializeObject<DriverStadingsModel>(driverString);
+                DriverStading = driver;
+                await GetResults();
+            }
         }
 
         #endregion

@@ -51,7 +51,7 @@ namespace Formula1.ViewModels.TabViews
 
         private async void CircuitDetailsCommandHandler(RaceEventModel circuit)
         {
-            await Shell.Current.GoToAsync($"circuitdetails?circuit={JsonConvert.SerializeObject(circuit)}");
+            await Shell.Current.GoToAsync($"//main/schedule/details?circuit={JsonConvert.SerializeObject(circuit)}");
         }
 
         #endregion

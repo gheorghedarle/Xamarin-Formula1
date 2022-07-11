@@ -28,31 +28,31 @@
         <ShellContent ContentTemplate="{DataTemplate views:WelcomePage}" />
     </ShellItem>
     <TabBar Route="main">
-        <Tab Title="Home">
+        <Tab Title="Home" Route="home">
             <Tab.Icon>
                 <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf015;"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate tabViews:HomeView}" />
         </Tab>
-        <Tab Title="Schedule">
+        <Tab Title="Schedule" Route="schedule">
             <Tab.Icon>
                 <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf783;"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate tabViews:ScheduleView}" />
         </Tab>
-        <Tab Title="Drivers">
+        <Tab Title="Drivers" Route="drivers">
             <Tab.Icon>
                 <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf007;"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate tabViews:DriversView}" />
         </Tab>
-        <Tab Title="Teams">
+        <Tab Title="Teams" Route="teams">
             <Tab.Icon>
                 <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf1b9;"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate tabViews:TeamsView}" />
         </Tab>
-        <Tab Title="History">
+        <Tab Title="History" Route="history">
             <Tab.Icon>
                 <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf07b;"/>
             </Tab.Icon>

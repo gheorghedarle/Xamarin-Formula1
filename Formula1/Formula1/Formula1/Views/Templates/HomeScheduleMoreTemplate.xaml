@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Formula1.Views.Templates.HomeScheduleMoreTemplate"
+             Padding="0, 0, 0, 5"
+             x:Name="template">
+    <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding Parent.BindingContext.SeeMoreScheduleCommand, Source={x:Reference template}}" NumberOfTapsRequired="1"></TapGestureRecognizer>
+    </StackLayout.GestureRecognizers>
+    <Frame
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
+        CornerRadius="20"
+        VerticalOptions="FillAndExpand">
+        <Label
+            Text="See More"
+            Style="{StaticResource Body1FontSize_ExoBold}"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+        </Label>
+    </Frame>
+</StackLayout>

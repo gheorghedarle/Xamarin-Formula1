@@ -39,6 +39,7 @@ namespace Formula1.ViewModels.TabViews
         public Command SeeDriverCommand { get; set; }
         public Command SeeMoreResultsCommand { get; set; }
         public Command SeeEventCommand { get; set; }
+        public Command SeeMoreScheduleCommand { get; set; }
 
         #endregion
 
@@ -54,6 +55,7 @@ namespace Formula1.ViewModels.TabViews
             SeeDriverCommand = new Command<RaceResultModel>(SeeDriverCommandHandler);
             SeeMoreResultsCommand = new Command(SeeMoreResultsCommandHandler);
             SeeEventCommand = new Command<RaceEventModel>(SeeEventCommandHandler);
+            SeeMoreScheduleCommand = new Command(SeeMoreScheduleCommandHandler);
 
             Init = Initialize();
         }
@@ -75,17 +77,22 @@ namespace Formula1.ViewModels.TabViews
                 Driver = raceResult.Driver,
                 Constructors = new List<ConstructorModel>() { raceResult.Constructor }
             };
-            await Shell.Current.GoToAsync($"driverdetails?driver={JsonConvert.SerializeObject(driver)}");
+            await Shell.Current.GoToAsync($"//main/drivers/details?driver={JsonConvert.SerializeObject(driver)}");
         }
 
         private async void SeeMoreResultsCommandHandler()
         {
-            await Shell.Current.GoToAsync($"circuitdetails?circuit={JsonConvert.SerializeObject(_latestRace)}&selectedTab=1");
+            await Shell.Current.GoToAsync($"//main/schedule/details?circuit={JsonConvert.SerializeObject(_latestRace)}&selectedTab=1");
         }
 
         private async void SeeEventCommandHandler(RaceEventModel raceEvent)
         {
-            await Shell.Current.GoToAsync($"circuitdetails?circuit={JsonConvert.SerializeObject(raceEvent)}");
+            await Shell.Current.GoToAsync($"//main/schedule/details?circuit={JsonConvert.SerializeObject(raceEvent)}");
+        }
+
+        private async void SeeMoreScheduleCommandHandler()
+        {
+            await Shell.Current.GoToAsync($"//main/schedule");
         }
 
         #endregion
@@ -115,6 +122,7 @@ namespace Formula1.ViewModels.TabViews
             var res = await _ergastService.GetSchedule("current");
             _latestRace = res.PastRaceEvents.Last();
             UpcomingRaceEventList = new ObservableCollection<RaceEventModel>(res.UpcomingRaceEvents.Take(3));
+            UpcomingRaceEventList.Add(new RaceEventModel());
             ScheduleState = LayoutState.None;
         }
 

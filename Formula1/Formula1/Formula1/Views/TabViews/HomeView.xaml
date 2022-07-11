@@ -10,6 +10,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <templateSelector:HomeResultsTemplateSelector x:Key="HomeResultsTemplateSelector" />
+            <templateSelector:HomeScheduleTemplateSelector x:Key="HomeScheduleTemplateSelector" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout
@@ -112,73 +113,13 @@
                 </xct:StateView>
             </xct:StateLayout.StateViews>
             <CollectionView
-                ItemsSource="{Binding UpcomingRaceEventList}">
+                ItemsSource="{Binding UpcomingRaceEventList}"
+                ItemTemplate="{StaticResource HomeScheduleTemplateSelector}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout
                         Orientation="Horizontal"
-                        ItemSpacing="5"></LinearItemsLayout>
+                        ItemSpacing="10"></LinearItemsLayout>
                 </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout
-                            Margin="5, 10, 5, 10"
-                            Padding="0, 0, 0, 5">
-                            <Frame
-                                BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
-                                CornerRadius="20"
-                                Padding="5, 10">
-                                <Grid
-                                    RowDefinitions="Auto, Auto, Auto"
-                                    ColumnDefinitions="Auto, Auto"
-                                    RowSpacing="0"
-                                    Margin="5, 0, 5, 0"
-                                    VerticalOptions="Center">
-                                    <Image
-                                        Grid.Row="0"
-                                        Grid.RowSpan="3"
-                                        Grid.Column="0"
-                                        Source="{Binding Circuit.Location.Flag}"
-                                        WidthRequest="40"
-                                        HeightRequest="40"
-                                        Margin="10, 0, 10, 0"
-                                        Aspect="AspectFill"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center">
-                                        <Image.Clip>
-                                            <EllipseGeometry
-                                                Center="20,20"
-                                                RadiusX="20"
-                                                RadiusY="20"/>
-                                        </Image.Clip>
-                                    </Image>
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        Text="{Binding Round, StringFormat='Round {0}'}"
-                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
-                                        TextColor="{StaticResource AccentColor}"></Label>
-                                    <Label
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Text="{Binding Circuit.Location.Country}"
-                                        Style="{StaticResource Body1FontSize_ExoBold}">
-                                    </Label>
-                                    <Label
-                                        Grid.Row="2"
-                                        Grid.Column="1"
-                                        Style="{StaticResource CaptionFontSize_ExoRegular}">
-                                        <Label.Text>
-                                            <MultiBinding StringFormat="{}{0:d MMM} - {1:d MMM yyyy}">
-                                                <Binding Path="FirstPractice.Date" />
-                                                <Binding Path="Date" />
-                                            </MultiBinding>
-                                        </Label.Text>
-                                    </Label>
-                                </Grid>
-                            </Frame>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
         <Label

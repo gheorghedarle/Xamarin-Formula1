@@ -76,13 +76,21 @@ namespace Formula1.ViewModels
 
         public async void ApplyQueryAttributes(IDictionary<string, string> query)
         {
-            string circuitString = HttpUtility.UrlDecode(query["circuit"]);
-            string seledctedTabString = HttpUtility.UrlDecode(query["selectedTab"]);
-            var circuit = JsonConvert.DeserializeObject<RaceEventModel>(circuitString);
-            Circuit = circuit;
-            SelectedRaceType = "Race";
-            SelectedTab = string.IsNullOrEmpty(seledctedTabString) ? 0 : Convert.ToInt32(seledctedTabString);
-            await GetResults();
+            query.TryGetValue("circuit", out var circuitParam);
+            query.TryGetValue("selectedTab", out var selectedTabParam);
+            string circuitString = string.IsNullOrEmpty(circuitParam) ? "" : HttpUtility.UrlDecode(circuitParam);
+            string seledctedTabString = string.IsNullOrEmpty(selectedTabParam) ? "" : HttpUtility.UrlDecode(query["selectedTab"]);
+            if(!string.IsNullOrEmpty(circuitString))
+            {
+                var circuit = JsonConvert.DeserializeObject<RaceEventModel>(circuitString);
+                Circuit = circuit;
+                SelectedRaceType = "Race";
+                await GetResults();
+            }
+            if (!string.IsNullOrEmpty(seledctedTabString))
+            {
+                SelectedTab = string.IsNullOrEmpty(seledctedTabString) ? 0 : Convert.ToInt32(seledctedTabString);
+            }
         }
 
         #endregion
