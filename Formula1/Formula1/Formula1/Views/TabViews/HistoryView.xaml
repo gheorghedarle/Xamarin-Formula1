@@ -28,8 +28,11 @@
                             Text="Season "
                             Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
                         <Span
-                            Text="{Binding SelectedSeason}"
+                            Text="{Binding SelectedSeason, StringFormat='{0} '}"
                             Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                        <Span
+                            Text=" &#xf0d7;"
+                            Style="{StaticResource CaptionFontSize_FontAwesome}"></Span>
                     </FormattedString>
                 </Label.FormattedText>
                 <Label.GestureRecognizers>

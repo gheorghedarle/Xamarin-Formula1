@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
+             xmlns:templates="clr-namespace:Formula1.Views.Templates"
              x:Class="Formula1.Views.CircuitDetailsPage"
              BindingContext="{Binding CircuitDetailsPage, Source={StaticResource ViewModelLocator}}"
              NavigationPage.HasNavigationBar="False">
@@ -248,9 +249,17 @@
                     FontSize="14">
                     <StackLayout>
                         <Label
-                            Text="{Binding SelectedRaceType}"
-                            Style="{StaticResource Body1FontSize_ExoBold}"
                             Margin="20, 0, 20, 0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="{Binding SelectedRaceType, StringFormat='{0} '}"
+                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                    <Span
+                                        Text=" &#xf0d7;"
+                                        Style="{StaticResource CaptionFontSize_FontAwesome}"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SelectRaceTypeCommand}"></TapGestureRecognizer>
                             </Label.GestureRecognizers>
@@ -281,75 +290,7 @@
                                 ItemsSource="{Binding Results.RaceResults}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid
-                                            RowDefinitions="Auto, Auto"
-                                            ColumnDefinitions="30, 50, *, Auto"
-                                            Padding="15, 5, 15, 5"
-                                            RowSpacing="2">
-                                            <Label
-                                                Grid.Row="0"
-                                                Grid.RowSpan="2"
-                                                Grid.Column="0"
-                                                Text="{Binding Position}"
-                                                Margin="5"
-                                                Style="{StaticResource Body1FontSize_ExoRegular}"
-                                                HorizontalOptions="Center"
-                                                VerticalOptions="Center"></Label>
-                                            <Image
-                                                Grid.Row="0"
-                                                Grid.RowSpan="2"
-                                                Grid.Column="1"
-                                                Source="{Binding Driver.Image}"
-                                                WidthRequest="40"
-                                                HeightRequest="40"
-                                                Aspect="AspectFill"
-                                                HorizontalOptions="Center"
-                                                VerticalOptions="Center">
-                                                <Image.Clip>
-                                                    <EllipseGeometry
-                                                        Center="20,20"
-                                                        RadiusX="20"
-                                                        RadiusY="20"/>
-                                                </Image.Clip>
-                                            </Image>
-                                            <Label
-                                                Grid.Row="0"
-                                                Grid.Column="2">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span
-                                                            Text="{Binding Driver.GivenName}"
-                                                            Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                                        <Span
-                                                            Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
-                                                            Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label
-                                                Grid.Row="1"
-                                                Grid.Column="2"
-                                                Text="{Binding Constructor.Name}"
-                                                Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
-                                            <Label
-                                                IsVisible="{Binding Status, Converter={xct:EqualConverter}, ConverterParameter='Finished'}"
-                                                Grid.Row="0"
-                                                Grid.RowSpan="2"
-                                                Grid.Column="3"
-                                                Text="{Binding Time.Time}"
-                                                Style="{StaticResource Body2FontSize_ExoBold}"
-                                                VerticalOptions="CenterAndExpand">
-                                            </Label>
-                                            <Label
-                                                IsVisible="{Binding Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
-                                                Grid.Row="0"
-                                                Grid.RowSpan="2"
-                                                Grid.Column="3"
-                                                Text="{Binding Status}"
-                                                Style="{StaticResource Body2FontSize_ExoBold}"
-                                                VerticalOptions="CenterAndExpand">
-                                            </Label>
-                                        </Grid>
+                                        <templates:RaceResultsTemplate></templates:RaceResultsTemplate>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
@@ -359,105 +300,17 @@
                                 ItemsSource="{Binding Results.QualifyingResults}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <StackLayout
-                                            Padding="15, 5, 15, 5">
-                                            <Grid
-                                                RowDefinitions="Auto, Auto"
-                                                ColumnDefinitions="30, 50, *">
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.RowSpan="2"
-                                                    Grid.Column="0"
-                                                    Text="{Binding Position}"
-                                                    Margin="5"
-                                                    Style="{StaticResource Body1FontSize_ExoRegular}"
-                                                    HorizontalOptions="Center"
-                                                    VerticalOptions="Center"></Label>
-                                                <Image
-                                                    Grid.Row="0"
-                                                    Grid.RowSpan="2"
-                                                    Grid.Column="1"
-                                                    Source="{Binding Driver.Image}"
-                                                    WidthRequest="40"
-                                                    HeightRequest="40"
-                                                    Aspect="AspectFill"
-                                                    HorizontalOptions="Center"
-                                                    VerticalOptions="Center">
-                                                    <Image.Clip>
-                                                        <EllipseGeometry
-                                                            Center="20,20"
-                                                            RadiusX="20"
-                                                            RadiusY="20"/>
-                                                    </Image.Clip>
-                                                </Image>
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="2">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span
-                                                                Text="{Binding Driver.GivenName}"
-                                                                Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                                            <Span
-                                                                Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
-                                                                Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                    <Label
-                                                    Grid.Row="1"
-                                                    Grid.Column="2"
-                                                    Text="{Binding Constructor.Name}"
-                                                    Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
-                                            </Grid>
-                                            <Grid      
-                                                ColumnDefinitions="*, *, *">
-                                                <Label
-                                                    Grid.Column="0"
-                                                    HorizontalTextAlignment="Center">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span
-                                                                Text="Q1: "
-                                                                Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                                                            <Span
-                                                                Text="{Binding Q1}"
-                                                                Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                <Label
-                                                    IsVisible="{Binding Q2, Converter={xct:IsNotNullOrEmptyConverter}}"
-                                                    Grid.Column="1"
-                                                    HorizontalTextAlignment="Center">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span
-                                                                Text="Q2: "
-                                                                Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                                                            <Span
-                                                                Text="{Binding Q2}"
-                                                                Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                <Label
-                                                    IsVisible="{Binding Q3, Converter={xct:IsNotNullOrEmptyConverter}}"
-                                                    Grid.Column="2"
-                                                    HorizontalTextAlignment="Center">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span
-                                                                Text="Q3: "
-                                                                Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                                                            <Span
-                                                                Text="{Binding Q3}"
-                                                                Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                            </Grid>
-                                        </StackLayout>
+                                        <templates:QualifyingResultsTemplate></templates:QualifyingResultsTemplate>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <CollectionView
+                                IsVisible="{Binding Results.SprintResults, Converter={xct:IsNotNullOrEmptyConverter}}"
+                                Margin="0, 0, 0, 10"
+                                ItemsSource="{Binding Results.SprintResults}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <templates:RaceResultsTemplate></templates:RaceResultsTemplate>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>

@@ -1,10 +1,4 @@
-﻿using Formula1.Core;
-using Formula1.Services.Ergast;
-using Formula1.ViewModels;
-using Formula1.ViewModels.TabViews;
-using Formula1.Views;
-using Formula1.Views.TabViews;
-using Xamarin.Essentials;
+﻿using Xamarin.Essentials;
 using Xamarin.Forms;
 
 [assembly: ExportFont("FontAwesome-Regular.ttf", Alias = "FontAwesome_Regular")]

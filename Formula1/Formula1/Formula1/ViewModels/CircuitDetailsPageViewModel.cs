@@ -106,7 +106,8 @@ namespace Formula1.ViewModels
                 Results = new RaceEventResultsModel()
                 {
                     RaceResults = res.First().Results != null ? new ObservableCollection<RaceResultModel>(res.First().Results) : null,
-                    QualifyingResults = res.First().QualifyingResults != null ? new ObservableCollection<QualifyingResultModel>(res.First().QualifyingResults) : null
+                    QualifyingResults = res.First().QualifyingResults != null ? new ObservableCollection<QualifyingResultModel>(res.First().QualifyingResults) : null,
+                    SprintResults = res.First().SprintResults != null ? new ObservableCollection<RaceResultModel>(res.First().SprintResults) : null,
                 };
                 ResultsState = LayoutState.None;
             }

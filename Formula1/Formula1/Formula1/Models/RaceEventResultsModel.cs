@@ -6,5 +6,6 @@ namespace Formula1.Models
     {
         public ObservableCollection<RaceResultModel> RaceResults { get; set; }
         public ObservableCollection<QualifyingResultModel> QualifyingResults { get; set; }
+        public ObservableCollection<RaceResultModel> SprintResults { get; set; }
     }
 }

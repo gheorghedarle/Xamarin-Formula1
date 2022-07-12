@@ -1,12 +1,12 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Formula1.Views
+namespace Formula1.Views.Templates
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WelcomePage : ContentPage
+    public partial class QualifyingResultsTemplate : StackLayout
     {
-        public WelcomePage()
+        public QualifyingResultsTemplate()
         {
             InitializeComponent();
         }

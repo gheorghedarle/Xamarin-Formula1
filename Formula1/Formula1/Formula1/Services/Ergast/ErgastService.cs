@@ -117,6 +117,18 @@ namespace Formula1.Services.Ergast
                                 return null;
                             }
                         }
+                    case "sprint":
+                        {
+                            if (r.Count > 0 && r.First().SprintResults.Count > 0)
+                            {
+                                r.First().SprintResults.ForEach(d => d.Driver.Image = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png");
+                                return r;
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
                 }
 
             }

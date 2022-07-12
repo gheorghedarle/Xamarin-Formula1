@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="Formula1.Views.Templates.RaceResultsTemplate"
+    RowDefinitions="Auto, Auto"
+    ColumnDefinitions="30, 50, *, Auto"
+    Padding="15, 5, 15, 5"
+    RowSpacing="2">
+    <Label
+        Grid.Row="0"
+        Grid.RowSpan="2"
+        Grid.Column="0"
+        Text="{Binding Position}"
+        Margin="5"
+        Style="{StaticResource Body1FontSize_ExoRegular}"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"></Label>
+    <Image
+        Grid.Row="0"
+        Grid.RowSpan="2"
+        Grid.Column="1"
+        Source="{Binding Driver.Image}"
+        WidthRequest="40"
+        HeightRequest="40"
+        Aspect="AspectFill"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <Image.Clip>
+            <EllipseGeometry
+                Center="20,20"
+                RadiusX="20"
+                RadiusY="20"/>
+        </Image.Clip>
+    </Image>
+    <Label
+        Grid.Row="0"
+        Grid.Column="2">
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="{Binding Driver.GivenName}"
+                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
+                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label
+        Grid.Row="1"
+        Grid.Column="2"
+        Text="{Binding Constructor.Name}"
+        Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
+    <Label
+        IsVisible="{Binding Status, Converter={xct:EqualConverter}, ConverterParameter='Finished'}"
+        Grid.Row="0"
+        Grid.RowSpan="2"
+        Grid.Column="3"
+        Text="{Binding Time.Time}"
+        Style="{StaticResource Body2FontSize_ExoBold}"
+        VerticalOptions="CenterAndExpand">
+    </Label>
+    <Label
+        IsVisible="{Binding Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
+        Grid.Row="0"
+        Grid.RowSpan="2"
+        Grid.Column="3"
+        Text="{Binding Status}"
+        Style="{StaticResource Body2FontSize_ExoBold}"
+        VerticalOptions="CenterAndExpand">
+    </Label>
+</Grid>

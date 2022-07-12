@@ -76,4 +76,9 @@
         <Setter Property="FontSize" Value="{StaticResource CaptionFontSize}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
     </Style>
+    <Style x:Key="CaptionFontSize_FontAwesome" TargetType="Label">
+        <Setter Property="FontFamily" Value="FontAwesome_Solid" />
+        <Setter Property="FontSize" Value="{StaticResource CaptionFontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
 </ResourceDictionary>

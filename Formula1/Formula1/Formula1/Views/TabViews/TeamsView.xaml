@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
       xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
       xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
+      xmlns:templates="clr-namespace:Formula1.Views.Templates"
       x:Class="Formula1.Views.TabViews.TeamsView"
       BindingContext="{Binding TeamsView, Source={StaticResource ViewModelLocator}}"
       NavigationPage.HasNavigationBar="False">
@@ -42,46 +43,7 @@
                 Margin="0, 0, 0, 20">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid
-                            RowDefinitions="Auto, Auto"
-                            ColumnDefinitions="30, *, Auto"
-                            Padding="15, 5, 15, 5"
-                            RowSpacing="2">
-                            <Label
-                                Grid.Row="0"
-                                Grid.RowSpan="2"
-                                Grid.Column="0"
-                                Text="{Binding Position}"
-                                Style="{StaticResource Body1FontSize_ExoRegular}"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"></Label>
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Text="{Binding Constructor.Name}"
-                                Style="{StaticResource Body1FontSize_ExoBold}"></Label>
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Text="{Binding DriversName}"
-                                Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
-                            <Label
-                                Grid.Row="0"
-                                Grid.RowSpan="2"
-                                Grid.Column="2"
-                                VerticalOptions="CenterAndExpand">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span
-                                            Text="{Binding Points}"
-                                            Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                        <Span
-                                            Text=" pts"
-                                            Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </Grid>
+                        <templates:TeamStadingsTemplate></templates:TeamStadingsTemplate>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
