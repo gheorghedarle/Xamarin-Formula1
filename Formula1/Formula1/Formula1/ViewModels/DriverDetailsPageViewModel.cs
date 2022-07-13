@@ -3,7 +3,6 @@ using Formula1.Services.Ergast;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Xamarin.CommunityToolkit.UI.Views;
