@@ -1,0 +1,17 @@
+{
+  "name": "formula1-wikipedia-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "cheerio": "1.0.0-rc.12",
+    "request": "2.88.2",
+    "request-promise": "4.2.6"
+  }
+}
