@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
+             xmlns:templates="clr-namespace:Formula1.Views.Templates"
              x:Class="Formula1.Views.DriverDetailsPage"
              BindingContext="{Binding DriverDetailsPage, Source={StaticResource ViewModelLocator}}"
              NavigationPage.HasNavigationBar="False">
@@ -80,7 +81,8 @@
                     FontSizeSelected="14"
                     FontSize="14">
                     <StackLayout                        
-                        xct:StateLayout.CurrentState="{Binding InformationsState}">
+                        xct:StateLayout.CurrentState="{Binding InformationsState}"
+                        Margin="20, 0, 0, 0">
                         <xct:StateLayout.StateViews>
                             <xct:StateView 
                                 StateKey="Loading"
@@ -101,11 +103,8 @@
                         <Label
                             Text="Basic Informations"
                             Style="{StaticResource Body1FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0"></Label>
-                        <Label
-                            Text="{Binding DriverInformations.Country}"
-                            Style="{StaticResource Body1FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0"></Label>
+                            Margin="0, 0, 0, 5"></Label>
+                        <templates:DriverInformationsTemplate></templates:DriverInformationsTemplate>
                     </StackLayout>
                 </xct:TabViewItem>
                 <xct:TabViewItem
