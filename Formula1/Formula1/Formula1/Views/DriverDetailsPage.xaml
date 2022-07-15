@@ -79,10 +79,34 @@
                     FontFamilySelected="Exo_Medium"
                     FontSizeSelected="14"
                     FontSize="14">
-                    <Label
-                        Text="Basic Informations"
-                        Style="{StaticResource Body1FontSize_ExoBold}"
-                        Margin="20, 0, 20, 0"></Label>
+                    <StackLayout                        
+                        xct:StateLayout.CurrentState="{Binding InformationsState}">
+                        <xct:StateLayout.StateViews>
+                            <xct:StateView 
+                                StateKey="Loading"
+                                VerticalOptions="FillAndExpand">
+                                <fragments:LoadingView></fragments:LoadingView>
+                            </xct:StateView>
+                            <xct:StateView 
+                                StateKey="Error"
+                                VerticalOptions="FillAndExpand">
+                                <Label Text="Error"></Label>
+                            </xct:StateView>
+                            <xct:StateView 
+                                StateKey="Empty"
+                                VerticalOptions="FillAndExpand">
+                                <Label Text="Empty"></Label>
+                            </xct:StateView>
+                        </xct:StateLayout.StateViews>
+                        <Label
+                            Text="Basic Informations"
+                            Style="{StaticResource Body1FontSize_ExoBold}"
+                            Margin="20, 0, 20, 0"></Label>
+                        <Label
+                            Text="{Binding DriverInformations.Country}"
+                            Style="{StaticResource Body1FontSize_ExoBold}"
+                            Margin="20, 0, 20, 0"></Label>
+                    </StackLayout>
                 </xct:TabViewItem>
                 <xct:TabViewItem
                     Text="Results"

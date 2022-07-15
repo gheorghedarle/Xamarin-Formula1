@@ -1,5 +1,6 @@
 ﻿using Formula1.Models;
 using Formula1.Services.Ergast;
+using Formula1.Services.Informations;
 using Formula1.Views.Popups;
 using Newtonsoft.Json;
 using System;
@@ -19,6 +20,7 @@ namespace Formula1.ViewModels
         #region Fields
 
         private readonly IErgastService _ergastService;
+        private readonly IInformationsService _informationsService;
 
         #endregion
 
@@ -26,10 +28,12 @@ namespace Formula1.ViewModels
 
         public RaceEventResultsModel Results { get; set; }
         public RaceEventModel Circuit { get; set; }
+        //public CircuitInformationsModel CircuitInformations { get; set; }
         public string SelectedRaceType { get; set; }
         public int SelectedTab { get; set; }
 
         public LayoutState ResultsState { get; set; }
+        public LayoutState InformationsState { get; set; }
 
         #endregion
 
@@ -43,9 +47,11 @@ namespace Formula1.ViewModels
         #region Constructors
 
         public CircuitDetailsPageViewModel(
-            IErgastService ergastService)
+            IErgastService ergastService,
+            IInformationsService informationsService)
         {
             _ergastService = ergastService;
+            _informationsService = informationsService;
 
             BackCommand = new Command(BackCommandHandler);
             SelectRaceTypeCommand = new Command(SelectRaceTypeCommandHandler);
@@ -86,6 +92,7 @@ namespace Formula1.ViewModels
                 Circuit = circuit;
                 SelectedRaceType = "Race";
                 await GetResults();
+                //await GetInformations();
             }
             if (!string.IsNullOrEmpty(seledctedTabString))
             {
@@ -117,6 +124,22 @@ namespace Formula1.ViewModels
                 ResultsState = LayoutState.Empty;
             }
         }
+
+        //private async Task GetInformations()
+        //{
+        //    InformationsState = LayoutState.Loading;
+        //    var res = await _informationsService.GetTeamInformations("ferarri");
+        //    if (res != null)
+        //    {
+        //        CircuitInformations = res;
+        //        InformationsState = LayoutState.None;
+        //    }
+        //    else
+        //    {
+        //        CircuitInformations = null;
+        //        InformationsState = LayoutState.Empty;
+        //    }
+        //}
 
         private string ConvertNameToRaceType(string name)
         {

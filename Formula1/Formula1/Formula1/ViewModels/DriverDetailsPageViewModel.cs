@@ -1,5 +1,6 @@
 ﻿using Formula1.Models;
 using Formula1.Services.Ergast;
+using Formula1.Services.Informations;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,6 +16,7 @@ namespace Formula1.ViewModels
         #region Fields
 
         private readonly IErgastService _ergastService;
+        private readonly IInformationsService _informationsService;
 
         #endregion
 
@@ -22,8 +24,10 @@ namespace Formula1.ViewModels
         
         public ObservableCollection<RaceEventModel> RaceResults { get; set; }
         public DriverStadingsModel DriverStading { get; set; }
+        public DriverInformationsModel DriverInformations { get; set; }
 
         public LayoutState ResultsState { get; set; }
+        public LayoutState InformationsState { get; set; }
 
         #endregion
 
@@ -36,9 +40,11 @@ namespace Formula1.ViewModels
         #region Constructors
 
         public DriverDetailsPageViewModel(
-            IErgastService ergastService)
+            IErgastService ergastService,
+            IInformationsService informationsService)
         {
             _ergastService = ergastService;
+            _informationsService = informationsService;
 
             BackCommand = new Command(BackCommandHandler);
         }
@@ -65,6 +71,7 @@ namespace Formula1.ViewModels
                 var driver = JsonConvert.DeserializeObject<DriverStadingsModel>(driverString);
                 DriverStading = driver;
                 await GetResults();
+                await GetInformations();
             }
         }
 
@@ -85,6 +92,22 @@ namespace Formula1.ViewModels
             {
                 RaceResults = null;
                 ResultsState = LayoutState.Empty;
+            }
+        }
+
+        private async Task GetInformations()
+        {
+            InformationsState = LayoutState.Loading;
+            var res = await _informationsService.GetDriverInformations(string.Format("{0}-{1}", DriverStading.Driver.GivenName.ToLower(), DriverStading.Driver.FamilyName.ToLower()));
+            if (res != null)
+            {
+                DriverInformations = res;
+                InformationsState = LayoutState.None;
+            }
+            else
+            {
+                DriverInformations = null;
+                InformationsState = LayoutState.Empty;
             }
         }
 
