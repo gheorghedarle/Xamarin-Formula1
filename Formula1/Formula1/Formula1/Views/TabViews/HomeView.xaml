@@ -60,7 +60,7 @@
             <StackLayout
                 xct:StateLayout.CurrentState="{Binding ResultsState}"
                 HeightRequest="120"
-                Margin="20, 0, 20, 5">
+                Margin="20, 0, 0, 5">
                 <xct:StateLayout.StateViews>
                     <xct:StateView 
                         StateKey="Loading"
@@ -84,7 +84,7 @@
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout
                             Orientation="Horizontal"
-                            ItemSpacing="10"></LinearItemsLayout>
+                            ItemSpacing="0"></LinearItemsLayout>
                     </CollectionView.ItemsLayout>
                 </CollectionView>
             </StackLayout>
@@ -95,7 +95,7 @@
             <StackLayout
                 xct:StateLayout.CurrentState="{Binding ScheduleState}"
                 HeightRequest="80"
-                Margin="20, 0, 20, 5">
+                Margin="20, 0, 0, 5">
                 <xct:StateLayout.StateViews>
                     <xct:StateView 
                         StateKey="Loading"
@@ -119,7 +119,7 @@
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout
                             Orientation="Horizontal"
-                            ItemSpacing="10"></LinearItemsLayout>
+                            ItemSpacing="0"></LinearItemsLayout>
                     </CollectionView.ItemsLayout>
                 </CollectionView>
             </StackLayout>

@@ -1,6 +1,5 @@
 const port = 5000;
 const securePort = 5001;
-var fs = require("fs");
 var http = require("http");
 var https = require("https");
 var express = require("express");
@@ -12,13 +11,14 @@ var axios = require("axios");
 
 // var credentials = { key: privateKey, cert: certificate };
 
+var baseUrl = "https://www.formula1.com/en";
 var app = express();
 
 app.get("/driver/info", async function (req, res) {
   if (req.query.driver != null) {
-    console.log(req.query.driver);
+    console.log(`/driver/info - ${req.query.driver}`);
     axios
-      .get(`https://www.formula1.com/en/drivers/${req.query.driver}.html`)
+      .get(`${baseUrl}/drivers/${req.query.driver}.html`)
       .then((result) => {
         var r = {};
         const $ = cheerio.load(result.data);
@@ -32,15 +32,18 @@ app.get("/driver/info", async function (req, res) {
         var finalResult = { result: r };
         res.status(200).end(JSON.stringify(finalResult));
       })
-      .catch((err) => res.status(400).end());
+      .catch((err) => {
+        console.log(err);
+        res.status(400).end();
+      });
   }
 });
 
 app.get("/team/info", async function (req, res) {
   if (req.query.team != null) {
-    console.log(req.query.team);
+    console.log(`/team/info - ${req.query.team}`);
     axios
-      .get(`https://www.formula1.com/en/teams/${req.query.team}.html`)
+      .get(`${baseUrl}/teams/${req.query.team}.html`)
       .then((result) => {
         var r = {};
         const $ = cheerio.load(result.data);
@@ -51,9 +54,38 @@ app.get("/team/info", async function (req, res) {
           const value = $(element).find("td").text();
           r[camelize(label)] = value;
         });
-        res.status(200).end(JSON.stringify(r));
+        var finalResult = { result: r };
+        res.status(200).end(JSON.stringify(finalResult));
       })
-      .catch((err) => res.status(400).end());
+      .catch((err) => {
+        console.log(err);
+        res.status(400).end();
+      });
+  }
+});
+
+app.get("/circuit/info", async function (req, res) {
+  if (req.query.country != null) {
+    console.log(`/circuit/info - ${req.query.country}`);
+    axios
+      .get(`${baseUrl}/racing/2022/${req.query.country}/Circuit.html`)
+      .then((result) => {
+        var r = {};
+        const $ = cheerio.load(result.data);
+        $(
+          "body > div.site-wrapper > main > div > div.racehub-page > div.racehub-page-section > div > div > div.f1-race-hub--map > fieldset > div > div.col-xl-5 > div > div.col-lg-8.col-xl-12 > div > div"
+        ).each((index, element) => {
+          const label = $(element).find("div > p.misc--label").text();
+          const value = $(element).find("div > p.f1-bold--stat").text();
+          r[camelize(label)] = value;
+        });
+        var finalResult = { result: r };
+        res.status(200).end(JSON.stringify(finalResult));
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).end();
+      });
   }
 });
 

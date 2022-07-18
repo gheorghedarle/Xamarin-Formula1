@@ -82,7 +82,7 @@
                     FontSize="14">
                     <StackLayout                        
                         xct:StateLayout.CurrentState="{Binding InformationsState}"
-                        Margin="20, 0, 0, 0">
+                        Margin="20, 0, 0, 10">
                         <xct:StateLayout.StateViews>
                             <xct:StateView 
                                 StateKey="Loading"
@@ -97,7 +97,15 @@
                             <xct:StateView 
                                 StateKey="Empty"
                                 VerticalOptions="FillAndExpand">
-                                <Label Text="Empty"></Label>
+                                <StackLayout>
+                                    <Label
+                                        Text="Basic Informations"
+                                        Style="{StaticResource Body1FontSize_ExoBold}"
+                                        Margin="0, 0, 0, 5"></Label>
+                                    <Label 
+                                        Text="No informations to display"
+                                        Style="{StaticResource CaptionFontSize_ExoRegular}"></Label>
+                                </StackLayout>
                             </xct:StateView>
                         </xct:StateLayout.StateViews>
                         <Label

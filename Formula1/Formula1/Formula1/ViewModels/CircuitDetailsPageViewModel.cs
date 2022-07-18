@@ -28,7 +28,7 @@ namespace Formula1.ViewModels
 
         public RaceEventResultsModel Results { get; set; }
         public RaceEventModel Circuit { get; set; }
-        //public CircuitInformationsModel CircuitInformations { get; set; }
+        public CircuitInformationsModel CircuitInformations { get; set; }
         public string SelectedRaceType { get; set; }
         public int SelectedTab { get; set; }
 
@@ -92,7 +92,7 @@ namespace Formula1.ViewModels
                 Circuit = circuit;
                 SelectedRaceType = "Race";
                 await GetResults();
-                //await GetInformations();
+                await GetInformations();
             }
             if (!string.IsNullOrEmpty(seledctedTabString))
             {
@@ -125,21 +125,21 @@ namespace Formula1.ViewModels
             }
         }
 
-        //private async Task GetInformations()
-        //{
-        //    InformationsState = LayoutState.Loading;
-        //    var res = await _informationsService.GetTeamInformations("ferarri");
-        //    if (res != null)
-        //    {
-        //        CircuitInformations = res;
-        //        InformationsState = LayoutState.None;
-        //    }
-        //    else
-        //    {
-        //        CircuitInformations = null;
-        //        InformationsState = LayoutState.Empty;
-        //    }
-        //}
+        private async Task GetInformations()
+        {
+            InformationsState = LayoutState.Loading;
+            var res = await _informationsService.GetCircuitInformations(Circuit.Circuit.Location.Country);
+            if (res != null)
+            {
+                CircuitInformations = res;
+                InformationsState = LayoutState.None;
+            }
+            else
+            {
+                CircuitInformations = null;
+                InformationsState = LayoutState.Empty;
+            }
+        }
 
         private string ConvertNameToRaceType(string name)
         {

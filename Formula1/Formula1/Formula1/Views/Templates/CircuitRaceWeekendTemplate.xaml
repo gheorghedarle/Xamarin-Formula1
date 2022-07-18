@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Formula1.Views.Templates.CircuitRaceWeekendTemplate">
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="First practice: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Style="{StaticResource Body2FontSize_ExoBold}">
+                    <Span.Text>
+                        <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
+                            <Binding Path="Circuit.FirstPractice.Date" />
+                            <Binding Path="Circuit.FirstPractice.Time" />
+                        </MultiBinding>
+                    </Span.Text>
+                </Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Second practice: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Style="{StaticResource Body2FontSize_ExoBold}">
+                    <Span.Text>
+                        <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
+                            <Binding Path="Circuit.SecondPractice.Date" />
+                            <Binding Path="Circuit.SecondPractice.Time" />
+                        </MultiBinding>
+                    </Span.Text>
+                </Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label
+        IsVisible="{Binding Circuit.ThirdPractice, Converter={xct:IsNotNullOrEmptyConverter}}">
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Third practice: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Style="{StaticResource Body2FontSize_ExoBold}">
+                    <Span.Text>
+                        <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
+                            <Binding Path="Circuit.ThirdPractice.Date" />
+                            <Binding Path="Circuit.ThirdPractice.Time" />
+                        </MultiBinding>
+                    </Span.Text>
+                </Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Qualifying: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Style="{StaticResource Body2FontSize_ExoBold}">
+                    <Span.Text>
+                        <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
+                            <Binding Path="Circuit.Qualifying.Date" />
+                            <Binding Path="Circuit.Qualifying.Time" />
+                        </MultiBinding>
+                    </Span.Text>
+                </Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label
+        IsVisible="{Binding Circuit.Sprint, Converter={xct:IsNotNullOrEmptyConverter}}">
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Sprint: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Style="{StaticResource Body2FontSize_ExoBold}">
+                    <Span.Text>
+                        <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
+                            <Binding Path="Circuit.Sprint.Date" />
+                            <Binding Path="Circuit.Sprint.Time" />
+                        </MultiBinding>
+                    </Span.Text>
+                </Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Race: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Style="{StaticResource Body2FontSize_ExoBold}">
+                    <Span.Text>
+                        <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
+                            <Binding Path="Circuit.Date" />
+                            <Binding Path="Circuit.Time" />
+                        </MultiBinding>
+                    </Span.Text>
+                </Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+</StackLayout>

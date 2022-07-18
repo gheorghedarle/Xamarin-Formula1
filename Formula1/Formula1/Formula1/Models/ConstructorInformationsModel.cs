@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Formula1.Models
+﻿namespace Formula1.Models
 {
     public record ConstructorInformationsModel
     {

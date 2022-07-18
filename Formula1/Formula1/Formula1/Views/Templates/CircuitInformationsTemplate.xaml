@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Formula1.Views.Templates.CircuitInformationsTemplate">
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="First Grand Prix: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding CircuitInformations.FirstGrandPrix}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Number of laps: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding CircuitInformations.NumberOfLaps}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Circuit length: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding CircuitInformations.CircuitLength}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Race distance: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding CircuitInformations.RaceDistance}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Lap record: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding CircuitInformations.LapRecord}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+</StackLayout>

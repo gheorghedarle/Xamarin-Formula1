@@ -36,7 +36,20 @@ namespace Formula1.Services.Informations
             {
                 var result = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(result);
-                var r = json.ToObject<ConstructorInformationsModel>();
+                var r = json["result"].ToObject<ConstructorInformationsModel>();
+                return r;
+            }
+            return null;
+        }
+
+        public async Task<CircuitInformationsModel> GetCircuitInformations(string country)
+        {
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"{Constants.InformationsApiBaseUrl}circuit/info?country={country}");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                var json = JObject.Parse(result);
+                var r = json["result"].ToObject<CircuitInformationsModel>();
                 return r;
             }
             return null;

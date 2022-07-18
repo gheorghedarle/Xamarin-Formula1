@@ -10,6 +10,7 @@
     <Frame
         BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="20"
+        Margin="5, 0, 10, 0"
         VerticalOptions="FillAndExpand">
         <Label
             Text="See More"

@@ -97,147 +97,71 @@
                     FontFamilySelected="Exo_Medium"
                     FontSizeSelected="14"
                     FontSize="14">
-                    <StackLayout>
-                        <Label
-                            Text="Map"
-                            Style="{StaticResource Body1FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0"></Label>
-                        <Image
-                            Aspect="AspectFit"
-                            Margin="5, 5, 5, 0"
-                            HeightRequest="150"
-                            Source="{Binding Circuit.Circuit.Map}"></Image>
-                        <Label
-                            Text="Race Weekend"
-                            Style="{StaticResource Body1FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0"></Label>
-                        <Label
-                            Style="{StaticResource Body2FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span
-                                        Text="First practice: "
-                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                                    <Span
-                                        Style="{StaticResource Body2FontSize_ExoBold}">
-                                        <Span.Text>
-                                            <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
-                                                <Binding Path="Circuit.FirstPractice.Date" />
-                                                <Binding Path="Circuit.FirstPractice.Time" />
-                                            </MultiBinding>
-                                        </Span.Text>
-                                    </Span>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label
-                            Style="{StaticResource Body2FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span
-                                        Text="Second practice: "
-                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                                    <Span
-                                        Style="{StaticResource Body2FontSize_ExoBold}">
-                                        <Span.Text>
-                                            <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
-                                                <Binding Path="Circuit.SecondPractice.Date" />
-                                                <Binding Path="Circuit.SecondPractice.Time" />
-                                            </MultiBinding>
-                                        </Span.Text>
-                                    </Span>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label
-                            IsVisible="{Binding Circuit.ThirdPractice, Converter={xct:IsNotNullOrEmptyConverter}}"
-                            Style="{StaticResource Body2FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span
-                                        Text="Third practice: "
-                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                                    <Span
-                                        Style="{StaticResource Body2FontSize_ExoBold}">
-                                        <Span.Text>
-                                            <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
-                                                <Binding Path="Circuit.ThirdPractice.Date" />
-                                                <Binding Path="Circuit.ThirdPractice.Time" />
-                                            </MultiBinding>
-                                        </Span.Text>
-                                    </Span>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label
-                            Style="{StaticResource Body2FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span
-                                        Text="Qualifying: "
-                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                                    <Span
-                                        Style="{StaticResource Body2FontSize_ExoBold}">
-                                        <Span.Text>
-                                            <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
-                                                <Binding Path="Circuit.Qualifying.Date" />
-                                                <Binding Path="Circuit.Qualifying.Time" />
-                                            </MultiBinding>
-                                        </Span.Text>
-                                    </Span>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label
-                            IsVisible="{Binding Circuit.Sprint, Converter={xct:IsNotNullOrEmptyConverter}}"
-                            Style="{StaticResource Body2FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span
-                                        Text="Sprint: "
-                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                                    <Span
-                                        Style="{StaticResource Body2FontSize_ExoBold}">
-                                        <Span.Text>
-                                            <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
-                                                <Binding Path="Circuit.Sprint.Date" />
-                                                <Binding Path="Circuit.Sprint.Time" />
-                                            </MultiBinding>
-                                        </Span.Text>
-                                    </Span>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label
-                            Style="{StaticResource Body2FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span
-                                        Text="Race: "
-                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                                    <Span
-                                        Style="{StaticResource Body2FontSize_ExoBold}">
-                                        <Span.Text>
-                                            <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
-                                                <Binding Path="Circuit.Date" />
-                                                <Binding Path="Circuit.Time" />
-                                            </MultiBinding>
-                                        </Span.Text>
-                                    </Span>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label
-                            Text="Basic Informations"
-                            Style="{StaticResource Body1FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0"></Label>
-                    </StackLayout>
+                    <ScrollView>
+                        <StackLayout>
+                            <Label
+                                Text="Map"
+                                Style="{StaticResource Body1FontSize_ExoBold}"
+                                Margin="20, 0, 20, 5"></Label>
+                            <Image
+                                Aspect="AspectFit"
+                                Margin="5"
+                                HeightRequest="150"
+                                Source="{Binding Circuit.Circuit.Map}"></Image>
+                            <StackLayout                        
+                                xct:StateLayout.CurrentState="{Binding InformationsState}"
+                                Margin="20, 0, 0, 5">
+                                <xct:StateLayout.StateViews>
+                                    <xct:StateView 
+                                        StateKey="Loading"
+                                        VerticalOptions="FillAndExpand">
+                                        <fragments:LoadingView></fragments:LoadingView>
+                                    </xct:StateView>
+                                    <xct:StateView 
+                                        StateKey="Error"
+                                        VerticalOptions="FillAndExpand">
+                                        <Label Text="Error"></Label>
+                                    </xct:StateView>
+                                    <xct:StateView 
+                                        StateKey="Empty"
+                                        VerticalOptions="FillAndExpand">
+                                        <Label Text="Empty"></Label>
+                                    </xct:StateView>
+                                </xct:StateLayout.StateViews>
+                                <Label
+                                    Text="Race Weekend"
+                                    Style="{StaticResource Body1FontSize_ExoBold}"
+                                    Margin="0, 0, 0, 5"></Label>
+                                <templates:CircuitRaceWeekendTemplate></templates:CircuitRaceWeekendTemplate>
+                            </StackLayout>
+                            <StackLayout                        
+                                xct:StateLayout.CurrentState="{Binding InformationsState}"
+                                Margin="20, 0, 0, 10">
+                                <xct:StateLayout.StateViews>
+                                    <xct:StateView 
+                                    StateKey="Loading"
+                                    VerticalOptions="FillAndExpand">
+                                        <fragments:LoadingView></fragments:LoadingView>
+                                    </xct:StateView>
+                                    <xct:StateView 
+                                    StateKey="Error"
+                                    VerticalOptions="FillAndExpand">
+                                        <Label Text="Error"></Label>
+                                    </xct:StateView>
+                                    <xct:StateView 
+                                    StateKey="Empty"
+                                    VerticalOptions="FillAndExpand">
+                                        <Label Text="Empty"></Label>
+                                    </xct:StateView>
+                                </xct:StateLayout.StateViews>
+                                <Label
+                                    Text="Basic Informations"
+                                    Style="{StaticResource Body1FontSize_ExoBold}"
+                                    Margin="0, 0, 0, 5"></Label>
+                                <templates:CircuitInformationsTemplate></templates:CircuitInformationsTemplate>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
                 </xct:TabViewItem>
                 <xct:TabViewItem
                     Text="Results"

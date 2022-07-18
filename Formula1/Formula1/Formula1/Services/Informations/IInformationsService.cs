@@ -7,5 +7,6 @@ namespace Formula1.Services.Informations
     {
         Task<DriverInformationsModel> GetDriverInformations(string driver);
         Task<ConstructorInformationsModel> GetTeamInformations(string team);
+        Task<CircuitInformationsModel> GetCircuitInformations(string country);
     }
 }
