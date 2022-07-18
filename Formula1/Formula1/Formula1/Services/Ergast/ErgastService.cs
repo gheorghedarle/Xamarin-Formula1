@@ -28,7 +28,14 @@ namespace Formula1.Services.Ergast
                 var json = JObject.Parse(result);
                 var res = json["MRData"]["StandingsTable"]["StandingsLists"].First["DriverStandings"].ToString();
                 var r = JsonConvert.DeserializeObject<List<DriverStadingsModel>>(res);
-                r.ForEach(d => d.Driver.Image = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png");
+                r.ForEach(d =>
+                {
+                    d.Driver.Image = new DriverImageModel()
+                    {
+                        Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
+                        Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png",
+                    };
+                });
                 return r;
             }
             return null;
@@ -97,7 +104,13 @@ namespace Formula1.Services.Ergast
                         {
                             if (r.Count > 0 && r.First().Results.Count > 0)
                             {
-                                r.First().Results.ForEach(d => d.Driver.Image = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png");
+                                r.First().Results.ForEach(d => {
+                                    d.Driver.Image = new DriverImageModel()
+                                    {
+                                        Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
+                                        Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png"
+                                    };
+                                });
                                 return r;
                             }
                             else
@@ -109,7 +122,13 @@ namespace Formula1.Services.Ergast
                         {
                             if (r.Count > 0 && r.First().QualifyingResults.Count > 0)
                             {
-                                r.First().QualifyingResults.ForEach(d => d.Driver.Image = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png");
+                                r.First().QualifyingResults.ForEach(d => {
+                                    d.Driver.Image = new DriverImageModel()
+                                    {
+                                        Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
+                                        Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png"
+                                    };
+                                });
                                 return r;
                             }
                             else
@@ -121,7 +140,13 @@ namespace Formula1.Services.Ergast
                         {
                             if (r.Count > 0 && r.First().SprintResults.Count > 0)
                             {
-                                r.First().SprintResults.ForEach(d => d.Driver.Image = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png");
+                                r.First().SprintResults.ForEach(d => {
+                                    d.Driver.Image = new DriverImageModel()
+                                    {
+                                        Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
+                                        Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png"
+                                    };
+                                });
                                 return r;
                             }
                             else

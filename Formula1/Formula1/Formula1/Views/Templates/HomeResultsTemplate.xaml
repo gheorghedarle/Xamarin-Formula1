@@ -53,7 +53,7 @@
                 Grid.Row="0"
                 Grid.RowSpan="4"
                 Grid.Column="1"
-                Source="{Binding Driver.Image}"
+                Source="{Binding Driver.Image.Side}"
                 WidthRequest="100"
                 HeightRequest="100"
                 Aspect="AspectFill"
