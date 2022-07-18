@@ -137,7 +137,7 @@ namespace Formula1.Services.Ergast
 
         public async Task<List<RaceEventModel>> GetResultsByDriver(string year, string driver)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/drivers/{driver}/results.json");
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/drivers/{driver}/results.json");
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();

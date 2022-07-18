@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -32,7 +33,7 @@ namespace Formula1.Helpers
         public static List<int> GetSeasonsList()
         {
             var seasons = new List<int>();
-            for(int i = 2021; i >= 1950; i--)
+            for(int i = DateTime.Now.Year; i >= 1950; i--)
             {
                 seasons.Add(i);
             }

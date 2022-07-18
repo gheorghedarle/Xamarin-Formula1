@@ -46,6 +46,7 @@ namespace Formula1.ViewModels.TabViews
         public Command SeeMoreScheduleCommand { get; set; }
         public Command SeeDriversCommand { get; set; }
         public Command SeeTeamsCommand { get; set; }
+        public Command DriverDetailsCommand { get; set; }
 
         #endregion
 
@@ -64,6 +65,7 @@ namespace Formula1.ViewModels.TabViews
             SeeMoreScheduleCommand = new Command(SeeMoreScheduleCommandHandler);
             SeeDriversCommand = new Command(SeeDriversCommandHandler);
             SeeTeamsCommand = new Command(SeeTeamsCommandHandler);
+            DriverDetailsCommand = new Command<DriverStadingsModel>(DriverDetailsCommandHandler);
 
             Init = Initialize();
         }
@@ -113,6 +115,10 @@ namespace Formula1.ViewModels.TabViews
             await Shell.Current.GoToAsync($"//main/teams");
         }
 
+        private async void DriverDetailsCommandHandler(DriverStadingsModel driver)
+        {
+            await Shell.Current.GoToAsync($"//main/drivers/details?driver={JsonConvert.SerializeObject(driver)}");
+        }
 
         #endregion
 

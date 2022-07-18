@@ -142,10 +142,21 @@
                                 <Label Text="Empty"></Label>
                             </xct:StateView>
                         </xct:StateLayout.StateViews>
-                        <Label
-                            Text="Current Season"
-                            Style="{StaticResource Body1FontSize_ExoBold}"
-                            Margin="20, 0, 20, 0"></Label>
+                        <Label Margin="20, 0, 20, 0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="{Binding SelectedSeason, StringFormat='{0} '}"
+                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                    <Span
+                                        Text=" &#xf0d7;"
+                                        Style="{StaticResource CaptionFontSize_FontAwesome}"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectSeasonCommand}"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
                         <CollectionView
                             Margin="0, 0, 0, 10"
                             x:Name="resultsList"

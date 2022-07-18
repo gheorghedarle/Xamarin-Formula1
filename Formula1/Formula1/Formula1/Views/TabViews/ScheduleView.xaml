@@ -12,7 +12,7 @@
             Text="{Binding Title}"
             Style="{StaticResource Headline3_ExoBold}"
             TextColor="{StaticResource AccentColor}"
-            Margin="15, 10, 0, 10"/>
+            Margin="15, 10, 0, 0"/>
         <StackLayout
             xct:StateLayout.CurrentState="{Binding MainState}"
             VerticalOptions="FillAndExpand">

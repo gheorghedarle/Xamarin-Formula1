@@ -1,11 +1,14 @@
 ﻿using Formula1.Models;
 using Formula1.Services.Ergast;
 using Formula1.Services.Informations;
+using Formula1.Views.Popups;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Web;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 
@@ -25,6 +28,7 @@ namespace Formula1.ViewModels
         public ObservableCollection<RaceEventModel> RaceResults { get; set; }
         public DriverStadingsModel DriverStading { get; set; }
         public DriverInformationsModel DriverInformations { get; set; }
+        public string SelectedSeason { get; set; }
 
         public LayoutState ResultsState { get; set; }
         public LayoutState InformationsState { get; set; }
@@ -34,6 +38,7 @@ namespace Formula1.ViewModels
         #region Commands
 
         public Command BackCommand { get; set; }
+        public Command SelectSeasonCommand { get; set; }
 
         #endregion
 
@@ -47,6 +52,7 @@ namespace Formula1.ViewModels
             _informationsService = informationsService;
 
             BackCommand = new Command(BackCommandHandler);
+            SelectSeasonCommand = new Command(SelectSeasonCommandHandler);
         }
 
         #endregion
@@ -56,6 +62,17 @@ namespace Formula1.ViewModels
         private async void BackCommandHandler()
         {
             await Shell.Current.GoToAsync("..");
+        }
+
+        private async void SelectSeasonCommandHandler()
+        {
+            var season = await Shell.Current.Navigation.ShowPopupAsync(new SeasonPopupPage());
+            if (season != null)
+            {
+                SelectedSeason = season.ToString() == DateTime.Now.Year.ToString() ? "Current Season" : season.ToString();
+                ResultsState = LayoutState.Loading;
+                await GetResults();            
+            }
         }
 
         #endregion
@@ -70,6 +87,7 @@ namespace Formula1.ViewModels
             {
                 var driver = JsonConvert.DeserializeObject<DriverStadingsModel>(driverString);
                 DriverStading = driver;
+                SelectedSeason = "Current Season";
                 ResultsState = LayoutState.Loading;
                 InformationsState = LayoutState.Loading;
                 await GetResults();
@@ -83,7 +101,8 @@ namespace Formula1.ViewModels
 
         private async Task GetResults()
         {
-            var res = await _ergastService.GetResultsByDriver("current", DriverStading.Driver.DriverId);
+            var season = SelectedSeason == "Current Season" ? "current" : SelectedSeason;
+            var res = await _ergastService.GetResultsByDriver(season, DriverStading.Driver.DriverId);
             if (res != null)
             {
                 RaceResults = new ObservableCollection<RaceEventModel>(res);
