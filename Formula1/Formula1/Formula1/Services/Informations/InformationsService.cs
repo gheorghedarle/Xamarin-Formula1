@@ -23,7 +23,7 @@ namespace Formula1.Services.Informations
             {
                 var result = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(result);
-                var r = json.ToObject<DriverInformationsModel>();
+                var r = json["result"].ToObject<DriverInformationsModel>();
                 return r;
             }
             return null;

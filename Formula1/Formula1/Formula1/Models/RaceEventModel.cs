@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Formula1.Models
 {
-    public class RaceEventModel
+    public record RaceEventModel
     { 
         public int Round { get; set; }
         public string RaceName { get; set; }

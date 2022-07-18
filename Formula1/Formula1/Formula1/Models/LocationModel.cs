@@ -1,6 +1,6 @@
 ﻿namespace Formula1.Models
 {
-    public class LocationModel
+    public record LocationModel
     {
         public string Locality { get; set; }
         public string Flag { get; set; }

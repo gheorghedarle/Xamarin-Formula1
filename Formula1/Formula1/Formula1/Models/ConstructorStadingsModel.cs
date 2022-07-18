@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Formula1.Models
 {
-    public class ConstructorStadingsModel
+    public record ConstructorStadingsModel
     {
         public int Position { get; set; }
         public double Points { get; set; }

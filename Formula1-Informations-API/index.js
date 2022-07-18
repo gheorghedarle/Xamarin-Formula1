@@ -29,9 +29,10 @@ app.get("/driver/info", async function (req, res) {
           const value = $(element).find("td").text();
           r[camelize(label)] = value;
         });
-        res.end(JSON.stringify(r));
+        var finalResult = { result: r };
+        res.status(200).end(JSON.stringify(finalResult));
       })
-      .catch((err) => console.error(err));
+      .catch((err) => res.status(400).end());
   }
 });
 
@@ -50,16 +51,16 @@ app.get("/team/info", async function (req, res) {
           const value = $(element).find("td").text();
           r[camelize(label)] = value;
         });
-        res.end(JSON.stringify(r));
+        res.status(200).end(JSON.stringify(r));
       })
-      .catch((err) => console.error(err));
+      .catch((err) => res.status(400).end());
   }
 });
 
 function camelize(str) {
   return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function (match, index) {
-    if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
-    return index === 0 ? match.toLowerCase() : match.toUpperCase();
+    if (+match === 0) return "";
+    return match.toUpperCase();
   });
 }
 

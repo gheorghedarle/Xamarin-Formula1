@@ -6,17 +6,29 @@
         <Label.FormattedText>
             <FormattedString>
                 <Span
-                    Text="Date of Birth:"
+                    Text="Date of Birth: "
                     Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
                 <Span
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
-                        <MultiBinding StringFormat=" {0} ({1} years old)">
+                        <MultiBinding StringFormat="{}{0} ({1} years old)">
                             <Binding Path="DriverInformations.DateOfBirth" />
                             <Binding Path="DriverInformations.Age" />
                         </MultiBinding>
                     </Span.Text>
                 </Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Place of birth: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding DriverInformations.PlaceOfBirth}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
             </FormattedString>
         </Label.FormattedText>
     </Label>

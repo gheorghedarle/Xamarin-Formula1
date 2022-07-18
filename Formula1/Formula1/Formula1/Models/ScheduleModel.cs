@@ -2,7 +2,7 @@
 
 namespace Formula1.Models
 {
-    public class ScheduleModel
+    public record ScheduleModel
     {
         public List<RaceEventModel> UpcomingRaceEvents { get; set; }
         public List<RaceEventModel> PastRaceEvents { get; set; }

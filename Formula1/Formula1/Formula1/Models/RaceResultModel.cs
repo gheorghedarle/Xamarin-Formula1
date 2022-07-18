@@ -1,6 +1,6 @@
 ﻿namespace Formula1.Models
 {
-    public class RaceResultModel
+    public record RaceResultModel
     {
         public int Number { get; set; }
         public int Position { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Formula1.Models
 {
-    public class DriverStadingsModel
+    public record DriverStadingsModel
     {
         public int Position { get; set; }
         public double Points { get; set; }

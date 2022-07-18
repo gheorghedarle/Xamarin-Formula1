@@ -70,6 +70,8 @@ namespace Formula1.ViewModels
             {
                 var driver = JsonConvert.DeserializeObject<DriverStadingsModel>(driverString);
                 DriverStading = driver;
+                ResultsState = LayoutState.Loading;
+                InformationsState = LayoutState.Loading;
                 await GetResults();
                 await GetInformations();
             }
@@ -81,7 +83,6 @@ namespace Formula1.ViewModels
 
         private async Task GetResults()
         {
-            ResultsState = LayoutState.Loading;
             var res = await _ergastService.GetResultsByDriver("current", DriverStading.Driver.DriverId);
             if (res != null)
             {
@@ -97,7 +98,6 @@ namespace Formula1.ViewModels
 
         private async Task GetInformations()
         {
-            InformationsState = LayoutState.Loading;
             var res = await _informationsService.GetDriverInformations(string.Format("{0}-{1}", DriverStading.Driver.GivenName.ToLower(), DriverStading.Driver.FamilyName.ToLower()));
             if (res != null)
             {

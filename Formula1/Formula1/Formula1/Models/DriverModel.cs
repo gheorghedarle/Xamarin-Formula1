@@ -1,6 +1,6 @@
 ﻿namespace Formula1.Models
 {
-    public class DriverModel
+    public record DriverModel
     {
         public string DriverId { get; set; }
         public string Image { get; set; }

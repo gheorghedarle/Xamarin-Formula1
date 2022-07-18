@@ -1,6 +1,6 @@
 ﻿namespace Formula1.Models
 {
-    public class CircuitModel
+    public record CircuitModel
     {
         public string CircuitId { get; set; }
         public string CircuitName { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Formula1.Models
 {
-    public class ConstructorInformationsModel
+    public record ConstructorInformationsModel
     {
         public string FullTeamName { get; set; }
         public string Base { get; set; }

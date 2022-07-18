@@ -1,6 +1,6 @@
 ﻿namespace Formula1.Models
 {
-    public class LapModel
+    public record LapModel
     {
         public int Rank { get; set; }
         public int Lap { get; set; }

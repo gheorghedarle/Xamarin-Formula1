@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Formula1.Models
 {
-    public class EventModel
+    public record EventModel
     {
         public DateTime Date { get; set; }
         public DateTime Time { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Formula1.Models
 {
-    public class ConstructorModel
+    public record ConstructorModel
     {
         public string ConstructorId { get; set; }
         public int Position { get; set; }

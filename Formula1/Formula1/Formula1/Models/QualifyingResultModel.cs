@@ -1,6 +1,6 @@
 ﻿namespace Formula1.Models
 {
-    public class QualifyingResultModel
+    public record QualifyingResultModel
     {
         public int Number { get; set; }
         public int Position { get; set; }
