@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Formula1.Services.Ergast
 {
@@ -35,6 +36,7 @@ namespace Formula1.Services.Ergast
                         Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
                         Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png",
                     };
+                    d.Constructors[0].Color = Constants.TeamColors[d.Constructors[0].ConstructorId];
                 });
                 return r;
             }
@@ -57,6 +59,7 @@ namespace Formula1.Services.Ergast
                         Logo = $"{Constants.ImageApiBaseUrl}teams/{c.Constructor.ConstructorId}.png",
                         Car = $"{Constants.ImageApiBaseUrl}cars/{c.Constructor.ConstructorId}.png",
                     };
+                    c.Constructor.Color = Constants.TeamColors[c.Constructor.ConstructorId];
                 });
                 if (year == "current")
                 {

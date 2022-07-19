@@ -1,4 +1,6 @@
-﻿namespace Formula1.Models
+﻿using Xamarin.Forms;
+
+namespace Formula1.Models
 {
     public record ConstructorModel
     {
@@ -9,5 +11,6 @@
         public double Points { get; set; }
         public int Wins { get; set; }
         public ConstructorImageModel Image { get; set; }
+        public string Color { get; set; }
     }
 }

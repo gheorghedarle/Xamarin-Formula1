@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Formula1.Views.Templates.TeamStadingsTemplate"
     RowDefinitions="Auto, Auto"
-    ColumnDefinitions="30, *, Auto"
+    ColumnDefinitions="30, 3, *, Auto"
     Padding="15, 5, 15, 5"
     RowSpacing="0"
     x:Name="template">
@@ -21,20 +21,29 @@
         Style="{StaticResource Body1FontSize_ExoRegular}"
         HorizontalOptions="Center"
         VerticalOptions="Center"></Label>
+    <Frame
+        Grid.Row="0"
+        Grid.RowSpan="2"
+        Grid.Column="1"
+        HorizontalOptions="CenterAndExpand"
+        VerticalOptions="CenterAndExpand"
+        BackgroundColor="{Binding Constructor.Color}"></Frame>
     <Label
         Grid.Row="0"
-        Grid.Column="1"
+        Grid.Column="2"
+        Margin="3, 0, 0, 0"
         Text="{Binding Constructor.Name}"
         Style="{StaticResource Body1FontSize_ExoBold}"></Label>
     <Label
         Grid.Row="1"
-        Grid.Column="1"
+        Grid.Column="2"
+        Margin="3, 0, 0, 0"
         Text="{Binding DriversName}"
         Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
     <Label
         Grid.Row="0"
         Grid.RowSpan="2"
-        Grid.Column="2"
+        Grid.Column="3"
         VerticalOptions="CenterAndExpand">
         <Label.FormattedText>
             <FormattedString>

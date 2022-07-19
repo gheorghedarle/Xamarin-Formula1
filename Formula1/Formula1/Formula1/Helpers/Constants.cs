@@ -13,7 +13,8 @@ namespace Formula1.Helpers
                 public static string ImageApiBaseUrl = "http://10.0.2.2:4000/";
                 public static string InformationsApiBaseUrl = "http://10.0.2.2:5000/";
         #else
-                    public static string ImageApiBaseUrl = "Github Url";
+                public static string ImageApiBaseUrl = "Github Url";
+                public static string InformationsApiBaseUrl = "Github Url";
         #endif
 
         #endregion
@@ -48,6 +49,24 @@ namespace Formula1.Helpers
         {
             return new List<string>() { "Race", "Qualification", "Sprint" };
         }
+
+        #endregion
+
+        #region Team Color
+
+        public static Dictionary<string, string> TeamColors = new Dictionary<string, string>()
+        {
+            { "alfa", "#B12039"},
+            { "alphatauri", "#4E7C9B"},
+            { "alpine", "#2293D1"},
+            { "aston_martin", "#2D826D"},
+            { "ferrari", "#ED1C24"},
+            { "haas", "#B6BABD"},
+            { "mclaren", "#F58020"},
+            { "mercedes", "#6CD3BF"},
+            { "red_bull", "#1E5BC6"},
+            { "williams", "#37BEDD"},
+        };
 
         #endregion
     }
