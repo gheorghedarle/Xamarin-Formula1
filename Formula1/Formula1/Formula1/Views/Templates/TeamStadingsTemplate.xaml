@@ -6,7 +6,13 @@
     RowDefinitions="Auto, Auto"
     ColumnDefinitions="30, *, Auto"
     Padding="15, 5, 15, 5"
-    RowSpacing="0">
+    RowSpacing="0"
+    x:Name="template">
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer
+            Command="{Binding Path=Parent.BindingContext.TeamDetailsCommand, Source={x:Reference template}}"
+            CommandParameter="{Binding BindingContext, Source={x:Reference template}}"></TapGestureRecognizer>
+    </Grid.GestureRecognizers>
     <Label
         Grid.Row="0"
         Grid.RowSpan="2"

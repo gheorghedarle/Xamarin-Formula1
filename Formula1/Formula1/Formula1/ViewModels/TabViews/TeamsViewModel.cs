@@ -1,8 +1,10 @@
 ﻿using Formula1.Models;
 using Formula1.Services.Ergast;
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.UI.Views;
+using Xamarin.Forms;
 
 namespace Formula1.ViewModels.TabViews
 {
@@ -22,6 +24,12 @@ namespace Formula1.ViewModels.TabViews
 
         #endregion
 
+        #region Commands
+
+        public Command TeamDetailsCommand { get; set; }
+
+        #endregion
+
         #region Constructors
 
         public TeamsViewModel(
@@ -31,7 +39,18 @@ namespace Formula1.ViewModels.TabViews
 
             _ergastService = ergastService;
 
+            TeamDetailsCommand = new Command<ConstructorStadingsModel>(TeamDetailsCommandHandler);
+
             Init = Initialize();
+        }
+
+        #endregion
+
+        #region Command Handlers
+
+        private async void TeamDetailsCommandHandler(ConstructorStadingsModel team)
+        {
+            await Shell.Current.GoToAsync($"/details?team={JsonConvert.SerializeObject(team)}");
         }
 
         #endregion

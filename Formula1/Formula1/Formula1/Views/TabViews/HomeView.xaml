@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
       xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
       xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
+      xmlns:templates="clr-namespace:Formula1.Views.Templates"
       xmlns:templateSelector="clr-namespace:Formula1.Helpers.TemplateSelectors"
       x:Class="Formula1.Views.TabViews.HomeView"
       BindingContext="{Binding HomeView, Source={StaticResource ViewModelLocator}}"
@@ -148,82 +149,10 @@
                 </xct:StateLayout.StateViews>
                 <StackLayout
                     x:Name="driversList"
-                    BindableLayout.ItemsSource="{Binding DriversList}"
-                    Margin="20, 0, 20, 0">
+                    BindableLayout.ItemsSource="{Binding DriversList}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Grid
-                                RowDefinitions="Auto, Auto"
-                                ColumnDefinitions="30, 50, *, Auto"
-                                Padding="0, 5, 15, 5"
-                                RowSpacing="0">
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        Command="{Binding Path=BindingContext.DriverDetailsCommand, Source={x:Reference driversList}}"
-                                        CommandParameter="{Binding .}"></TapGestureRecognizer>
-                                </Grid.GestureRecognizers>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2"
-                                    Grid.Column="0"
-                                    Text="{Binding Position}"
-                                    Margin="5"
-                                    Style="{StaticResource Body1FontSize_ExoRegular}"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center"></Label>
-                                <Image
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2"
-                                    Grid.Column="1"
-                                    Source="{Binding Driver.Image.Front}"
-                                    WidthRequest="40"
-                                    HeightRequest="40"
-                                    Aspect="AspectFill"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center">
-                                    <Image.Clip>
-                                        <EllipseGeometry
-                                            Center="20,20"
-                                            RadiusX="20"
-                                            RadiusY="20"/>
-                                    </Image.Clip>
-                                </Image>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="2">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span
-                                                Text="{Binding Driver.GivenName}"
-                                                Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                            <Span
-                                                Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
-                                                Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="2"
-                                    Text="{Binding Constructors[0].Name}"
-                                    Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2"
-                                    Grid.Column="3"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span
-                                                Text="{Binding Points}"
-                                                Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                            <Span
-                                                Text=" pts"
-                                                Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </Grid>
+                            <templates:DriverStadingsTemplate></templates:DriverStadingsTemplate>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
@@ -262,50 +191,10 @@
                 </xct:StateLayout.StateViews>
                 <StackLayout
                     x:Name="teamsList"
-                    BindableLayout.ItemsSource="{Binding TeamsList}"
-                    Margin="20, 0, 20, 0">
+                    BindableLayout.ItemsSource="{Binding TeamsList}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Grid
-                                RowDefinitions="Auto, Auto"
-                                ColumnDefinitions="30, *, Auto"
-                                Padding="0, 5, 15, 5"
-                                RowSpacing="0">
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2"
-                                    Grid.Column="0"
-                                    Text="{Binding Position}"
-                                    Style="{StaticResource Body1FontSize_ExoRegular}"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center"></Label>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    Text="{Binding Constructor.Name}"
-                                    Style="{StaticResource Body1FontSize_ExoBold}"></Label>
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    Text="{Binding DriversName}"
-                                    Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2"
-                                    Grid.Column="2"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span
-                                                Text="{Binding Points}"
-                                                Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                            <Span
-                                                Text=" pts"
-                                                Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </Grid>
+                            <templates:TeamStadingsTemplate></templates:TeamStadingsTemplate>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>

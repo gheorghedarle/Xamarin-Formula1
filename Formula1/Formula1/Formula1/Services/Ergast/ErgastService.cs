@@ -50,7 +50,15 @@ namespace Formula1.Services.Ergast
                 var json = JObject.Parse(result);
                 var res = json["MRData"]["StandingsTable"]["StandingsLists"].First["ConstructorStandings"].ToString();
                 var r = JsonConvert.DeserializeObject<List<ConstructorStadingsModel>>(res);
-                if(year == "current")
+                r.ForEach(c =>
+                {
+                    c.Constructor.Image = new ConstructorImageModel()
+                    {
+                        Logo = $"{Constants.ImageApiBaseUrl}teams/{c.Constructor.ConstructorId}.png",
+                        Car = $"{Constants.ImageApiBaseUrl}cars/{c.Constructor.ConstructorId}.png",
+                    };
+                });
+                if (year == "current")
                 {
                     foreach (var a in r)
                     {

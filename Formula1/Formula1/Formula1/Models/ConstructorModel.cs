@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Formula1.Models
+﻿namespace Formula1.Models
 {
     public record ConstructorModel
     {
@@ -12,5 +8,6 @@ namespace Formula1.Models
         public string Nationality { get; set; }
         public double Points { get; set; }
         public int Wins { get; set; }
+        public ConstructorImageModel Image { get; set; }
     }
 }

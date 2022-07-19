@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Formula1.Views.TeamDetailsPage"
+             BindingContext="{Binding TeamDetailsPage, Source={StaticResource ViewModelLocator}}"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid
+            RowDefinitions="150, *"
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+            <Grid
+                Grid.Row="0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
+                Padding="20, 20, 20, 0">
+                <StackLayout
+                    Grid.Row="0"
+                    Padding="0, 5, 5, 5"
+                    HorizontalOptions="Start"
+                    Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Text="&#xf060;"
+                        FontSize="{StaticResource Subtitle1FontSize}"
+                        FontFamily="FontAwesome_Solid"
+                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                        HorizontalOptions="Start"></Label>
+                </StackLayout>
+                <StackLayout
+                    Spacing="0"
+                    Margin="0, 0, 0, 20"
+                    VerticalOptions="End">
+                    <Label
+                        Text="{Binding ConstructorStading.Constructor.Name}"
+                        Style="{StaticResource Subtitle1FontSize_ExoBold}">
+                    </Label>
+                    <Label
+                        Text="{Binding ConstructorStading.DriversName}"
+                        Style="{StaticResource Body2FontSize_ExoRegular}">
+                    </Label>
+                </StackLayout>
+                <Image
+                    Source="{Binding ConstructorStading.Constructor.Image.Logo}"
+                    WidthRequest="100"
+                    HeightRequest="100"
+                    Aspect="AspectFit"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center">
+                </Image>
+            </Grid>
+            <xct:TabView
+                Grid.Row="1"
+                TabStripPlacement="Top"
+                TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
+                TabStripHeight="40"
+                TabIndicatorColor="{StaticResource AccentColor}"
+                TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+                <xct:TabViewItem
+                    Text="Informations"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                    TextColorSelected="{StaticResource AccentColor}"
+                    FontFamily="Exo_Regular"
+                    FontFamilySelected="Exo_Medium"
+                    FontSizeSelected="14"
+                    FontSize="14">
+                    <ScrollView>
+                        <StackLayout>
+                            <Label
+                                Text="Chasis"
+                                Style="{StaticResource Body1FontSize_ExoBold}"
+                                Margin="20, 0, 20, 5"></Label>
+                            <Image
+                                Aspect="AspectFit"
+                                Margin="5"
+                                HeightRequest="80"
+                                Source="{Binding ConstructorStading.Constructor.Image.Car}"></Image>
+                        </StackLayout>
+                    </ScrollView>
+                </xct:TabViewItem>
+                <xct:TabViewItem
+                    Text="Results"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                    TextColorSelected="{StaticResource AccentColor}"
+                    FontFamily="Exo_Regular"
+                    FontFamilySelected="Exo_Medium"
+                    FontSizeSelected="14"
+                    FontSize="14">
+                </xct:TabViewItem>
+            </xct:TabView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
