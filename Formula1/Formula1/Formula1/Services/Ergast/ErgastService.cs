@@ -71,11 +71,40 @@ namespace Formula1.Services.Ergast
                             var dResult = await dResponse.Content.ReadAsStringAsync();
                             var dJson = JObject.Parse(dResult);
                             var dRes = dJson["MRData"]["DriverTable"]["Drivers"].ToString();
-                            a.Drivers = JsonConvert.DeserializeObject<List<DriverModel>>(dRes);
+                            a.Constructor.Drivers = JsonConvert.DeserializeObject<List<DriverModel>>(dRes);
                         }
                     }
                 }
                 return r;
+            }
+            return null;
+        }
+
+        public async Task<ConstructorModel> GetTeamInformations(string team)
+        {
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/constructors/{team}.json");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                var json = JObject.Parse(result);
+                var res = json["MRData"]["ConstructorTable"].ToString();
+                var r = JsonConvert.DeserializeObject<ConstructorInformationsModel>(res);
+                var c = r.Constructors.First();
+                c.Image = new ConstructorImageModel()
+                {
+                    Logo = $"{Constants.ImageApiBaseUrl}teams/{c.ConstructorId}.png",
+                    Car = $"{Constants.ImageApiBaseUrl}cars/{c.ConstructorId}.png",
+                };
+                c.Color = Constants.TeamColors[c.ConstructorId];
+                var dResponse = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructors/{c.ConstructorId}/drivers.json");
+                if (dResponse.IsSuccessStatusCode)
+                {
+                    var dResult = await dResponse.Content.ReadAsStringAsync();
+                    var dJson = JObject.Parse(dResult);
+                    var dRes = dJson["MRData"]["DriverTable"]["Drivers"].ToString();
+                    c.Drivers = JsonConvert.DeserializeObject<List<DriverModel>>(dRes);
+                }
+                return c;
             }
             return null;
         }

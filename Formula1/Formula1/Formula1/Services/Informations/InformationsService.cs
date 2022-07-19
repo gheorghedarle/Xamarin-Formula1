@@ -29,14 +29,14 @@ namespace Formula1.Services.Informations
             return null;
         }
 
-        public async Task<ConstructorInformationsModel> GetTeamInformations(string team)
+        public async Task<ConstructorBasicInformationsModel> GetTeamInformations(string team)
         {
             var response = await _httpClientFactory.GetHttpClient().GetAsync($"{Constants.InformationsApiBaseUrl}team/info?team={team}");
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(result);
-                var r = json["result"].ToObject<ConstructorInformationsModel>();
+                var r = json["result"].ToObject<ConstructorBasicInformationsModel>();
                 return r;
             }
             return null;

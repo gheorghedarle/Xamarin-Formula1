@@ -38,7 +38,7 @@
         Grid.Row="1"
         Grid.Column="2"
         Margin="3, 0, 0, 0"
-        Text="{Binding DriversName}"
+        Text="{Binding Constructor.DriversName}"
         Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
     <Label
         Grid.Row="0"

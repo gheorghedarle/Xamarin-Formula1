@@ -26,8 +26,8 @@ namespace Formula1.ViewModels
         #region Properties
 
         public ObservableCollection<RaceEventModel> RaceResults { get; set; }
-        public ConstructorStadingsModel ConstructorStading { get; set; }
-        public ConstructorInformationsModel ConstructorInformations { get; set; }
+        public ConstructorModel Constructor { get; set; }
+        public ConstructorBasicInformationsModel ConstructorInformations { get; set; }
         public string SelectedSeason { get; set; }
 
         public LayoutState ResultsState { get; set; }
@@ -81,11 +81,23 @@ namespace Formula1.ViewModels
         public async void ApplyQueryAttributes(IDictionary<string, string> query)
         {
             query.TryGetValue("team", out var teamParam);
-            string teamString = HttpUtility.UrlDecode(teamParam);
-            if (!string.IsNullOrEmpty(teamString))
+            var team = teamParam.ToString();
+            if (!string.IsNullOrEmpty(team))
             {
-                var team = JsonConvert.DeserializeObject<ConstructorStadingsModel>(teamString);
-                ConstructorStading = team;
+                await GetTeam(team);
+            }
+        }
+
+        #endregion
+
+        #region Private Functionality
+
+        private async Task GetTeam(string team)
+        {
+            var res = await _ergastService.GetTeamInformations(team);
+            if (res != null)
+            {
+                Constructor = res;
                 SelectedSeason = "Current Season";
                 ResultsState = LayoutState.Loading;
                 InformationsState = LayoutState.Loading;
@@ -94,13 +106,9 @@ namespace Formula1.ViewModels
             }
         }
 
-        #endregion
-
-        #region Private Functionality
-
         private async Task GetInformations()
         {
-            var res = await _informationsService.GetTeamInformations(ConstructorStading.Constructor.Name);
+            var res = await _informationsService.GetTeamInformations(Constructor.Name);
             if (res != null)
             {
                 ConstructorInformations = res;

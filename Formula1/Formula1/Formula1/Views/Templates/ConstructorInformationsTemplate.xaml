@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Formula1.Views.Templates.ConstructorInformationsTemplate">
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Full team name: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding ConstructorInformations.FullTeamName}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Base: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding ConstructorInformations.Base}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Team chief: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding ConstructorInformations.TeamChief}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Technical chief: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding ConstructorInformations.TechnicalChief}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Chassis: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding ConstructorInformations.Chassis}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Power unit: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding ConstructorInformations.PowerUnit}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="First team entry: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding ConstructorInformations.FirstTeamEntry}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="World Championships: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding ConstructorInformations.WorldChampionships}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Highest race finish: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding ConstructorInformations.HighestRaceFinish}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Pole positions: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding ConstructorInformations.PolePositions}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+    <Label>
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="Fastest laps: "
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                <Span
+                    Text="{Binding ConstructorInformations.FastestLaps}"
+                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+</StackLayout>

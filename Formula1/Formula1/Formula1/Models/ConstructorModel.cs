@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Formula1.Models
 {
@@ -12,5 +13,13 @@ namespace Formula1.Models
         public int Wins { get; set; }
         public ConstructorImageModel Image { get; set; }
         public string Color { get; set; }
+        public List<DriverModel> Drivers { get; set; }
+        public string DriversName
+        {
+            get
+            {
+                return string.Join(" | ", Drivers.Select(d => string.Format("{0}. {1}", d.GivenName.Substring(0, 1), d.FamilyName)));
+            }
+        }
     }
 }

@@ -124,7 +124,7 @@ namespace Formula1.ViewModels.TabViews
 
         private async void TeamDetailsCommandHandler(ConstructorStadingsModel team)
         {
-            await Shell.Current.GoToAsync($"//main/teams/details?team={JsonConvert.SerializeObject(team)}");
+            await Shell.Current.GoToAsync($"//main/teams/details?team={team.Constructor.Name}");
         }
 
         #endregion
