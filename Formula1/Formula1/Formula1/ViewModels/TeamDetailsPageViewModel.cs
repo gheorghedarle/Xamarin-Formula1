@@ -110,7 +110,7 @@ namespace Formula1.ViewModels
 
         private async Task GetInformations()
         {
-            var res = await _informationsService.GetTeamInformations(Constructor.Name);
+            var res = await _informationsService.GetTeamInformations(Constructor.ConstructorId);
             if (res != null)
             {
                 ConstructorInformations = res;

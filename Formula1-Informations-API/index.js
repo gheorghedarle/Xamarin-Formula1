@@ -43,7 +43,7 @@ app.get("/team/info", async function (req, res) {
   if (req.query.team != null) {
     console.log(`/team/info - ${req.query.team}`);
     axios
-      .get(`${baseUrl}/teams/${req.query.team}.html`)
+      .get(`${baseUrl}/teams/${convertToTeamName(req.query.team)}.html`)
       .then((result) => {
         var r = {};
         const $ = cheerio.load(result.data);
@@ -94,6 +94,31 @@ function camelize(str) {
     if (+match === 0) return "";
     return match.toUpperCase();
   });
+}
+
+function convertToTeamName(team) {
+  switch (team) {
+    case "alfa":
+      return "Alfa-Romeo-Racing";
+    case "alphatauri":
+      return "AlphaTauri";
+    case "alpine":
+      return "Alpine";
+    case "aston_martin":
+      return "Aston-Martin";
+    case "ferrari":
+      return "Ferrari";
+    case "haas":
+      return "Haas-F1-Team";
+    case "mclaren":
+      return "McLaren";
+    case "mercedes":
+      return "Mercedes";
+    case "red_bull":
+      return "Red-Bull-Racing";
+    case "williams":
+      return "Williams";
+  }
 }
 
 var httpServer = http.createServer(app);

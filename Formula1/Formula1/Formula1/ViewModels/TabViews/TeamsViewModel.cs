@@ -50,7 +50,7 @@ namespace Formula1.ViewModels.TabViews
 
         private async void TeamDetailsCommandHandler(ConstructorStadingsModel team)
         {
-            await Shell.Current.GoToAsync($"/details?team={JsonConvert.SerializeObject(team)}");
+            await Shell.Current.GoToAsync($"/details?team={team.Constructor.ConstructorId}");
         }
 
         #endregion
