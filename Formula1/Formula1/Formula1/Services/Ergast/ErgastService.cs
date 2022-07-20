@@ -149,6 +149,23 @@ namespace Formula1.Services.Ergast
             return null;
         }
 
+        public async Task<RaceEventModel> GetRaceEventInformations(string year, int round)
+        {
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}.json");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                var json = JObject.Parse(result);
+                var res = json["MRData"]["RaceTable"].ToString();
+                var r = JsonConvert.DeserializeObject<RaceEventInformationsModel>(res);
+                var c = r.Races.First();
+                c.Circuit.Location.Flag = $"{Constants.ImageApiBaseUrl}countries/{c.Circuit.Location.Country}.png";
+                c.Circuit.Map = $"{Constants.ImageApiBaseUrl}circuits/{c.Circuit.CircuitId}.png";
+                return c;
+            }
+            return null;
+        }
+
         public async Task<List<RaceEventModel>> GetResults(string year, string round, string raceType, string queryParams = null)
         {
             var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}/{raceType}.json?{queryParams}");

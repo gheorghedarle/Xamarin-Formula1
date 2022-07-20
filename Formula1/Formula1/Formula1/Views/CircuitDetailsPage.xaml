@@ -10,7 +10,25 @@
     <ContentPage.Content>
         <Grid
             RowDefinitions="Auto, *" 
-            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"            
+            xct:StateLayout.CurrentState="{Binding MainState}">
+            <xct:StateLayout.StateViews>
+                <xct:StateView 
+                    StateKey="Loading"
+                    VerticalOptions="FillAndExpand">
+                    <fragments:LoadingView></fragments:LoadingView>
+                </xct:StateView>
+                <xct:StateView 
+                    StateKey="Error"
+                    VerticalOptions="FillAndExpand">
+                    <Label Text="Error"></Label>
+                </xct:StateView>
+                <xct:StateView 
+                    StateKey="Empty"
+                    VerticalOptions="FillAndExpand">
+                    <Label Text="Empty"></Label>
+                </xct:StateView>
+            </xct:StateLayout.StateViews>
             <StackLayout
                 Grid.Row="0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
@@ -38,18 +56,18 @@
                         Grid.Column="0"
                         Spacing="0">
                         <Label
-                            Text="{Binding Circuit.Round, StringFormat='Round {0}'}"
+                            Text="{Binding RaceEvent.Round, StringFormat='Round {0}'}"
                             Style="{StaticResource CaptionFontSize_ExoRegular}"
                             TextColor="{StaticResource AccentColor}"
                             VerticalOptions="Center">
                         </Label>
                         <Label
-                            Text="{Binding Circuit.RaceName}"
+                            Text="{Binding RaceEvent.RaceName}"
                             Style="{StaticResource Body1FontSize_ExoBold}"
                             VerticalOptions="Center">
                         </Label>
                         <Label
-                            Text="{Binding Circuit.Circuit.CircuitName}"
+                            Text="{Binding RaceEvent.Circuit.CircuitName}"
                             Style="{StaticResource Body2FontSize_ExoRegular}"
                             VerticalOptions="Center">
                         </Label>
@@ -66,7 +84,7 @@
                     </StackLayout>
                     <Image
                         Grid.Column="1"
-                        Source="{Binding Circuit.Circuit.Location.Flag}"
+                        Source="{Binding RaceEvent.Circuit.Location.Flag}"
                         WidthRequest="40"
                         HeightRequest="40"
                         Aspect="AspectFill"
@@ -107,7 +125,7 @@
                                 Aspect="AspectFit"
                                 Margin="5"
                                 HeightRequest="150"
-                                Source="{Binding Circuit.Circuit.Map}"></Image>
+                                Source="{Binding RaceEvent.Circuit.Map}"></Image>
                             <StackLayout                        
                                 xct:StateLayout.CurrentState="{Binding InformationsState}"
                                 Margin="20, 0, 0, 5">

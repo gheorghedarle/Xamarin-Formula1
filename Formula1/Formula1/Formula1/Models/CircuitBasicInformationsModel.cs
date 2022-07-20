@@ -1,6 +1,6 @@
 ﻿namespace Formula1.Models
 {
-    public class CircuitInformationsModel
+    public class CircuitBasicInformationsModel
     {
         public string FirstGrandPrix { get; set; }
         public string NumberOfLaps { get; set; }

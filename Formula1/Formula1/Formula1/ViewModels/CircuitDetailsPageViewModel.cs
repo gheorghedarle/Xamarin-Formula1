@@ -27,8 +27,8 @@ namespace Formula1.ViewModels
         #region Properties
 
         public RaceEventResultsModel Results { get; set; }
-        public RaceEventModel Circuit { get; set; }
-        public CircuitInformationsModel CircuitInformations { get; set; }
+        public RaceEventModel RaceEvent { get; set; }
+        public CircuitBasicInformationsModel CircuitInformations { get; set; }
         public string SelectedRaceType { get; set; }
         public int SelectedTab { get; set; }
 
@@ -82,21 +82,15 @@ namespace Formula1.ViewModels
 
         public async void ApplyQueryAttributes(IDictionary<string, string> query)
         {
-            query.TryGetValue("circuit", out var circuitParam);
+            query.TryGetValue("round", out var roundParam);
             query.TryGetValue("selectedTab", out var selectedTabParam);
-            string circuitString = string.IsNullOrEmpty(circuitParam) ? "" : HttpUtility.UrlDecode(circuitParam);
-            string seledctedTabString = string.IsNullOrEmpty(selectedTabParam) ? "" : HttpUtility.UrlDecode(query["selectedTab"]);
-            if(!string.IsNullOrEmpty(circuitString))
+            if (!string.IsNullOrEmpty(roundParam))
             {
-                var circuit = JsonConvert.DeserializeObject<RaceEventModel>(circuitString);
-                Circuit = circuit;
+                var round = Convert.ToInt32(roundParam);
+                MainState = LayoutState.Loading;
                 SelectedRaceType = "Race";
-                await GetResults();
-                await GetInformations();
-            }
-            if (!string.IsNullOrEmpty(seledctedTabString))
-            {
-                SelectedTab = string.IsNullOrEmpty(seledctedTabString) ? 0 : Convert.ToInt32(seledctedTabString);
+                SelectedTab = string.IsNullOrEmpty(selectedTabParam) ? 0 : Convert.ToInt32(selectedTabParam);
+                await GetRaceEvent(round);
             }
         }
 
@@ -104,10 +98,24 @@ namespace Formula1.ViewModels
 
         #region Private Functionality
 
+        private async Task GetRaceEvent(int round)
+        {
+            var res = await _ergastService.GetRaceEventInformations("current", round);
+            if (res != null)
+            {
+                RaceEvent = res;
+                SelectedRaceType = "Race";
+                MainState = LayoutState.None;
+                ResultsState = LayoutState.Loading;
+                InformationsState = LayoutState.Loading;
+                await GetResults();
+                await GetInformations();
+            }
+        }
+
         private async Task GetResults()
         {
-            ResultsState = LayoutState.Loading;
-            var res = await _ergastService.GetResults("current", Circuit.Round.ToString(), ConvertNameToRaceType(SelectedRaceType));
+            var res = await _ergastService.GetResults("current", RaceEvent.Round.ToString(), ConvertNameToRaceType(SelectedRaceType));
             if (res != null)
             {
                 Results = new RaceEventResultsModel()
@@ -127,8 +135,7 @@ namespace Formula1.ViewModels
 
         private async Task GetInformations()
         {
-            InformationsState = LayoutState.Loading;
-            var res = await _informationsService.GetCircuitInformations(Circuit.Circuit.Location.Country);
+            var res = await _informationsService.GetCircuitInformations(RaceEvent.Circuit.Location.Country);
             if (res != null)
             {
                 CircuitInformations = res;

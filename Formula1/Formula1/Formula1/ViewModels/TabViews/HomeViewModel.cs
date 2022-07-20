@@ -94,12 +94,12 @@ namespace Formula1.ViewModels.TabViews
 
         private async void SeeMoreResultsCommandHandler()
         {
-            await Shell.Current.GoToAsync($"//main/schedule/details?circuit={JsonConvert.SerializeObject(_latestRace)}&selectedTab=1");
+            await Shell.Current.GoToAsync($"//main/schedule/details?round={_latestRace.Round}&selectedTab=1");
         }
 
         private async void SeeEventCommandHandler(RaceEventModel raceEvent)
         {
-            await Shell.Current.GoToAsync($"//main/schedule/details?circuit={JsonConvert.SerializeObject(raceEvent)}");
+            await Shell.Current.GoToAsync($"//main/schedule/details?round={raceEvent.Round}");
         }
 
         private async void SeeMoreScheduleCommandHandler()

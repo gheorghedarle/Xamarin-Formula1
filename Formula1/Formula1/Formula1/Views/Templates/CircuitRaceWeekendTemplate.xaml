@@ -13,8 +13,8 @@
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
                         <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
-                            <Binding Path="Circuit.FirstPractice.Date" />
-                            <Binding Path="Circuit.FirstPractice.Time" />
+                            <Binding Path="RaceEvent.FirstPractice.Date" />
+                            <Binding Path="RaceEvent.FirstPractice.Time" />
                         </MultiBinding>
                     </Span.Text>
                 </Span>
@@ -31,8 +31,8 @@
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
                         <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
-                            <Binding Path="Circuit.SecondPractice.Date" />
-                            <Binding Path="Circuit.SecondPractice.Time" />
+                            <Binding Path="RaceEvent.SecondPractice.Date" />
+                            <Binding Path="RaceEvent.SecondPractice.Time" />
                         </MultiBinding>
                     </Span.Text>
                 </Span>
@@ -40,7 +40,7 @@
         </Label.FormattedText>
     </Label>
     <Label
-        IsVisible="{Binding Circuit.ThirdPractice, Converter={xct:IsNotNullOrEmptyConverter}}">
+        IsVisible="{Binding RaceEvent.ThirdPractice, Converter={xct:IsNotNullOrEmptyConverter}}">
         <Label.FormattedText>
             <FormattedString>
                 <Span
@@ -50,8 +50,8 @@
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
                         <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
-                            <Binding Path="Circuit.ThirdPractice.Date" />
-                            <Binding Path="Circuit.ThirdPractice.Time" />
+                            <Binding Path="RaceEvent.ThirdPractice.Date" />
+                            <Binding Path="RaceEvent.ThirdPractice.Time" />
                         </MultiBinding>
                     </Span.Text>
                 </Span>
@@ -68,8 +68,8 @@
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
                         <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
-                            <Binding Path="Circuit.Qualifying.Date" />
-                            <Binding Path="Circuit.Qualifying.Time" />
+                            <Binding Path="RaceEvent.Qualifying.Date" />
+                            <Binding Path="RaceEvent.Qualifying.Time" />
                         </MultiBinding>
                     </Span.Text>
                 </Span>
@@ -77,7 +77,7 @@
         </Label.FormattedText>
     </Label>
     <Label
-        IsVisible="{Binding Circuit.Sprint, Converter={xct:IsNotNullOrEmptyConverter}}">
+        IsVisible="{Binding RaceEvent.Sprint, Converter={xct:IsNotNullOrEmptyConverter}}">
         <Label.FormattedText>
             <FormattedString>
                 <Span
@@ -87,8 +87,8 @@
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
                         <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
-                            <Binding Path="Circuit.Sprint.Date" />
-                            <Binding Path="Circuit.Sprint.Time" />
+                            <Binding Path="RaceEvent.Sprint.Date" />
+                            <Binding Path="RaceEvent.Sprint.Time" />
                         </MultiBinding>
                     </Span.Text>
                 </Span>
@@ -105,8 +105,8 @@
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
                         <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
-                            <Binding Path="Circuit.Date" />
-                            <Binding Path="Circuit.Time" />
+                            <Binding Path="RaceEvent.Date" />
+                            <Binding Path="RaceEvent.Time" />
                         </MultiBinding>
                     </Span.Text>
                 </Span>

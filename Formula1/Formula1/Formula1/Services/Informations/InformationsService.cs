@@ -43,14 +43,14 @@ namespace Formula1.Services.Informations
             return null;
         }
 
-        public async Task<CircuitInformationsModel> GetCircuitInformations(string country)
+        public async Task<CircuitBasicInformationsModel> GetCircuitInformations(string country)
         {
             var response = await _httpClientFactory.GetHttpClient().GetAsync($"{Constants.InformationsApiBaseUrl}circuit/info?country={country}");
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(result);
-                var r = json["result"].ToObject<CircuitInformationsModel>();
+                var r = json["result"].ToObject<CircuitBasicInformationsModel>();
                 return r;
             }
             return null;
