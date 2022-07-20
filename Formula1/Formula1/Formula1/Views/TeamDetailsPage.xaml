@@ -86,41 +86,30 @@
                     FontSizeSelected="14"
                     FontSize="14">
                     <ScrollView>
-                        <StackLayout>
+                        <StackLayout                        
+                            xct:StateLayout.CurrentState="{Binding InformationsState}"
+                            Margin="20, 0, 0, 5">
+                            <xct:StateLayout.StateViews>
+                                <xct:StateView 
+                                    StateKey="Loading"
+                                    VerticalOptions="FillAndExpand">
+                                    <fragments:LoadingView></fragments:LoadingView>
+                                </xct:StateView>
+                                <xct:StateView 
+                                    StateKey="Error"
+                                    VerticalOptions="FillAndExpand">
+                                    <Label Text="Error"></Label>
+                                </xct:StateView>
+                                <xct:StateView 
+                                    StateKey="Empty"
+                                    VerticalOptions="FillAndExpand">
+                                    <Label Text="Empty"></Label>
+                                </xct:StateView>
+                            </xct:StateLayout.StateViews>
                             <Label
-                                Text="Chassis"
-                                Style="{StaticResource Body1FontSize_ExoBold}"
-                                Margin="20, 0, 20, 5"></Label>
-                            <Image
-                                Aspect="AspectFit"
-                                Margin="5"
-                                HeightRequest="80"
-                                Source="{Binding Constructor.Image.Car}"></Image>
-                            <StackLayout                        
-                                xct:StateLayout.CurrentState="{Binding InformationsState}"
-                                Margin="20, 0, 0, 5">
-                                <xct:StateLayout.StateViews>
-                                    <xct:StateView 
-                                        StateKey="Loading"
-                                        VerticalOptions="FillAndExpand">
-                                        <fragments:LoadingView></fragments:LoadingView>
-                                    </xct:StateView>
-                                    <xct:StateView 
-                                        StateKey="Error"
-                                        VerticalOptions="FillAndExpand">
-                                        <Label Text="Error"></Label>
-                                    </xct:StateView>
-                                    <xct:StateView 
-                                        StateKey="Empty"
-                                        VerticalOptions="FillAndExpand">
-                                        <Label Text="Empty"></Label>
-                                    </xct:StateView>
-                                </xct:StateLayout.StateViews>
-                                <Label
-                                    Text="Basic Informations"
-                                    Style="{StaticResource Body1FontSize_ExoBold}"></Label>
-                                <templates:ConstructorInformationsTemplate></templates:ConstructorInformationsTemplate>
-                            </StackLayout>
+                                Text="Basic Informations"
+                                Style="{StaticResource Body1FontSize_ExoBold}"></Label>
+                            <templates:ConstructorInformationsTemplate></templates:ConstructorInformationsTemplate>
                         </StackLayout>
                     </ScrollView>
                 </xct:TabViewItem>
@@ -132,6 +121,126 @@
                     FontFamilySelected="Exo_Medium"
                     FontSizeSelected="14"
                     FontSize="14">
+                    <StackLayout
+                        xct:StateLayout.CurrentState="{Binding ResultsState}">
+                        <xct:StateLayout.StateViews>
+                            <xct:StateView 
+                                StateKey="Loading"
+                                VerticalOptions="FillAndExpand">
+                                <fragments:LoadingView></fragments:LoadingView>
+                            </xct:StateView>
+                            <xct:StateView 
+                                StateKey="Error"
+                                VerticalOptions="FillAndExpand">
+                                <Label Text="Error"></Label>
+                            </xct:StateView>
+                            <xct:StateView 
+                                StateKey="Empty"
+                                VerticalOptions="FillAndExpand">
+                                <Label Text="Empty"></Label>
+                            </xct:StateView>
+                        </xct:StateLayout.StateViews>
+                        <Label Margin="20, 0, 20, 0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="{Binding SelectedSeason, StringFormat='{0} '}"
+                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                    <Span
+                                        Text=" &#xf0d7;"
+                                        Style="{StaticResource CaptionFontSize_FontAwesome}"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectSeasonCommand}"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <CollectionView
+                            Margin="0, 0, 0, 10"
+                            x:Name="resultsList"
+                            ItemsSource="{Binding RaceResults}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid
+                                        RowDefinitions="Auto, Auto, Auto"
+                                        Padding="20, 5, 20, 5"
+                                        RowSpacing="0">
+                                        <Label
+                                            Grid.Row="0"
+                                            Text="{Binding Round, StringFormat='Round {0}'}"
+                                            Style="{StaticResource CaptionFontSize_ExoRegular}"
+                                            TextColor="{StaticResource AccentColor}"
+                                            VerticalOptions="Center"></Label>
+                                        <Label
+                                            Grid.Row="1"
+                                            Text="{Binding Circuit.Location.Country}"
+                                            Style="{StaticResource Body2FontSize_ExoBold}"></Label>
+                                        <StackLayout
+                                            Grid.Row="2"
+                                            BindableLayout.ItemsSource="{Binding Results}"
+                                            Spacing="0"
+                                            Margin="0, 5, 0, 0">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid
+                                                        RowDefinitions="Auto, Auto"
+                                                        ColumnDefinitions="*, Auto"
+                                                        RowSpacing="0">
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            Grid.RowSpan="2"
+                                                            Grid.Column="0"
+                                                            VerticalOptions="Center">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span
+                                                                        Text="{Binding Driver.GivenName}"
+                                                                        Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                                                                    <Span
+                                                                        Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
+                                                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            HorizontalTextAlignment="End">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span
+                                                                        Text="Position "
+                                                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                                                                    <Span
+                                                                        Text="{Binding Position}"
+                                                                        Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                        <Label
+                                                            Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            HorizontalTextAlignment="End">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span
+                                                                        Text="{Binding Points}"
+                                                                        Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                                                                    <Span
+                                                                        Text=" pts"
+                                                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </Grid>                                                
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
                 </xct:TabViewItem>
             </xct:TabView>
         </Grid>

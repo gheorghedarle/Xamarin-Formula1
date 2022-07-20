@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace Formula1.Services.Ergast
 {
@@ -223,6 +222,27 @@ namespace Formula1.Services.Ergast
         public async Task<List<RaceEventModel>> GetResultsByDriver(string year, string driver)
         {
             var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/drivers/{driver}/results.json");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                var json = JObject.Parse(result);
+                var res = json["MRData"]["RaceTable"]["Races"].ToString();
+                var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
+                if (r.Count > 0)
+                {
+                    return r;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            return null;
+        }
+
+        public async Task<List<RaceEventModel>> GetResultsByTeam(string year, string team)
+        {
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructors/{team}/results.json");
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();

@@ -103,8 +103,24 @@ namespace Formula1.ViewModels
                 MainState = LayoutState.None;
                 ResultsState = LayoutState.Loading;
                 InformationsState = LayoutState.Loading;
-                //await GetResults();
+                await GetResults();
                 await GetInformations();
+            }
+        }
+
+        private async Task GetResults()
+        {
+            var season = SelectedSeason == "Current Season" ? "current" : SelectedSeason;
+            var res = await _ergastService.GetResultsByTeam(season, Constructor.ConstructorId);
+            if (res != null)
+            {
+                RaceResults = new ObservableCollection<RaceEventModel>(res);
+                ResultsState = LayoutState.None;
+            }
+            else
+            {
+                RaceResults = null;
+                ResultsState = LayoutState.Empty;
             }
         }
 

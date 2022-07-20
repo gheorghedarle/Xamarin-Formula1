@@ -14,5 +14,6 @@ namespace Formula1.Services.Ergast
         Task<ScheduleModel> GetSchedule(string year, string queryParams = null);
         Task<List<RaceEventModel>> GetResults(string year, string round, string raceType, string queryParams = null);
         Task<List<RaceEventModel>> GetResultsByDriver(string year, string driver);
+        Task<List<RaceEventModel>> GetResultsByTeam(string year, string team);
     }
 }
