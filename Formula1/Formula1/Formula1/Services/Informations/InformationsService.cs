@@ -1,5 +1,6 @@
 ﻿using Formula1.Core;
 using Formula1.Helpers;
+using Formula1.Helpers.Extensions;
 using Formula1.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -16,14 +17,14 @@ namespace Formula1.Services.Informations
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<DriverInformationsModel> GetDriverInformations(string driver)
+        public async Task<DriverBasicInformationsModel> GetDriverInformations(string driver)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"{Constants.InformationsApiBaseUrl}driver/info?driver={driver}");
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"{Constants.InformationsApiBaseUrl}driver/info?driver={driver.RemoveDiacritics()}");
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(result);
-                var r = json["result"].ToObject<DriverInformationsModel>();
+                var r = json["result"].ToObject<DriverBasicInformationsModel>();
                 return r;
             }
             return null;

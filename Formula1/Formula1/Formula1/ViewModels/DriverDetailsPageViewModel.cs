@@ -26,8 +26,8 @@ namespace Formula1.ViewModels
         #region Properties
         
         public ObservableCollection<RaceEventModel> RaceResults { get; set; }
-        public DriverStadingsModel DriverStading { get; set; }
-        public DriverInformationsModel DriverInformations { get; set; }
+        public DriverModel Driver { get; set; }
+        public DriverBasicInformationsModel DriverInformations { get; set; }
         public string SelectedSeason { get; set; }
 
         public LayoutState ResultsState { get; set; }
@@ -82,16 +82,11 @@ namespace Formula1.ViewModels
         public async void ApplyQueryAttributes(IDictionary<string, string> query)
         {
             query.TryGetValue("driver", out var driverParam);
-            string driverString = HttpUtility.UrlDecode(driverParam);
-            if(!string.IsNullOrEmpty(driverString))
+            var driver = driverParam.ToString();
+            if (!string.IsNullOrEmpty(driver))
             {
-                var driver = JsonConvert.DeserializeObject<DriverStadingsModel>(driverString);
-                DriverStading = driver;
-                SelectedSeason = "Current Season";
-                ResultsState = LayoutState.Loading;
-                InformationsState = LayoutState.Loading;
-                await GetResults();
-                await GetInformations();
+                MainState = LayoutState.Loading;
+                await GetDriver(driver);
             }
         }
 
@@ -99,10 +94,25 @@ namespace Formula1.ViewModels
 
         #region Private Functionality
 
+        private async Task GetDriver(string driver)
+        {
+            var res = await _ergastService.GetDriverInformations(driver);
+            if (res != null)
+            {
+                Driver = res;
+                SelectedSeason = "Current Season";
+                MainState = LayoutState.None;
+                ResultsState = LayoutState.Loading;
+                InformationsState = LayoutState.Loading;
+                await GetResults();
+                await GetInformations();
+            }
+        }
+
         private async Task GetResults()
         {
             var season = SelectedSeason == "Current Season" ? "current" : SelectedSeason;
-            var res = await _ergastService.GetResultsByDriver(season, DriverStading.Driver.DriverId);
+            var res = await _ergastService.GetResultsByDriver(season, Driver.DriverId);
             if (res != null)
             {
                 RaceResults = new ObservableCollection<RaceEventModel>(res);
@@ -117,7 +127,7 @@ namespace Formula1.ViewModels
 
         private async Task GetInformations()
         {
-            var res = await _informationsService.GetDriverInformations(string.Format("{0}-{1}", DriverStading.Driver.GivenName.ToLower(), DriverStading.Driver.FamilyName.ToLower()));
+            var res = await _informationsService.GetDriverInformations(string.Format("{0}-{1}", Driver.GivenName.ToLower(), Driver.FamilyName.ToLower()));
             if (res != null)
             {
                 DriverInformations = res;

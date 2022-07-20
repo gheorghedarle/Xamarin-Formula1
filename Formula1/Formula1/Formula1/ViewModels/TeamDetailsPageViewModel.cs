@@ -84,6 +84,7 @@ namespace Formula1.ViewModels
             var team = teamParam.ToString();
             if (!string.IsNullOrEmpty(team))
             {
+                MainState = LayoutState.Loading;
                 await GetTeam(team);
             }
         }
@@ -99,6 +100,7 @@ namespace Formula1.ViewModels
             {
                 Constructor = res;
                 SelectedSeason = "Current Season";
+                MainState = LayoutState.None;
                 ResultsState = LayoutState.Loading;
                 InformationsState = LayoutState.Loading;
                 //await GetResults();

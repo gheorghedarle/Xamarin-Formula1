@@ -49,7 +49,7 @@ namespace Formula1.ViewModels.TabViews
 
         private async void DriverDetailsCommandHandler(DriverStadingsModel driver)
         {
-            await Shell.Current.GoToAsync($"/details?driver={JsonConvert.SerializeObject(driver)}");
+            await Shell.Current.GoToAsync($"/details?driver={driver.Driver.DriverId}");
         }
 
         #endregion

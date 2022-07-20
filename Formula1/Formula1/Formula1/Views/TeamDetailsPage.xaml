@@ -10,7 +10,25 @@
     <ContentPage.Content>
         <Grid
             RowDefinitions="150, *"
-            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
+            xct:StateLayout.CurrentState="{Binding MainState}">
+            <xct:StateLayout.StateViews>
+                <xct:StateView 
+                    StateKey="Loading"
+                    VerticalOptions="FillAndExpand">
+                    <fragments:LoadingView></fragments:LoadingView>
+                </xct:StateView>
+                <xct:StateView 
+                    StateKey="Error"
+                    VerticalOptions="FillAndExpand">
+                    <Label Text="Error"></Label>
+                </xct:StateView>
+                <xct:StateView 
+                    StateKey="Empty"
+                    VerticalOptions="FillAndExpand">
+                    <Label Text="Empty"></Label>
+                </xct:StateView>
+            </xct:StateLayout.StateViews>
             <Grid
                 Grid.Row="0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"

@@ -43,6 +43,26 @@ namespace Formula1.Services.Ergast
             return null;
         }
 
+        public async Task<DriverModel> GetDriverInformations(string driver)
+        {
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/drivers/{driver}.json");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                var json = JObject.Parse(result);
+                var res = json["MRData"]["DriverTable"].ToString();
+                var r = JsonConvert.DeserializeObject<DriverInformationsModel>(res);
+                var d = r.Drivers.First();
+                d.Image = new DriverImageModel()
+                {
+                    Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Code}.png",
+                    Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Code}_front.png",
+                };
+                return d;
+            }
+            return null;
+        }
+
         public async Task<List<ConstructorStadingsModel>> GetTeamStadings(string year, string queryParams = null)
         {
             var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/constructorStandings.json?{queryParams}");

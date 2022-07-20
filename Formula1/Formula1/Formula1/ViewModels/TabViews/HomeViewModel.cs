@@ -89,7 +89,7 @@ namespace Formula1.ViewModels.TabViews
                 Driver = raceResult.Driver,
                 Constructors = new List<ConstructorModel>() { raceResult.Constructor }
             };
-            await Shell.Current.GoToAsync($"//main/drivers/details?driver={JsonConvert.SerializeObject(driver)}");
+            await Shell.Current.GoToAsync($"//main/drivers/details?driver={driver.Driver.DriverId}");
         }
 
         private async void SeeMoreResultsCommandHandler()
@@ -119,7 +119,7 @@ namespace Formula1.ViewModels.TabViews
 
         private async void DriverDetailsCommandHandler(DriverStadingsModel driver)
         {
-            await Shell.Current.GoToAsync($"//main/drivers/details?driver={JsonConvert.SerializeObject(driver)}");
+            await Shell.Current.GoToAsync($"//main/drivers/details?driver={driver.Driver.DriverId}");
         }
 
         private async void TeamDetailsCommandHandler(ConstructorStadingsModel team)
