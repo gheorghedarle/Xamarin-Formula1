@@ -26,7 +26,8 @@
             HeightRequest="40"
             Aspect="AspectFill"
             HorizontalOptions="Center"
-            VerticalOptions="Center">
+            VerticalOptions="Center"        
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
             <Image.Clip>
                 <EllipseGeometry
                     Center="20,20"

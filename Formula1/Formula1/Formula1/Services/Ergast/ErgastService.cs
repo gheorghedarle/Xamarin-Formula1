@@ -28,15 +28,18 @@ namespace Formula1.Services.Ergast
                 var json = JObject.Parse(result);
                 var res = json["MRData"]["StandingsTable"]["StandingsLists"].First["DriverStandings"].ToString();
                 var r = JsonConvert.DeserializeObject<List<DriverStadingsModel>>(res);
-                r.ForEach(d =>
+                if (year == "current")
                 {
-                    d.Driver.Image = new DriverImageModel()
+                    r.ForEach(d =>
                     {
-                        Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
-                        Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png",
-                    };
-                    d.Constructors[0].Color = Constants.TeamColors[d.Constructors[0].ConstructorId];
-                });
+                        d.Driver.Image = new DriverImageModel()
+                        {
+                            Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
+                            Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png",
+                        };
+                        d.Constructors[0].Color = Constants.TeamColors[d.Constructors[0].ConstructorId];
+                    });
+                }
                 return r;
             }
             return null;
@@ -71,17 +74,16 @@ namespace Formula1.Services.Ergast
                 var json = JObject.Parse(result);
                 var res = json["MRData"]["StandingsTable"]["StandingsLists"].First["ConstructorStandings"].ToString();
                 var r = JsonConvert.DeserializeObject<List<ConstructorStadingsModel>>(res);
-                r.ForEach(c =>
-                {
-                    c.Constructor.Image = new ConstructorImageModel()
-                    {
-                        Logo = $"{Constants.ImageApiBaseUrl}teams/{c.Constructor.ConstructorId}.png",
-                        Car = $"{Constants.ImageApiBaseUrl}cars/{c.Constructor.ConstructorId}.png",
-                    };
-                    c.Constructor.Color = Constants.TeamColors[c.Constructor.ConstructorId];
-                });
                 if (year == "current")
                 {
+                    r.ForEach(c =>
+                    {
+                        c.Constructor.Image = new ConstructorImageModel()
+                        {
+                            Logo = $"{Constants.ImageApiBaseUrl}teams/{c.Constructor.ConstructorId}.png",
+                        };
+                        c.Constructor.Color = Constants.TeamColors[c.Constructor.ConstructorId];
+                    });
                     foreach (var a in r)
                     {
                         var dResponse = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructors/{a.Constructor.ConstructorId}/drivers.json");
@@ -112,7 +114,6 @@ namespace Formula1.Services.Ergast
                 c.Image = new ConstructorImageModel()
                 {
                     Logo = $"{Constants.ImageApiBaseUrl}teams/{c.ConstructorId}.png",
-                    Car = $"{Constants.ImageApiBaseUrl}cars/{c.ConstructorId}.png",
                 };
                 c.Color = Constants.TeamColors[c.ConstructorId];
                 var dResponse = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructors/{c.ConstructorId}/drivers.json");
