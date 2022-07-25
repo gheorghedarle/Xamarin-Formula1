@@ -50,6 +50,18 @@
     <Compile Update="Views\Templates\InformationDateOfBirthTemplate.xaml.cs">
       <DependentUpon>InformationDateOfBirthTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Templates\InformationLapRecordTemplate.xaml.cs">
+      <DependentUpon>InformationLapRecordTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\InformationRaceWeekendTemplate.xaml.cs">
+      <DependentUpon>InformationRaceWeekendTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\InformationTemplate.xaml.cs">
+      <DependentUpon>InformationTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\InformationWithSubLabelTemplate.xaml.cs">
+      <DependentUpon>InformationWithSubLabelTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Views\CircuitInformationsView.xaml.cs">
       <DependentUpon>CircuitInformationsView.xaml</DependentUpon>
     </Compile>
@@ -140,7 +152,7 @@
     <EmbeddedResource Update="Views\TeamDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\InformationTemplate.xaml">
+    <EmbeddedResource Update="Views\Templates\InformationLapRecordTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\InformationDateOfBirthTemplate.xaml">

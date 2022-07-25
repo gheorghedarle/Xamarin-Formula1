@@ -128,7 +128,7 @@
                                 Source="{Binding RaceEvent.Circuit.Map}"></Image>
                             <StackLayout                        
                                 xct:StateLayout.CurrentState="{Binding InformationsState}"
-                                Margin="20, 0, 0, 5">
+                                Margin="20, 0, 20, 5">
                                 <xct:StateLayout.StateViews>
                                     <xct:StateView 
                                         StateKey="Loading"

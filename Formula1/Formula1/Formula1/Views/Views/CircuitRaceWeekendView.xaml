@@ -2,115 +2,32 @@
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:templates="clr-namespace:Formula1.Views.Templates"
              x:Class="Formula1.Views.Views.CircuitRaceWeekendViews">
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="First practice: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Style="{StaticResource Body2FontSize_ExoBold}">
-                    <Span.Text>
-                        <MultiBinding StringFormat="{}{0:ddd, d MMM yyyy} {1:HH:mm tt}">
-                            <Binding Path="RaceEvent.FirstPractice.Date" />
-                            <Binding Path="RaceEvent.FirstPractice.Time" />
-                        </MultiBinding>
-                    </Span.Text>
-                </Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Second practice: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Style="{StaticResource Body2FontSize_ExoBold}">
-                    <Span.Text>
-                        <MultiBinding StringFormat="{}{0:ddd, d MMM yyyy} {1:HH:mm tt}">
-                            <Binding Path="RaceEvent.SecondPractice.Date" />
-                            <Binding Path="RaceEvent.SecondPractice.Time" />
-                        </MultiBinding>
-                    </Span.Text>
-                </Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label
-        IsVisible="{Binding RaceEvent.ThirdPractice, Converter={xct:IsNotNullOrEmptyConverter}}">
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Third practice: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Style="{StaticResource Body2FontSize_ExoBold}">
-                    <Span.Text>
-                        <MultiBinding StringFormat="{}{0:ddd, dd MMM yyyy} {1:HH:mm tt}">
-                            <Binding Path="RaceEvent.ThirdPractice.Date" />
-                            <Binding Path="RaceEvent.ThirdPractice.Time" />
-                        </MultiBinding>
-                    </Span.Text>
-                </Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Qualifying: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Style="{StaticResource Body2FontSize_ExoBold}">
-                    <Span.Text>
-                        <MultiBinding StringFormat="{}{0:ddd, d MMM yyyy} {1:HH:mm tt}">
-                            <Binding Path="RaceEvent.Qualifying.Date" />
-                            <Binding Path="RaceEvent.Qualifying.Time" />
-                        </MultiBinding>
-                    </Span.Text>
-                </Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label
-        IsVisible="{Binding RaceEvent.Sprint, Converter={xct:IsNotNullOrEmptyConverter}}">
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Sprint: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Style="{StaticResource Body2FontSize_ExoBold}">
-                    <Span.Text>
-                        <MultiBinding StringFormat="{}{0:ddd, d MMM yyyy} {1:HH:mm tt}">
-                            <Binding Path="RaceEvent.Sprint.Date" />
-                            <Binding Path="RaceEvent.Sprint.Time" />
-                        </MultiBinding>
-                    </Span.Text>
-                </Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Race: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Style="{StaticResource Body2FontSize_ExoBold}">
-                    <Span.Text>
-                        <MultiBinding StringFormat="{}{0:ddd, d MMM yyyy} {1:HH:mm tt}">
-                            <Binding Path="RaceEvent.Date" />
-                            <Binding Path="RaceEvent.Time" />
-                        </MultiBinding>
-                    </Span.Text>
-                </Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
+    <templates:InformationRaceWeekendTemplate
+        EventName="First practice"
+        Date="{Binding RaceEvent.FirstPractice.Date}"
+        Time="{Binding RaceEvent.FirstPractice.Time}"></templates:InformationRaceWeekendTemplate>
+    <templates:InformationRaceWeekendTemplate
+        EventName="Second practice"
+        Date="{Binding RaceEvent.SecondPractice.Date}"
+        Time="{Binding RaceEvent.SecondPractice.Time}"></templates:InformationRaceWeekendTemplate>
+    <templates:InformationRaceWeekendTemplate
+        IsVisible="{Binding RaceEvent.ThirdPractice, Converter={xct:IsNotNullOrEmptyConverter}}"
+        EventName="Third practice"
+        Date="{Binding RaceEvent.ThirdPractice.Date}"
+        Time="{Binding RaceEvent.ThirdPractice.Time}"></templates:InformationRaceWeekendTemplate>
+    <templates:InformationRaceWeekendTemplate
+        EventName="Qualifying"
+        Date="{Binding RaceEvent.Qualifying.Date}"
+        Time="{Binding RaceEvent.Qualifying.Time}"></templates:InformationRaceWeekendTemplate>
+    <templates:InformationRaceWeekendTemplate
+        IsVisible="{Binding RaceEvent.Sprint, Converter={xct:IsNotNullOrEmptyConverter}}"
+        EventName="Sprint"
+        Date="{Binding RaceEvent.Sprint.Date}"
+        Time="{Binding RaceEvent.Sprint.Time}"></templates:InformationRaceWeekendTemplate>
+    <templates:InformationRaceWeekendTemplate
+        EventName="Race"
+        Date="{Binding RaceEvent.Date}"
+        Time="{Binding RaceEvent.Time}"></templates:InformationRaceWeekendTemplate>
 </StackLayout>

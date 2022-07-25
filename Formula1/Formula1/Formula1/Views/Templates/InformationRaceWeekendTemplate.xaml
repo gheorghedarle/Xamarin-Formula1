@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Formula1.Views.Templates.InformationRaceWeekendTemplate"
+             x:Name="this">
+    <Grid
+        BindingContext="{x:Reference this}"
+        ColumnDefinitions="*, Auto"
+        RowDefinitions="Auto, Auto"
+        RowSpacing="0">
+        <Label
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            Text="{Binding EventName}"
+            Style="{StaticResource Body2FontSize_ExoRegular}"
+            VerticalOptions="CenterAndExpand"></Label>
+        <Label
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="{Binding Date, StringFormat='{0:ddd, d MMM yyyy}'}"
+            Style="{StaticResource Body2FontSize_ExoBold}"
+            HorizontalTextAlignment="End"></Label>
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="{Binding Time, StringFormat='{0:HH:mm tt}'}"
+            Style="{StaticResource Body2FontSize_ExoBold}"
+            HorizontalTextAlignment="End"></Label>
+    </Grid>
+</StackLayout>

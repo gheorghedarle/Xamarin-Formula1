@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Formula1.Views.Templates.InformationTemplate"
+             x:Class="Formula1.Views.Templates.InformationLapRecordTemplate"
              x:Name="this">
     <StackLayout
         BindingContext="{x:Reference this}"
@@ -12,5 +12,8 @@
         <Label
             Text="{Binding Value}"
             Style="{StaticResource Subtitle1FontSize_ExoBold}"/>
+        <Label
+            Text="{Binding SubLabel}"
+            Style="{StaticResource Body2FontSize_ExoRegular}"/>
     </StackLayout>
 </StackLayout>

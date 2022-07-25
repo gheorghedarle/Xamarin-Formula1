@@ -1,137 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Formula1.Views.Views.ConstructorInformationsView">
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Full team name: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding ConstructorInformations.FullTeamName}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Base: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding ConstructorInformations.Base}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Team chief: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding ConstructorInformations.TeamChief}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Technical chief: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding ConstructorInformations.TechnicalChief}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Chassis: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding ConstructorInformations.Chassis}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Power unit: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding ConstructorInformations.PowerUnit}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="First team entry: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding ConstructorInformations.FirstTeamEntry}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="World Championships: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding ConstructorInformations.WorldChampionships}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Highest race finish: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding ConstructorInformations.HighestRaceFinish}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Pole positions: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding ConstructorInformations.PolePositions}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Fastest laps: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding ConstructorInformations.FastestLaps}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:templates="clr-namespace:Formula1.Views.Templates"
+             x:Class="Formula1.Views.Views.ConstructorInformationsView"
+             Spacing="0">
+    <templates:InformationTemplate
+        Label="Team name"
+        Value="{Binding ConstructorInformations.FullTeamName}"></templates:InformationTemplate>
+    <templates:InformationTemplate
+        Label="Base"
+        Value="{Binding ConstructorInformations.Base}"></templates:InformationTemplate>
+    <templates:InformationTemplate
+        Label="Team chief"
+        Value="{Binding ConstructorInformations.TeamChief}"></templates:InformationTemplate>
+    <templates:InformationTemplate
+        Label="Technical chief"
+        Value="{Binding ConstructorInformations.TechnicalChief}"></templates:InformationTemplate>
+    <Grid
+        ColumnDefinitions="*, *">
+        <templates:InformationTemplate
+            Grid.Column="0"
+            Label="Chasis"
+            Value="{Binding ConstructorInformations.Chassis}"></templates:InformationTemplate>
+        <templates:InformationTemplate
+            Grid.Column="1"
+            Label="Power unit"
+            Value="{Binding ConstructorInformations.PowerUnit}"></templates:InformationTemplate>
+    </Grid>
+    <Grid
+        ColumnDefinitions="*, *, *">
+        <templates:InformationTemplate
+            Grid.Column="0"
+            Label="First team entry"
+            Value="{Binding ConstructorInformations.HighestRaceFinish}"></templates:InformationTemplate>
+        <templates:InformationTemplate
+            IsVisible="{Binding ConstructorInformations.PolePositions, Converter={xct:NotEqualConverter}, ConverterParameter='N/A'}"
+            Grid.Column="1"
+            Label="Pole positions"
+            Value="{Binding ConstructorInformations.PolePositions}"></templates:InformationTemplate>
+        <templates:InformationTemplate
+            IsVisible="{Binding ConstructorInformations.FastestLaps, Converter={xct:NotEqualConverter}, ConverterParameter='N/A'}"
+            Grid.Column="2"
+            Label="Fastest laps"
+            Value="{Binding ConstructorInformations.FastestLaps}"></templates:InformationTemplate>
+    </Grid>
+    <Grid
+        ColumnDefinitions="*, *">
+        <templates:InformationTemplate
+            Grid.Column="0"
+            Label="First team entry"
+            Value="{Binding ConstructorInformations.FirstTeamEntry}"></templates:InformationTemplate>
+        <templates:InformationTemplate
+            IsVisible="{Binding ConstructorInformations.WorldChampionships, Converter={xct:NotEqualConverter}, ConverterParameter='N/A'}"
+            Grid.Column="1"
+            Label="World Championships"
+            Value="{Binding ConstructorInformations.WorldChampionships}"></templates:InformationTemplate>
+    </Grid>
 </StackLayout>
