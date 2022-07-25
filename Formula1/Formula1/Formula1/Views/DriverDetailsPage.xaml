@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
-             xmlns:templates="clr-namespace:Formula1.Views.Templates"
+             xmlns:views="clr-namespace:Formula1.Views.Views"
              x:Class="Formula1.Views.DriverDetailsPage"
              BindingContext="{Binding DriverDetailsPage, Source={StaticResource ViewModelLocator}}"
              NavigationPage.HasNavigationBar="False">
@@ -117,7 +117,7 @@
                             Text="Basic Informations"
                             Style="{StaticResource Body1FontSize_ExoBold}"
                             Margin="0, 0, 0, 5"></Label>
-                        <templates:DriverInformationsTemplate></templates:DriverInformationsTemplate>
+                        <views:DriverInformationsView></views:DriverInformationsView>
                     </StackLayout>
                 </xct:TabViewItem>
                 <xct:TabViewItem
@@ -227,7 +227,7 @@
                                             IsVisible="{Binding Results[0].Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
                                             Grid.Row="1"
                                             Grid.Column="3"
-                                            Text="{Binding Results[0].Status}, StringFormat='Ret | {0}'}"
+                                            Text="{Binding Results[0].Status, StringFormat='Ret | {0}'}"
                                             Style="{StaticResource Body2FontSize_ExoBold}"
                                             HorizontalOptions="EndAndExpand">
                                         </Label>

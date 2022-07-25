@@ -47,8 +47,41 @@
     <Compile Update="Views\TabViews\HistoryView.xaml.cs">
       <DependentUpon>HistoryView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Templates\HomeResultsMoreTemplate.xaml.cs">
-      <DependentUpon>HomeResultsMoreTemplate.xaml</DependentUpon>
+    <Compile Update="Views\Views\CircuitInformationsView.xaml.cs">
+      <DependentUpon>CircuitInformationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\CircuitRaceWeekendView.xaml.cs">
+      <DependentUpon>CircuitRaceWeekendView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\ConstructorInformationsView.xaml.cs">
+      <DependentUpon>ConstructorInformationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\DriverInformationsView.xaml.cs">
+      <DependentUpon>DriverInformationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\DriverStadingsView.xaml.cs">
+      <DependentUpon>DriverStadingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\HomeResultsMoreView.xaml.cs">
+      <DependentUpon>HomeResultsMoreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\HomeResultsView.xaml.cs">
+      <DependentUpon>HomeResultsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\HomeScheduleMoreView.xaml.cs">
+      <DependentUpon>HomeScheduleMoreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\HomeScheduleView.xaml.cs">
+      <DependentUpon>HomeScheduleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\QualifyingResultsView.xaml.cs">
+      <DependentUpon>QualifyingResultsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\RaceResultsView.xaml.cs">
+      <DependentUpon>RaceResultsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\TeamStadingsView.xaml.cs">
+      <DependentUpon>TeamStadingsView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -104,40 +137,40 @@
     <EmbeddedResource Update="Views\TeamDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\CircuitInformationsTemplate.xaml">
+    <EmbeddedResource Update="Views\Views\CircuitInformationsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\CircuitRaceWeekendTemplate.xaml">
+    <EmbeddedResource Update="Views\Views\CircuitRaceWeekendView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\ConstructorInformationsTemplate.xaml">
+    <EmbeddedResource Update="Views\Views\ConstructorInformationsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\DriverInformationsTemplate.xaml">
+    <EmbeddedResource Update="Views\Views\DriverInformationsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\DriverStadingsTemplate.xaml">
+    <EmbeddedResource Update="Views\Views\DriverStadingsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\HomeResultsMoreTemplate.xaml">
+    <EmbeddedResource Update="Views\Views\HomeResultsMoreView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\HomeResultsTemplate.xaml">
+    <EmbeddedResource Update="Views\Views\HomeResultsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\HomeScheduleMoreTemplate.xaml">
+    <EmbeddedResource Update="Views\Views\HomeScheduleMoreView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\HomeScheduleTemplate.xaml">
+    <EmbeddedResource Update="Views\Views\HomeScheduleView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\QualifyingResultsTemplate.xaml">
+    <EmbeddedResource Update="Views\Views\QualifyingResultsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\RaceResultsTemplate.xaml">
+    <EmbeddedResource Update="Views\Views\RaceResultsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\TeamStadingsTemplate.xaml">
+    <EmbeddedResource Update="Views\Views\TeamStadingsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\WelcomePage.xaml">

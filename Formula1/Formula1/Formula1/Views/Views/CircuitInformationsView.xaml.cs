@@ -1,12 +1,12 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Formula1.Views.Templates
+namespace Formula1.Views.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DriverInformationsTemplate : StackLayout
+    public partial class CircuitInformationsView : StackLayout
     {
-        public DriverInformationsTemplate()
+        public CircuitInformationsView()
         {
             InitializeComponent();
         }

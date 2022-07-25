@@ -1,12 +1,12 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Formula1.Views.Templates
+namespace Formula1.Views.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ConstructorInformationsTemplate : StackLayout
+    public partial class HomeResultsMoreView : StackLayout
     {
-        public ConstructorInformationsTemplate()
+        public HomeResultsMoreView()
         {
             InitializeComponent();
         }

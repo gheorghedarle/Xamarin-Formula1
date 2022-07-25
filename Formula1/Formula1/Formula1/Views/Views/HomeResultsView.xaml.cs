@@ -1,12 +1,12 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Formula1.Views.Templates
+namespace Formula1.Views.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RaceResultsTemplate : Grid
+    public partial class HomeResultsView : StackLayout
     {
-        public RaceResultsTemplate()
+        public HomeResultsView()
         {
             InitializeComponent();
         }

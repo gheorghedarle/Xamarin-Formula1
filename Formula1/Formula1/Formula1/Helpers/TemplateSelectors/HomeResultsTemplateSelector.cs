@@ -1,5 +1,5 @@
 ﻿using Formula1.Models;
-using Formula1.Views.Templates;
+using Formula1.Views.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,13 +9,13 @@ namespace Formula1.Helpers.TemplateSelectors
 {
     public class HomeResultsTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate HomeResultsTemplate { get; set; }
-        public DataTemplate HomeResultsMoreTemplate { get; set; }
+        public DataTemplate HomeResultsTemplateView { get; set; }
+        public DataTemplate HomeResultsMoreTemplateView { get; set; }
 
         public HomeResultsTemplateSelector()
         {
-            HomeResultsTemplate = new DataTemplate(typeof(HomeResultsTemplate));
-            HomeResultsMoreTemplate = new DataTemplate(typeof(HomeResultsMoreTemplate));
+            HomeResultsTemplateView = new DataTemplate(typeof(HomeResultsView));
+            HomeResultsMoreTemplateView = new DataTemplate(typeof(HomeResultsMoreView));
         }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
@@ -25,14 +25,14 @@ namespace Formula1.Helpers.TemplateSelectors
                 var resultsItem = item as RaceResultModel;
                 if (resultsItem.Driver == null)
                 {
-                    return HomeResultsMoreTemplate;
+                    return HomeResultsMoreTemplateView;
                 }
                 else
                 {
-                    return HomeResultsTemplate;
+                    return HomeResultsTemplateView;
                 }
             }
-            return HomeResultsTemplate;
+            return HomeResultsTemplateView;
         }
     }
 }

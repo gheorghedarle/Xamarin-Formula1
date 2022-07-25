@@ -1,12 +1,12 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Formula1.Views.Templates
+namespace Formula1.Views.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CircuitRaceWeekendTemplate : StackLayout
+    public partial class CircuitRaceWeekendViews : StackLayout
     {
-        public CircuitRaceWeekendTemplate()
+        public CircuitRaceWeekendViews()
         {
             InitializeComponent();
         }

@@ -1,12 +1,12 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Formula1.Views.Templates
+namespace Formula1.Views.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DriverStadingsTemplate : Grid
+    public partial class DriverStadingsView : Grid
     {
-        public DriverStadingsTemplate()
+        public DriverStadingsView()
         {
             InitializeComponent();
         }

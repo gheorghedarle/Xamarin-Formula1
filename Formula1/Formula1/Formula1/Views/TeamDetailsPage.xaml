@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
-             xmlns:templates="clr-namespace:Formula1.Views.Templates"
+             xmlns:views="clr-namespace:Formula1.Views.Views"
              x:Class="Formula1.Views.TeamDetailsPage"
              BindingContext="{Binding TeamDetailsPage, Source={StaticResource ViewModelLocator}}"
              NavigationPage.HasNavigationBar="False">
@@ -109,7 +109,7 @@
                             <Label
                                 Text="Basic Informations"
                                 Style="{StaticResource Body1FontSize_ExoBold}"></Label>
-                            <templates:ConstructorInformationsTemplate></templates:ConstructorInformationsTemplate>
+                            <views:ConstructorInformationsView></views:ConstructorInformationsView>
                         </StackLayout>
                     </ScrollView>
                 </xct:TabViewItem>
