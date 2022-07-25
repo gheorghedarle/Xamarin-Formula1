@@ -63,7 +63,7 @@
                         </Label>
                         <Label
                             Text="{Binding RaceEvent.RaceName}"
-                            Style="{StaticResource Body1FontSize_ExoBold}"
+                            Style="{StaticResource Subtitle1FontSize_ExoBold}"
                             VerticalOptions="Center">
                         </Label>
                         <Label
@@ -76,8 +76,8 @@
                             VerticalOptions="Center">
                             <Label.Text>
                                 <MultiBinding StringFormat="{}{0:d MMM} - {1:d MMM yyyy}">
-                                    <Binding Path="Circuit.FirstPractice.Date" />
-                                    <Binding Path="Circuit.Date" />
+                                    <Binding Path="RaceEvent.FirstPractice.Date" />
+                                    <Binding Path="RaceEvent.Date" />
                                 </MultiBinding>
                             </Label.Text>
                         </Label>

@@ -12,7 +12,7 @@
                 <Span
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
-                        <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
+                        <MultiBinding StringFormat="{}{0:ddd, d MMM yyyy} {1:HH:mm tt}">
                             <Binding Path="RaceEvent.FirstPractice.Date" />
                             <Binding Path="RaceEvent.FirstPractice.Time" />
                         </MultiBinding>
@@ -30,7 +30,7 @@
                 <Span
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
-                        <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
+                        <MultiBinding StringFormat="{}{0:ddd, d MMM yyyy} {1:HH:mm tt}">
                             <Binding Path="RaceEvent.SecondPractice.Date" />
                             <Binding Path="RaceEvent.SecondPractice.Time" />
                         </MultiBinding>
@@ -49,7 +49,7 @@
                 <Span
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
-                        <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
+                        <MultiBinding StringFormat="{}{0:ddd, dd MMM yyyy} {1:HH:mm tt}">
                             <Binding Path="RaceEvent.ThirdPractice.Date" />
                             <Binding Path="RaceEvent.ThirdPractice.Time" />
                         </MultiBinding>
@@ -67,7 +67,7 @@
                 <Span
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
-                        <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
+                        <MultiBinding StringFormat="{}{0:ddd, d MMM yyyy} {1:HH:mm tt}">
                             <Binding Path="RaceEvent.Qualifying.Date" />
                             <Binding Path="RaceEvent.Qualifying.Time" />
                         </MultiBinding>
@@ -86,7 +86,7 @@
                 <Span
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
-                        <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
+                        <MultiBinding StringFormat="{}{0:ddd, d MMM yyyy} {1:HH:mm tt}">
                             <Binding Path="RaceEvent.Sprint.Date" />
                             <Binding Path="RaceEvent.Sprint.Time" />
                         </MultiBinding>
@@ -104,7 +104,7 @@
                 <Span
                     Style="{StaticResource Body2FontSize_ExoBold}">
                     <Span.Text>
-                        <MultiBinding StringFormat="{}{0:d MMM yyyy} {1:HH:mm tt}">
+                        <MultiBinding StringFormat="{}{0:ddd, d MMM yyyy} {1:HH:mm tt}">
                             <Binding Path="RaceEvent.Date" />
                             <Binding Path="RaceEvent.Time" />
                         </MultiBinding>

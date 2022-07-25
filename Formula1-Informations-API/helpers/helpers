@@ -1,0 +1,33 @@
+function convertToTeamName(team) {
+  switch (team) {
+    case "alfa":
+      return "Alfa-Romeo-Racing";
+    case "alphatauri":
+      return "AlphaTauri";
+    case "alpine":
+      return "Alpine";
+    case "aston_martin":
+      return "Aston-Martin";
+    case "ferrari":
+      return "Ferrari";
+    case "haas":
+      return "Haas-F1-Team";
+    case "mclaren":
+      return "McLaren";
+    case "mercedes":
+      return "Mercedes";
+    case "red_bull":
+      return "Red-Bull-Racing";
+    case "williams":
+      return "Williams";
+  }
+}
+
+function camelize(str) {
+  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function (match, index) {
+    if (+match === 0) return "";
+    return match.toUpperCase();
+  });
+}
+
+module.exports = { convertToTeamName, camelize };

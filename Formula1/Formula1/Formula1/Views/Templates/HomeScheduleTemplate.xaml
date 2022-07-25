@@ -15,7 +15,7 @@
         BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="20"
         Margin="5, 0, 5, 0"
-        Padding="5, 10">
+        Padding="10">
         <Grid
             RowDefinitions="Auto, Auto, Auto"
             ColumnDefinitions="Auto, Auto"
@@ -29,7 +29,7 @@
                 Source="{Binding Circuit.Location.Flag}"
                 WidthRequest="40"
                 HeightRequest="40"
-                Margin="10, 0, 10, 0"
+                Margin="0, 0, 10, 0"
                 Aspect="AspectFill"
                 HorizontalOptions="Center"
                 VerticalOptions="Center">
@@ -57,7 +57,7 @@
                 Grid.Column="1"
                 Style="{StaticResource CaptionFontSize_ExoRegular}">
                 <Label.Text>
-                    <MultiBinding StringFormat="{}{0:d MMM} - {1:d MMM yyyy}">
+                    <MultiBinding StringFormat="{}{0:dd}-{1:dd MMM yyyy}">
                         <Binding Path="FirstPractice.Date" />
                         <Binding Path="Date" />
                     </MultiBinding>

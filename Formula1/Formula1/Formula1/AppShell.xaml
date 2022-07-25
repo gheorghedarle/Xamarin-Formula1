@@ -28,34 +28,34 @@
         <ShellContent ContentTemplate="{DataTemplate views:WelcomePage}" />
     </ShellItem>
     <TabBar Route="main">
-        <Tab Title="Home" Route="home">
-            <Tab.Icon>
+        <Tab Title="Home" Route="home" Icon="home.png">
+            <!--<Tab.Icon>
                 <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf015;"/>
-            </Tab.Icon>
+            </Tab.Icon>-->
             <ShellContent ContentTemplate="{DataTemplate tabViews:HomeView}" />
         </Tab>
-        <Tab Title="Schedule" Route="schedule">
-            <Tab.Icon>
+        <Tab Title="Schedule" Route="schedule" Icon="calendar.png">
+            <!--<Tab.Icon>
                 <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf783;"/>
-            </Tab.Icon>
+            </Tab.Icon>-->
             <ShellContent ContentTemplate="{DataTemplate tabViews:ScheduleView}" />
         </Tab>
-        <Tab Title="Drivers" Route="drivers">
-            <Tab.Icon>
+        <Tab Title="Drivers" Route="drivers" Icon="driver.png">
+            <!--<Tab.Icon>
                 <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf007;"/>
-            </Tab.Icon>
+            </Tab.Icon>-->
             <ShellContent ContentTemplate="{DataTemplate tabViews:DriversView}" />
         </Tab>
-        <Tab Title="Teams" Route="teams">
-            <Tab.Icon>
+        <Tab Title="Teams" Route="teams" Icon="team.png">
+            <!--<Tab.Icon>
                 <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf1b9;"/>
-            </Tab.Icon>
+            </Tab.Icon>-->
             <ShellContent ContentTemplate="{DataTemplate tabViews:TeamsView}" />
         </Tab>
-        <Tab Title="History" Route="history">
-            <Tab.Icon>
+        <Tab Title="History" Route="history" Icon="history.png">
+            <!--<Tab.Icon>
                 <FontImageSource FontFamily="FontAwesome_Solid" Glyph="&#xf07b;"/>
-            </Tab.Icon>
+            </Tab.Icon>-->
             <ShellContent ContentTemplate="{DataTemplate tabViews:HistoryView}" />
         </Tab>
     </TabBar>

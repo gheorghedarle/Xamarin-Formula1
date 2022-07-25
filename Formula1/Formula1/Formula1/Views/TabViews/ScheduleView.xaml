@@ -102,7 +102,7 @@
                                         HorizontalOptions="End"
                                         VerticalOptions="Center">
                                         <Label.Text>
-                                            <MultiBinding StringFormat="{}{0:d MMM} - {1:d MMM yyyy}">
+                                            <MultiBinding StringFormat="{}{0:dd} - {1:dd MMM}">
                                                 <Binding Path="FirstPractice.Date" />
                                                 <Binding Path="Date" />
                                             </MultiBinding>
@@ -180,7 +180,7 @@
                                         HorizontalOptions="End"
                                         VerticalOptions="Center">
                                         <Label.Text>
-                                            <MultiBinding StringFormat="{}{0:d MMM} - {1:d MMM yyyy}">
+                                            <MultiBinding StringFormat="{}{0:dd} - {1:dd MMM}">
                                                 <Binding Path="FirstPractice.Date" />
                                                 <Binding Path="Date" />
                                             </MultiBinding>

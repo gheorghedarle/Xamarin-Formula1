@@ -68,7 +68,7 @@
         Grid.Row="0"
         Grid.RowSpan="2"
         Grid.Column="3"
-        Text="{Binding Status}"
+        Text="{Binding Status, StringFormat='Ret | {0}'}"
         Style="{StaticResource Body2FontSize_ExoBold}"
         VerticalOptions="CenterAndExpand">
     </Label>

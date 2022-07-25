@@ -58,7 +58,7 @@
                     </Label>
                     <Label
                         Text="{Binding Driver.FamilyName}"
-                        Style="{StaticResource Subtitle1FontSize_ExoBold}">
+                        Style="{StaticResource Headline4FontSize_ExoBold}">
                     </Label>
                 </StackLayout>
                 <Image
@@ -227,7 +227,7 @@
                                             IsVisible="{Binding Results[0].Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
                                             Grid.Row="1"
                                             Grid.Column="3"
-                                            Text="{Binding Results[0].Status}"
+                                            Text="{Binding Results[0].Status}, StringFormat='Ret | {0}'}"
                                             Style="{StaticResource Body2FontSize_ExoBold}"
                                             HorizontalOptions="EndAndExpand">
                                         </Label>

@@ -218,9 +218,10 @@
                                                             </Label.FormattedText>
                                                         </Label>
                                                         <Label
+                                                            IsVisible="{Binding Status, Converter={xct:EqualConverter}, ConverterParameter='Finished'}"
                                                             Grid.Row="1"
                                                             Grid.Column="1"
-                                                            HorizontalTextAlignment="End">
+                                                            HorizontalOptions="EndAndExpand">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span
@@ -231,6 +232,14 @@
                                                                         Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
                                                                 </FormattedString>
                                                             </Label.FormattedText>
+                                                        </Label>
+                                                        <Label
+                                                            IsVisible="{Binding Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
+                                                            Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            Text="{Binding Status, StringFormat='Ret | {0}'}"
+                                                            Style="{StaticResource Body2FontSize_ExoBold}"
+                                                            HorizontalOptions="EndAndExpand">
                                                         </Label>
                                                     </Grid>                                                
                                                 </DataTemplate>
