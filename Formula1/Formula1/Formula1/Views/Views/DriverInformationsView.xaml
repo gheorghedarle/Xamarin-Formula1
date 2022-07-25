@@ -1,119 +1,47 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:templates="clr-namespace:Formula1.Views.Templates"
              x:Class="Formula1.Views.Views.DriverInformationsView">
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Date of Birth: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Style="{StaticResource Body2FontSize_ExoBold}">
-                    <Span.Text>
-                        <MultiBinding StringFormat="{}{0} ({1} years old)">
-                            <Binding Path="DriverInformations.DateOfBirth" />
-                            <Binding Path="DriverInformations.Age" />
-                        </MultiBinding>
-                    </Span.Text>
-                </Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Place of birth: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding DriverInformations.PlaceOfBirth}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Country: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding DriverInformations.Country}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="World Championships: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding DriverInformations.WorldChampionships}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Grands Prix entered: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding DriverInformations.GrandsPrixEntered}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Podiums: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding DriverInformations.Podiums}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Points: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding DriverInformations.Points}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Highest race finish: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding DriverInformations.HighestRaceFinish}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-    <Label>
-        <Label.FormattedText>
-            <FormattedString>
-                <Span
-                    Text="Highest grid position: "
-                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding DriverInformations.HighestGridPosition}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
+    <templates:InformationDateOfBirthTemplate
+        Label="Date of birth"
+        DateOfBirth="{Binding DriverInformations.DateOfBirth}"
+        Age="{Binding DriverInformations.Age}"></templates:InformationDateOfBirthTemplate>
+    <templates:InformationTemplate
+        Label="Place of birth"
+        Value="{Binding DriverInformations.PlaceOfBirth}"></templates:InformationTemplate>
+    <templates:InformationTemplate
+        Label="Country"
+        Value="{Binding DriverInformations.Country}"></templates:InformationTemplate>
+    <templates:InformationTemplate
+        IsVisible="{Binding DriverInformations.WorldChampionships, Converter={xct:NotEqualConverter}, ConverterParameter='N/A'}"
+        Label="World Championships"
+        Value="{Binding DriverInformations.WorldChampionships}"></templates:InformationTemplate>
+    <Grid
+        ColumnDefinitions="*, *, *">
+        <templates:InformationTemplate
+            Grid.Column="0"
+            Label="Grands Prix"
+            Value="{Binding DriverInformations.GrandsPrixEntered}"></templates:InformationTemplate>
+        <templates:InformationTemplate
+            Grid.Column="1"
+            Label="Podiums"
+            Value="{Binding DriverInformations.Podiums}"></templates:InformationTemplate>
+        <templates:InformationTemplate
+            Grid.Column="2"
+            Label="Points"
+            Value="{Binding DriverInformations.Points}"></templates:InformationTemplate>
+    </Grid>
+    <Grid
+        ColumnDefinitions="*, *">
+        <templates:InformationTemplate
+            Grid.Column="0"
+            Label="Highest race finish"
+            Value="{Binding DriverInformations.HighestRaceFinish}"></templates:InformationTemplate>
+        <templates:InformationTemplate
+            Grid.Column="1"
+            Label="Highest grid position"
+            Value="{Binding DriverInformations.HighestGridPosition}"></templates:InformationTemplate>
+    </Grid>
 </StackLayout>

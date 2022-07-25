@@ -47,6 +47,9 @@
     <Compile Update="Views\TabViews\HistoryView.xaml.cs">
       <DependentUpon>HistoryView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Templates\InformationDateOfBirthTemplate.xaml.cs">
+      <DependentUpon>InformationDateOfBirthTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Views\CircuitInformationsView.xaml.cs">
       <DependentUpon>CircuitInformationsView.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\TeamDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\InformationTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\InformationDateOfBirthTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Views\CircuitInformationsView.xaml">

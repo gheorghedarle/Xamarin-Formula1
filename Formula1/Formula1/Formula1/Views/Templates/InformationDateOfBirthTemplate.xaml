@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Formula1.Views.Templates.InformationDateOfBirthTemplate"             
+             x:Name="this">
+    <StackLayout
+        BindingContext="{x:Reference this}">
+        <Label
+            Text="{Binding Label}"
+            Style="{StaticResource CaptionFontSize_ExoRegular}"/>
+        <Label
+            Style="{StaticResource Subtitle1FontSize_ExoBold}">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span
+                        Text="{Binding DateOfBirth, StringFormat='{0} '}"
+                        Style="{StaticResource Subtitle1FontSize_ExoBold}"></Span>
+                    <Span
+                        Text="{Binding Age, StringFormat='({0} years old)'}"
+                        Style="{StaticResource Body2FontSize_ExoRegular}">
+                    </Span>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+</StackLayout>
