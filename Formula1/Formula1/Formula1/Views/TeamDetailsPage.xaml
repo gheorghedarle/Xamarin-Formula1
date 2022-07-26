@@ -58,7 +58,8 @@
                     </Label>
                     <Label
                         Text="{Binding Constructor.DriversName}"
-                        Style="{StaticResource Body2FontSize_ExoRegular}">
+                        Style="{StaticResource Body2FontSize_ExoRegular}"
+                        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
                     </Label>
                 </StackLayout>
             </Grid>

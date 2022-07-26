@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout
-        xmlns="http://xamarin.com/schemas/2014/forms"
-        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        x:Class="Formula1.Views.Views.HomeScheduleView"
-        Padding="0, 0, 0, 5"
-        x:Name="template">
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Formula1.Views.Views.HomeScheduleView"
+    Padding="0, 0, 0, 5"
+    x:Name="template">
     <StackLayout.GestureRecognizers>
         <TapGestureRecognizer 
             Command="{Binding Parent.BindingContext.SeeEventCommand, Source={x:Reference template}}"
@@ -14,12 +14,13 @@
     <Frame
         BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="20"
-        Margin="5, 0, 5, 0"
-        Padding="10">
+        Margin="5, 0"
+        Padding="10, 5"
+        HeightRequest="85">
         <Grid
             RowDefinitions="Auto, Auto, Auto"
             ColumnDefinitions="Auto, Auto"
-            RowSpacing="0"
+            RowSpacing="2"
             Margin="5, 0, 5, 0"
             VerticalOptions="Center">
             <Image
@@ -29,7 +30,7 @@
                 Source="{Binding Circuit.Location.Flag}"
                 WidthRequest="40"
                 HeightRequest="40"
-                Margin="0, 0, 10, 0"
+                Margin="0, 0, 5, 0"
                 Aspect="AspectFill"
                 HorizontalOptions="Center"
                 VerticalOptions="Center">
@@ -55,7 +56,9 @@
             <Label
                 Grid.Row="2"
                 Grid.Column="1"
-                Style="{StaticResource CaptionFontSize_ExoRegular}">
+                Style="{StaticResource CaptionFontSize_ExoMedium}"
+                Margin="0, 1"
+                TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
                 <Label.Text>
                     <MultiBinding StringFormat="{}{0:dd}-{1:dd MMM yyyy}">
                         <Binding Path="FirstPractice.Date" />

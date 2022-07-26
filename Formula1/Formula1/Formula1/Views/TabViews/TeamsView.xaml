@@ -32,7 +32,7 @@
                     RepeatCount="10">
                     <xct:StateView.Template>
                         <DataTemplate>
-                            <views:TeamStadingsViewLoading></views:TeamStadingsViewLoading>
+                            <views:TeamStadingsLoadingView></views:TeamStadingsLoadingView>
                         </DataTemplate>
                     </xct:StateView.Template>
                 </xct:StateView>

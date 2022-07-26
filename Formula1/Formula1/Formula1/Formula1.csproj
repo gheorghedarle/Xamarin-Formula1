@@ -77,8 +77,8 @@
     <Compile Update="Views\Views\HistoryDriverStadingsView.xaml.cs">
       <DependentUpon>HistoryDriverStadingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views\HistoryDriverStadingsViewLoading.xaml.cs">
-      <DependentUpon>HistoryDriverStadingsViewLoading.xaml</DependentUpon>
+    <Compile Update="Views\Views\HistoryDriverStadingsLoadingView.xaml.cs">
+      <DependentUpon>HistoryDriverStadingsLoadingView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Views\DriverStadingsViewLoading.xaml.cs">
       <DependentUpon>DriverStadingsViewLoading.xaml</DependentUpon>
@@ -89,11 +89,17 @@
     <Compile Update="Views\Views\HomeResultsMoreView.xaml.cs">
       <DependentUpon>HomeResultsMoreView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Views\HomeResultsLoadingView.xaml.cs">
+      <DependentUpon>HomeResultsLoadingView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Views\HomeResultsView.xaml.cs">
       <DependentUpon>HomeResultsView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Views\HomeScheduleMoreView.xaml.cs">
       <DependentUpon>HomeScheduleMoreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\HomeScheduleLoadingView.xaml.cs">
+      <DependentUpon>HomeScheduleLoadingView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Views\HomeScheduleView.xaml.cs">
       <DependentUpon>HomeScheduleView.xaml</DependentUpon>
@@ -107,20 +113,20 @@
     <Compile Update="Views\Views\HistoryTeamStadingsView.xaml.cs">
       <DependentUpon>HistoryTeamStadingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views\HistoryTeamStadingsViewLoading.xaml.cs">
-      <DependentUpon>HistoryTeamStadingsViewLoading.xaml</DependentUpon>
+    <Compile Update="Views\Views\HistoryTeamStadingsLoadingView.xaml.cs">
+      <DependentUpon>HistoryTeamStadingsLoadingView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Views\HistoryScheduleView.xaml.cs">
       <DependentUpon>HistoryScheduleView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views\HistoryScheduleViewLoading.xaml.cs">
-      <DependentUpon>HistoryScheduleViewLoading.xaml</DependentUpon>
+    <Compile Update="Views\Views\HistoryScheduleLoadingView.xaml.cs">
+      <DependentUpon>HistoryScheduleLoadingView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views\ScheduleViewLoading.xaml.cs">
-      <DependentUpon>ScheduleViewLoading.xaml</DependentUpon>
+    <Compile Update="Views\Views\ScheduleLoadingView.xaml.cs">
+      <DependentUpon>ScheduleLoadingView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views\TeamStadingsViewLoading.xaml.cs">
-      <DependentUpon>TeamStadingsViewLoading.xaml</DependentUpon>
+    <Compile Update="Views\Views\TeamStadingsLoadingView.xaml.cs">
+      <DependentUpon>TeamStadingsLoadingView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Views\TeamStadingsView.xaml.cs">
       <DependentUpon>TeamStadingsView.xaml</DependentUpon>

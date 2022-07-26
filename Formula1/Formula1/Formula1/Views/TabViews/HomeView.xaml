@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
       xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-      xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
+        xmlns:controls="clr-namespace:Formula1.Controls"
       xmlns:views="clr-namespace:Formula1.Views.Views"
       xmlns:templateSelector="clr-namespace:Formula1.Helpers.TemplateSelectors"
       x:Class="Formula1.Views.TabViews.HomeView"
@@ -54,19 +54,32 @@
                 Text="Latest results"
                 Style="{StaticResource Body1FontSize_ExoBold}"
                 Margin="20, 0, 20, 0"></Label>
-            <Label
-                Text="{Binding LatestRace}"
-                Style="{StaticResource Body2FontSize_ExoRegular}"
-                Margin="20, 0, 20, 0"></Label>
             <StackLayout
                 xct:StateLayout.CurrentState="{Binding ResultsState}"
-                HeightRequest="120"
-                Margin="20, 0, 0, 5">
+                HeightRequest="150"
+                Margin="20, 0, 0, 0">
                 <xct:StateLayout.StateViews>
                     <xct:StateView 
                         StateKey="Loading"
-                        VerticalOptions="FillAndExpand">
-                        <fragments:LoadingView></fragments:LoadingView>
+                        RepeatCount="1">
+                        <xct:StateView.Template>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <controls:SkeletonView
+                                        HeightRequest="15"
+                                        CornerRadius="15"
+                                        HorizontalOptions="Start"
+                                        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"></controls:SkeletonView>
+                                    <StackLayout
+                                        Orientation="Horizontal"
+                                        Spacing="0">
+                                            <views:HomeResultsLoadingView></views:HomeResultsLoadingView>
+                                            <views:HomeResultsLoadingView></views:HomeResultsLoadingView>
+                                            <views:HomeResultsLoadingView></views:HomeResultsLoadingView>
+                                    </StackLayout>
+                                </StackLayout>
+                            </DataTemplate>
+                        </xct:StateView.Template>
                     </xct:StateView>
                     <xct:StateView 
                         StateKey="Error"
@@ -79,6 +92,9 @@
                         <Label Text="Empty"></Label>
                     </xct:StateView>
                 </xct:StateLayout.StateViews>
+                <Label
+                    Text="{Binding LatestRace}"
+                    Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
                 <CollectionView
                     ItemsSource="{Binding LatestResults}"
                     ItemTemplate="{StaticResource HomeResultsTemplateSelector}">
@@ -95,13 +111,23 @@
                 Margin="20, 0, 20, 0"></Label>
             <StackLayout
                 xct:StateLayout.CurrentState="{Binding ScheduleState}"
-                HeightRequest="80"
-                Margin="20, 0, 0, 5">
+                HeightRequest="90"
+                Margin="20, 0, 0, 0">
                 <xct:StateLayout.StateViews>
                     <xct:StateView 
                         StateKey="Loading"
-                        VerticalOptions="FillAndExpand">
-                        <fragments:LoadingView></fragments:LoadingView>
+                        RepeatCount="1">
+                        <xct:StateView.Template>
+                            <DataTemplate>
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Spacing="0">
+                                    <views:HomeScheduleLoadingView></views:HomeScheduleLoadingView>
+                                    <views:HomeScheduleLoadingView></views:HomeScheduleLoadingView>
+                                    <views:HomeScheduleLoadingView></views:HomeScheduleLoadingView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </xct:StateView.Template>
                     </xct:StateView>
                     <xct:StateView 
                         StateKey="Error"
@@ -182,7 +208,7 @@
                         RepeatCount="3">
                         <xct:StateView.Template>
                             <DataTemplate>
-                                <views:TeamStadingsViewLoading></views:TeamStadingsViewLoading>
+                                <views:TeamStadingsLoadingView></views:TeamStadingsLoadingView>
                             </DataTemplate>
                         </xct:StateView.Template>
                     </xct:StateView>

@@ -15,7 +15,8 @@
         BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="20"
         Margin="5, 0, 5, 0"
-        Padding="0">
+        Padding="0"
+        HeightRequest="145">
         <Grid
             RowDefinitions="Auto, Auto, Auto, Auto"
             ColumnDefinitions="Auto, Auto"

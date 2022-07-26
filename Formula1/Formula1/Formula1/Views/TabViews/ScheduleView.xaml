@@ -37,7 +37,7 @@
                             RepeatCount="15">
                             <xct:StateView.Template>
                                 <DataTemplate>
-                                    <views:ScheduleViewLoading></views:ScheduleViewLoading>
+                                    <views:ScheduleLoadingView></views:ScheduleLoadingView>
                                 </DataTemplate>
                             </xct:StateView.Template>
                         </xct:StateView>
@@ -75,7 +75,7 @@
                             RepeatCount="15">
                             <xct:StateView.Template>
                                 <DataTemplate>
-                                    <views:ScheduleViewLoading></views:ScheduleViewLoading>
+                                    <views:ScheduleLoadingView></views:ScheduleLoadingView>
                                 </DataTemplate>
                             </xct:StateView.Template>
                         </xct:StateView>
