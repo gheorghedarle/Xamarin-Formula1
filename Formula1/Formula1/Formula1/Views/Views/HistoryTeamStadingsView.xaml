@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Formula1.Views.Views.HistoryTeamStadingsView"
+    ColumnDefinitions="30, *, Auto"
+    Padding="15, 5"
+    RowSpacing="0"
+    x:Name="template">
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer
+            Command="{Binding Path=Parent.BindingContext.TeamDetailsCommand, Source={x:Reference template}}"
+            CommandParameter="{Binding BindingContext, Source={x:Reference template}}"></TapGestureRecognizer>
+    </Grid.GestureRecognizers>
+    <Label
+        Grid.Column="0"
+        Text="{Binding Position}"
+        Style="{StaticResource Body1FontSize_ExoRegular}"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"></Label>
+    <Label
+        Grid.Column="1"
+        Margin="3, 0, 0, 0"
+        Text="{Binding Constructor.Name}"
+        Style="{StaticResource Body1FontSize_ExoBold}"></Label>
+    <Label
+        Grid.Column="2"
+        VerticalOptions="CenterAndExpand">
+        <Label.FormattedText>
+            <FormattedString>
+                <Span
+                    Text="{Binding Points}"
+                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                <Span
+                    Text=" pts"
+                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+</Grid>

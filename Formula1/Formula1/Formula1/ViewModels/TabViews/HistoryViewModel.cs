@@ -63,6 +63,9 @@ namespace Formula1.ViewModels.TabViews
             if(season != null)
             {
                 SelectedSeason = Convert.ToInt32(season);
+                DriversState = LayoutState.Loading;
+                TeamsState = LayoutState.Loading;
+                ScheduleState = LayoutState.Loading;
                 await GetDrivers(SelectedSeason.ToString());
                 await GetTeams(SelectedSeason.ToString());
                 await GetSchedule(SelectedSeason.ToString());
@@ -76,6 +79,9 @@ namespace Formula1.ViewModels.TabViews
         private async Task Initialize()
         {
             SelectedSeason = 2021;
+            DriversState = LayoutState.Loading;
+            TeamsState = LayoutState.Loading;
+            ScheduleState = LayoutState.Loading;
             await GetDrivers(SelectedSeason.ToString());
             await GetTeams(SelectedSeason.ToString());
             await GetSchedule(SelectedSeason.ToString());
@@ -83,7 +89,6 @@ namespace Formula1.ViewModels.TabViews
 
         private async Task GetDrivers(string season)
         {
-            DriversState = LayoutState.Loading;
             var resDrivers = await _ergastService.GetDriverStadings(season);
             DriversList = new ObservableCollection<DriverStadingsModel>(resDrivers);
             DriversState = LayoutState.None;
@@ -91,7 +96,6 @@ namespace Formula1.ViewModels.TabViews
 
         private async Task GetTeams(string season)
         {
-            TeamsState = LayoutState.Loading;
             var resTeams = await _ergastService.GetTeamStadings(SelectedSeason.ToString());
             TeamsList = new ObservableCollection<ConstructorStadingsModel>(resTeams);
             TeamsState = LayoutState.None;
@@ -99,7 +103,6 @@ namespace Formula1.ViewModels.TabViews
 
         private async Task GetSchedule(string season)
         {
-            ScheduleState = LayoutState.Loading;
             var resSchedule = await _ergastService.GetSchedule(SelectedSeason.ToString());
             ScheduleList = new ObservableCollection<RaceEventModel>(resSchedule.PastRaceEvents);
             ScheduleState = LayoutState.None;

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:views="clr-namespace:Formula1.Views.Views"
              xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
              x:Class="Formula1.Views.TabViews.HistoryView"
              BindingContext="{Binding HistoryView, Source={StaticResource ViewModelLocator}}"
@@ -62,8 +63,12 @@
                     <xct:StateLayout.StateViews>
                         <xct:StateView 
                             StateKey="Loading"
-                            VerticalOptions="FillAndExpand">
-                            <fragments:LoadingView></fragments:LoadingView>
+                            RepeatCount="15">
+                            <xct:StateView.Template>
+                                <DataTemplate>
+                                    <views:HistoryDriverStadingsViewLoading></views:HistoryDriverStadingsViewLoading>
+                                </DataTemplate>
+                            </xct:StateView.Template>
                         </xct:StateView>
                         <xct:StateView 
                             StateKey="Error"
@@ -76,56 +81,7 @@
                         ItemsSource="{Binding DriversList}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid
-                                    RowDefinitions="Auto, Auto"
-                                    ColumnDefinitions="30, *, Auto"
-                                    Padding="15, 5, 15, 5"
-                                    RowSpacing="2">
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.RowSpan="2"
-                                        Grid.Column="0"
-                                        Text="{Binding Position}"
-                                        Margin="5"
-                                        Style="{StaticResource Body1FontSize_ExoRegular}"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"></Label>
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="1">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span
-                                                    Text="{Binding Driver.GivenName}"
-                                                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                                <Span
-                                                    Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
-                                                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Text="{Binding Constructors[0].Name}"
-                                        Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.RowSpan="2"
-                                        Grid.Column="2"
-                                        VerticalOptions="CenterAndExpand">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span
-                                                    Text="{Binding Points}"
-                                                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                                <Span
-                                                    Text=" pts"
-                                                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </Grid>
+                                <views:HistoryDriverStadingsView></views:HistoryDriverStadingsView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -145,8 +101,12 @@
                     <xct:StateLayout.StateViews>
                         <xct:StateView 
                             StateKey="Loading"
-                            VerticalOptions="FillAndExpand">
-                            <fragments:LoadingView></fragments:LoadingView>
+                            RepeatCount="15">
+                            <xct:StateView.Template>
+                                <DataTemplate>
+                                    <views:HistoryTeamStadingsViewLoading></views:HistoryTeamStadingsViewLoading>
+                                </DataTemplate>
+                            </xct:StateView.Template>
                         </xct:StateView>
                         <xct:StateView 
                             StateKey="Error"
@@ -158,35 +118,7 @@
                         ItemsSource="{Binding TeamsList}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid
-                                    ColumnDefinitions="30, *, Auto"
-                                    Padding="15, 5, 15, 5"
-                                    RowSpacing="2">
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="{Binding Position}"
-                                        Style="{StaticResource Body1FontSize_ExoRegular}"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"></Label>
-                                    <Label
-                                        Grid.Column="1"
-                                        Text="{Binding Constructor.Name}"
-                                        Style="{StaticResource Body1FontSize_ExoBold}"></Label>
-                                    <Label
-                                        Grid.Column="2"
-                                        VerticalOptions="CenterAndExpand">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span
-                                                    Text="{Binding Points}"
-                                                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                                <Span
-                                                    Text=" pts"
-                                                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </Grid>
+                                <views:HistoryTeamStadingsView></views:HistoryTeamStadingsView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
