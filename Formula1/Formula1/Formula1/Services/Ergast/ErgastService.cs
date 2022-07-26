@@ -78,10 +78,6 @@ namespace Formula1.Services.Ergast
                 {
                     r.ForEach(c =>
                     {
-                        c.Constructor.Image = new ConstructorImageModel()
-                        {
-                            Logo = $"{Constants.ImageApiBaseUrl}teams/{c.Constructor.ConstructorId}.png",
-                        };
                         c.Constructor.Color = Constants.TeamColors[c.Constructor.ConstructorId];
                     });
                     foreach (var a in r)
@@ -111,10 +107,6 @@ namespace Formula1.Services.Ergast
                 var res = json["MRData"]["ConstructorTable"].ToString();
                 var r = JsonConvert.DeserializeObject<ConstructorInformationsModel>(res);
                 var c = r.Constructors.First();
-                c.Image = new ConstructorImageModel()
-                {
-                    Logo = $"{Constants.ImageApiBaseUrl}teams/{c.ConstructorId}.png",
-                };
                 c.Color = Constants.TeamColors[c.ConstructorId];
                 var dResponse = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructors/{c.ConstructorId}/drivers.json");
                 if (dResponse.IsSuccessStatusCode)

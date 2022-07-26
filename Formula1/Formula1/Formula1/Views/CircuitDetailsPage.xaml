@@ -72,7 +72,7 @@
                             VerticalOptions="Center">
                         </Label>
                         <Label
-                            Style="{StaticResource CaptionFontSize_ExoRegular}"
+                            Style="{StaticResource CaptionFontSize_ExoMedium}"
                             VerticalOptions="Center">
                             <Label.Text>
                                 <MultiBinding StringFormat="{}{0:d MMM} - {1:d MMM yyyy}">
@@ -120,7 +120,7 @@
                             <Label
                                 Text="Map"
                                 Style="{StaticResource Body1FontSize_ExoBold}"
-                                Margin="20, 0, 20, 5"></Label>
+                                Margin="20, 0, 20, 2"></Label>
                             <Image
                                 Aspect="AspectFit"
                                 Margin="5"
@@ -149,7 +149,7 @@
                                 <Label
                                     Text="Race Weekend"
                                     Style="{StaticResource Body1FontSize_ExoBold}"
-                                    Margin="0, 0, 0, 5"></Label>
+                                    Margin="0, 0, 0, 2"></Label>
                                 <views:CircuitRaceWeekendViews></views:CircuitRaceWeekendViews>
                             </StackLayout>
                             <StackLayout                        
@@ -175,7 +175,7 @@
                                 <Label
                                     Text="Basic Informations"
                                     Style="{StaticResource Body1FontSize_ExoBold}"
-                                    Margin="0, 0, 0, 5"></Label>
+                                    Margin="0, 0, 0, 2"></Label>
                                 <views:CircuitInformationsView></views:CircuitInformationsView>
                             </StackLayout>
                         </StackLayout>

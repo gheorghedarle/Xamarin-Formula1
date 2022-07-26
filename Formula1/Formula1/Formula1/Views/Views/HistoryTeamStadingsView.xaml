@@ -33,7 +33,9 @@
                     Style="{StaticResource Body1FontSize_ExoBold}"></Span>
                 <Span
                     Text=" pts"
-                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                    Style="{StaticResource Body1FontSize_ExoRegular}"        
+                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
+                </Span>
             </FormattedString>
         </Label.FormattedText>
     </Label>

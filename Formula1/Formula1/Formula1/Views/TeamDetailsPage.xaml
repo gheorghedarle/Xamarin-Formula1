@@ -61,14 +61,6 @@
                         Style="{StaticResource Body2FontSize_ExoRegular}">
                     </Label>
                 </StackLayout>
-                <Image
-                    Source="{Binding Constructor.Image.Logo}"
-                    WidthRequest="100"
-                    HeightRequest="100"
-                    Aspect="AspectFit"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center">
-                </Image>
             </Grid>
             <xct:TabView
                 Grid.Row="1"
@@ -108,7 +100,8 @@
                             </xct:StateLayout.StateViews>
                             <Label
                                 Text="Basic Informations"
-                                Style="{StaticResource Body1FontSize_ExoBold}"></Label>
+                                Style="{StaticResource Body1FontSize_ExoBold}"
+                                Margin="0, 0, 0, 2"></Label>
                             <views:ConstructorInformationsView></views:ConstructorInformationsView>
                         </StackLayout>
                     </ScrollView>
@@ -237,7 +230,7 @@
                                                             IsVisible="{Binding Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
                                                             Grid.Row="1"
                                                             Grid.Column="1"
-                                                            Text="{Binding Status, StringFormat='Ret | {0}'}"
+                                                            Text="{Binding Status, StringFormat='{0}'}"
                                                             Style="{StaticResource Body2FontSize_ExoBold}"
                                                             HorizontalOptions="EndAndExpand">
                                                         </Label>

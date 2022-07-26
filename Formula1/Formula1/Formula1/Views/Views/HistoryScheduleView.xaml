@@ -25,7 +25,9 @@
         Grid.Column="0"
         Text="{Binding Circuit.CircuitName}"
         Style="{StaticResource Body2FontSize_ExoRegular}"
-        VerticalOptions="Center"></Label>
+        VerticalOptions="Center"        
+        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
+    </Label>
     <Label
         Grid.Row="0"
         Grid.RowSpan="3"

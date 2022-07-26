@@ -116,7 +116,7 @@
                         <Label
                             Text="Basic Informations"
                             Style="{StaticResource Body1FontSize_ExoBold}"
-                            Margin="0, 0, 0, 5"></Label>
+                            Margin="0, 0, 0, 2"></Label>
                         <views:DriverInformationsView></views:DriverInformationsView>
                     </StackLayout>
                 </xct:TabViewItem>
@@ -227,9 +227,9 @@
                                             IsVisible="{Binding Results[0].Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
                                             Grid.Row="1"
                                             Grid.Column="3"
-                                            Text="{Binding Results[0].Status, StringFormat='Ret | {0}'}"
+                                            Text="{Binding Results[0].Status, StringFormat='{0}'}"
                                             Style="{StaticResource Body2FontSize_ExoBold}"
-                                            HorizontalOptions="EndAndExpand">
+                                            HorizontalOptions="End">
                                         </Label>
                                     </Grid>
                                 </DataTemplate>

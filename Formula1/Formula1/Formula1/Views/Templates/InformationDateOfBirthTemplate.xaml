@@ -5,19 +5,21 @@
              x:Name="this">
     <StackLayout
         BindingContext="{x:Reference this}"
-        Spacing="0">
+        Spacing="0"
+        Margin="0, 2">
         <Label
             Text="{Binding Label}"
-            Style="{StaticResource CaptionFontSize_ExoRegular}"/>
+            Style="{StaticResource CaptionFontSize_ExoMedium}"
+            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"/>
         <Label
             Style="{StaticResource Subtitle1FontSize_ExoBold}">
             <Label.FormattedText>
                 <FormattedString>
                     <Span
-                        Text="{Binding DateOfBirth, StringFormat='{0} '}"
+                        Text="{Binding DateOfBirth, StringFormat='{0}'}"
                         Style="{StaticResource Subtitle1FontSize_ExoBold}"></Span>
                     <Span
-                        Text="{Binding Age, StringFormat='({0} years old)'}"
+                        Text="{Binding Age, StringFormat='{} ({0} years old)'}"
                         Style="{StaticResource Body2FontSize_ExoRegular}">
                     </Span>
                 </FormattedString>

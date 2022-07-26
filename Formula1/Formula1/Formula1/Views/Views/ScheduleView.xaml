@@ -34,7 +34,7 @@
         Grid.Row="0"
         Grid.Column="1"
         Text="{Binding Round, StringFormat='Round {0}'}"
-        Style="{StaticResource CaptionFontSize_ExoRegular}"
+        Style="{StaticResource CaptionFontSize_ExoMedium}"
         TextColor="{StaticResource AccentColor}"
         VerticalOptions="Center"></Label>
     <Label
@@ -48,12 +48,14 @@
         Grid.Column="1"
         Text="{Binding Circuit.CircuitName}"
         Style="{StaticResource Body2FontSize_ExoRegular}"
-        VerticalOptions="Center"></Label>
+        VerticalOptions="Center"        
+        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
+    </Label>
     <Label
         Grid.Row="0"
         Grid.RowSpan="3"
         Grid.Column="2"
-        Style="{StaticResource CaptionFontSize_ExoRegular}"
+        Style="{StaticResource CaptionFontSize_ExoMedium}"
         HorizontalOptions="End"
         VerticalOptions="Center">
         <Label.Text>
