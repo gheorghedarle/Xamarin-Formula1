@@ -1,6 +1,5 @@
 ﻿using Formula1.Models;
 using Formula1.Services.Ergast;
-using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Formula1.Views.Views.ScheduleView"
+    RowDefinitions="Auto, Auto, Auto"
+    ColumnDefinitions="50, *, Auto"
+    Padding="15, 5"
+    RowSpacing="0"
+    x:Name="template">
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer
+            Command="{Binding Path=Parent.BindingContext.CircuitDetailsCommand, Source={x:Reference template}}"
+            CommandParameter="{Binding BindingContext, Source={x:Reference template}}"></TapGestureRecognizer>
+    </Grid.GestureRecognizers>
+    <Image
+        Grid.Row="0"
+        Grid.RowSpan="3"
+        Grid.Column="0"
+        Source="{Binding Circuit.Location.Flag}"
+        WidthRequest="40"
+        HeightRequest="40"
+        Aspect="AspectFill"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <Image.Clip>
+            <EllipseGeometry
+                Center="20,20"
+                RadiusX="20"
+                RadiusY="20"/>
+        </Image.Clip>
+    </Image>
+    <Label
+        Grid.Row="0"
+        Grid.Column="1"
+        Text="{Binding Round, StringFormat='Round {0}'}"
+        Style="{StaticResource CaptionFontSize_ExoRegular}"
+        TextColor="{StaticResource AccentColor}"
+        VerticalOptions="Center"></Label>
+    <Label
+        Grid.Row="1"
+        Grid.Column="1"
+        Text="{Binding Circuit.Location.Country}"
+        Style="{StaticResource Body1FontSize_ExoBold}"
+        VerticalOptions="Center"></Label>
+    <Label
+        Grid.Row="2"
+        Grid.Column="1"
+        Text="{Binding Circuit.CircuitName}"
+        Style="{StaticResource Body2FontSize_ExoRegular}"
+        VerticalOptions="Center"></Label>
+    <Label
+        Grid.Row="0"
+        Grid.RowSpan="3"
+        Grid.Column="2"
+        Style="{StaticResource CaptionFontSize_ExoRegular}"
+        HorizontalOptions="End"
+        VerticalOptions="Center">
+        <Label.Text>
+            <MultiBinding StringFormat="{}{0:dd MMM} - {1:dd MMM yyyy}">
+                <Binding Path="FirstPractice.Date" />
+                <Binding Path="Date" />
+            </MultiBinding>
+        </Label.Text>
+    </Label>
+</Grid>

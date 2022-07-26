@@ -110,6 +110,15 @@
     <Compile Update="Views\Views\HistoryTeamStadingsViewLoading.xaml.cs">
       <DependentUpon>HistoryTeamStadingsViewLoading.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Views\HistoryScheduleView.xaml.cs">
+      <DependentUpon>HistoryScheduleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\HistoryScheduleViewLoading.xaml.cs">
+      <DependentUpon>HistoryScheduleViewLoading.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\ScheduleViewLoading.xaml.cs">
+      <DependentUpon>ScheduleViewLoading.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Views\TeamStadingsViewLoading.xaml.cs">
       <DependentUpon>TeamStadingsViewLoading.xaml</DependentUpon>
     </Compile>
@@ -207,6 +216,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Views\RaceResultsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Views\ScheduleView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Views\TeamStadingsView.xaml">

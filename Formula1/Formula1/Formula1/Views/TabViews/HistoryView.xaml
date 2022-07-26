@@ -138,8 +138,12 @@
                     <xct:StateLayout.StateViews>
                         <xct:StateView 
                             StateKey="Loading"
-                            VerticalOptions="FillAndExpand">
-                            <fragments:LoadingView></fragments:LoadingView>
+                            RepeatCount="15">
+                            <xct:StateView.Template>
+                                <DataTemplate>
+                                    <views:HistoryScheduleViewLoading></views:HistoryScheduleViewLoading>
+                                </DataTemplate>
+                            </xct:StateView.Template>
                         </xct:StateView>
                         <xct:StateView 
                             StateKey="Error"
@@ -151,39 +155,7 @@
                         ItemsSource="{Binding ScheduleList}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid
-                                    RowDefinitions="Auto, Auto, Auto"
-                                    ColumnDefinitions="Auto, Auto"
-                                    Padding="15, 5, 15, 5"
-                                    RowSpacing="0">
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Text="{Binding Round, StringFormat='Round {0}'}"
-                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
-                                        TextColor="{StaticResource AccentColor}"
-                                        VerticalOptions="Center"></Label>
-                                    <Label
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        Text="{Binding Circuit.Location.Country}"
-                                        Style="{StaticResource Body1FontSize_ExoBold}"
-                                        VerticalOptions="Center"></Label>
-                                    <Label
-                                        Grid.Row="2"
-                                        Grid.Column="0"
-                                        Text="{Binding Circuit.CircuitName}"
-                                        Style="{StaticResource Body2FontSize_ExoRegular}"
-                                        VerticalOptions="Center"></Label>
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.RowSpan="3"
-                                        Grid.Column="2"
-                                        Text="{Binding Date, StringFormat='{0:d MMM yyyy}'}"
-                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
-                                        HorizontalOptions="End"
-                                        VerticalOptions="Center"></Label>
-                                </Grid>
+                                <views:HistoryScheduleView></views:HistoryScheduleView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>

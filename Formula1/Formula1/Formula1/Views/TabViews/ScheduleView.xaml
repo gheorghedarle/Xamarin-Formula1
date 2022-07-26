@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
       xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+      xmlns:views="clr-namespace:Formula1.Views.Views"
       xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
       x:Class="Formula1.Views.TabViews.ScheduleView"
       BindingContext="{Binding ScheduleView, Source={StaticResource ViewModelLocator}}"
@@ -13,185 +14,89 @@
             Style="{StaticResource Headline3_ExoBold}"
             TextColor="{StaticResource AccentColor}"
             Margin="15, 10, 0, 0"/>
-        <StackLayout
-            xct:StateLayout.CurrentState="{Binding MainState}"
-            VerticalOptions="FillAndExpand">
-            <xct:StateLayout.StateViews>
-                <xct:StateView 
-                    StateKey="Loading"
+        <xct:TabView
+            TabStripPlacement="Top"
+            TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
+            TabStripHeight="40"
+            SelectedIndex="0"
+            TabIndicatorColor="{StaticResource AccentColor}"
+            TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+            <xct:TabViewItem
+                Text="Upcoming"
+                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                TextColorSelected="{StaticResource AccentColor}"
+                FontFamily="Exo_Regular"
+                FontFamilySelected="Exo_Medium"
+                FontSizeSelected="14"
+                FontSize="14">
+                <StackLayout
+                    xct:StateLayout.CurrentState="{Binding MainState}"
                     VerticalOptions="FillAndExpand">
-                    <fragments:LoadingView></fragments:LoadingView>
-                </xct:StateView>
-                <xct:StateView 
-                    StateKey="Error"
-                    VerticalOptions="FillAndExpand">
-                    <Label Text="Error"></Label>
-                </xct:StateView>
-            </xct:StateLayout.StateViews>
-            <xct:TabView
-                TabStripPlacement="Top"
-                TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
-                TabStripHeight="40"
-                SelectedIndex="0"
-                TabIndicatorColor="{StaticResource AccentColor}"
-                TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
-                <xct:TabViewItem
-                    Text="Upcoming"
-                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                    TextColorSelected="{StaticResource AccentColor}"
-                    FontFamily="Exo_Regular"
-                    FontFamilySelected="Exo_Medium"
-                    FontSizeSelected="14"
-                    FontSize="14">
+                    <xct:StateLayout.StateViews>
+                        <xct:StateView 
+                            StateKey="Loading"
+                            RepeatCount="15">
+                            <xct:StateView.Template>
+                                <DataTemplate>
+                                    <views:ScheduleViewLoading></views:ScheduleViewLoading>
+                                </DataTemplate>
+                            </xct:StateView.Template>
+                        </xct:StateView>
+                        <xct:StateView 
+                            StateKey="Error"
+                            VerticalOptions="FillAndExpand">
+                            <Label Text="Error"></Label>
+                        </xct:StateView>
+                    </xct:StateLayout.StateViews>
                     <CollectionView
                         x:Name="upcomingList"
                         ItemsSource="{Binding UpcomingRaceEventList}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid
-                                    RowDefinitions="Auto, Auto, Auto"
-                                    ColumnDefinitions="50, *, Auto"
-                                    Padding="15, 5, 15, 5"
-                                    RowSpacing="0">
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Path=BindingContext.CircuitDetailsCommand, Source={x:Reference upcomingList}}"
-                                            CommandParameter="{Binding .}"></TapGestureRecognizer>
-                                    </Grid.GestureRecognizers>
-                                    <Image
-                                        Grid.Row="0"
-                                        Grid.RowSpan="3"
-                                        Grid.Column="0"
-                                        Source="{Binding Circuit.Location.Flag}"
-                                        WidthRequest="40"
-                                        HeightRequest="40"
-                                        Aspect="AspectFill"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center">
-                                        <Image.Clip>
-                                            <EllipseGeometry
-                                                Center="20,20"
-                                                RadiusX="20"
-                                                RadiusY="20"/>
-                                        </Image.Clip>
-                                    </Image>
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        Text="{Binding Round, StringFormat='Round {0}'}"
-                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
-                                        TextColor="{StaticResource AccentColor}"
-                                        VerticalOptions="Center"></Label>
-                                    <Label
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Text="{Binding Circuit.Location.Country}"
-                                        Style="{StaticResource Body1FontSize_ExoBold}"
-                                        VerticalOptions="Center"></Label>
-                                    <Label
-                                        Grid.Row="2"
-                                        Grid.Column="1"
-                                        Text="{Binding Circuit.CircuitName}"
-                                        Style="{StaticResource Body2FontSize_ExoRegular}"
-                                        VerticalOptions="Center"></Label>
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.RowSpan="3"
-                                        Grid.Column="2"
-                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
-                                        HorizontalOptions="End"
-                                        VerticalOptions="Center">
-                                        <Label.Text>
-                                            <MultiBinding StringFormat="{}{0:dd} - {1:dd MMM}">
-                                                <Binding Path="FirstPractice.Date" />
-                                                <Binding Path="Date" />
-                                            </MultiBinding>
-                                        </Label.Text>
-                                    </Label>
-                                </Grid>
+                                <views:ScheduleView></views:ScheduleView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                </xct:TabViewItem>
-                <xct:TabViewItem
-                    Text="Past"
-                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                    TextColorSelected="{StaticResource AccentColor}"
-                    FontFamily="Exo_Regular"
-                    FontFamilySelected="Exo_Medium"
-                    FontSizeSelected="14"
-                    FontSize="14">
+                </StackLayout>
+            </xct:TabViewItem>
+            <xct:TabViewItem
+                Text="Past"
+                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                TextColorSelected="{StaticResource AccentColor}"
+                FontFamily="Exo_Regular"
+                FontFamilySelected="Exo_Medium"
+                FontSizeSelected="14"
+                FontSize="14">
+                <StackLayout
+                    xct:StateLayout.CurrentState="{Binding MainState}"
+                    VerticalOptions="FillAndExpand">
+                    <xct:StateLayout.StateViews>
+                        <xct:StateView 
+                            StateKey="Loading"
+                            RepeatCount="15">
+                            <xct:StateView.Template>
+                                <DataTemplate>
+                                    <views:ScheduleViewLoading></views:ScheduleViewLoading>
+                                </DataTemplate>
+                            </xct:StateView.Template>
+                        </xct:StateView>
+                        <xct:StateView 
+                            StateKey="Error"
+                            VerticalOptions="FillAndExpand">
+                            <Label Text="Error"></Label>
+                        </xct:StateView>
+                    </xct:StateLayout.StateViews>
                     <CollectionView
                         x:Name="pastList"
                         ItemsSource="{Binding PastRaceEventList}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid
-                                    RowDefinitions="Auto, Auto, Auto"
-                                    ColumnDefinitions="50, *, Auto"
-                                    Padding="15, 5, 15, 5"
-                                    RowSpacing="0">
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Path=BindingContext.CircuitDetailsCommand, Source={x:Reference pastList}}"
-                                            CommandParameter="{Binding .}"></TapGestureRecognizer>
-                                    </Grid.GestureRecognizers>
-                                    <Image
-                                        Grid.Row="0"
-                                        Grid.RowSpan="3"
-                                        Grid.Column="0"
-                                        Source="{Binding Circuit.Location.Flag}"
-                                        WidthRequest="40"
-                                        HeightRequest="40"
-                                        Aspect="AspectFill"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center">
-                                        <Image.Clip>
-                                            <EllipseGeometry
-                                                Center="20,20"
-                                                RadiusX="20"
-                                                RadiusY="20"/>
-                                        </Image.Clip>
-                                    </Image>
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        Text="{Binding Round, StringFormat='Round {0}'}"
-                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
-                                        TextColor="{StaticResource AccentColor}"
-                                        VerticalOptions="Center"></Label>
-                                    <Label
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Text="{Binding Circuit.Location.Country}"
-                                        Style="{StaticResource Body1FontSize_ExoBold}"
-                                        VerticalOptions="Center"></Label>
-                                    <Label
-                                        Grid.Row="2"
-                                        Grid.Column="1"
-                                        Text="{Binding Circuit.CircuitName}"
-                                        Style="{StaticResource Body2FontSize_ExoRegular}"
-                                        VerticalOptions="Center"></Label>
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.RowSpan="3"
-                                        Grid.Column="2"
-                                        Style="{StaticResource CaptionFontSize_ExoRegular}"
-                                        HorizontalOptions="End"
-                                        VerticalOptions="Center">
-                                        <Label.Text>
-                                            <MultiBinding StringFormat="{}{0:dd} - {1:dd MMM}">
-                                                <Binding Path="FirstPractice.Date" />
-                                                <Binding Path="Date" />
-                                            </MultiBinding>
-                                        </Label.Text>
-                                    </Label>
-                                </Grid>
+                                <views:ScheduleView></views:ScheduleView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                </xct:TabViewItem>
-            </xct:TabView>
-        </StackLayout>
+                </StackLayout>
+            </xct:TabViewItem>
+        </xct:TabView>
     </StackLayout>
 </ContentPage>
