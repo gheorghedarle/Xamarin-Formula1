@@ -74,6 +74,9 @@
     <Compile Update="Views\Views\DriverInformationsView.xaml.cs">
       <DependentUpon>DriverInformationsView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Views\DriverStadingsViewLoading.xaml.cs">
+      <DependentUpon>DriverStadingsViewLoading.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Views\DriverStadingsView.xaml.cs">
       <DependentUpon>DriverStadingsView.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,9 @@
     </Compile>
     <Compile Update="Views\Views\RaceResultsView.xaml.cs">
       <DependentUpon>RaceResultsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\TeamStadingsViewLoading.xaml.cs">
+      <DependentUpon>TeamStadingsViewLoading.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Views\TeamStadingsView.xaml.cs">
       <DependentUpon>TeamStadingsView.xaml</DependentUpon>

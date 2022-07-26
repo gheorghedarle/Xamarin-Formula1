@@ -5,7 +5,7 @@
     x:Class="Formula1.Views.Views.DriverStadingsView"
     RowDefinitions="Auto, Auto"
     ColumnDefinitions="30, 40, *, Auto"
-    Padding="15, 5, 15, 5"
+    Padding="15, 5"
     RowSpacing="0"
     x:Name="template">
     <Grid.GestureRecognizers>
@@ -42,7 +42,8 @@
     </Image>
     <Label
         Grid.Row="0"
-        Grid.Column="2">
+        Grid.Column="2"
+        Margin="3, 0, 0, 0">
         <Label.FormattedText>
             <FormattedString>
                 <Span
@@ -57,6 +58,7 @@
     <Label
         Grid.Row="1"
         Grid.Column="2"
+        Margin="3, 0, 0, 0"
         Text="{Binding Constructors[0].Name}"
         Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
     <Label

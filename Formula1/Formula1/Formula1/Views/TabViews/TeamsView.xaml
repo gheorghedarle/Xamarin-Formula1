@@ -29,8 +29,12 @@
             <xct:StateLayout.StateViews>
                 <xct:StateView 
                     StateKey="Loading"
-                    VerticalOptions="FillAndExpand">
-                    <fragments:LoadingView></fragments:LoadingView>
+                    RepeatCount="10">
+                    <xct:StateView.Template>
+                        <DataTemplate>
+                            <views:TeamStadingsViewLoading></views:TeamStadingsViewLoading>
+                        </DataTemplate>
+                    </xct:StateView.Template>
                 </xct:StateView>
                 <xct:StateView 
                     StateKey="Error"
@@ -39,8 +43,7 @@
                 </xct:StateView>
             </xct:StateLayout.StateViews>
             <CollectionView
-                ItemsSource="{Binding TeamsList}"
-                Margin="0, 0, 0, 20">
+                ItemsSource="{Binding TeamsList}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <views:TeamStadingsView></views:TeamStadingsView>

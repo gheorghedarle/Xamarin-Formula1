@@ -5,7 +5,7 @@
     x:Class="Formula1.Views.Views.TeamStadingsView"
     RowDefinitions="Auto, Auto"
     ColumnDefinitions="30, 3, *, Auto"
-    Padding="15, 5, 15, 5"
+    Padding="15, 5"
     RowSpacing="0"
     x:Name="template">
     <Grid.GestureRecognizers>

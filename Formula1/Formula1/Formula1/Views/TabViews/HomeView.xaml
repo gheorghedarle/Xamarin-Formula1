@@ -133,8 +133,12 @@
                 <xct:StateLayout.StateViews>
                     <xct:StateView 
                         StateKey="Loading"
-                        VerticalOptions="FillAndExpand">
-                        <fragments:LoadingView></fragments:LoadingView>
+                        RepeatCount="3">
+                        <xct:StateView.Template>
+                            <DataTemplate>
+                                <views:DriverStadingsViewLoading></views:DriverStadingsViewLoading>
+                            </DataTemplate>
+                        </xct:StateView.Template>
                     </xct:StateView>
                     <xct:StateView 
                         StateKey="Error"
@@ -174,9 +178,13 @@
                 xct:StateLayout.CurrentState="{Binding TeamStadingsState}">
                 <xct:StateLayout.StateViews>
                     <xct:StateView 
-                            StateKey="Loading"
-                            VerticalOptions="FillAndExpand">
-                        <fragments:LoadingView></fragments:LoadingView>
+                        StateKey="Loading"
+                        RepeatCount="3">
+                        <xct:StateView.Template>
+                            <DataTemplate>
+                                <views:TeamStadingsViewLoading></views:TeamStadingsViewLoading>
+                            </DataTemplate>
+                        </xct:StateView.Template>
                     </xct:StateView>
                     <xct:StateView 
                             StateKey="Error"

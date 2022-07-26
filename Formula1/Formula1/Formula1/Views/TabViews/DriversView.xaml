@@ -25,12 +25,17 @@
         </Label>
         <StackLayout
             xct:StateLayout.CurrentState="{Binding MainState}"
+            xct:StateLayout.AnimateStateChanges="False"
             VerticalOptions="FillAndExpand">
             <xct:StateLayout.StateViews>
                 <xct:StateView 
                     StateKey="Loading"
-                    VerticalOptions="FillAndExpand">
-                    <fragments:LoadingView></fragments:LoadingView>
+                    RepeatCount="15">
+                    <xct:StateView.Template>
+                        <DataTemplate>
+                            <views:DriverStadingsViewLoading></views:DriverStadingsViewLoading>
+                        </DataTemplate>
+                    </xct:StateView.Template>
                 </xct:StateView>
                 <xct:StateView 
                     StateKey="Error"
