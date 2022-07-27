@@ -53,8 +53,14 @@
     <Compile Update="Views\Templates\InformationLapRecordTemplate.xaml.cs">
       <DependentUpon>InformationLapRecordTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Templates\InformationRaceWeekendLoadingTemplate.xaml.cs">
+      <DependentUpon>InformationRaceWeekendLoadingTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Templates\InformationRaceWeekendTemplate.xaml.cs">
       <DependentUpon>InformationRaceWeekendTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\InformationLoadingTemplate.xaml.cs">
+      <DependentUpon>InformationLoadingTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Templates\InformationTemplate.xaml.cs">
       <DependentUpon>InformationTemplate.xaml</DependentUpon>
