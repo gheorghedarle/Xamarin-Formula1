@@ -32,7 +32,7 @@
                     RepeatCount="15">
                     <xct:StateView.Template>
                         <DataTemplate>
-                            <views:DriverStadingsViewLoading></views:DriverStadingsViewLoading>
+                            <views:DriverStadingsLoadingView></views:DriverStadingsLoadingView>
                         </DataTemplate>
                     </xct:StateView.Template>
                 </xct:StateView>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:Formula1.Views.Templates"
+             x:Class="Formula1.Views.Views.CircuitInformationsLoadingView"
+             Spacing="0">
+    <Grid
+        ColumnDefinitions="*, *, *">
+        <templates:InformationLoadingTemplate
+             Grid.Column="0"></templates:InformationLoadingTemplate>
+        <templates:InformationLoadingTemplate
+             Grid.Column="1"></templates:InformationLoadingTemplate>
+    </Grid>
+    <Grid
+        ColumnDefinitions="*, *, *">
+        <templates:InformationLoadingTemplate
+            Grid.Column="0"></templates:InformationLoadingTemplate>
+        <templates:InformationLoadingTemplate
+            Grid.Column="1"></templates:InformationLoadingTemplate>
+        <templates:InformationLoadingTemplate
+            Grid.Column="2"></templates:InformationLoadingTemplate>
+    </Grid>
+</StackLayout>

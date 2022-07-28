@@ -79,31 +79,34 @@
                     FontSizeSelected="14"
                     FontSize="14">
                     <ScrollView>
-                        <StackLayout                        
-                            xct:StateLayout.CurrentState="{Binding InformationsState}"
-                            Margin="20, 0, 0, 5">
-                            <xct:StateLayout.StateViews>
-                                <xct:StateView 
-                                    StateKey="Loading"
-                                    VerticalOptions="FillAndExpand">
-                                    <fragments:LoadingView></fragments:LoadingView>
-                                </xct:StateView>
-                                <xct:StateView 
-                                    StateKey="Error"
-                                    VerticalOptions="FillAndExpand">
-                                    <Label Text="Error"></Label>
-                                </xct:StateView>
-                                <xct:StateView 
-                                    StateKey="Empty"
-                                    VerticalOptions="FillAndExpand">
-                                    <Label Text="Empty"></Label>
-                                </xct:StateView>
-                            </xct:StateLayout.StateViews>
+                        <StackLayout
+                            Margin="20, 0, 0, 5"
+                            Spacing="0">
                             <Label
                                 Text="Basic Informations"
                                 Style="{StaticResource Body1FontSize_ExoBold}"
                                 Margin="0, 0, 0, 2"></Label>
-                            <views:ConstructorInformationsView></views:ConstructorInformationsView>
+                            <StackLayout                        
+                                xct:StateLayout.CurrentState="{Binding InformationsState}"
+                                xct:StateLayout.AnimateStateChanges="False">
+                                <xct:StateLayout.StateViews>
+                                    <xct:StateView 
+                                        StateKey="Loading">
+                                        <views:ConstructorInformationsLoadingView></views:ConstructorInformationsLoadingView>
+                                    </xct:StateView>
+                                    <xct:StateView 
+                                        StateKey="Error"
+                                        VerticalOptions="FillAndExpand">
+                                        <Label Text="Error"></Label>
+                                    </xct:StateView>
+                                    <xct:StateView 
+                                        StateKey="Empty"
+                                        VerticalOptions="FillAndExpand">
+                                        <Label Text="Empty"></Label>
+                                    </xct:StateView>
+                                </xct:StateLayout.StateViews>
+                                <views:ConstructorInformationsView></views:ConstructorInformationsView>
+                            </StackLayout>
                         </StackLayout>
                     </ScrollView>
                 </xct:TabViewItem>

@@ -59,6 +59,7 @@
                 FontSize="14">
                 <StackLayout
                     xct:StateLayout.CurrentState="{Binding DriversState}"
+                    xct:StateLayout.AnimateStateChanges="False"
                     VerticalOptions="FillAndExpand">
                     <xct:StateLayout.StateViews>
                         <xct:StateView 
@@ -97,6 +98,7 @@
                 FontSize="14">
                 <StackLayout
                     xct:StateLayout.CurrentState="{Binding DriversState}"
+                    xct:StateLayout.AnimateStateChanges="False"
                     VerticalOptions="FillAndExpand">
                     <xct:StateLayout.StateViews>
                         <xct:StateView 
@@ -134,6 +136,7 @@
                 FontSize="14">
                 <StackLayout
                     xct:StateLayout.CurrentState="{Binding ScheduleState}"
+                    xct:StateLayout.AnimateStateChanges="False"
                     VerticalOptions="FillAndExpand">
                     <xct:StateLayout.StateViews>
                         <xct:StateView 

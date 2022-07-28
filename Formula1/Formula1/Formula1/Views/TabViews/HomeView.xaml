@@ -56,6 +56,7 @@
                 Margin="20, 0, 20, 0"></Label>
             <StackLayout
                 xct:StateLayout.CurrentState="{Binding ResultsState}"
+                xct:StateLayout.AnimateStateChanges="False"
                 HeightRequest="150"
                 Margin="20, 0, 0, 0">
                 <xct:StateLayout.StateViews>
@@ -111,6 +112,7 @@
                 Margin="20, 0, 20, 0"></Label>
             <StackLayout
                 xct:StateLayout.CurrentState="{Binding ScheduleState}"
+                xct:StateLayout.AnimateStateChanges="False"
                 HeightRequest="90"
                 Margin="20, 0, 0, 0">
                 <xct:StateLayout.StateViews>
@@ -155,14 +157,15 @@
                 Style="{StaticResource Body1FontSize_ExoBold}"
                 Margin="20, 0, 20, 0"></Label>
             <StackLayout
-                xct:StateLayout.CurrentState="{Binding DriverStadingsState}">
+                xct:StateLayout.CurrentState="{Binding DriverStadingsState}"
+                xct:StateLayout.AnimateStateChanges="False">
                 <xct:StateLayout.StateViews>
                     <xct:StateView 
                         StateKey="Loading"
                         RepeatCount="3">
                         <xct:StateView.Template>
                             <DataTemplate>
-                                <views:DriverStadingsViewLoading></views:DriverStadingsViewLoading>
+                                <views:DriverStadingsLoadingView></views:DriverStadingsLoadingView>
                             </DataTemplate>
                         </xct:StateView.Template>
                     </xct:StateView>
@@ -201,7 +204,8 @@
                 Style="{StaticResource Body1FontSize_ExoBold}"
                 Margin="20, 0, 20, 0"></Label>
             <StackLayout
-                xct:StateLayout.CurrentState="{Binding TeamStadingsState}">
+                xct:StateLayout.CurrentState="{Binding TeamStadingsState}"
+                xct:StateLayout.AnimateStateChanges="False">
                 <xct:StateLayout.StateViews>
                     <xct:StateView 
                         StateKey="Loading"

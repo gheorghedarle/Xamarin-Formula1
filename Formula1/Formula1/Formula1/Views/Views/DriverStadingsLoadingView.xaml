@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Formula1.Controls"
-    x:Class="Formula1.Views.Views.DriverStadingsViewLoading"
+    x:Class="Formula1.Views.Views.DriverStadingsLoadingView"
     RowDefinitions="Auto, Auto"
     ColumnDefinitions="30, 40, *, Auto"
     Padding="20, 3"

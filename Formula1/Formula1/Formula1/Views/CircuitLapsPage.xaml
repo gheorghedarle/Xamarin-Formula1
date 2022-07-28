@@ -80,7 +80,9 @@
             </StackLayout>
             <StackLayout
                 Grid.Row="1"                       
-                xct:StateLayout.CurrentState="{Binding LapsState}">
+                xct:StateLayout.CurrentState="{Binding LapsState}"
+                xct:StateLayout.AnimateStateChanges="False"
+                Spacing="0">
                 <xct:StateLayout.StateViews>
                     <xct:StateView 
                         StateKey="Loading"

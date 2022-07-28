@@ -25,6 +25,7 @@
         </Label>
         <StackLayout
             xct:StateLayout.CurrentState="{Binding MainState}"
+            xct:StateLayout.AnimateStateChanges="False"
             VerticalOptions="FillAndExpand">
             <xct:StateLayout.StateViews>
                 <xct:StateView 

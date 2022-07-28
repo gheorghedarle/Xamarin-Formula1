@@ -117,11 +117,13 @@
                     FontSizeSelected="14"
                     FontSize="14">
                     <ScrollView>
-                        <StackLayout>
+                        <StackLayout
+                            Margin="20, 0, 20, 2"
+                            Spacing="0">
                             <Label
                                 Text="Map"
                                 Style="{StaticResource Body1FontSize_ExoBold}"
-                                Margin="20, 0, 20, 2"></Label>
+                                Margin="0, 0, 0, 2"></Label>
                             <Image
                                 Aspect="AspectFit"
                                 Margin="5"
@@ -130,10 +132,11 @@
                             <Label
                                 Text="Race Weekend"
                                 Style="{StaticResource Body1FontSize_ExoBold}"
-                                Margin="20, 0, 0, 2"></Label>
+                                Margin="0, 0, 0, 2"></Label>
                             <StackLayout                        
                                 xct:StateLayout.CurrentState="{Binding InformationsState}"
-                                Margin="20, 0, 20, 5">
+                                xct:StateLayout.AnimateStateChanges="False"
+                                Margin="0, 0, 0, 5">
                                 <xct:StateLayout.StateViews>
                                     <xct:StateView 
                                         StateKey="Loading"
@@ -160,27 +163,15 @@
                             <Label
                                 Text="Basic Informations"
                                 Style="{StaticResource Body1FontSize_ExoBold}"
-                                Margin="20, 0, 0, 2"></Label>
+                                Margin="0, 0, 0, 2"></Label>
                             <StackLayout                        
                                 xct:StateLayout.CurrentState="{Binding InformationsState}"
-                                Margin="20, 0, 0, 10">
+                                xct:StateLayout.AnimateStateChanges="False"
+                                Margin="0, 0, 0, 5">
                                 <xct:StateLayout.StateViews>
                                     <xct:StateView 
-                                        StateKey="Loading"
-                                        RepeatCount="2">
-                                        <xct:StateView.Template>
-                                            <DataTemplate>
-                                                <Grid
-                                                    ColumnDefinitions="*, *, *">
-                                                    <templates:InformationLoadingTemplate
-                                                        Grid.Column="0"></templates:InformationLoadingTemplate>
-                                                    <templates:InformationLoadingTemplate
-                                                        Grid.Column="1"></templates:InformationLoadingTemplate>
-                                                    <templates:InformationLoadingTemplate
-                                                        Grid.Column="2"></templates:InformationLoadingTemplate>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </xct:StateView.Template>
+                                        StateKey="Loading">
+                                        <views:CircuitInformationsLoadingView></views:CircuitInformationsLoadingView>
                                     </xct:StateView>
                                     <xct:StateView 
                                         StateKey="Error"

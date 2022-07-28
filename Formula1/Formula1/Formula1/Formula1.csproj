@@ -68,17 +68,29 @@
     <Compile Update="Views\Templates\InformationWithSubLabelTemplate.xaml.cs">
       <DependentUpon>InformationWithSubLabelTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Views\CircuitInformationsLoadingView.xaml.cs">
+      <DependentUpon>CircuitInformationsLoadingView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Views\CircuitInformationsView.xaml.cs">
       <DependentUpon>CircuitInformationsView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Views\CircuitRaceWeekendView.xaml.cs">
       <DependentUpon>CircuitRaceWeekendView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Views\ConstructorInformationsLoadingView.xaml.cs">
+      <DependentUpon>ConstructorInformationsLoadingView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Views\ConstructorInformationsView.xaml.cs">
       <DependentUpon>ConstructorInformationsView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Views\DriverInformationsLoadingView.xaml.cs">
+      <DependentUpon>DriverInformationsLoadingView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Views\DriverInformationsView.xaml.cs">
       <DependentUpon>DriverInformationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\DriverRaceResultsLoadingView.xaml.cs">
+      <DependentUpon>DriverRaceResultsLoadingView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Views\HistoryDriverStadingsView.xaml.cs">
       <DependentUpon>HistoryDriverStadingsView.xaml</DependentUpon>
@@ -86,8 +98,8 @@
     <Compile Update="Views\Views\HistoryDriverStadingsLoadingView.xaml.cs">
       <DependentUpon>HistoryDriverStadingsLoadingView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views\DriverStadingsViewLoading.xaml.cs">
-      <DependentUpon>DriverStadingsViewLoading.xaml</DependentUpon>
+    <Compile Update="Views\Views\DriverStadingsLoadingView.xaml.cs">
+      <DependentUpon>DriverStadingsLoadingView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Views\DriverStadingsView.xaml.cs">
       <DependentUpon>DriverStadingsView.xaml</DependentUpon>
@@ -118,6 +130,9 @@
     </Compile>
     <Compile Update="Views\Views\RaceResultsLapByLapView.xaml.cs">
       <DependentUpon>RaceResultsLapByLapView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\DriverRaceResultsView.xaml.cs">
+      <DependentUpon>DriverRaceResultsView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Views\RaceResultsView.xaml.cs">
       <DependentUpon>RaceResultsView.xaml</DependentUpon>
