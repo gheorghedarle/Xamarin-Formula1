@@ -113,6 +113,12 @@
     <Compile Update="Views\Views\QualifyingResultsView.xaml.cs">
       <DependentUpon>QualifyingResultsView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Views\RaceResultsLapByLapLoadingView.xaml.cs">
+      <DependentUpon>RaceResultsLapByLapLoadingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\RaceResultsLapByLapView.xaml.cs">
+      <DependentUpon>RaceResultsLapByLapView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Views\RaceResultsView.xaml.cs">
       <DependentUpon>RaceResultsView.xaml</DependentUpon>
     </Compile>
@@ -153,6 +159,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CircuitDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CircuitLapsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DriverDetailsPage.xaml">

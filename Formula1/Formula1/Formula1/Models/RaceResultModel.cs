@@ -11,6 +11,6 @@
         public DriverModel Driver { get; set; }
         public ConstructorModel Constructor { get; set; }
         public TimeModel Time { get; set; }
-        public LapModel FastestLap { get; set; }
+        public FastestLapModel FastestLap { get; set; }
     }
 }

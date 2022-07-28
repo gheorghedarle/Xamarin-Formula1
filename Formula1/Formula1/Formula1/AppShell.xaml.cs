@@ -17,6 +17,7 @@ namespace Formula1
         {
             Routing.RegisterRoute("profile", typeof(ProfilePage));
             Routing.RegisterRoute("schedule/details", typeof(CircuitDetailsPage));
+            Routing.RegisterRoute("schedule/details/laps", typeof(CircuitLapsPage));
             Routing.RegisterRoute("drivers/details", typeof(DriverDetailsPage));
             Routing.RegisterRoute("teams/details", typeof(TeamDetailsPage));
         }

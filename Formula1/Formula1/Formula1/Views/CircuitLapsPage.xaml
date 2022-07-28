@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
+             xmlns:templates="clr-namespace:Formula1.Views.Templates"
+             xmlns:views="clr-namespace:Formula1.Views.Views"
+             BindingContext="{Binding CircuitLapsPage, Source={StaticResource ViewModelLocator}}"
+             x:Class="Formula1.Views.CircuitLapsPage">
+    <ContentPage.Content>
+        <Grid
+            RowDefinitions="Auto, *" 
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+            <StackLayout
+                Grid.Row="0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
+                Spacing="0">
+                <StackLayout
+                    Padding="0, 5, 5, 5"
+                    Margin="20, 20, 0, 0"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Text="&#xf060;"
+                        FontSize="{StaticResource Subtitle1FontSize}"
+                        FontFamily="FontAwesome_Solid"
+                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                        HorizontalOptions="Start"></Label>
+                </StackLayout>
+                <Grid
+                    ColumnDefinitions="*, Auto"
+                    Margin="20, 0, 20, 0"
+                    VerticalOptions="End">
+                    <StackLayout
+                        Grid.Column="0"
+                        Spacing="0"
+                        Margin="0, 0, 0, 10"
+                        VerticalOptions="End">
+                        <Label
+                            Text="{Binding LapResults.Round, StringFormat='Round {0}'}"
+                            Style="{StaticResource CaptionFontSize_ExoRegular}"
+                            TextColor="{StaticResource AccentColor}"
+                            VerticalOptions="Center">
+                        </Label>
+                        <Label
+                            Text="{Binding LapResults.RaceName}"
+                            Style="{StaticResource Subtitle1FontSize_ExoBold}"
+                            VerticalOptions="Center">
+                        </Label>
+                        <Label
+                            Text="{Binding LapResults.Circuit.CircuitName}"
+                            Style="{StaticResource Body2FontSize_ExoRegular}"
+                            VerticalOptions="Center">
+                        </Label>
+                        <Label
+                            Style="{StaticResource CaptionFontSize_ExoMedium}"
+                            Margin="0, 2"
+                            VerticalOptions="Center">
+                            <Label.Text>
+                                <MultiBinding StringFormat="{}{0:dd MMM yyyy} {1:hh:mm tt}">
+                                    <Binding Path="LapResults.Date" />
+                                    <Binding Path="LapResults.Time" />
+                                </MultiBinding>
+                            </Label.Text>
+                        </Label>
+                    </StackLayout>
+                    <Image
+                        Grid.Column="1"
+                        Source="{Binding LapResults.DriverImage.Side}"
+                        WidthRequest="120"
+                        HeightRequest="120"
+                        Aspect="AspectFill"
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="End">
+                    </Image>
+                </Grid>
+            </StackLayout>
+            <StackLayout
+                Grid.Row="1"                       
+                xct:StateLayout.CurrentState="{Binding LapsState}">
+                <xct:StateLayout.StateViews>
+                    <xct:StateView 
+                        StateKey="Loading"
+                        RepeatCount="10">
+                        <xct:StateView.Template>
+                            <DataTemplate>
+                                <views:RaceResultsLapByLapLoadingView></views:RaceResultsLapByLapLoadingView>
+                            </DataTemplate>
+                        </xct:StateView.Template>
+                    </xct:StateView>
+                    <xct:StateView 
+                        StateKey="Error"
+                        VerticalOptions="FillAndExpand">
+                        <Label Text="Error"></Label>
+                    </xct:StateView>
+                    <xct:StateView 
+                        StateKey="Empty"
+                        VerticalOptions="FillAndExpand">
+                        <Label Text="There's no information to display"></Label>
+                    </xct:StateView>
+                </xct:StateLayout.StateViews>
+                <Label
+                    Text="Race Lap by Lap"
+                    Style="{StaticResource Body1FontSize_ExoBold}"
+                    Margin="20, 0, 0, 2"></Label>
+                <CollectionView
+                    Margin="20, 0, 20, 10"
+                    ItemsSource="{Binding LapResults.Laps}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <views:RaceResultsLapByLapView></views:RaceResultsLapByLapView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -2,12 +2,10 @@
 using Formula1.Services.Ergast;
 using Formula1.Services.Informations;
 using Formula1.Views.Popups;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Web;
 using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;

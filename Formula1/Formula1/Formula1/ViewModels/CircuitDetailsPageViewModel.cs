@@ -39,6 +39,7 @@ namespace Formula1.ViewModels
 
         public Command BackCommand { get; set; }
         public Command SelectRaceTypeCommand { get; set; }
+        public Command ViewLapByLapCommand { get; set; }
 
         #endregion
 
@@ -53,6 +54,7 @@ namespace Formula1.ViewModels
 
             BackCommand = new Command(BackCommandHandler);
             SelectRaceTypeCommand = new Command(SelectRaceTypeCommandHandler);
+            ViewLapByLapCommand = new Command<RaceResultModel>(ViewLapByLapCommandHandler);
         }
 
         #endregion
@@ -72,6 +74,10 @@ namespace Formula1.ViewModels
                 SelectedRaceType = raceType.ToString();
                 await GetResults();
             }
+        }
+        private async void ViewLapByLapCommandHandler(RaceResultModel result)
+        {
+            await Shell.Current.GoToAsync($"laps?round={RaceEvent.Round}&driverId={result.Driver.DriverId}");
         }
 
         #endregion

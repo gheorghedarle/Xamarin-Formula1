@@ -6,8 +6,8 @@
     x:Class="Formula1.Views.Views.QualifyingResultsView"
     RowDefinitions="Auto, Auto, Auto"
     ColumnDefinitions="30, 50, *"
-    Padding="15, 5, 15, 5"
-    RowSpacing="2">
+    Padding="15, 5"
+    RowSpacing="3">
     <Label
         Grid.Row="0"
         Grid.RowSpan="2"

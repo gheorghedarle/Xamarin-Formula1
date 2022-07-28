@@ -7,7 +7,7 @@
     RowDefinitions="Auto, Auto, Auto"
     ColumnDefinitions="50, *, Auto"
     Padding="15, 5"
-    RowSpacing="3">
+    RowSpacing="5">
     <controls:SkeletonView
         Grid.Row="0"
         Grid.RowSpan="3"

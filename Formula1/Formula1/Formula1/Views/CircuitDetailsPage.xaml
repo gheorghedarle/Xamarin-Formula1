@@ -152,7 +152,7 @@
                                     <xct:StateView 
                                         StateKey="Empty"
                                         VerticalOptions="FillAndExpand">
-                                        <Label Text="Empty"></Label>
+                                        <Label Text="There's no information to display"></Label>
                                     </xct:StateView>
                                 </xct:StateLayout.StateViews>
                                 <views:CircuitRaceWeekendViews></views:CircuitRaceWeekendViews>
@@ -190,7 +190,7 @@
                                     <xct:StateView 
                                         StateKey="Empty"
                                         VerticalOptions="FillAndExpand">
-                                        <Label Text="Empty"></Label>
+                                        <Label Text="There's no information to display"></Label>
                                     </xct:StateView>
                                 </xct:StateLayout.StateViews>
                                 <views:CircuitInformationsView></views:CircuitInformationsView>

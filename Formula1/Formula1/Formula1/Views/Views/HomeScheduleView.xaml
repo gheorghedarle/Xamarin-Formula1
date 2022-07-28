@@ -20,7 +20,7 @@
         <Grid
             RowDefinitions="Auto, Auto, Auto"
             ColumnDefinitions="Auto, Auto"
-            RowSpacing="2"
+            RowSpacing="3"
             Margin="5, 0, 5, 0"
             VerticalOptions="Center">
             <Image

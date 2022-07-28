@@ -37,8 +37,8 @@ namespace Formula1.Services.Ergast
                         {
                             d.Driver.Image = new DriverImageModel()
                             {
-                                Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
-                                Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png",
+                                Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.DriverId}.png",
+                                Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.DriverId}_front.png",
                             };
                             d.Constructors[0].Color = Constants.TeamColors[d.Constructors[0].ConstructorId];
                         });
@@ -68,8 +68,8 @@ namespace Formula1.Services.Ergast
                     var d = r.Drivers.First();
                     d.Image = new DriverImageModel()
                     {
-                        Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Code}.png",
-                        Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Code}_front.png",
+                        Side = $"{Constants.ImageApiBaseUrl}drivers/{d.DriverId}.png",
+                        Front = $"{Constants.ImageApiBaseUrl}drivers/{d.DriverId}_front.png",
                     };
                     return d;
                 }
@@ -228,8 +228,8 @@ namespace Formula1.Services.Ergast
                                     {
                                         d.Driver.Image = new DriverImageModel()
                                         {
-                                            Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
-                                            Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png"
+                                            Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.DriverId}.png",
+                                            Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.DriverId}_front.png"
                                         };
                                     });
                                     return r;
@@ -247,8 +247,8 @@ namespace Formula1.Services.Ergast
                                     {
                                         d.Driver.Image = new DriverImageModel()
                                         {
-                                            Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
-                                            Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png"
+                                            Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.DriverId}.png",
+                                            Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.DriverId}_front.png"
                                         };
                                     });
                                     return r;
@@ -266,8 +266,8 @@ namespace Formula1.Services.Ergast
                                     {
                                         d.Driver.Image = new DriverImageModel()
                                         {
-                                            Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
-                                            Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png"
+                                            Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.DriverId}.png",
+                                            Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.DriverId}_front.png"
                                         };
                                     });
                                     return r;
@@ -331,6 +331,40 @@ namespace Formula1.Services.Ergast
                     var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
                     if (r.Count > 0)
                     {
+                        return r;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return null;
+            }
+        }
+
+        public async Task<List<RaceResultsLapByLapModel>> GetResultsLapByLap(string year, int round, string driver)
+        {
+            try
+            {
+                var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}/drivers/{driver}/laps.json?limit=100");
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(result);
+                    var res = json["MRData"]["RaceTable"]["Races"].ToString();
+                    var r = JsonConvert.DeserializeObject<List<RaceResultsLapByLapModel>>(res);
+                    if (r.Count > 0)
+                    {
+                        r.First().DriverImage = new DriverImageModel()
+                        {
+                            Side = $"{Constants.ImageApiBaseUrl}drivers/{driver}.png",
+                            Front = $"{Constants.ImageApiBaseUrl}drivers/{driver}_front.png"
+                        };
                         return r;
                     }
                     else
