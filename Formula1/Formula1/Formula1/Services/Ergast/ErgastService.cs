@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,254 +22,329 @@ namespace Formula1.Services.Ergast
 
         public async Task<List<DriverStadingsModel>> GetDriverStadings(string year, string queryParams = null)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/driverStandings.json?{queryParams}");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var result = await response.Content.ReadAsStringAsync();
-                var json = JObject.Parse(result);
-                var res = json["MRData"]["StandingsTable"]["StandingsLists"].First["DriverStandings"].ToString();
-                var r = JsonConvert.DeserializeObject<List<DriverStadingsModel>>(res);
-                if (year == "current")
+                var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/driverStandings.json?{queryParams}");
+                if (response.IsSuccessStatusCode)
                 {
-                    r.ForEach(d =>
+                    var result = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(result);
+                    var res = json["MRData"]["StandingsTable"]["StandingsLists"].First["DriverStandings"].ToString();
+                    var r = JsonConvert.DeserializeObject<List<DriverStadingsModel>>(res);
+                    if (year == "current")
                     {
-                        d.Driver.Image = new DriverImageModel()
+                        r.ForEach(d =>
                         {
-                            Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
-                            Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png",
-                        };
-                        d.Constructors[0].Color = Constants.TeamColors[d.Constructors[0].ConstructorId];
-                    });
+                            d.Driver.Image = new DriverImageModel()
+                            {
+                                Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
+                                Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png",
+                            };
+                            d.Constructors[0].Color = Constants.TeamColors[d.Constructors[0].ConstructorId];
+                        });
+                    }
+                    return r;
                 }
-                return r;
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return null;
+            }
         }
 
         public async Task<DriverModel> GetDriverInformations(string driver)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/drivers/{driver}.json");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var result = await response.Content.ReadAsStringAsync();
-                var json = JObject.Parse(result);
-                var res = json["MRData"]["DriverTable"].ToString();
-                var r = JsonConvert.DeserializeObject<DriverInformationsModel>(res);
-                var d = r.Drivers.First();
-                d.Image = new DriverImageModel()
+                var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/drivers/{driver}.json");
+                if (response.IsSuccessStatusCode)
                 {
-                    Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Code}.png",
-                    Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Code}_front.png",
-                };
-                return d;
+                    var result = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(result);
+                    var res = json["MRData"]["DriverTable"].ToString();
+                    var r = JsonConvert.DeserializeObject<DriverInformationsModel>(res);
+                    var d = r.Drivers.First();
+                    d.Image = new DriverImageModel()
+                    {
+                        Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Code}.png",
+                        Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Code}_front.png",
+                    };
+                    return d;
+                }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return null;
+            }
         }
 
         public async Task<List<ConstructorStadingsModel>> GetTeamStadings(string year, string queryParams = null)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/constructorStandings.json?{queryParams}");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var result = await response.Content.ReadAsStringAsync();
-                var json = JObject.Parse(result);
-                var res = json["MRData"]["StandingsTable"]["StandingsLists"].First["ConstructorStandings"].ToString();
-                var r = JsonConvert.DeserializeObject<List<ConstructorStadingsModel>>(res);
-                if (year == "current")
+                var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/constructorStandings.json?{queryParams}");
+                if (response.IsSuccessStatusCode)
                 {
-                    r.ForEach(c =>
+                    var result = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(result);
+                    var res = json["MRData"]["StandingsTable"]["StandingsLists"].First["ConstructorStandings"].ToString();
+                    var r = JsonConvert.DeserializeObject<List<ConstructorStadingsModel>>(res);
+                    if (year == "current")
                     {
-                        c.Constructor.Color = Constants.TeamColors[c.Constructor.ConstructorId];
-                    });
-                    foreach (var a in r)
-                    {
-                        var dResponse = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructors/{a.Constructor.ConstructorId}/drivers.json");
-                        if (dResponse.IsSuccessStatusCode)
+                        r.ForEach(c =>
                         {
-                            var dResult = await dResponse.Content.ReadAsStringAsync();
-                            var dJson = JObject.Parse(dResult);
-                            var dRes = dJson["MRData"]["DriverTable"]["Drivers"].ToString();
-                            a.Constructor.Drivers = JsonConvert.DeserializeObject<List<DriverModel>>(dRes);
+                            c.Constructor.Color = Constants.TeamColors[c.Constructor.ConstructorId];
+                        });
+                        foreach (var a in r)
+                        {
+                            var dResponse = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructors/{a.Constructor.ConstructorId}/drivers.json");
+                            if (dResponse.IsSuccessStatusCode)
+                            {
+                                var dResult = await dResponse.Content.ReadAsStringAsync();
+                                var dJson = JObject.Parse(dResult);
+                                var dRes = dJson["MRData"]["DriverTable"]["Drivers"].ToString();
+                                a.Constructor.Drivers = JsonConvert.DeserializeObject<List<DriverModel>>(dRes);
+                            }
                         }
                     }
+                    return r;
                 }
-                return r;
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return null;
+            }
         }
 
         public async Task<ConstructorModel> GetTeamInformations(string team)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/constructors/{team}.json");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var result = await response.Content.ReadAsStringAsync();
-                var json = JObject.Parse(result);
-                var res = json["MRData"]["ConstructorTable"].ToString();
-                var r = JsonConvert.DeserializeObject<ConstructorInformationsModel>(res);
-                var c = r.Constructors.First();
-                c.Color = Constants.TeamColors[c.ConstructorId];
-                var dResponse = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructors/{c.ConstructorId}/drivers.json");
-                if (dResponse.IsSuccessStatusCode)
+                var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/constructors/{team}.json");
+                if (response.IsSuccessStatusCode)
                 {
-                    var dResult = await dResponse.Content.ReadAsStringAsync();
-                    var dJson = JObject.Parse(dResult);
-                    var dRes = dJson["MRData"]["DriverTable"]["Drivers"].ToString();
-                    c.Drivers = JsonConvert.DeserializeObject<List<DriverModel>>(dRes);
+                    var result = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(result);
+                    var res = json["MRData"]["ConstructorTable"].ToString();
+                    var r = JsonConvert.DeserializeObject<ConstructorInformationsModel>(res);
+                    var c = r.Constructors.First();
+                    c.Color = Constants.TeamColors[c.ConstructorId];
+                    var dResponse = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructors/{c.ConstructorId}/drivers.json");
+                    if (dResponse.IsSuccessStatusCode)
+                    {
+                        var dResult = await dResponse.Content.ReadAsStringAsync();
+                        var dJson = JObject.Parse(dResult);
+                        var dRes = dJson["MRData"]["DriverTable"]["Drivers"].ToString();
+                        c.Drivers = JsonConvert.DeserializeObject<List<DriverModel>>(dRes);
+                    }
+                    return c;
                 }
-                return c;
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return null;
+            }
         }
 
         public async Task<ScheduleModel> GetSchedule(string year, string queryParams = null)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}.json?{queryParams}");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var result = await response.Content.ReadAsStringAsync();
-                var json = JObject.Parse(result);
-                var res = json["MRData"]["RaceTable"]["Races"].ToString();
-                var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
-                r.ForEach(c => c.Circuit.Location.Flag = $"{Constants.ImageApiBaseUrl}countries/{c.Circuit.Location.Country}.png");
-                r.ForEach(c => c.Circuit.Map = $"{Constants.ImageApiBaseUrl}circuits/{c.Circuit.CircuitId}.png");
-                return new ScheduleModel()
+                var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}.json?{queryParams}");
+                if (response.IsSuccessStatusCode)
                 {
-                    UpcomingRaceEvents = r.Where(a => a.Date > DateTime.Now).ToList(),
-                    PastRaceEvents = r.Where(a => a.Date <= DateTime.Now).ToList()
-                };
+                    var result = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(result);
+                    var res = json["MRData"]["RaceTable"]["Races"].ToString();
+                    var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
+                    r.ForEach(c => c.Circuit.Location.Flag = $"{Constants.ImageApiBaseUrl}countries/{c.Circuit.Location.Country}.png");
+                    r.ForEach(c => c.Circuit.Map = $"{Constants.ImageApiBaseUrl}circuits/{c.Circuit.CircuitId}.png");
+                    return new ScheduleModel()
+                    {
+                        UpcomingRaceEvents = r.Where(a => a.Date > DateTime.Now).ToList(),
+                        PastRaceEvents = r.Where(a => a.Date <= DateTime.Now).ToList()
+                    };
+                }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return null;
+            }
         }
 
         public async Task<RaceEventModel> GetRaceEventInformations(string year, int round)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}.json");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var result = await response.Content.ReadAsStringAsync();
-                var json = JObject.Parse(result);
-                var res = json["MRData"]["RaceTable"].ToString();
-                var r = JsonConvert.DeserializeObject<RaceEventInformationsModel>(res);
-                var c = r.Races.First();
-                c.Circuit.Location.Flag = $"{Constants.ImageApiBaseUrl}countries/{c.Circuit.Location.Country}.png";
-                c.Circuit.Map = $"{Constants.ImageApiBaseUrl}circuits/{c.Circuit.CircuitId}.png";
-                return c;
+                var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}.json");
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(result);
+                    var res = json["MRData"]["RaceTable"].ToString();
+                    var r = JsonConvert.DeserializeObject<RaceEventInformationsModel>(res);
+                    var c = r.Races.First();
+                    c.Circuit.Location.Flag = $"{Constants.ImageApiBaseUrl}countries/{c.Circuit.Location.Country}.png";
+                    c.Circuit.Map = $"{Constants.ImageApiBaseUrl}circuits/{c.Circuit.CircuitId}.png";
+                    return c;
+                }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return null;
+            }
         }
 
         public async Task<List<RaceEventModel>> GetResults(string year, string round, string raceType, string queryParams = null)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}/{raceType}.json?{queryParams}");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var result = await response.Content.ReadAsStringAsync();
-                var json = JObject.Parse(result);
-                var res = json["MRData"]["RaceTable"]["Races"].ToString();
-                var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
-                switch(raceType)
+                var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/{year}/{round}/{raceType}.json?{queryParams}");
+                if (response.IsSuccessStatusCode)
                 {
-                    case "results":
-                        {
-                            if (r.Count > 0 && r.First().Results.Count > 0)
+                    var result = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(result);
+                    var res = json["MRData"]["RaceTable"]["Races"].ToString();
+                    var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
+                    switch (raceType)
+                    {
+                        case "results":
                             {
-                                r.First().Results.ForEach(d => {
-                                    d.Driver.Image = new DriverImageModel()
+                                if (r.Count > 0 && r.First().Results.Count > 0)
+                                {
+                                    r.First().Results.ForEach(d =>
                                     {
-                                        Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
-                                        Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png"
-                                    };
-                                });
-                                return r;
+                                        d.Driver.Image = new DriverImageModel()
+                                        {
+                                            Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
+                                            Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png"
+                                        };
+                                    });
+                                    return r;
+                                }
+                                else
+                                {
+                                    return null;
+                                }
                             }
-                            else
+                        case "qualifying":
                             {
-                                return null;
-                            }
-                        }
-                    case "qualifying":
-                        {
-                            if (r.Count > 0 && r.First().QualifyingResults.Count > 0)
-                            {
-                                r.First().QualifyingResults.ForEach(d => {
-                                    d.Driver.Image = new DriverImageModel()
+                                if (r.Count > 0 && r.First().QualifyingResults.Count > 0)
+                                {
+                                    r.First().QualifyingResults.ForEach(d =>
                                     {
-                                        Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
-                                        Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png"
-                                    };
-                                });
-                                return r;
+                                        d.Driver.Image = new DriverImageModel()
+                                        {
+                                            Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
+                                            Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png"
+                                        };
+                                    });
+                                    return r;
+                                }
+                                else
+                                {
+                                    return null;
+                                }
                             }
-                            else
+                        case "sprint":
                             {
-                                return null;
-                            }
-                        }
-                    case "sprint":
-                        {
-                            if (r.Count > 0 && r.First().SprintResults.Count > 0)
-                            {
-                                r.First().SprintResults.ForEach(d => {
-                                    d.Driver.Image = new DriverImageModel()
+                                if (r.Count > 0 && r.First().SprintResults.Count > 0)
+                                {
+                                    r.First().SprintResults.ForEach(d =>
                                     {
-                                        Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
-                                        Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png"
-                                    };
-                                });
-                                return r;
+                                        d.Driver.Image = new DriverImageModel()
+                                        {
+                                            Side = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}.png",
+                                            Front = $"{Constants.ImageApiBaseUrl}drivers/{d.Driver.Code}_front.png"
+                                        };
+                                    });
+                                    return r;
+                                }
+                                else
+                                {
+                                    return null;
+                                }
                             }
-                            else
-                            {
-                                return null;
-                            }
-                        }
-                }
+                    }
 
+                }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return null;
+            }
         }
 
         public async Task<List<RaceEventModel>> GetResultsByDriver(string year, string driver)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/drivers/{driver}/results.json");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var result = await response.Content.ReadAsStringAsync();
-                var json = JObject.Parse(result);
-                var res = json["MRData"]["RaceTable"]["Races"].ToString();
-                var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
-                if (r.Count > 0)
+                var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/drivers/{driver}/results.json");
+                if (response.IsSuccessStatusCode)
                 {
-                    return r;
+                    var result = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(result);
+                    var res = json["MRData"]["RaceTable"]["Races"].ToString();
+                    var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
+                    if (r.Count > 0)
+                    {
+                        return r;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
-                else
-                {
-                    return null;
-                }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return null;
+            }
         }
 
         public async Task<List<RaceEventModel>> GetResultsByTeam(string year, string team)
         {
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructors/{team}/results.json");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var result = await response.Content.ReadAsStringAsync();
-                var json = JObject.Parse(result);
-                var res = json["MRData"]["RaceTable"]["Races"].ToString();
-                var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
-                if (r.Count > 0)
+                var response = await _httpClientFactory.GetHttpClient().GetAsync($"https://ergast.com/api/f1/current/constructors/{team}/results.json");
+                if (response.IsSuccessStatusCode)
                 {
-                    return r;
+                    var result = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(result);
+                    var res = json["MRData"]["RaceTable"]["Races"].ToString();
+                    var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
+                    if (r.Count > 0)
+                    {
+                        return r;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
-                else
-                {
-                    return null;
-                }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return null;
+            }
         }
     }
 }
