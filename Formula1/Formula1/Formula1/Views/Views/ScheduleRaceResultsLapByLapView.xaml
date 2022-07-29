@@ -2,7 +2,7 @@
 <Grid
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Formula1.Views.Views.RaceResultsLapByLapView"
+    x:Class="Formula1.Views.Views.ScheduleRaceResultsLapByLapView"
     RowDefinitions="Auto, Auto"
     ColumnDefinitions="*, Auto"
     RowSpacing="0">

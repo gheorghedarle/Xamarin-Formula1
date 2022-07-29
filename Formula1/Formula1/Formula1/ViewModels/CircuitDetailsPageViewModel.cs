@@ -72,6 +72,7 @@ namespace Formula1.ViewModels
             if(raceType != null)
             {
                 SelectedRaceType = raceType.ToString();
+                ResultsState = LayoutState.Loading;
                 await GetResults();
             }
         }
@@ -133,7 +134,14 @@ namespace Formula1.ViewModels
             else
             {
                 Results = null;
-                ResultsState = LayoutState.Empty;
+                if(SelectedRaceType == "Sprint")
+                {
+                    ResultsState = LayoutState.Success;
+                }
+                else
+                {
+                    ResultsState = LayoutState.Empty;
+                }
             }
         }
 

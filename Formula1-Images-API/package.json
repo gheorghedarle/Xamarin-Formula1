@@ -2,13 +2,17 @@
   "name": "formula1-images-api",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://gheorghedarle.github.io/formula1-images-api/",
   "main": "index.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build -b deploy",
     "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "gh-pages": "^4.0.0"
   }
 }

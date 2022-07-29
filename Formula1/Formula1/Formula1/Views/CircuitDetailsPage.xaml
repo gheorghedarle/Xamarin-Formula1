@@ -216,12 +216,17 @@
                         </Label>
                         <StackLayout
                             xct:StateLayout.CurrentState="{Binding ResultsState}"
+                            xct:StateLayout.AnimateStateChanges="False"
                             VerticalOptions="FillAndExpand">
                             <xct:StateLayout.StateViews>
                                 <xct:StateView 
                                     StateKey="Loading"
-                                    VerticalOptions="FillAndExpand">
-                                    <fragments:LoadingView></fragments:LoadingView>
+                                    RepeatCount="10">
+                                    <xct:StateView.Template>
+                                        <DataTemplate>
+                                            <views:RaceResultsLoadingView></views:RaceResultsLoadingView>
+                                        </DataTemplate>
+                                    </xct:StateView.Template>
                                 </xct:StateView>
                                 <xct:StateView 
                                     StateKey="Error"
@@ -232,6 +237,11 @@
                                     StateKey="Empty"
                                     VerticalOptions="FillAndExpand">
                                     <fragments:EmptyRaceResults></fragments:EmptyRaceResults>
+                                </xct:StateView>
+                                <xct:StateView 
+                                    StateKey="Success"
+                                    VerticalOptions="FillAndExpand">
+                                    <fragments:NoEventRaceResults></fragments:NoEventRaceResults>
                                 </xct:StateView>
                             </xct:StateLayout.StateViews>
                             <CollectionView

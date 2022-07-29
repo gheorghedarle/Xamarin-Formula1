@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Formula1.Controls"
-    x:Class="Formula1.Views.Views.RaceResultsLapByLapLoadingView"
+    x:Class="Formula1.Views.Views.ScheduleRaceResultsLapByLapLoadingView"
     RowDefinitions="Auto, Auto"
     ColumnDefinitions="*, Auto"
     RowSpacing="5">

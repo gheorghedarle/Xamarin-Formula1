@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Formula1.Views.Fragments.NoEventRaceResults"        
+             x:Class="Formula1.Views.Fragments.EmptyRaceResults"        
              HorizontalOptions="Center"
              VerticalOptions="Center"            
              BackgroundColor="Transparent">
     <Label 
-        Text="No results for this type of race" 
+        Text="Results will be available after the event" 
         TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
         Style="{StaticResource Body2FontSize_ExoRegular}"
         HorizontalOptions="Center"

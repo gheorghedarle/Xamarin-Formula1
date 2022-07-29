@@ -2,7 +2,7 @@
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:templates="clr-namespace:Formula1.Views.Templates"
-             x:Class="Formula1.Views.Views.ConstructorInformationsLoadingView"
+             x:Class="Formula1.Views.Views.TeamInformationsLoadingView"
              Spacing="0">
     <templates:InformationLoadingTemplate></templates:InformationLoadingTemplate>
     <templates:InformationLoadingTemplate></templates:InformationLoadingTemplate>
