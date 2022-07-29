@@ -8,7 +8,7 @@
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid
-            RowDefinitions="Auto, Auto"
+            RowDefinitions="Auto, Auto, Auto, *"
             BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
             <StackLayout
                 Grid.Row="0"
@@ -27,13 +27,29 @@
                     HorizontalOptions="Start"></Label>
             </StackLayout>
             <StackLayout
+                Grid.Row="0"
+                Margin="20">
+                <Label
+                    Text="&#xf2bd;"
+                    TextColor="{StaticResource AccentColor}"
+                    Style="{StaticResource Headline0FontSize_FontAwesome}"
+                    HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ProfileCommand}"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    Text="Formula 1 Fan"
+                    Style="{StaticResource Body1FontSize_ExoBold}"
+                    HorizontalTextAlignment="Center"></Label>
+            </StackLayout>
+            <StackLayout
                 Grid.Row="1"
                 Orientation="Horizontal"
-                Margin="15, 5, 10, 5">
+                Margin="20, 5">
                 <Label
-                    Style="{StaticResource Body1FontSize_ExoRegular}"
                     Text="Dark mode"
-                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"></Label>
+                    Style="{StaticResource Body1FontSize_ExoRegular}"/>
                 <Switch
                     IsToggled="{Binding IsDarkMode}"
                     HorizontalOptions="EndAndExpand"
@@ -45,6 +61,24 @@
                     </Switch.Behaviors>
                 </Switch>
             </StackLayout>
+            <StackLayout
+                Grid.Row="2"
+                Margin="20, 5">
+                <Label
+                    Text="The app is using data from Ergast API"
+                    Style="{StaticResource Body1FontSize_ExoRegular}"/>
+                <Label
+                    Text="http://ergast.com/mrd/"
+                    Style="{StaticResource Link_ExoRegular}">
+                </Label>
+            </StackLayout>
+            <Label
+                Grid.Row="3"
+                Text="Version 1.0.0"
+                Style="{StaticResource Body1FontSize_ExoRegular}"
+                Margin="0, 0, 0, 20"
+                HorizontalTextAlignment="Center"
+                VerticalOptions="End"></Label>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

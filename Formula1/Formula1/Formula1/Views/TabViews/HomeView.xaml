@@ -41,8 +41,7 @@
                     Grid.RowSpan="2"
                     Text="&#xf2bd;"
                     TextColor="{StaticResource AccentColor}"
-                    FontSize="{StaticResource Headline2FontSize}"
-                    FontFamily="FontAwesome_Solid"
+                    Style="{StaticResource Headline2FontSize_FontAwesome}"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     Margin="5, 0, 5, 0">

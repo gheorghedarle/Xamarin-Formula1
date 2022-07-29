@@ -9,6 +9,17 @@
         <styles:Fonts></styles:Fonts>
     </ResourceDictionary.MergedDictionaries>
 
+    <Style x:Key="Headline0FontSize_FontAwesome" TargetType="Label">
+        <Setter Property="FontFamily" Value="FontAwesome_Solid" />
+        <Setter Property="FontSize" Value="{StaticResource Headline0FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="Headline2FontSize_FontAwesome" TargetType="Label">
+        <Setter Property="FontFamily" Value="FontAwesome_Solid" />
+        <Setter Property="FontSize" Value="{StaticResource Headline2FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
     <Style x:Key="Headline2_ExoBold" TargetType="Label">
         <Setter Property="FontFamily" Value="Exo_Bold" />
         <Setter Property="FontSize" Value="{StaticResource Headline2FontSize}" />
