@@ -1,8 +1,5 @@
 ﻿using Formula1.Models;
 using Formula1.Views.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace Formula1.Helpers.TemplateSelectors

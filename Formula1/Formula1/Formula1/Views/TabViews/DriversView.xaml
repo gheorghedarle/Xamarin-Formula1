@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             xmlns:views="clr-namespace:Formula1.Views.Views"
-             x:Class="Formula1.Views.TabViews.DriversView"
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:views="clr-namespace:Formula1.Views.Views"
+    x:Class="Formula1.Views.TabViews.DriversView"
     BindingContext="{Binding DriversView, Source={StaticResource ViewModelLocator}}"
     NavigationPage.HasNavigationBar="False">
     <StackLayout

@@ -2,7 +2,6 @@
 using Formula1.Services.Ergast;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.UI.Views;

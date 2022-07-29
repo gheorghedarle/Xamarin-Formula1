@@ -2,7 +2,7 @@
 
 namespace Formula1.Models
 {
-    public class CircuitBasicInformationsModel
+    public record CircuitBasicInformationsModel
     {
         public string FirstGrandPrix { get; set; }
         public string NumberOfLaps { get; set; }

@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-      xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-        xmlns:controls="clr-namespace:Formula1.Controls"
-      xmlns:views="clr-namespace:Formula1.Views.Views"
-      xmlns:templateSelector="clr-namespace:Formula1.Helpers.TemplateSelectors"
-      x:Class="Formula1.Views.TabViews.HomeView"
-      BindingContext="{Binding HomeView, Source={StaticResource ViewModelLocator}}"
-      NavigationPage.HasNavigationBar="False">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:controls="clr-namespace:Formula1.Controls"
+    xmlns:templateSelector="clr-namespace:Formula1.Helpers.TemplateSelectors"
+    xmlns:views="clr-namespace:Formula1.Views.Views"
+    x:Class="Formula1.Views.TabViews.HomeView"
+    BindingContext="{Binding HomeView, Source={StaticResource ViewModelLocator}}"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <templateSelector:HomeResultsTemplateSelector x:Key="HomeResultsTemplateSelector" />

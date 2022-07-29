@@ -1,5 +1,4 @@
-﻿using Formula1.Views;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 

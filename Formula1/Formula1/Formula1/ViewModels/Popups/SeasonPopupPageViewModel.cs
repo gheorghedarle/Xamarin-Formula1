@@ -1,5 +1,4 @@
 ﻿using Formula1.Helpers;
-using Formula1.Views.Popups;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;

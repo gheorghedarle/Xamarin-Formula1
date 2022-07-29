@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ResourceDictionary  xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:styles="clr-namespace:Formula1.Styles"
-             x:Class="Formula1.Styles.Theme">
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:styles="clr-namespace:Formula1.Styles"
+    x:Class="Formula1.Styles.Theme">
     <ResourceDictionary.MergedDictionaries>
         <styles:Colors></styles:Colors>
         <styles:Fonts></styles:Fonts>
