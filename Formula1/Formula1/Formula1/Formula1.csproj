@@ -92,6 +92,12 @@
     <Compile Update="Views\Views\DriverRaceResultsLoadingView.xaml.cs">
       <DependentUpon>DriverRaceResultsLoadingView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Views\TeamRaceResultsLoadingView.xaml.cs">
+      <DependentUpon>TeamRaceResultsLoadingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Views\TeamRaceResultsView.xaml.cs">
+      <DependentUpon>TeamRaceResultsView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Views\HistoryDriverStadingsView.xaml.cs">
       <DependentUpon>HistoryDriverStadingsView.xaml</DependentUpon>
     </Compile>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="Formula1.Views.Views.TeamRaceResultsView"
+    RowDefinitions="Auto, Auto, Auto"
+    Padding="20, 5"
+    RowSpacing="0">
+    <Label
+        Grid.Row="0"
+        Text="{Binding Round, StringFormat='Round {0}'}"
+        Style="{StaticResource CaptionFontSize_ExoRegular}"
+        TextColor="{StaticResource AccentColor}"
+        VerticalOptions="Center"></Label>
+    <Label
+        Grid.Row="1"
+        Text="{Binding Circuit.Location.Country}"
+        Style="{StaticResource Body2FontSize_ExoBold}"></Label>
+    <StackLayout
+        Grid.Row="2"
+        BindableLayout.ItemsSource="{Binding Results}"
+        Spacing="0"
+        Margin="0, 5, 0, 0">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <Grid
+                    RowDefinitions="Auto, Auto"
+                    ColumnDefinitions="*, Auto"
+                    RowSpacing="0">
+                    <Label
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="0"
+                        VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="{Binding Driver.GivenName}"
+                                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
+                                <Span
+                                    Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
+                                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalTextAlignment="End">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="Position "
+                                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                                <Span
+                                    Text="{Binding Position}"
+                                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        IsVisible="{Binding Status, Converter={xct:EqualConverter}, ConverterParameter='Finished'}"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalOptions="EndAndExpand">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="{Binding Points}"
+                                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                                <Span
+                                    Text=" pts"
+                                    Style="{StaticResource Body2FontSize_ExoRegular}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        IsVisible="{Binding Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding Status, StringFormat='{0}'}"
+                        Style="{StaticResource Body2FontSize_ExoBold}"
+                        HorizontalOptions="EndAndExpand">
+                    </Label>
+                </Grid>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </StackLayout>
+</Grid>
