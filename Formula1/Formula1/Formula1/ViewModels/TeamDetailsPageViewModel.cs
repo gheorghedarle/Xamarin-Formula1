@@ -1,6 +1,6 @@
 ﻿using Formula1.Models;
 using Formula1.Services.Ergast;
-using Formula1.Services.Informations;
+using Formula1.Services.Information;
 using Formula1.Views.Popups;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace Formula1.ViewModels
         #region Fields
 
         private readonly IErgastService _ergastService;
-        private readonly IInformationsService _informationsService;
+        private readonly IInformationService _informationsService;
 
         #endregion
 
@@ -44,7 +44,7 @@ namespace Formula1.ViewModels
 
         public TeamDetailsPageViewModel(
             IErgastService ergastService,
-            IInformationsService informationsService)
+            IInformationService informationsService)
         {
             _ergastService = ergastService;
             _informationsService = informationsService;
@@ -124,7 +124,7 @@ namespace Formula1.ViewModels
 
         private async Task GetInformations()
         {
-            var res = await _informationsService.GetTeamInformations(Constructor.ConstructorId);
+            var res = await _informationsService.GetTeamInformation(Constructor.ConstructorId);
             if (res != null)
             {
                 ConstructorInformations = res;

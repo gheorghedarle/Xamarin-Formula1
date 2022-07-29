@@ -89,7 +89,7 @@
                         RepeatCount="10">
                         <xct:StateView.Template>
                             <DataTemplate>
-                                <views:RaceResultsLapByLapLoadingView></views:RaceResultsLapByLapLoadingView>
+                                <views:ScheduleRaceResultsLapByLapLoadingView></views:ScheduleRaceResultsLapByLapLoadingView>
                             </DataTemplate>
                         </xct:StateView.Template>
                     </xct:StateView>
@@ -113,7 +113,7 @@
                     ItemsSource="{Binding LapResults.Laps}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <views:RaceResultsLapByLapView></views:RaceResultsLapByLapView>
+                            <views:ScheduleRaceResultsLapByLapView></views:ScheduleRaceResultsLapByLapView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

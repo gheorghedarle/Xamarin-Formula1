@@ -71,7 +71,7 @@
                 TabIndicatorColor="{StaticResource AccentColor}"
                 TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
                 <xct:TabViewItem
-                    Text="Informations"
+                    Text="Information"
                     TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                     TextColorSelected="{StaticResource AccentColor}"
                     FontFamily="Exo_Regular"
@@ -83,7 +83,7 @@
                             Margin="20, 0, 0, 5"
                             Spacing="0">
                             <Label
-                                Text="Basic Informations"
+                                Text="Basic Information"
                                 Style="{StaticResource Body1FontSize_ExoBold}"
                                 Margin="0, 0, 0, 2"></Label>
                             <StackLayout                        
@@ -92,7 +92,7 @@
                                 <xct:StateLayout.StateViews>
                                     <xct:StateView 
                                         StateKey="Loading">
-                                        <views:ConstructorInformationsLoadingView></views:ConstructorInformationsLoadingView>
+                                        <views:TeamInformationLoadingView></views:TeamInformationLoadingView>
                                     </xct:StateView>
                                     <xct:StateView 
                                         StateKey="Error"
@@ -105,7 +105,7 @@
                                         <Label Text="Empty"></Label>
                                     </xct:StateView>
                                 </xct:StateLayout.StateViews>
-                                <views:ConstructorInformationsView></views:ConstructorInformationsView>
+                                <views:TeamInformationView></views:TeamInformationView>
                             </StackLayout>
                         </StackLayout>
                     </ScrollView>

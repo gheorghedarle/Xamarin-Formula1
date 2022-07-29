@@ -71,26 +71,26 @@
     <Compile Update="Views\Templates\InformationWithSubLabelTemplate.xaml.cs">
       <DependentUpon>InformationWithSubLabelTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views\CircuitInformationsLoadingView.xaml.cs">
-      <DependentUpon>CircuitInformationsLoadingView.xaml</DependentUpon>
+    <Compile Update="Views\Views\CircuitInformationLoadingView.xaml.cs">
+      <DependentUpon>CircuitInformationLoadingView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views\CircuitInformationsView.xaml.cs">
-      <DependentUpon>CircuitInformationsView.xaml</DependentUpon>
+    <Compile Update="Views\Views\CircuitInformationView.xaml.cs">
+      <DependentUpon>CircuitInformationView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Views\CircuitRaceWeekendView.xaml.cs">
       <DependentUpon>CircuitRaceWeekendView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views\TeamInformationsLoadingView.xaml.cs">
-      <DependentUpon>TeamInformationsLoadingView.xaml</DependentUpon>
+    <Compile Update="Views\Views\TeamInformationLoadingView.xaml.cs">
+      <DependentUpon>TeamInformationLoadingView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views\TeamInformationsView.xaml.cs">
-      <DependentUpon>TeamInformationsView.xaml</DependentUpon>
+    <Compile Update="Views\Views\TeamInformationView.xaml.cs">
+      <DependentUpon>TeamInformationView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views\DriverInformationsLoadingView.xaml.cs">
-      <DependentUpon>DriverInformationsLoadingView.xaml</DependentUpon>
+    <Compile Update="Views\Views\DriverInformationLoadingView.xaml.cs">
+      <DependentUpon>DriverInformationLoadingView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views\DriverInformationsView.xaml.cs">
-      <DependentUpon>DriverInformationsView.xaml</DependentUpon>
+    <Compile Update="Views\Views\DriverInformationView.xaml.cs">
+      <DependentUpon>DriverInformationView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Views\DriverRaceResultsLoadingView.xaml.cs">
       <DependentUpon>DriverRaceResultsLoadingView.xaml</DependentUpon>
@@ -233,16 +233,16 @@
     <EmbeddedResource Update="Views\Templates\InformationDateOfBirthTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Views\CircuitInformationsView.xaml">
+    <EmbeddedResource Update="Views\Views\CircuitInformationView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Views\CircuitRaceWeekendView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Views\TeamInformationsView.xaml">
+    <EmbeddedResource Update="Views\Views\TeamInformationView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Views\DriverInformationsView.xaml">
+    <EmbeddedResource Update="Views\Views\DriverInformationView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Views\DriverStadingsView.xaml">

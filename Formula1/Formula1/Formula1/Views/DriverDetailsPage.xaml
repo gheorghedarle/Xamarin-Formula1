@@ -78,7 +78,7 @@
                 TabIndicatorColor="{StaticResource AccentColor}"
                 TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
                 <xct:TabViewItem
-                    Text="Informations"
+                    Text="Information"
                     TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                     TextColorSelected="{StaticResource AccentColor}"
                     FontFamily="Exo_Regular"
@@ -93,7 +93,7 @@
                             <xct:StateLayout.StateViews>
                                 <xct:StateView 
                                     StateKey="Loading">
-                                    <views:DriverInformationsLoadingView></views:DriverInformationsLoadingView>
+                                    <views:DriverInformationLoadingView></views:DriverInformationLoadingView>
                                 </xct:StateView>
                                 <xct:StateView 
                                     StateKey="Error"
@@ -105,20 +105,20 @@
                                     VerticalOptions="FillAndExpand">
                                     <StackLayout>
                                         <Label
-                                            Text="Basic Informations"
+                                            Text="Basic Information"
                                             Style="{StaticResource Body1FontSize_ExoBold}"
                                             Margin="0, 0, 0, 5"></Label>
                                         <Label 
-                                            Text="No informations to display"
+                                            Text="No information to display"
                                             Style="{StaticResource CaptionFontSize_ExoRegular}"></Label>
                                     </StackLayout>
                                 </xct:StateView>
                             </xct:StateLayout.StateViews>
                             <Label
-                                Text="Basic Informations"
+                                Text="Basic Information"
                                 Style="{StaticResource Body1FontSize_ExoBold}"
                                 Margin="0, 0, 0, 2"></Label>
-                            <views:DriverInformationsView></views:DriverInformationsView>
+                            <views:DriverInformationView></views:DriverInformationView>
                         </StackLayout>
                 </xct:TabViewItem>
                 <xct:TabViewItem

@@ -7,18 +7,18 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace Formula1.Services.Informations
+namespace Formula1.Services.Information
 {
-    public class InformationsService : IInformationsService
+    public class InformationService : IInformationService
     {
         private readonly HttpClientFactory _httpClientFactory;
 
-        public InformationsService(HttpClientFactory httpClientFactory)
+        public InformationService(HttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<DriverBasicInformationsModel> GetDriverInformations(string driver)
+        public async Task<DriverBasicInformationsModel> GetDriverInformation(string driver)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Formula1.Services.Informations
             }
         }
 
-        public async Task<ConstructorBasicInformationsModel> GetTeamInformations(string team)
+        public async Task<ConstructorBasicInformationsModel> GetTeamInformation(string team)
         {
             try 
             { 
@@ -60,7 +60,7 @@ namespace Formula1.Services.Informations
             }
         }
 
-        public async Task<CircuitBasicInformationsModel> GetCircuitInformations(string country)
+        public async Task<CircuitBasicInformationsModel> GetCircuitInformation(string country)
         {
             try
             {

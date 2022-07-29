@@ -109,7 +109,7 @@
                 TabIndicatorColor="{StaticResource AccentColor}"
                 TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
                 <xct:TabViewItem
-                    Text="Informations"
+                    Text="Information"
                     TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                     TextColorSelected="{StaticResource AccentColor}"
                     FontFamily="Exo_Regular"
@@ -161,7 +161,7 @@
                                 <views:CircuitRaceWeekendViews></views:CircuitRaceWeekendViews>
                             </StackLayout>
                             <Label
-                                Text="Basic Informations"
+                                Text="Basic Information"
                                 Style="{StaticResource Body1FontSize_ExoBold}"
                                 Margin="0, 0, 0, 2"></Label>
                             <StackLayout                        
@@ -171,7 +171,7 @@
                                 <xct:StateLayout.StateViews>
                                     <xct:StateView 
                                         StateKey="Loading">
-                                        <views:CircuitInformationsLoadingView></views:CircuitInformationsLoadingView>
+                                        <views:CircuitInformationLoadingView></views:CircuitInformationLoadingView>
                                     </xct:StateView>
                                     <xct:StateView 
                                         StateKey="Error"
@@ -184,7 +184,7 @@
                                         <Label Text="There's no information to display"></Label>
                                     </xct:StateView>
                                 </xct:StateLayout.StateViews>
-                                <views:CircuitInformationsView></views:CircuitInformationsView>
+                                <views:CircuitInformationView></views:CircuitInformationView>
                             </StackLayout>
                         </StackLayout>
                     </ScrollView>
@@ -224,7 +224,7 @@
                                     RepeatCount="10">
                                     <xct:StateView.Template>
                                         <DataTemplate>
-                                            <views:RaceResultsLoadingView></views:RaceResultsLoadingView>
+                                            <views:ScheduleRaceResultsLoadingView></views:ScheduleRaceResultsLoadingView>
                                         </DataTemplate>
                                     </xct:StateView.Template>
                                 </xct:StateView>
@@ -250,7 +250,7 @@
                                 ItemsSource="{Binding Results.RaceResults}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <views:RaceResultsView></views:RaceResultsView>
+                                        <views:ScheduleRaceResultsView></views:ScheduleRaceResultsView>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
@@ -260,7 +260,7 @@
                                 ItemsSource="{Binding Results.QualifyingResults}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <views:QualifyingResultsView></views:QualifyingResultsView>
+                                        <views:ScheduleQualifyingResultsView></views:ScheduleQualifyingResultsView>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
@@ -270,7 +270,7 @@
                                 ItemsSource="{Binding Results.SprintResults}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <views:RaceResultsView></views:RaceResultsView>
+                                        <views:ScheduleRaceResultsView></views:ScheduleRaceResultsView>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>

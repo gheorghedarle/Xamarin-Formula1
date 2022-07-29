@@ -1,6 +1,6 @@
 ﻿using Formula1.Core;
 using Formula1.Services.Ergast;
-using Formula1.Services.Informations;
+using Formula1.Services.Information;
 using Formula1.ViewModels.Popups;
 using Formula1.ViewModels.TabViews;
 using System;
@@ -11,13 +11,13 @@ namespace Formula1.ViewModels
     {
         private readonly Lazy<HttpClientFactory> httpClientFactory;
         private readonly Lazy<IErgastService> ergastService;
-        private readonly Lazy<IInformationsService> informationService;
+        private readonly Lazy<IInformationService> informationService;
 
         public ViewModelLocator()
         {
             httpClientFactory = new Lazy<HttpClientFactory>(() => new HttpClientFactory());
             ergastService = new Lazy<IErgastService>(() => new ErgastService(httpClientFactory.Value));
-            informationService = new Lazy<IInformationsService>(() => new InformationsService(httpClientFactory.Value));
+            informationService = new Lazy<IInformationService>(() => new InformationService(httpClientFactory.Value));
         }
 
         public WelcomePageViewModel WelcomePage => new WelcomePageViewModel();

@@ -1,7 +1,5 @@
 const port = 5000;
-const securePort = 5001;
 var http = require("http");
-var https = require("https");
 var express = require("express");
 var cheerio = require("cheerio");
 var axios = require("axios");
@@ -88,6 +86,3 @@ app.get("/circuit/info", async function (req, res) {
 
 var httpServer = http.createServer(app);
 httpServer.listen(port);
-
-// var httpsServer = https.createServer(credentials, app);
-// httpsServer.listen(securePort);

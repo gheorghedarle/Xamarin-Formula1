@@ -4,9 +4,9 @@ using Xamarin.Forms.Xaml;
 namespace Formula1.Views.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CircuitInformationsLoadingView : StackLayout
+    public partial class CircuitInformationView : StackLayout
     {
-        public CircuitInformationsLoadingView()
+        public CircuitInformationView()
         {
             InitializeComponent();
         }
