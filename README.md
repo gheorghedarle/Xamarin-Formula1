@@ -4,7 +4,7 @@
 
 ![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg)
 
-**Formula 1 App** is a simple app developed with **Xamarin** to display information about drivers, teams, circuits and seasons from 1950 to current season. The app is developed in **Xamarin Shell** and **Ergast API**. In the Schedule screen you can see the current season calendar and information about circuits and results for the finished races. In the Drivers and Teams screens you can see current stadings and information about them. In the History screen you can select a season and see the schedule, driver and team stadings for that season. The app is available in both **light** and **dark mode**.
+**Formula 1 App** is a simple app developed with **Xamarin** to display information about drivers, teams, circuits and seasons from 1950 to the current season. The app is developed in **Xamarin Shell** and **Ergast API**. In the Schedule screen, you can see the current season calendar and information about circuits and results for the finished races. In the Drivers and Teams screens, you can see current standings and information about them. In the History screen, you can select a season and see the schedule, driver and team standings for that season. The app is available in both **light** and **dark mode**.
 
 If you like this repository you can support me on
 
