@@ -5,7 +5,7 @@
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Class="Formula1.Views.Views.TeamRaceResultsView"
     RowDefinitions="Auto, Auto, Auto"
-    Padding="20, 5"
+    Padding="0, 5"
     RowSpacing="0">
     <Label
         Grid.Row="0"

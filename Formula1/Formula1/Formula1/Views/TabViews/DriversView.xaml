@@ -30,7 +30,7 @@
             <xct:StateLayout.StateViews>
                 <xct:StateView 
                     StateKey="Loading"
-                    RepeatCount="15">
+                    RepeatCount="10">
                     <xct:StateView.Template>
                         <DataTemplate>
                             <views:DriverStadingsLoadingView></views:DriverStadingsLoadingView>
