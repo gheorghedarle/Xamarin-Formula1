@@ -95,12 +95,12 @@
                     <xct:StateView 
                         StateKey="Error"
                         VerticalOptions="FillAndExpand">
-                        <Label Text="Error"></Label>
+                        <Label Text="Error" Style="{StaticResource Body1FontSize_ExoRegular}"></Label>
                     </xct:StateView>
                     <xct:StateView 
                         StateKey="Empty"
                         VerticalOptions="FillAndExpand">
-                        <Label Text="There's no information to display"></Label>
+                        <Label Text="There's no information to display" Style="{StaticResource Body1FontSize_ExoRegular}"></Label>
                     </xct:StateView>
                 </xct:StateLayout.StateViews>
                 <Label
