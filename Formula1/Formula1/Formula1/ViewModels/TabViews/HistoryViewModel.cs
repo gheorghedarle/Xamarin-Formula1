@@ -78,7 +78,7 @@ namespace Formula1.ViewModels.TabViews
 
         private async Task Initialize()
         {
-            SelectedSeason = 2021;
+            SelectedSeason = new DateTime().Year - 1;
             DriversState = LayoutState.Loading;
             TeamsState = LayoutState.Loading;
             ScheduleState = LayoutState.Loading;

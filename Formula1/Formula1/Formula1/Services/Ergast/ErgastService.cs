@@ -165,7 +165,7 @@ namespace Formula1.Services.Ergast
                     var json = JObject.Parse(result);
                     var res = json["MRData"]["RaceTable"]["Races"].ToString();
                     var r = JsonConvert.DeserializeObject<List<RaceEventModel>>(res);
-                    r.ForEach(c => c.Circuit.Location.Flag = $"{Constants.ImageApiBaseUrl}countries/{c.Circuit.Location.Country}.png");
+                    r.ForEach(c => c.Circuit.Location.Flag = $"{Constants.ImageApiBaseUrl}countries/{c.Circuit.Location.Country.ToLower()}.png");
                     r.ForEach(c => c.Circuit.Map = $"{Constants.ImageApiBaseUrl}circuits/{c.Circuit.CircuitId}.png");
                     return new ScheduleModel()
                     {
@@ -194,7 +194,7 @@ namespace Formula1.Services.Ergast
                     var res = json["MRData"]["RaceTable"].ToString();
                     var r = JsonConvert.DeserializeObject<RaceEventInformationsModel>(res);
                     var c = r.Races.First();
-                    c.Circuit.Location.Flag = $"{Constants.ImageApiBaseUrl}countries/{c.Circuit.Location.Country}.png";
+                    c.Circuit.Location.Flag = $"{Constants.ImageApiBaseUrl}countries/{c.Circuit.Location.Country.ToLower()}.png";
                     c.Circuit.Map = $"{Constants.ImageApiBaseUrl}circuits/{c.Circuit.CircuitId}.png";
                     return c;
                 }

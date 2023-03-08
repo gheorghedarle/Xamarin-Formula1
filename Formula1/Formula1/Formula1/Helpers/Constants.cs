@@ -56,10 +56,10 @@ namespace Formula1.Helpers
 
         public static Dictionary<string, string> TeamColors = new Dictionary<string, string>()
         {
-            { "alfa", "#B12039"},
-            { "alphatauri", "#4E7C9B"},
+            { "alfa", "#C92D4B"},
+            { "alphatauri", "#5E8FAA"},
             { "alpine", "#2293D1"},
-            { "aston_martin", "#2D826D"},
+            { "aston_martin", "#358C75"},
             { "ferrari", "#ED1C24"},
             { "haas", "#B6BABD"},
             { "mclaren", "#F58020"},

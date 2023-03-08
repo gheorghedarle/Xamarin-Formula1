@@ -1,68 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Grid
+    x:Class="Formula1.Views.Views.DriverStadingsView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Formula1.Views.Views.DriverStadingsView"
-    RowDefinitions="Auto, Auto"
+    x:Name="template"
+    Padding="15,5"
     ColumnDefinitions="30, 40, *, Auto"
-    Padding="15, 5"
-    RowSpacing="0"
-    x:Name="template">
+    RowDefinitions="Auto, Auto"
+    RowSpacing="0">
     <Grid.GestureRecognizers>
-        <TapGestureRecognizer
-            Command="{Binding Path=Parent.BindingContext.DriverDetailsCommand, Source={x:Reference template}}"
-            CommandParameter="{Binding BindingContext, Source={x:Reference template}}"></TapGestureRecognizer>
+        <TapGestureRecognizer Command="{Binding Path=Parent.BindingContext.DriverDetailsCommand, Source={x:Reference template}}" CommandParameter="{Binding BindingContext, Source={x:Reference template}}" />
     </Grid.GestureRecognizers>
     <Label
         Grid.Row="0"
         Grid.RowSpan="2"
         Grid.Column="0"
-        Text="{Binding Position}"
         Margin="3"
-        Style="{StaticResource Body1FontSize_ExoRegular}"
         HorizontalOptions="Center"
-        VerticalOptions="Center"></Label>
+        Style="{StaticResource Body1FontSize_ExoRegular}"
+        Text="{Binding Position}"
+        VerticalOptions="Center" />
     <Image
         Grid.Row="0"
         Grid.RowSpan="2"
         Grid.Column="1"
-        Source="{Binding Driver.Image.Front}"
-        WidthRequest="40"
+        Aspect="Fill"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                          Dark={StaticResource DarkCardBackgroundColor}}"
         HeightRequest="40"
-        Aspect="AspectFill"
         HorizontalOptions="Center"
+        Source="{Binding Driver.Image.Front}"
         VerticalOptions="Center"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
+        WidthRequest="40">
         <Image.Clip>
             <EllipseGeometry
                 Center="20,20"
                 RadiusX="20"
-                RadiusY="20"/>
+                RadiusY="20" />
         </Image.Clip>
     </Image>
     <Label
         Grid.Row="0"
         Grid.Column="2"
-        Margin="3, 0, 0, 0">
+        Margin="3,0,0,0">
         <Label.FormattedText>
             <FormattedString>
-                <Span
-                    Text="{Binding Driver.GivenName}"
-                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
-                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                <Span Style="{StaticResource Body1FontSize_ExoRegular}" Text="{Binding Driver.GivenName}" />
+                <Span Style="{StaticResource Body1FontSize_ExoBold}" Text="{Binding Driver.FamilyName, StringFormat=' {0}'}" />
             </FormattedString>
         </Label.FormattedText>
     </Label>
     <Label
         Grid.Row="1"
         Grid.Column="2"
-        Margin="3, 0, 0, 0"
+        Margin="3,0,0,0"
+        Style="{StaticResource Body2FontSize_ExoRegular}"
         Text="{Binding Constructors[0].Name}"
-        Style="{StaticResource Body2FontSize_ExoRegular}"        
-        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
-    </Label>
+        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                    Dark={StaticResource DarkSecondaryTextColor}}" />
     <Label
         Grid.Row="0"
         Grid.RowSpan="2"
@@ -70,14 +65,12 @@
         VerticalOptions="CenterAndExpand">
         <Label.FormattedText>
             <FormattedString>
+                <Span Style="{StaticResource Body1FontSize_ExoBold}" Text="{Binding Points}" />
                 <Span
-                    Text="{Binding Points}"
-                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                <Span
+                    Style="{StaticResource Body2FontSize_ExoRegular}"
                     Text=" pts"
-                    Style="{StaticResource Body2FontSize_ExoRegular}"        
-                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
-                </Span>
+                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                                Dark={StaticResource DarkSecondaryTextColor}}" />
             </FormattedString>
         </Label.FormattedText>
     </Label>
