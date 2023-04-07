@@ -5,7 +5,7 @@ namespace Formula1.Helpers.Extensions
     //https://stackoverflow.com/questions/249087/how-do-i-remove-diacritics-accents-from-a-string-in-net
     public static class Strings
     {
-        static Dictionary<string, string> foreign_characters = new Dictionary<string, string>
+        private static readonly Dictionary<string, string> foreign_characters = new()
         {
             { "äæǽ", "ae" },
             { "öœ", "oe" },

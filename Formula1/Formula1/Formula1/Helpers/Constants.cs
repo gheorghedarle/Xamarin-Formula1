@@ -9,23 +9,23 @@ namespace Formula1.Helpers
     {
         #region BaseURL
 
-        #if DEBUG
-                public static string ImageApiBaseUrl = "http://10.0.2.2:4000/";
-                public static string InformationsApiBaseUrl = "http://10.0.2.2:5000/";
-        #else
+#if DEBUG
+        public static string ImageApiBaseUrl = "http://10.0.2.2:4000/";
+        public static string InformationsApiBaseUrl = "http://10.0.2.2:5000/";
+#else
                 public static string ImageApiBaseUrl = "Github Url";
                 public static string InformationsApiBaseUrl = "Github Url";
-        #endif
+#endif
 
         #endregion
 
         #region PopupSize
 
-        public static Size PopupSizeSmall => new Size(0.8 * (DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density), 0.5 * (DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density));
-        
-        public static Size PopupSizeMedium => new Size(0.8 * (DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density), 0.7 * (DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density));
+        public static Size PopupSizeSmall => new(0.8 * (DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density), 0.5 * (DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density));
 
-        public static Size PopupSizeLarge => new Size(0.9 * (DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density), 0.8 * (DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density));
+        public static Size PopupSizeMedium => new(0.8 * (DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density), 0.7 * (DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density));
+
+        public static Size PopupSizeLarge => new(0.9 * (DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density), 0.8 * (DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density));
 
         #endregion
 
@@ -34,7 +34,7 @@ namespace Formula1.Helpers
         public static List<int> GetSeasonsList()
         {
             var seasons = new List<int>();
-            for(int i = DateTime.Now.Year; i >= 1950; i--)
+            for (int i = DateTime.Now.Year; i >= 1950; i--)
             {
                 seasons.Add(i);
             }
@@ -54,7 +54,7 @@ namespace Formula1.Helpers
 
         #region Team Color
 
-        public static Dictionary<string, string> TeamColors = new Dictionary<string, string>()
+        public static Dictionary<string, string> TeamColors = new()
         {
             { "alfa", "#C92D4B"},
             { "alphatauri", "#5E8FAA"},

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Formula1.Models
 {
     public record RaceEventModel
-    { 
+    {
         public int Round { get; set; }
         public string RaceName { get; set; }
         public CircuitModel Circuit { get; set; }

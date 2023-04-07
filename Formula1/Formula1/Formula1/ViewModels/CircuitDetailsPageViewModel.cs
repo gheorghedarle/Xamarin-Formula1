@@ -162,13 +162,13 @@ namespace Formula1.ViewModels
 
         private string ConvertNameToRaceType(string name)
         {
-            switch(name.ToLower())
+            return name.ToLower() switch
             {
-                case "race": return "results";
-                case "qualification": return "qualifying";
-                case "sprint": return "sprint";
-                default: return "results";
-            }
+                "race" => "results",
+                "qualification" => "qualifying",
+                "sprint" => "sprint",
+                _ => "results",
+            };
         }
 
         #endregion

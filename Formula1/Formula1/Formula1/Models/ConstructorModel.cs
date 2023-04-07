@@ -17,7 +17,7 @@ namespace Formula1.Models
         {
             get
             {
-                return string.Join(" | ", Drivers.Select(d => string.Format("{0}. {1}", d.GivenName.Substring(0, 1), d.FamilyName)));
+                return string.Join(" | ", Drivers.Select(d => string.Format("{0}. {1}", d.GivenName[..1], d.FamilyName)));
             }
         }
     }

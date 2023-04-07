@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Formula1.ViewModels.TabViews
 {
-    public class ScheduleViewModel: BaseViewModel
+    public class ScheduleViewModel : BaseViewModel
     {
         #region Fields
 

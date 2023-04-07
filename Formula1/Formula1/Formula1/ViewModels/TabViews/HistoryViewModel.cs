@@ -66,9 +66,9 @@ namespace Formula1.ViewModels.TabViews
                 DriversState = LayoutState.Loading;
                 TeamsState = LayoutState.Loading;
                 ScheduleState = LayoutState.Loading;
-                await GetDrivers(SelectedSeason.ToString());
-                await GetTeams(SelectedSeason.ToString());
-                await GetSchedule(SelectedSeason.ToString());
+                await GetDrivers();
+                await GetTeams();
+                await GetSchedule();
             }
         }
 
@@ -78,30 +78,30 @@ namespace Formula1.ViewModels.TabViews
 
         private async Task Initialize()
         {
-            SelectedSeason = new DateTime().Year - 1;
+            SelectedSeason = DateTime.Now.Year - 1;
             DriversState = LayoutState.Loading;
             TeamsState = LayoutState.Loading;
             ScheduleState = LayoutState.Loading;
-            await GetDrivers(SelectedSeason.ToString());
-            await GetTeams(SelectedSeason.ToString());
-            await GetSchedule(SelectedSeason.ToString());
+            await GetDrivers();
+            await GetTeams();
+            await GetSchedule();
         }
 
-        private async Task GetDrivers(string season)
+        private async Task GetDrivers()
         {
-            var resDrivers = await _ergastService.GetDriverStadings(season);
+            var resDrivers = await _ergastService.GetDriverStadings(SelectedSeason.ToString());
             DriversList = new ObservableCollection<DriverStadingsModel>(resDrivers);
             DriversState = LayoutState.None;
         }
 
-        private async Task GetTeams(string season)
+        private async Task GetTeams()
         {
             var resTeams = await _ergastService.GetTeamStadings(SelectedSeason.ToString());
             TeamsList = new ObservableCollection<ConstructorStadingsModel>(resTeams);
             TeamsState = LayoutState.None;
         }
 
-        private async Task GetSchedule(string season)
+        private async Task GetSchedule()
         {
             var resSchedule = await _ergastService.GetSchedule(SelectedSeason.ToString());
             ScheduleList = new ObservableCollection<RaceEventModel>(resSchedule.PastRaceEvents);

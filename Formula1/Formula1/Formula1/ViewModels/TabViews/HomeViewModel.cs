@@ -73,7 +73,6 @@ namespace Formula1.ViewModels.TabViews
 
         #endregion
 
-
         #region Command Handlers
 
         private async void ProfileCommandHandler()
@@ -147,8 +146,10 @@ namespace Formula1.ViewModels.TabViews
             var res = await _ergastService.GetResults("current", "last", "results", "limit=10");
             _latestRace = res.First();
             LatestRace = $"Round {res.First().Round} - {res.First().Circuit.Location.Country} ({res.First().Circuit.CircuitName})";
-            LatestResults = new ObservableCollection<RaceResultModel>(res.First().Results);
-            LatestResults.Add(new RaceResultModel());
+            LatestResults = new ObservableCollection<RaceResultModel>(res.First().Results)
+            {
+                new RaceResultModel()
+            };
             ResultsState = LayoutState.None;
         }
 
@@ -156,8 +157,10 @@ namespace Formula1.ViewModels.TabViews
         {
             var res = await _ergastService.GetSchedule("current");
             _latestRace = res.PastRaceEvents.Last();
-            UpcomingRaceEventList = new ObservableCollection<RaceEventModel>(res.UpcomingRaceEvents.Take(3));
-            UpcomingRaceEventList.Add(new RaceEventModel());
+            UpcomingRaceEventList = new ObservableCollection<RaceEventModel>(res.UpcomingRaceEvents.Take(3))
+            {
+                new RaceEventModel()
+            };
             ScheduleState = LayoutState.None;
         }
 

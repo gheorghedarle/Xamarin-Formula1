@@ -9,10 +9,12 @@ namespace Formula1.Models
         public string CircuitLength { get; set; }
         public string RaceDistance { get; set; }
         public string LapRecord { get; set; }
-        public double Length { get
+        public double Length
+        {
+            get
             {
                 return Convert.ToDouble(CircuitLength.Replace("km", "").Trim());
-            } 
+            }
         }
 
         public double Distance

@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace Formula1.ViewModels.TabViews
 {
-    public class TeamsViewModel: BaseViewModel
+    public class TeamsViewModel : BaseViewModel
     {
         #region Fields
 

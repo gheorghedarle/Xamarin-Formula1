@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace Formula1.ViewModels
 {
-    public class DriverDetailsPageViewModel: BaseViewModel, IQueryAttributable
+    public class DriverDetailsPageViewModel : BaseViewModel, IQueryAttributable
     {
         #region Fields
 
@@ -22,7 +22,7 @@ namespace Formula1.ViewModels
         #endregion
 
         #region Properties
-        
+
         public ObservableCollection<RaceEventModel> RaceResults { get; set; }
         public DriverModel Driver { get; set; }
         public DriverBasicInformationsModel DriverInformations { get; set; }
@@ -69,7 +69,7 @@ namespace Formula1.ViewModels
             {
                 SelectedSeason = season.ToString() == DateTime.Now.Year.ToString() ? "Current Season" : season.ToString();
                 ResultsState = LayoutState.Loading;
-                await GetResults();            
+                await GetResults();
             }
         }
 
