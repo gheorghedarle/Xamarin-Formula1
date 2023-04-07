@@ -1,99 +1,90 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="Formula1.Views.TabViews.ScheduleView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:views="clr-namespace:Formula1.Views.Views"
-    x:Class="Formula1.Views.TabViews.ScheduleView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     BindingContext="{Binding ScheduleView, Source={StaticResource ViewModelLocator}}"
     NavigationPage.HasNavigationBar="False">
-    <StackLayout
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
-        <Label 
-            Text="{Binding Title}"
+    <StackLayout BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+        <Label
+            Margin="15,10,0,0"
             Style="{StaticResource Headline3_ExoBold}"
-            TextColor="{StaticResource AccentColor}"
-            Margin="15, 10, 0, 0"/>
+            Text="{Binding Title}"
+            TextColor="{StaticResource AccentColor}" />
         <xct:TabView
-            TabStripPlacement="Top"
-            TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
-            TabStripHeight="40"
             SelectedIndex="0"
+            TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor},
+                                                        Dark={StaticResource DarkPageBackgroundColor}}"
             TabIndicatorColor="{StaticResource AccentColor}"
-            TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+            TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor},
+                                                      Dark={StaticResource DarkPageBackgroundColor}}"
+            TabStripHeight="40"
+            TabStripPlacement="Top">
             <xct:TabViewItem
-                Text="Upcoming"
-                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                TextColorSelected="{StaticResource AccentColor}"
                 FontFamily="Exo_Regular"
                 FontFamilySelected="Exo_Medium"
+                FontSize="14"
                 FontSizeSelected="14"
-                FontSize="14">
+                Text="Upcoming"
+                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor},
+                                            Dark={StaticResource DarkPrimaryTextColor}}"
+                TextColorSelected="{StaticResource AccentColor}">
                 <StackLayout
-                    xct:StateLayout.CurrentState="{Binding MainState}"
                     xct:StateLayout.AnimateStateChanges="False"
+                    xct:StateLayout.CurrentState="{Binding MainState}"
                     VerticalOptions="FillAndExpand">
                     <xct:StateLayout.StateViews>
-                        <xct:StateView 
-                            StateKey="Loading"
-                            RepeatCount="15">
+                        <xct:StateView RepeatCount="15" StateKey="Loading">
                             <xct:StateView.Template>
                                 <DataTemplate>
-                                    <views:ScheduleLoadingView></views:ScheduleLoadingView>
+                                    <views:ScheduleLoadingView />
                                 </DataTemplate>
                             </xct:StateView.Template>
                         </xct:StateView>
-                        <xct:StateView 
-                            StateKey="Error"
-                            VerticalOptions="FillAndExpand">
-                            <Label Text="Error"></Label>
+                        <xct:StateView StateKey="Error" VerticalOptions="FillAndExpand">
+                            <Label Text="Error" />
                         </xct:StateView>
                     </xct:StateLayout.StateViews>
-                    <CollectionView
-                        x:Name="upcomingList"
-                        ItemsSource="{Binding UpcomingRaceEventList}">
+                    <CollectionView x:Name="upcomingList" ItemsSource="{Binding UpcomingRaceEventList}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <views:ScheduleView></views:ScheduleView>
+                                <views:ScheduleView />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </StackLayout>
             </xct:TabViewItem>
             <xct:TabViewItem
-                Text="Past"
-                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                TextColorSelected="{StaticResource AccentColor}"
                 FontFamily="Exo_Regular"
                 FontFamilySelected="Exo_Medium"
+                FontSize="14"
                 FontSizeSelected="14"
-                FontSize="14">
+                Text="Past"
+                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor},
+                                            Dark={StaticResource DarkPrimaryTextColor}}"
+                TextColorSelected="{StaticResource AccentColor}">
                 <StackLayout
-                    xct:StateLayout.CurrentState="{Binding MainState}"
                     xct:StateLayout.AnimateStateChanges="False"
+                    xct:StateLayout.CurrentState="{Binding MainState}"
                     VerticalOptions="FillAndExpand">
                     <xct:StateLayout.StateViews>
-                        <xct:StateView 
-                            StateKey="Loading"
-                            RepeatCount="15">
+                        <xct:StateView RepeatCount="15" StateKey="Loading">
                             <xct:StateView.Template>
                                 <DataTemplate>
-                                    <views:ScheduleLoadingView></views:ScheduleLoadingView>
+                                    <views:ScheduleLoadingView />
                                 </DataTemplate>
                             </xct:StateView.Template>
                         </xct:StateView>
-                        <xct:StateView 
-                            StateKey="Error"
-                            VerticalOptions="FillAndExpand">
-                            <Label Text="Error"></Label>
+                        <xct:StateView StateKey="Error" VerticalOptions="FillAndExpand">
+                            <Label Text="Error" />
                         </xct:StateView>
                     </xct:StateLayout.StateViews>
-                    <CollectionView
-                        x:Name="pastList"
-                        ItemsSource="{Binding PastRaceEventList}">
+                    <CollectionView x:Name="pastList" ItemsSource="{Binding PastRaceEventList}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <views:ScheduleView></views:ScheduleView>
+                                <views:ScheduleView />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>

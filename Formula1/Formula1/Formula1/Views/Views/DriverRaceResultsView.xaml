@@ -1,32 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Grid
+    x:Class="Formula1.Views.Views.DriverRaceResultsView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    x:Class="Formula1.Views.Views.DriverRaceResultsView"
-    RowDefinitions="Auto, Auto"
+    Padding="20,5"
     ColumnDefinitions="100, *, Auto"
-    Padding="20, 5"
+    RowDefinitions="Auto, Auto"
     RowSpacing="0">
     <Label
         Grid.Row="0"
         Grid.Column="0"
-        Text="{Binding Round, StringFormat='Round {0}'}"
         Style="{StaticResource CaptionFontSize_ExoRegular}"
+        Text="{Binding Round, StringFormat='Round {0}'}"
         TextColor="{StaticResource AccentColor}"
-        VerticalOptions="Center"></Label>
+        VerticalOptions="Center" />
     <Label
         Grid.Row="1"
         Grid.Column="0"
-        Text="{Binding Circuit.Location.Country}"
-        Style="{StaticResource Body2FontSize_ExoBold}"></Label>
+        Style="{StaticResource Body2FontSize_ExoBold}"
+        Text="{Binding Circuit.Location.Country}" />
     <Label
         Grid.Row="0"
         Grid.RowSpan="2"
         Grid.Column="1"
-        Text="{Binding Results[0].Constructor.Name}"
         Style="{StaticResource Body2FontSize_ExoRegular}"
-        VerticalOptions="Center"></Label>
+        Text="{Binding Results[0].Constructor.Name}"
+        VerticalOptions="Center" />
     <Label
         Grid.Row="0"
         Grid.Column="2"
@@ -34,38 +34,35 @@
         <Label.FormattedText>
             <FormattedString>
                 <Span
-                    Text="Position "
                     Style="{StaticResource Body2FontSize_ExoRegular}"
-                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"></Span>
-                <Span
-                    Text="{Binding Results[0].Position}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                    Text="Position "
+                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                                Dark={StaticResource DarkSecondaryTextColor}}" />
+                <Span Style="{StaticResource Body2FontSize_ExoBold}" Text="{Binding Results[0].Position}" />
             </FormattedString>
         </Label.FormattedText>
     </Label>
     <Label
-        IsVisible="{Binding Results[0].Status, Converter={xct:EqualConverter}, ConverterParameter='Finished'}"
         Grid.Row="1"
         Grid.Column="2"
-        HorizontalOptions="EndAndExpand">
+        HorizontalOptions="EndAndExpand"
+        IsVisible="{Binding Results[0].Status, Converter={xct:EqualConverter}, ConverterParameter='Finished'}">
         <Label.FormattedText>
             <FormattedString>
+                <Span Style="{StaticResource Body2FontSize_ExoBold}" Text="{Binding Results[0].Points}" />
                 <Span
-                    Text="{Binding Results[0].Points}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"></Span>
-                <Span
-                    Text=" pts"
                     Style="{StaticResource Body2FontSize_ExoRegular}"
-                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"></Span>
+                    Text=" pts"
+                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                                Dark={StaticResource DarkSecondaryTextColor}}" />
             </FormattedString>
         </Label.FormattedText>
     </Label>
     <Label
-        IsVisible="{Binding Results[0].Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
         Grid.Row="1"
         Grid.Column="2"
-        Text="{Binding Results[0].Status, StringFormat='{0}'}"
+        HorizontalOptions="End"
+        IsVisible="{Binding Results[0].Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
         Style="{StaticResource Body2FontSize_ExoBold}"
-        HorizontalOptions="End">
-    </Label>
+        Text="{Binding Results[0].Status, StringFormat='{0}'}" />
 </Grid>

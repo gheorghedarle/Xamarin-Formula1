@@ -1,64 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout
+    x:Class="Formula1.Views.Views.HomeScheduleView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Formula1.Views.Views.HomeScheduleView"
-    Padding="0, 0, 0, 5"
-    x:Name="template">
+    x:Name="template"
+    Padding="0,0,0,5">
     <StackLayout.GestureRecognizers>
-        <TapGestureRecognizer 
+        <TapGestureRecognizer
             Command="{Binding Parent.BindingContext.SeeEventCommand, Source={x:Reference template}}"
             CommandParameter="{Binding BindingContext, Source={x:Reference template}}"
-            NumberOfTapsRequired="1"></TapGestureRecognizer>
+            NumberOfTapsRequired="1" />
     </StackLayout.GestureRecognizers>
     <Frame
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
+        Margin="5,0"
+        Padding="10,5"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                          Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="20"
-        Margin="5, 0"
-        Padding="10, 5"
         HeightRequest="85">
         <Grid
-            RowDefinitions="Auto, Auto, Auto"
+            Margin="5,0,5,0"
             ColumnDefinitions="Auto, Auto"
+            RowDefinitions="Auto, Auto, Auto"
             RowSpacing="3"
-            Margin="5, 0, 5, 0"
             VerticalOptions="Center">
             <Image
                 Grid.Row="0"
                 Grid.RowSpan="3"
                 Grid.Column="0"
-                Source="{Binding Circuit.Location.Flag}"
-                WidthRequest="40"
-                HeightRequest="40"
-                Margin="0, 0, 5, 0"
+                Margin="0,0,5,0"
                 Aspect="AspectFill"
+                HeightRequest="40"
                 HorizontalOptions="Center"
-                VerticalOptions="Center">
+                Source="{Binding Circuit.Location.Flag}"
+                VerticalOptions="Center"
+                WidthRequest="40">
                 <Image.Clip>
                     <EllipseGeometry
                         Center="20,20"
                         RadiusX="20"
-                        RadiusY="20"/>
+                        RadiusY="20" />
                 </Image.Clip>
             </Image>
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
-                Text="{Binding Round, StringFormat='Round {0}'}"
                 Style="{StaticResource CaptionFontSize_ExoRegular}"
-                TextColor="{StaticResource AccentColor}"></Label>
+                Text="{Binding Round, StringFormat='Round {0}'}"
+                TextColor="{StaticResource AccentColor}" />
             <Label
                 Grid.Row="1"
                 Grid.Column="1"
-                Text="{Binding Circuit.Location.Country}"
-                Style="{StaticResource Body1FontSize_ExoBold}">
-            </Label>
+                Style="{StaticResource Body1FontSize_ExoBold}"
+                Text="{Binding Circuit.Location.Country}" />
             <Label
                 Grid.Row="2"
                 Grid.Column="1"
+                Margin="0,1"
                 Style="{StaticResource CaptionFontSize_ExoMedium}"
-                Margin="0, 1"
-                TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
+                TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                            Dark={StaticResource DarkSecondaryTextColor}}">
                 <Label.Text>
                     <MultiBinding StringFormat="{}{0:dd}-{1:dd MMM yyyy}">
                         <Binding Path="FirstPractice.Date" />

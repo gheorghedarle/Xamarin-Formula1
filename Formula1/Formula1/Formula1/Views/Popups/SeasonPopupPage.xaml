@@ -1,39 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <xct:Popup
+    x:Class="Formula1.Views.Popups.SeasonPopupPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:helpers="clr-namespace:Formula1.Helpers"
-    x:Class="Formula1.Views.Popups.SeasonPopupPage"
-    Size="{x:Static helpers:Constants.PopupSizeMedium}"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     BindingContext="{Binding SeasonPopupPage, Source={StaticResource ViewModelLocator}}"
+    Size="{x:Static helpers:Constants.PopupSizeMedium}"
     Color="Transparent">
-    <Frame
-        CornerRadius="30"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}" CornerRadius="30">
         <StackLayout>
             <Label
-                Text="Seasons"
+                Margin="10,0,10,0"
                 Style="{StaticResource Headline3_ExoBold}"
-                Margin="10, 0, 10, 0"></Label>
-            <CollectionView
-                x:Name="seasonsList"
-                ItemsSource="{Binding SeasonsList}">
+                Text="Seasons" />
+            <CollectionView x:Name="seasonsList" ItemsSource="{Binding SeasonsList}">
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="3"></GridItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="3" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout
-                            Padding="15, 10, 15, 10">
+                        <StackLayout Padding="15,10,15,10">
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer
-                                Command="{Binding Path=BindingContext.SelectSeasonCommand, Source={x:Reference seasonsList}}"
-                                CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectSeasonCommand, Source={x:Reference seasonsList}}" CommandParameter="{Binding .}" />
                             </StackLayout.GestureRecognizers>
-                            <Label
-                                Text="{Binding .}"
-                                Style="{StaticResource Body1FontSize_ExoRegular}"></Label>
+                            <Label Style="{StaticResource Body1FontSize_ExoRegular}" Text="{Binding .}" />
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

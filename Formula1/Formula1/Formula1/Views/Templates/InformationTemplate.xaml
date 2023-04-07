@@ -1,19 +1,18 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout 
-    xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<StackLayout
     x:Class="Formula1.Views.Templates.InformationTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Name="this">
     <StackLayout
+        Margin="0,2"
         BindingContext="{x:Reference this}"
-        Spacing="0"
-        Margin="0, 2">
+        Spacing="0">
         <Label
-            Text="{Binding Label}"
             Style="{StaticResource CaptionFontSize_ExoMedium}"
-            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"/>
-        <Label
-            Text="{Binding Value}"
-            Style="{StaticResource Subtitle1FontSize_ExoBold}"/>
+            Text="{Binding Label}"
+            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                        Dark={StaticResource DarkSecondaryTextColor}}" />
+        <Label Style="{StaticResource Subtitle1FontSize_ExoBold}" Text="{Binding Value}" />
     </StackLayout>
 </StackLayout>

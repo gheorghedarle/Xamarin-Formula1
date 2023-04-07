@@ -1,54 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
+    x:Class="Formula1.Views.TabViews.DriversView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:views="clr-namespace:Formula1.Views.Views"
-    x:Class="Formula1.Views.TabViews.DriversView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     BindingContext="{Binding DriversView, Source={StaticResource ViewModelLocator}}"
     NavigationPage.HasNavigationBar="False">
-    <StackLayout
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
-        <Label 
-            Margin="15, 10, 0, 5">
+    <StackLayout BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+        <Label Margin="15,10,0,5">
             <Label.FormattedText>
                 <FormattedString>
                     <Span
-                        Text="{Binding Title}"
                         Style="{StaticResource Headline3_ExoBold}"
-                        TextColor="{StaticResource AccentColor}"></Span>
-                    <Span
-                        Text=" Stadings"
-                        Style="{StaticResource Headline3_ExoRegular}"></Span>
+                        Text="{Binding Title}"
+                        TextColor="{StaticResource AccentColor}" />
+                    <Span Style="{StaticResource Headline3_ExoRegular}" Text=" Stadings" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
         <StackLayout
-            xct:StateLayout.CurrentState="{Binding MainState}"
             xct:StateLayout.AnimateStateChanges="False"
+            xct:StateLayout.CurrentState="{Binding MainState}"
             VerticalOptions="FillAndExpand">
             <xct:StateLayout.StateViews>
-                <xct:StateView 
-                    StateKey="Loading"
-                    RepeatCount="10">
+                <xct:StateView RepeatCount="10" StateKey="Loading">
                     <xct:StateView.Template>
                         <DataTemplate>
-                            <views:DriverStadingsLoadingView></views:DriverStadingsLoadingView>
+                            <views:DriverStadingsLoadingView />
                         </DataTemplate>
                     </xct:StateView.Template>
                 </xct:StateView>
-                <xct:StateView 
-                    StateKey="Error"
-                    VerticalOptions="FillAndExpand">
-                    <Label Text="Error"></Label>
+                <xct:StateView StateKey="Error" VerticalOptions="FillAndExpand">
+                    <Label Text="Error" />
                 </xct:StateView>
             </xct:StateLayout.StateViews>
-            <CollectionView
-                x:Name="driversList"
-                ItemsSource="{Binding DriversList}">
+            <CollectionView x:Name="driversList" ItemsSource="{Binding DriversList}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <views:DriverStadingsView></views:DriverStadingsView>
+                        <views:DriverStadingsView />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

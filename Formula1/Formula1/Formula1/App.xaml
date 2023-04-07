@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application
+    x:Class="Formula1.App"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:styles="clr-namespace:Formula1.Styles"
     xmlns:viewModels="clr-namespace:Formula1.ViewModels"
-    NavigationPage.HasNavigationBar="False"
-    x:Class="Formula1.App">
+    NavigationPage.HasNavigationBar="False">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <styles:Theme></styles:Theme>
+                <styles:Theme />
             </ResourceDictionary.MergedDictionaries>
-            <viewModels:ViewModelLocator x:Key="ViewModelLocator"/>
+            <viewModels:ViewModelLocator x:Key="ViewModelLocator" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

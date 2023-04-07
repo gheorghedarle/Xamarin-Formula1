@@ -1,68 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout
+    x:Class="Formula1.Views.Views.HomeResultsView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Formula1.Views.Views.HomeResultsView"
-    Padding="0, 0, 0, 5"
-    x:Name="template">
+    x:Name="template"
+    Padding="0,0,0,5">
     <StackLayout.GestureRecognizers>
-        <TapGestureRecognizer 
-            Command="{Binding Parent.BindingContext.SeeDriverCommand, Source={x:Reference template}}" 
-            CommandParameter="{Binding BindingContext, Source={x:Reference template}}" 
-            NumberOfTapsRequired="1"></TapGestureRecognizer>
+        <TapGestureRecognizer
+            Command="{Binding Parent.BindingContext.SeeDriverCommand, Source={x:Reference template}}"
+            CommandParameter="{Binding BindingContext, Source={x:Reference template}}"
+            NumberOfTapsRequired="1" />
     </StackLayout.GestureRecognizers>
     <Frame
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
-        CornerRadius="20"
-        Margin="5, 0, 5, 0"
+        Margin="5,0,5,0"
         Padding="0"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                          Dark={StaticResource DarkCardBackgroundColor}}"
+        CornerRadius="20"
         HeightRequest="145">
         <Grid
-            RowDefinitions="Auto, Auto, Auto, Auto"
+            Margin="5,0,5,0"
             ColumnDefinitions="Auto, Auto"
-            RowSpacing="0"
-            Margin="5, 0, 5, 0">
+            RowDefinitions="Auto, Auto, Auto, Auto"
+            RowSpacing="0">
             <Label
                 Grid.Row="0"
                 Grid.Column="0"
-                Text="{Binding Position}"
+                Margin="10,0,0,0"
                 Style="{StaticResource Headline2_ExoBold}"
-                TextColor="{StaticResource AccentColor}"
-                Margin="10, 0, 0, 0"></Label>
+                Text="{Binding Position}"
+                TextColor="{StaticResource AccentColor}" />
             <Label
                 Grid.Row="1"
                 Grid.Column="0"
-                Text="{Binding Driver.GivenName}"
+                Margin="10,0,0,0"
                 Style="{StaticResource Body1FontSize_ExoRegular}"
-                Margin="10, 0, 0, 0">
-            </Label>
+                Text="{Binding Driver.GivenName}" />
             <Label
                 Grid.Row="2"
                 Grid.Column="0"
-                Text="{Binding Driver.FamilyName}"
+                Margin="10,0,0,0"
                 Style="{StaticResource Body1FontSize_ExoBold}"
-                Margin="10, 0, 0, 0">
-            </Label>
+                Text="{Binding Driver.FamilyName}" />
             <Label
                 Grid.Row="3"
                 Grid.Column="0"
-                Text="{Binding Constructor.Name}"
+                Margin="10,0,0,5"
                 Style="{StaticResource CaptionFontSize_ExoRegular}"
-                Margin="10, 0, 0, 5">
-            </Label>
+                Text="{Binding Constructor.Name}" />
             <Image
                 Grid.Row="0"
                 Grid.RowSpan="4"
                 Grid.Column="1"
-                Source="{Binding Driver.Image.Side}"
-                WidthRequest="100"
-                HeightRequest="100"
+                Margin="10,0,0,-11"
                 Aspect="AspectFill"
+                HeightRequest="100"
                 HorizontalOptions="End"
+                Source="{Binding Driver.Image.Side}"
                 VerticalOptions="End"
-                Margin="10, 0, 0, -11">
-            </Image>
+                WidthRequest="100" />
         </Grid>
     </Frame>
 </StackLayout>
-    
+

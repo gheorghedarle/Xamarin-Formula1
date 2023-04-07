@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout
+    x:Class="Formula1.Views.Views.HomeResultsMoreView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Formula1.Views.Views.HomeResultsMoreView"
-    Padding="0, 0, 0, 5"
-    x:Name="template">
+    x:Name="template"
+    Padding="0,0,0,5">
     <StackLayout.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding Parent.BindingContext.SeeMoreResultsCommand, Source={x:Reference template}}" NumberOfTapsRequired="1"></TapGestureRecognizer>
+        <TapGestureRecognizer Command="{Binding Parent.BindingContext.SeeMoreResultsCommand, Source={x:Reference template}}" NumberOfTapsRequired="1" />
     </StackLayout.GestureRecognizers>
     <Frame
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
+        Margin="5,0,10,0"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                          Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="20"
-        Margin="5, 0, 10, 0"
         VerticalOptions="FillAndExpand">
         <Label
-            Text="See More"
-            Style="{StaticResource Body1FontSize_ExoBold}"
             HorizontalOptions="Center"
-            VerticalOptions="Center">
-        </Label>
+            Style="{StaticResource Body1FontSize_ExoBold}"
+            Text="See More"
+            VerticalOptions="Center" />
     </Frame>
 </StackLayout>

@@ -1,49 +1,43 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <StackLayout
+    x:Class="Formula1.Views.Views.DriverInformationView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:templates="clr-namespace:Formula1.Views.Templates"
-    x:Class="Formula1.Views.Views.DriverInformationView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     Spacing="0">
     <templates:InformationDateOfBirthTemplate
-        Label="Date of birth"
+        Age="{Binding DriverInformations.Age}"
         DateOfBirth="{Binding DriverInformations.DateOfBirth}"
-        Age="{Binding DriverInformations.Age}"></templates:InformationDateOfBirthTemplate>
-    <templates:InformationTemplate
-        Label="Place of birth"
-        Value="{Binding DriverInformations.PlaceOfBirth}"></templates:InformationTemplate>
-    <templates:InformationTemplate
-        Label="Country"
-        Value="{Binding DriverInformations.Country}"></templates:InformationTemplate>
+        Label="Date of birth" />
+    <templates:InformationTemplate Label="Place of birth" Value="{Binding DriverInformations.PlaceOfBirth}" />
+    <templates:InformationTemplate Label="Country" Value="{Binding DriverInformations.Country}" />
     <templates:InformationTemplate
         IsVisible="{Binding DriverInformations.WorldChampionships, Converter={xct:NotEqualConverter}, ConverterParameter='N/A'}"
         Label="World Championships"
-        Value="{Binding DriverInformations.WorldChampionships}"></templates:InformationTemplate>
-    <Grid
-        ColumnDefinitions="*, *, *">
+        Value="{Binding DriverInformations.WorldChampionships}" />
+    <Grid ColumnDefinitions="*, *, *">
         <templates:InformationTemplate
             Grid.Column="0"
             Label="Grands Prix"
-            Value="{Binding DriverInformations.GrandsPrixEntered}"></templates:InformationTemplate>
+            Value="{Binding DriverInformations.GrandsPrixEntered}" />
         <templates:InformationTemplate
             Grid.Column="1"
             Label="Podiums"
-            Value="{Binding DriverInformations.Podiums}"></templates:InformationTemplate>
+            Value="{Binding DriverInformations.Podiums}" />
         <templates:InformationTemplate
             Grid.Column="2"
             Label="Points"
-            Value="{Binding DriverInformations.Points}"></templates:InformationTemplate>
+            Value="{Binding DriverInformations.Points}" />
     </Grid>
-    <Grid
-        ColumnDefinitions="*, *">
+    <Grid ColumnDefinitions="*, *">
         <templates:InformationTemplate
             Grid.Column="0"
             Label="Highest race finish"
-            Value="{Binding DriverInformations.HighestRaceFinish}"></templates:InformationTemplate>
+            Value="{Binding DriverInformations.HighestRaceFinish}" />
         <templates:InformationTemplate
             Grid.Column="1"
             Label="Highest grid position"
-            Value="{Binding DriverInformations.HighestGridPosition}"></templates:InformationTemplate>
+            Value="{Binding DriverInformations.HighestGridPosition}" />
     </Grid>
 </StackLayout>

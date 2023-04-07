@@ -1,81 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
+    x:Class="Formula1.Views.CircuitDetailsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
     xmlns:templates="clr-namespace:Formula1.Views.Templates"
     xmlns:views="clr-namespace:Formula1.Views.Views"
-    x:Class="Formula1.Views.CircuitDetailsPage"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     BindingContext="{Binding CircuitDetailsPage, Source={StaticResource ViewModelLocator}}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid
-            RowDefinitions="Auto, *" 
-            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"            
-            xct:StateLayout.CurrentState="{Binding MainState}">
+            xct:StateLayout.CurrentState="{Binding MainState}"
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor},
+                                              Dark={StaticResource DarkPageBackgroundColor}}"
+            RowDefinitions="Auto, *">
             <xct:StateLayout.StateViews>
-                <xct:StateView 
-                    StateKey="Loading"
-                    VerticalOptions="FillAndExpand">
-                    <fragments:LoadingView></fragments:LoadingView>
+                <xct:StateView StateKey="Loading" VerticalOptions="FillAndExpand">
+                    <fragments:LoadingView />
                 </xct:StateView>
-                <xct:StateView 
-                    StateKey="Error"
-                    VerticalOptions="FillAndExpand">
-                    <Label Text="Error"></Label>
+                <xct:StateView StateKey="Error" VerticalOptions="FillAndExpand">
+                    <Label Text="Error" />
                 </xct:StateView>
-                <xct:StateView 
-                    StateKey="Empty"
-                    VerticalOptions="FillAndExpand">
-                    <Label Text="Empty"></Label>
+                <xct:StateView StateKey="Empty" VerticalOptions="FillAndExpand">
+                    <Label Text="Empty" />
                 </xct:StateView>
             </xct:StateLayout.StateViews>
             <StackLayout
                 Grid.Row="0"
-                BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                                  Dark={StaticResource DarkCardBackgroundColor}}"
                 Spacing="0">
                 <StackLayout
-                    Padding="0, 5, 5, 5"
-                    Margin="20, 20, 0, 0"
+                    Margin="20,20,0,0"
+                    Padding="0,5,5,5"
                     HorizontalOptions="Start"
                     VerticalOptions="Start">
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}"></TapGestureRecognizer>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </StackLayout.GestureRecognizers>
                     <Label
-                        Text="&#xf060;"
-                        FontSize="{StaticResource Subtitle1FontSize}"
                         FontFamily="FontAwesome_Solid"
-                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                        HorizontalOptions="Start"></Label>
+                        FontSize="{StaticResource Subtitle1FontSize}"
+                        HorizontalOptions="Start"
+                        Text="&#xf060;"
+                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor},
+                                                    Dark={StaticResource DarkPrimaryTextColor}}" />
                 </StackLayout>
                 <Grid
+                    Margin="20,0,20,10"
                     ColumnDefinitions="*, 50"
-                    Margin="20, 0, 20, 10"
                     VerticalOptions="End">
-                    <StackLayout
-                        Grid.Column="0"
-                        Spacing="0">
+                    <StackLayout Grid.Column="0" Spacing="0">
                         <Label
-                            Text="{Binding RaceEvent.Round, StringFormat='Round {0}'}"
                             Style="{StaticResource CaptionFontSize_ExoRegular}"
+                            Text="{Binding RaceEvent.Round, StringFormat='Round {0}'}"
                             TextColor="{StaticResource AccentColor}"
-                            VerticalOptions="Center">
-                        </Label>
+                            VerticalOptions="Center" />
                         <Label
-                            Text="{Binding RaceEvent.RaceName}"
                             Style="{StaticResource Subtitle1FontSize_ExoBold}"
-                            VerticalOptions="Center">
-                        </Label>
+                            Text="{Binding RaceEvent.RaceName}"
+                            VerticalOptions="Center" />
                         <Label
-                            Text="{Binding RaceEvent.Circuit.CircuitName}"
                             Style="{StaticResource Body2FontSize_ExoRegular}"
-                            VerticalOptions="Center">
-                        </Label>
-                        <Label
-                            Style="{StaticResource CaptionFontSize_ExoMedium}"
-                            VerticalOptions="Center">
+                            Text="{Binding RaceEvent.Circuit.CircuitName}"
+                            VerticalOptions="Center" />
+                        <Label Style="{StaticResource CaptionFontSize_ExoMedium}" VerticalOptions="Center">
                             <Label.Text>
                                 <MultiBinding StringFormat="{}{0:d MMM} - {1:d MMM yyyy}">
                                     <Binding Path="RaceEvent.FirstPractice.Date" />
@@ -86,17 +76,17 @@
                     </StackLayout>
                     <Image
                         Grid.Column="1"
-                        Source="{Binding RaceEvent.Circuit.Location.Flag}"
-                        WidthRequest="40"
-                        HeightRequest="40"
                         Aspect="AspectFill"
+                        HeightRequest="40"
                         HorizontalOptions="Center"
-                        VerticalOptions="CenterAndExpand">
+                        Source="{Binding RaceEvent.Circuit.Location.Flag}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="40">
                         <Image.Clip>
                             <EllipseGeometry
                                 Center="20,20"
                                 RadiusX="20"
-                                RadiusY="20"/>
+                                RadiusY="20" />
                         </Image.Clip>
                     </Image>
                 </Grid>
@@ -104,174 +94,152 @@
             <xct:TabView
                 Grid.Row="1"
                 SelectedIndex="{Binding SelectedTab}"
-                TabStripPlacement="Top"
-                TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
-                TabStripHeight="40"
+                TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor},
+                                                            Dark={StaticResource DarkPageBackgroundColor}}"
                 TabIndicatorColor="{StaticResource AccentColor}"
-                TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+                TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor},
+                                                          Dark={StaticResource DarkPageBackgroundColor}}"
+                TabStripHeight="40"
+                TabStripPlacement="Top">
                 <xct:TabViewItem
-                    Text="Information"
-                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                    TextColorSelected="{StaticResource AccentColor}"
                     FontFamily="Exo_Regular"
                     FontFamilySelected="Exo_Medium"
+                    FontSize="14"
                     FontSizeSelected="14"
-                    FontSize="14">
+                    Text="Information"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor},
+                                                Dark={StaticResource DarkPrimaryTextColor}}"
+                    TextColorSelected="{StaticResource AccentColor}">
                     <ScrollView>
-                        <StackLayout
-                            Margin="20, 0, 20, 2"
-                            Spacing="0">
+                        <StackLayout Margin="20,0,20,2" Spacing="0">
                             <Label
-                                Text="Map"
+                                Margin="0,0,0,2"
                                 Style="{StaticResource Body1FontSize_ExoBold}"
-                                Margin="0, 0, 0, 2"></Label>
+                                Text="Map" />
                             <Image
-                                Aspect="AspectFit"
                                 Margin="5"
+                                Aspect="AspectFit"
                                 HeightRequest="150"
-                                Source="{Binding RaceEvent.Circuit.Map}"></Image>
+                                Source="{Binding RaceEvent.Circuit.Map}" />
                             <Label
-                                Text="Race Weekend"
+                                Margin="0,0,0,2"
                                 Style="{StaticResource Body1FontSize_ExoBold}"
-                                Margin="0, 0, 0, 2"></Label>
-                            <StackLayout                        
-                                xct:StateLayout.CurrentState="{Binding InformationsState}"
+                                Text="Race Weekend" />
+                            <StackLayout
+                                Margin="0,0,0,5"
                                 xct:StateLayout.AnimateStateChanges="False"
-                                Margin="0, 0, 0, 5">
+                                xct:StateLayout.CurrentState="{Binding InformationsState}">
                                 <xct:StateLayout.StateViews>
-                                    <xct:StateView 
-                                        StateKey="Loading"
-                                        RepeatCount="5">
+                                    <xct:StateView RepeatCount="5" StateKey="Loading">
                                         <xct:StateView.Template>
                                             <DataTemplate>
-                                                <templates:InformationRaceWeekendLoadingTemplate></templates:InformationRaceWeekendLoadingTemplate>
+                                                <templates:InformationRaceWeekendLoadingTemplate />
                                             </DataTemplate>
                                         </xct:StateView.Template>
                                     </xct:StateView>
-                                    <xct:StateView 
-                                        StateKey="Error"
-                                        VerticalOptions="FillAndExpand">
-                                        <Label Text="Error" Style="{StaticResource Body1FontSize_ExoRegular}"></Label>
+                                    <xct:StateView StateKey="Error" VerticalOptions="FillAndExpand">
+                                        <Label Style="{StaticResource Body1FontSize_ExoRegular}" Text="Error" />
                                     </xct:StateView>
-                                    <xct:StateView 
-                                        StateKey="Empty"
-                                        VerticalOptions="FillAndExpand">
-                                        <Label Text="There's no information to display" Style="{StaticResource Body1FontSize_ExoRegular}"></Label>
+                                    <xct:StateView StateKey="Empty" VerticalOptions="FillAndExpand">
+                                        <Label Style="{StaticResource Body1FontSize_ExoRegular}" Text="There's no information to display" />
                                     </xct:StateView>
                                 </xct:StateLayout.StateViews>
-                                <views:CircuitRaceWeekendViews></views:CircuitRaceWeekendViews>
+                                <views:CircuitRaceWeekendViews />
                             </StackLayout>
                             <Label
-                                Text="Basic Information"
+                                Margin="0,0,0,2"
                                 Style="{StaticResource Body1FontSize_ExoBold}"
-                                Margin="0, 0, 0, 2"></Label>
-                            <StackLayout                        
-                                xct:StateLayout.CurrentState="{Binding InformationsState}"
+                                Text="Basic Information" />
+                            <StackLayout
+                                Margin="0,0,0,5"
                                 xct:StateLayout.AnimateStateChanges="False"
-                                Margin="0, 0, 0, 5">
+                                xct:StateLayout.CurrentState="{Binding InformationsState}">
                                 <xct:StateLayout.StateViews>
-                                    <xct:StateView 
-                                        StateKey="Loading">
-                                        <views:CircuitInformationLoadingView></views:CircuitInformationLoadingView>
+                                    <xct:StateView StateKey="Loading">
+                                        <views:CircuitInformationLoadingView />
                                     </xct:StateView>
-                                    <xct:StateView 
-                                        StateKey="Error"
-                                        VerticalOptions="FillAndExpand">
-                                        <Label Text="Error" Style="{StaticResource Body1FontSize_ExoRegular}"></Label>
+                                    <xct:StateView StateKey="Error" VerticalOptions="FillAndExpand">
+                                        <Label Style="{StaticResource Body1FontSize_ExoRegular}" Text="Error" />
                                     </xct:StateView>
-                                    <xct:StateView 
-                                        StateKey="Empty"
-                                        VerticalOptions="FillAndExpand">
-                                        <Label Text="There's no information to display" Style="{StaticResource Body1FontSize_ExoRegular}"></Label>
+                                    <xct:StateView StateKey="Empty" VerticalOptions="FillAndExpand">
+                                        <Label Style="{StaticResource Body1FontSize_ExoRegular}" Text="There's no information to display" />
                                     </xct:StateView>
                                 </xct:StateLayout.StateViews>
-                                <views:CircuitInformationView></views:CircuitInformationView>
+                                <views:CircuitInformationView />
                             </StackLayout>
                         </StackLayout>
                     </ScrollView>
                 </xct:TabViewItem>
                 <xct:TabViewItem
-                    Text="Results"
-                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                    TextColorSelected="{StaticResource AccentColor}"
                     FontFamily="Exo_Regular"
                     FontFamilySelected="Exo_Medium"
+                    FontSize="14"
                     FontSizeSelected="14"
-                    FontSize="14">
+                    Text="Results"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor},
+                                                Dark={StaticResource DarkPrimaryTextColor}}"
+                    TextColorSelected="{StaticResource AccentColor}">
                     <StackLayout>
-                        <Label
-                            Margin="20, 0, 20, 0">
+                        <Label Margin="20,0,20,0">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span
-                                        Text="{Binding SelectedRaceType, StringFormat='{0} '}"
-                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                    <Span
-                                        Text=" &#xf0d7;"
-                                        Style="{StaticResource CaptionFontSize_FontAwesome}"></Span>
+                                    <Span Style="{StaticResource Body1FontSize_ExoBold}" Text="{Binding SelectedRaceType, StringFormat='{0} '}" />
+                                    <Span Style="{StaticResource CaptionFontSize_FontAwesome}" Text=" &#xf0d7;" />
                                 </FormattedString>
                             </Label.FormattedText>
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SelectRaceTypeCommand}"></TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{Binding SelectRaceTypeCommand}" />
                             </Label.GestureRecognizers>
                         </Label>
                         <StackLayout
-                            xct:StateLayout.CurrentState="{Binding ResultsState}"
                             xct:StateLayout.AnimateStateChanges="False"
+                            xct:StateLayout.CurrentState="{Binding ResultsState}"
                             VerticalOptions="FillAndExpand">
                             <xct:StateLayout.StateViews>
-                                <xct:StateView 
-                                    StateKey="Loading"
-                                    RepeatCount="10">
+                                <xct:StateView RepeatCount="10" StateKey="Loading">
                                     <xct:StateView.Template>
                                         <DataTemplate>
-                                            <views:ScheduleRaceResultsLoadingView></views:ScheduleRaceResultsLoadingView>
+                                            <views:ScheduleRaceResultsLoadingView />
                                         </DataTemplate>
                                     </xct:StateView.Template>
                                 </xct:StateView>
-                                <xct:StateView 
-                                    StateKey="Error"
-                                    VerticalOptions="FillAndExpand">
-                                    <Label Text="Error"></Label>
+                                <xct:StateView StateKey="Error" VerticalOptions="FillAndExpand">
+                                    <Label Text="Error" />
                                 </xct:StateView>
-                                <xct:StateView 
-                                    StateKey="Empty"
-                                    VerticalOptions="FillAndExpand">
-                                    <fragments:EmptyRaceResults></fragments:EmptyRaceResults>
+                                <xct:StateView StateKey="Empty" VerticalOptions="FillAndExpand">
+                                    <fragments:EmptyRaceResults />
                                 </xct:StateView>
-                                <xct:StateView 
-                                    StateKey="Success"
-                                    VerticalOptions="FillAndExpand">
-                                    <fragments:NoEventRaceResults></fragments:NoEventRaceResults>
+                                <xct:StateView StateKey="Success" VerticalOptions="FillAndExpand">
+                                    <fragments:NoEventRaceResults />
                                 </xct:StateView>
                             </xct:StateLayout.StateViews>
                             <CollectionView
+                                Margin="0,0,0,10"
                                 IsVisible="{Binding Results.RaceResults, Converter={xct:IsNotNullOrEmptyConverter}}"
-                                Margin="0, 0, 0, 10"
                                 ItemsSource="{Binding Results.RaceResults}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <views:ScheduleRaceResultsView></views:ScheduleRaceResultsView>
+                                        <views:ScheduleRaceResultsView />
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
                             <CollectionView
+                                Margin="0,0,0,10"
                                 IsVisible="{Binding Results.QualifyingResults, Converter={xct:IsNotNullOrEmptyConverter}}"
-                                Margin="0, 0, 0, 10"
                                 ItemsSource="{Binding Results.QualifyingResults}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <views:ScheduleQualifyingResultsView></views:ScheduleQualifyingResultsView>
+                                        <views:ScheduleQualifyingResultsView />
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
                             <CollectionView
+                                Margin="0,0,0,10"
                                 IsVisible="{Binding Results.SprintResults, Converter={xct:IsNotNullOrEmptyConverter}}"
-                                Margin="0, 0, 0, 10"
                                 ItemsSource="{Binding Results.SprintResults}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <views:ScheduleRaceResultsView></views:ScheduleRaceResultsView>
+                                        <views:ScheduleRaceResultsView />
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>

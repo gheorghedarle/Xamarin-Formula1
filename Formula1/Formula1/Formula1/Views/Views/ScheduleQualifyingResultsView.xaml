@@ -1,110 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Grid
+    x:Class="Formula1.Views.Views.ScheduleQualifyingResultsView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    x:Class="Formula1.Views.Views.ScheduleQualifyingResultsView"
-    RowDefinitions="Auto, Auto, Auto"
+    Padding="15,5"
     ColumnDefinitions="30, 50, *"
-    Padding="15, 5"
+    RowDefinitions="Auto, Auto, Auto"
     RowSpacing="3">
     <Label
         Grid.Row="0"
         Grid.RowSpan="2"
         Grid.Column="0"
-        Text="{Binding Position}"
         Margin="5"
-        Style="{StaticResource Body1FontSize_ExoRegular}"
         HorizontalOptions="Center"
-        VerticalOptions="Center"></Label>
+        Style="{StaticResource Body1FontSize_ExoRegular}"
+        Text="{Binding Position}"
+        VerticalOptions="Center" />
     <Image
         Grid.Row="0"
         Grid.RowSpan="2"
         Grid.Column="1"
-        Source="{Binding Driver.Image.Front}"
-        WidthRequest="40"
-        HeightRequest="40"
         Aspect="AspectFill"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                          Dark={StaticResource DarkCardBackgroundColor}}"
+        HeightRequest="40"
         HorizontalOptions="Center"
-        VerticalOptions="Center"        
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
+        Source="{Binding Driver.Image.Front}"
+        VerticalOptions="Center"
+        WidthRequest="40">
         <Image.Clip>
             <EllipseGeometry
                 Center="20,20"
                 RadiusX="20"
-                RadiusY="20"/>
+                RadiusY="20" />
         </Image.Clip>
     </Image>
-    <Label
-        Grid.Row="0"
-        Grid.Column="2">
+    <Label Grid.Row="0" Grid.Column="2">
         <Label.FormattedText>
             <FormattedString>
-                <Span
-                    Text="{Binding Driver.GivenName}"
-                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
-                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                <Span Style="{StaticResource Body1FontSize_ExoRegular}" Text="{Binding Driver.GivenName}" />
+                <Span Style="{StaticResource Body1FontSize_ExoBold}" Text="{Binding Driver.FamilyName, StringFormat=' {0}'}" />
             </FormattedString>
         </Label.FormattedText>
     </Label>
     <Label
         Grid.Row="1"
         Grid.Column="2"
-        Text="{Binding Constructor.Name}"
         Style="{StaticResource Body2FontSize_ExoRegular}"
-        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
-    </Label>
-    <Grid 
+        Text="{Binding Constructor.Name}"
+        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                    Dark={StaticResource DarkSecondaryTextColor}}" />
+    <Grid
         Grid.Row="2"
         Grid.Column="0"
         Grid.ColumnSpan="3"
         ColumnDefinitions="*, *, *">
-        <Label
-            Grid.Column="0"
-            HorizontalTextAlignment="Center">
+        <Label Grid.Column="0" HorizontalTextAlignment="Center">
             <Label.FormattedText>
                 <FormattedString>
                     <Span
+                        Style="{StaticResource Body2FontSize_ExoRegular}"
                         Text="Q1: "
-                        Style="{StaticResource Body2FontSize_ExoRegular}"
-                        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"></Span>
-                    <Span
-                        Text="{Binding Q1}"
-                        Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                                    Dark={StaticResource DarkSecondaryTextColor}}" />
+                    <Span Style="{StaticResource Body2FontSize_ExoBold}" Text="{Binding Q1}" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
         <Label
-            IsVisible="{Binding Q2, Converter={xct:IsNotNullOrEmptyConverter}}"
             Grid.Column="1"
-            HorizontalTextAlignment="Center">
+            HorizontalTextAlignment="Center"
+            IsVisible="{Binding Q2, Converter={xct:IsNotNullOrEmptyConverter}}">
             <Label.FormattedText>
                 <FormattedString>
                     <Span
-                        Text="Q2: "
                         Style="{StaticResource Body2FontSize_ExoRegular}"
-                        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"></Span>
-                    <Span
-                        Text="{Binding Q2}"
-                        Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                        Text="Q2: "
+                        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                                    Dark={StaticResource DarkSecondaryTextColor}}" />
+                    <Span Style="{StaticResource Body2FontSize_ExoBold}" Text="{Binding Q2}" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
         <Label
-            IsVisible="{Binding Q3, Converter={xct:IsNotNullOrEmptyConverter}}"
             Grid.Column="2"
-            HorizontalTextAlignment="Center">
+            HorizontalTextAlignment="Center"
+            IsVisible="{Binding Q3, Converter={xct:IsNotNullOrEmptyConverter}}">
             <Label.FormattedText>
                 <FormattedString>
                     <Span
-                        Text="Q3: "
                         Style="{StaticResource Body2FontSize_ExoRegular}"
-                        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"></Span>
-                    <Span
-                        Text="{Binding Q3}"
-                        Style="{StaticResource Body2FontSize_ExoBold}"></Span>
+                        Text="Q3: "
+                        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                                    Dark={StaticResource DarkSecondaryTextColor}}" />
+                    <Span Style="{StaticResource Body2FontSize_ExoBold}" Text="{Binding Q3}" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>

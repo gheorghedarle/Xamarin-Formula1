@@ -1,22 +1,19 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <StackLayout
+    x:Class="Formula1.Views.Templates.InformationLapRecordTemplate"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Formula1.Views.Templates.InformationLapRecordTemplate"
     x:Name="this">
     <StackLayout
+        Margin="0,2"
         BindingContext="{x:Reference this}"
-        Spacing="0"
-        Margin="0, 2">
+        Spacing="0">
         <Label
+            Style="{StaticResource CaptionFontSize_ExoMedium}"
             Text="{Binding Label}"
-            Style="{StaticResource CaptionFontSize_ExoMedium}"            
-            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"/>
-        <Label
-            Text="{Binding Value}"
-            Style="{StaticResource Subtitle1FontSize_ExoBold}"/>
-        <Label
-            Text="{Binding SubLabel}"
-            Style="{StaticResource Body2FontSize_ExoRegular}"/>
+            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                        Dark={StaticResource DarkSecondaryTextColor}}" />
+        <Label Style="{StaticResource Subtitle1FontSize_ExoBold}" Text="{Binding Value}" />
+        <Label Style="{StaticResource Body2FontSize_ExoRegular}" Text="{Binding SubLabel}" />
     </StackLayout>
 </StackLayout>

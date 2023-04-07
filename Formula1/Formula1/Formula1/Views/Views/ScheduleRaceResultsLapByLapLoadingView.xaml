@@ -1,37 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Grid
+    x:Class="Formula1.Views.Views.ScheduleRaceResultsLapByLapLoadingView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Formula1.Controls"
-    x:Class="Formula1.Views.Views.ScheduleRaceResultsLapByLapLoadingView"
-    RowDefinitions="Auto, Auto"
     ColumnDefinitions="*, Auto"
+    RowDefinitions="Auto, Auto"
     RowSpacing="5">
     <controls:SkeletonView
         Grid.Row="0"
         Grid.Column="0"
-        HeightRequest="15"
-        WidthRequest="100"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor},
+                                          Dark={StaticResource DarkPageBackgroundColor}}"
         CornerRadius="15"
+        HeightRequest="15"
         HorizontalOptions="Start"
         VerticalOptions="Center"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"></controls:SkeletonView>
+        WidthRequest="100" />
     <controls:SkeletonView
         Grid.Row="0"
         Grid.Column="1"
-        HeightRequest="15"
-        WidthRequest="75"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor},
+                                          Dark={StaticResource DarkPageBackgroundColor}}"
         CornerRadius="15"
+        HeightRequest="15"
         HorizontalOptions="End"
         VerticalOptions="Center"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"></controls:SkeletonView>
+        WidthRequest="75" />
     <controls:SkeletonView
         Grid.Row="1"
         Grid.Column="1"
-        HeightRequest="15"
-        WidthRequest="50"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor},
+                                          Dark={StaticResource DarkPageBackgroundColor}}"
         CornerRadius="15"
+        HeightRequest="15"
         HorizontalOptions="End"
         VerticalOptions="Center"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"></controls:SkeletonView>
+        WidthRequest="50" />
 </Grid>

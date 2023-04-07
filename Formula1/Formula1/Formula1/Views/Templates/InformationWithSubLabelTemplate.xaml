@@ -1,26 +1,23 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout 
-    xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<StackLayout
     x:Class="Formula1.Views.Templates.InformationWitSubLabelTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Name="this">
     <StackLayout
+        Margin="0,2"
         BindingContext="{x:Reference this}"
-        Spacing="0"
-        Margin="0, 2">
+        Spacing="0">
         <Label
+            Style="{StaticResource CaptionFontSize_ExoMedium}"
             Text="{Binding Label}"
-            Style="{StaticResource CaptionFontSize_ExoMedium}"            
-            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"/>
+            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                        Dark={StaticResource DarkSecondaryTextColor}}" />
         <Label>
             <Label.FormattedText>
                 <FormattedString>
-                    <Span 
-                        Text="{Binding Value}"
-                        Style="{StaticResource Subtitle1FontSize_ExoBold}"/>
-                    <Span 
-                        Text="{Binding SubLabel, StringFormat='{} {0}'}"
-                        Style="{StaticResource Body2FontSize_ExoRegular}"/>
+                    <Span Style="{StaticResource Subtitle1FontSize_ExoBold}" Text="{Binding Value}" />
+                    <Span Style="{StaticResource Body2FontSize_ExoRegular}" Text="{Binding SubLabel, StringFormat='{} {0}'}" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>

@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<StackLayout 
+<StackLayout
+    x:Class="Formula1.Views.Fragments.EmptyRaceResults"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Formula1.Views.Fragments.EmptyRaceResults"        
+    BackgroundColor="Transparent"
     HorizontalOptions="Center"
-    VerticalOptions="Center"            
-    BackgroundColor="Transparent">
-    <Label 
-        Text="Results will be available after the event" 
-        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
-        Style="{StaticResource Body2FontSize_ExoRegular}"
+    VerticalOptions="Center">
+    <Label
         HorizontalOptions="Center"
-        VerticalOptions="FillAndExpand"/>
+        Style="{StaticResource Body2FontSize_ExoRegular}"
+        Text="Results will be available after the event"
+        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                    Dark={StaticResource DarkSecondaryTextColor}}"
+        VerticalOptions="FillAndExpand" />
 </StackLayout>

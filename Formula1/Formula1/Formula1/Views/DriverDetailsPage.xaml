@@ -1,181 +1,154 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
+    x:Class="Formula1.Views.DriverDetailsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:fragments="clr-namespace:Formula1.Views.Fragments"
     xmlns:views="clr-namespace:Formula1.Views.Views"
-    x:Class="Formula1.Views.DriverDetailsPage"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     BindingContext="{Binding DriverDetailsPage, Source={StaticResource ViewModelLocator}}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid
-            RowDefinitions="150, *"
-            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
-            xct:StateLayout.CurrentState="{Binding MainState}">
+            xct:StateLayout.CurrentState="{Binding MainState}"
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor},
+                                              Dark={StaticResource DarkPageBackgroundColor}}"
+            RowDefinitions="150, *">
             <xct:StateLayout.StateViews>
-                <xct:StateView 
-                    StateKey="Loading"
-                    VerticalOptions="FillAndExpand">
-                    <fragments:LoadingView></fragments:LoadingView>
+                <xct:StateView StateKey="Loading" VerticalOptions="FillAndExpand">
+                    <fragments:LoadingView />
                 </xct:StateView>
-                <xct:StateView 
-                    StateKey="Error"
-                    VerticalOptions="FillAndExpand">
-                    <Label Text="Error"></Label>
+                <xct:StateView StateKey="Error" VerticalOptions="FillAndExpand">
+                    <Label Text="Error" />
                 </xct:StateView>
-                <xct:StateView 
-                    StateKey="Empty"
-                    VerticalOptions="FillAndExpand">
-                    <Label Text="Empty"></Label>
+                <xct:StateView StateKey="Empty" VerticalOptions="FillAndExpand">
+                    <Label Text="Empty" />
                 </xct:StateView>
             </xct:StateLayout.StateViews>
             <Grid
                 Grid.Row="0"
-                BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
-                Padding="20, 20, 20, 0">
+                Padding="20,20,20,0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                                  Dark={StaticResource DarkCardBackgroundColor}}">
                 <StackLayout
                     Grid.Row="0"
-                    Padding="0, 5, 5, 5"
+                    Padding="0,5,5,5"
                     HorizontalOptions="Start"
                     Orientation="Horizontal">
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}"></TapGestureRecognizer>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </StackLayout.GestureRecognizers>
                     <Label
-                        Text="&#xf060;"
-                        FontSize="{StaticResource Subtitle1FontSize}"
                         FontFamily="FontAwesome_Solid"
-                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                        HorizontalOptions="Start"></Label>
+                        FontSize="{StaticResource Subtitle1FontSize}"
+                        HorizontalOptions="Start"
+                        Text="&#xf060;"
+                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor},
+                                                    Dark={StaticResource DarkPrimaryTextColor}}" />
                 </StackLayout>
                 <StackLayout
+                    Margin="0,0,0,20"
                     Spacing="0"
-                    Margin="0, 0, 0, 20"
                     VerticalOptions="End">
-                    <Label
-                        Text="{Binding Driver.GivenName}"
-                        Style="{StaticResource Subtitle1FontSize_ExoRegular}">
-                    </Label>
-                    <Label
-                        Text="{Binding Driver.FamilyName}"
-                        Style="{StaticResource Headline4FontSize_ExoBold}">
-                    </Label>
+                    <Label Style="{StaticResource Subtitle1FontSize_ExoRegular}" Text="{Binding Driver.GivenName}" />
+                    <Label Style="{StaticResource Headline4FontSize_ExoBold}" Text="{Binding Driver.FamilyName}" />
                 </StackLayout>
                 <Image
-                    Source="{Binding Driver.Image.Side}"
-                    WidthRequest="120"
-                    HeightRequest="120"
                     Aspect="AspectFill"
+                    HeightRequest="120"
                     HorizontalOptions="EndAndExpand"
-                    VerticalOptions="End">
-                </Image>
+                    Source="{Binding Driver.Image.Side}"
+                    VerticalOptions="End"
+                    WidthRequest="120" />
             </Grid>
             <xct:TabView
                 Grid.Row="1"
-                TabStripPlacement="Top"
-                TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
-                TabStripHeight="40"
+                TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor},
+                                                            Dark={StaticResource DarkPageBackgroundColor}}"
                 TabIndicatorColor="{StaticResource AccentColor}"
-                TabContentBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+                TabStripBackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor},
+                                                          Dark={StaticResource DarkPageBackgroundColor}}"
+                TabStripHeight="40"
+                TabStripPlacement="Top">
                 <xct:TabViewItem
-                    Text="Information"
-                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                    TextColorSelected="{StaticResource AccentColor}"
                     FontFamily="Exo_Regular"
                     FontFamilySelected="Exo_Medium"
+                    FontSize="14"
                     FontSizeSelected="14"
-                    FontSize="14">
-                        <StackLayout                        
-                            xct:StateLayout.CurrentState="{Binding InformationsState}"
-                            xct:StateLayout.AnimateStateChanges="False"
-                            Margin="20, 0, 0, 10"
-                            Spacing="0">
-                            <xct:StateLayout.StateViews>
-                                <xct:StateView 
-                                    StateKey="Loading">
-                                    <views:DriverInformationLoadingView></views:DriverInformationLoadingView>
-                                </xct:StateView>
-                                <xct:StateView 
-                                    StateKey="Error"
-                                    VerticalOptions="FillAndExpand">
-                                    <Label Text="Error"></Label>
-                                </xct:StateView>
-                                <xct:StateView 
-                                    StateKey="Empty"
-                                    VerticalOptions="FillAndExpand">
-                                    <StackLayout>
-                                        <Label
-                                            Text="Basic Information"
-                                            Style="{StaticResource Body1FontSize_ExoBold}"
-                                            Margin="0, 0, 0, 5"></Label>
-                                        <Label 
-                                            Text="No information to display"
-                                            Style="{StaticResource CaptionFontSize_ExoRegular}"></Label>
-                                    </StackLayout>
-                                </xct:StateView>
-                            </xct:StateLayout.StateViews>
-                            <Label
-                                Text="Basic Information"
-                                Style="{StaticResource Body1FontSize_ExoBold}"
-                                Margin="0, 0, 0, 2"></Label>
-                            <views:DriverInformationView></views:DriverInformationView>
-                        </StackLayout>
+                    Text="Information"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor},
+                                                Dark={StaticResource DarkPrimaryTextColor}}"
+                    TextColorSelected="{StaticResource AccentColor}">
+                    <StackLayout
+                        Margin="20,0,0,10"
+                        xct:StateLayout.AnimateStateChanges="False"
+                        xct:StateLayout.CurrentState="{Binding InformationsState}"
+                        Spacing="0">
+                        <xct:StateLayout.StateViews>
+                            <xct:StateView StateKey="Loading">
+                                <views:DriverInformationLoadingView />
+                            </xct:StateView>
+                            <xct:StateView StateKey="Error" VerticalOptions="FillAndExpand">
+                                <Label Text="Error" />
+                            </xct:StateView>
+                            <xct:StateView StateKey="Empty" VerticalOptions="FillAndExpand">
+                                <StackLayout>
+                                    <Label
+                                        Margin="0,0,0,5"
+                                        Style="{StaticResource Body1FontSize_ExoBold}"
+                                        Text="Basic Information" />
+                                    <Label Style="{StaticResource CaptionFontSize_ExoRegular}" Text="No information to display" />
+                                </StackLayout>
+                            </xct:StateView>
+                        </xct:StateLayout.StateViews>
+                        <Label
+                            Margin="0,0,0,2"
+                            Style="{StaticResource Body1FontSize_ExoBold}"
+                            Text="Basic Information" />
+                        <views:DriverInformationView />
+                    </StackLayout>
                 </xct:TabViewItem>
                 <xct:TabViewItem
-                    Text="Results"
-                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                    TextColorSelected="{StaticResource AccentColor}"
                     FontFamily="Exo_Regular"
                     FontFamilySelected="Exo_Medium"
+                    FontSize="14"
                     FontSizeSelected="14"
-                    FontSize="14">
+                    Text="Results"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor},
+                                                Dark={StaticResource DarkPrimaryTextColor}}"
+                    TextColorSelected="{StaticResource AccentColor}">
                     <StackLayout>
-                        <Label Margin="20, 0, 20, 0">
+                        <Label Margin="20,0,20,0">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span
-                                        Text="{Binding SelectedSeason, StringFormat='{0} '}"
-                                        Style="{StaticResource Body1FontSize_ExoBold}"></Span>
-                                    <Span
-                                        Text=" &#xf0d7;"
-                                        Style="{StaticResource CaptionFontSize_FontAwesome}"></Span>
+                                    <Span Style="{StaticResource Body1FontSize_ExoBold}" Text="{Binding SelectedSeason, StringFormat='{0} '}" />
+                                    <Span Style="{StaticResource CaptionFontSize_FontAwesome}" Text=" &#xf0d7;" />
                                 </FormattedString>
                             </Label.FormattedText>
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SelectSeasonCommand}"></TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{Binding SelectSeasonCommand}" />
                             </Label.GestureRecognizers>
                         </Label>
-                        <StackLayout
-                            xct:StateLayout.CurrentState="{Binding ResultsState}"
-                            xct:StateLayout.AnimateStateChanges="False">
+                        <StackLayout xct:StateLayout.AnimateStateChanges="False" xct:StateLayout.CurrentState="{Binding ResultsState}">
                             <xct:StateLayout.StateViews>
-                                <xct:StateView 
-                                    StateKey="Loading"
-                                    RepeatCount="10">
+                                <xct:StateView RepeatCount="10" StateKey="Loading">
                                     <xct:StateView.Template>
                                         <DataTemplate>
-                                            <views:DriverRaceResultsLoadingView></views:DriverRaceResultsLoadingView>
+                                            <views:DriverRaceResultsLoadingView />
                                         </DataTemplate>
                                     </xct:StateView.Template>
                                 </xct:StateView>
-                                <xct:StateView 
-                                    StateKey="Error"
-                                    VerticalOptions="FillAndExpand">
-                                    <Label Text="Error"></Label>
+                                <xct:StateView StateKey="Error" VerticalOptions="FillAndExpand">
+                                    <Label Text="Error" />
                                 </xct:StateView>
-                                <xct:StateView 
-                                    StateKey="Empty"
-                                    VerticalOptions="FillAndExpand">
-                                    <Label Text="Empty"></Label>
+                                <xct:StateView StateKey="Empty" VerticalOptions="FillAndExpand">
+                                    <Label Text="Empty" />
                                 </xct:StateView>
                             </xct:StateLayout.StateViews>
-                            <CollectionView
-                                Margin="0, 0, 0, 10"
-                                ItemsSource="{Binding RaceResults}">
+                            <CollectionView Margin="0,0,0,10" ItemsSource="{Binding RaceResults}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <views:DriverRaceResultsView></views:DriverRaceResultsView>
+                                        <views:DriverRaceResultsView />
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>

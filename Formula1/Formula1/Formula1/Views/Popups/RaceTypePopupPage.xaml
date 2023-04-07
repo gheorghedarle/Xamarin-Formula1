@@ -1,36 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <xct:Popup
+    x:Class="Formula1.Views.Popups.RaceTypePopupPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:helpers="clr-namespace:Formula1.Helpers"
-    x:Class="Formula1.Views.Popups.RaceTypePopupPage"
-    Size="{x:Static helpers:Constants.PopupSizeMedium}"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     BindingContext="{Binding RaceTypePopupPage, Source={StaticResource ViewModelLocator}}"
+    Size="{x:Static helpers:Constants.PopupSizeMedium}"
     Color="Transparent">
-    <Frame
-        CornerRadius="30"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}" CornerRadius="30">
         <StackLayout>
             <Label
-                Text="Race types"
+                Margin="10,0,10,0"
                 Style="{StaticResource Headline3_ExoBold}"
-                Margin="10, 0, 10, 0"></Label>
-            <CollectionView
-                x:Name="raceTypesList"
-                ItemsSource="{Binding RaceTypesList}">
+                Text="Race types" />
+            <CollectionView x:Name="raceTypesList" ItemsSource="{Binding RaceTypesList}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout
-                            Padding="15, 10, 15, 10">
+                        <StackLayout Padding="15,10,15,10">
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer
-                                Command="{Binding Path=BindingContext.SelectRaceTypeCommand, Source={x:Reference raceTypesList}}"
-                                CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectRaceTypeCommand, Source={x:Reference raceTypesList}}" CommandParameter="{Binding .}" />
                             </StackLayout.GestureRecognizers>
-                            <Label
-                                Text="{Binding .}"
-                                Style="{StaticResource Body1FontSize_ExoRegular}"></Label>
+                            <Label Style="{StaticResource Body1FontSize_ExoRegular}" Text="{Binding .}" />
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

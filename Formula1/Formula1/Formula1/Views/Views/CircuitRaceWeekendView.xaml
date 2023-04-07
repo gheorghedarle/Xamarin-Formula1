@@ -1,34 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout
+    x:Class="Formula1.Views.Views.CircuitRaceWeekendViews"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:templates="clr-namespace:Formula1.Views.Templates"
-    x:Class="Formula1.Views.Views.CircuitRaceWeekendViews">
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
     <templates:InformationRaceWeekendTemplate
-        EventName="First practice"
         Date="{Binding RaceEvent.FirstPractice.Date}"
-        Time="{Binding RaceEvent.FirstPractice.Time}"></templates:InformationRaceWeekendTemplate>
+        EventName="First practice"
+        Time="{Binding RaceEvent.FirstPractice.Time}" />
     <templates:InformationRaceWeekendTemplate
-        EventName="Second practice"
         Date="{Binding RaceEvent.SecondPractice.Date}"
-        Time="{Binding RaceEvent.SecondPractice.Time}"></templates:InformationRaceWeekendTemplate>
+        EventName="Second practice"
+        Time="{Binding RaceEvent.SecondPractice.Time}" />
     <templates:InformationRaceWeekendTemplate
-        IsVisible="{Binding RaceEvent.ThirdPractice, Converter={xct:IsNotNullOrEmptyConverter}}"
-        EventName="Third practice"
         Date="{Binding RaceEvent.ThirdPractice.Date}"
-        Time="{Binding RaceEvent.ThirdPractice.Time}"></templates:InformationRaceWeekendTemplate>
+        EventName="Third practice"
+        IsVisible="{Binding RaceEvent.ThirdPractice, Converter={xct:IsNotNullOrEmptyConverter}}"
+        Time="{Binding RaceEvent.ThirdPractice.Time}" />
     <templates:InformationRaceWeekendTemplate
-        EventName="Qualifying"
         Date="{Binding RaceEvent.Qualifying.Date}"
-        Time="{Binding RaceEvent.Qualifying.Time}"></templates:InformationRaceWeekendTemplate>
+        EventName="Qualifying"
+        Time="{Binding RaceEvent.Qualifying.Time}" />
     <templates:InformationRaceWeekendTemplate
-        IsVisible="{Binding RaceEvent.Sprint, Converter={xct:IsNotNullOrEmptyConverter}}"
-        EventName="Sprint"
         Date="{Binding RaceEvent.Sprint.Date}"
-        Time="{Binding RaceEvent.Sprint.Time}"></templates:InformationRaceWeekendTemplate>
+        EventName="Sprint"
+        IsVisible="{Binding RaceEvent.Sprint, Converter={xct:IsNotNullOrEmptyConverter}}"
+        Time="{Binding RaceEvent.Sprint.Time}" />
     <templates:InformationRaceWeekendTemplate
-        EventName="Race"
         Date="{Binding RaceEvent.Date}"
-        Time="{Binding RaceEvent.Time}"></templates:InformationRaceWeekendTemplate>
+        EventName="Race"
+        Time="{Binding RaceEvent.Time}" />
 </StackLayout>

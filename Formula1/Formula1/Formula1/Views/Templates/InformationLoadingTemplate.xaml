@@ -1,23 +1,25 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <StackLayout
+    x:Class="Formula1.Views.Templates.InformationLoadingTemplate"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Formula1.Controls"
-    x:Class="Formula1.Views.Templates.InformationLoadingTemplate"
-    Spacing="5"
-    Margin="0, 2">
+    Margin="0,2"
+    Spacing="5">
     <controls:SkeletonView
-        HeightRequest="10"
-        WidthRequest="50"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                          Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="10"
+        HeightRequest="10"
         HorizontalOptions="Start"
         VerticalOptions="Center"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"></controls:SkeletonView>
+        WidthRequest="50" />
     <controls:SkeletonView
-        HeightRequest="25"
-        WidthRequest="75"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                          Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="25"
+        HeightRequest="25"
         HorizontalOptions="Start"
         VerticalOptions="Center"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"></controls:SkeletonView>
+        WidthRequest="75" />
 </StackLayout>

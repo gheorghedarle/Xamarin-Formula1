@@ -1,28 +1,23 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <StackLayout
+    x:Class="Formula1.Views.Templates.InformationDateOfBirthTemplate"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Formula1.Views.Templates.InformationDateOfBirthTemplate"             
     x:Name="this">
     <StackLayout
+        Margin="0,2"
         BindingContext="{x:Reference this}"
-        Spacing="0"
-        Margin="0, 2">
+        Spacing="0">
         <Label
-            Text="{Binding Label}"
             Style="{StaticResource CaptionFontSize_ExoMedium}"
-            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"/>
-        <Label
-            Style="{StaticResource Subtitle1FontSize_ExoBold}">
+            Text="{Binding Label}"
+            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                        Dark={StaticResource DarkSecondaryTextColor}}" />
+        <Label Style="{StaticResource Subtitle1FontSize_ExoBold}">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span
-                        Text="{Binding DateOfBirth, StringFormat='{0}'}"
-                        Style="{StaticResource Subtitle1FontSize_ExoBold}"></Span>
-                    <Span
-                        Text="{Binding Age, StringFormat='{} ({0} years old)'}"
-                        Style="{StaticResource Body2FontSize_ExoRegular}">
-                    </Span>
+                    <Span Style="{StaticResource Subtitle1FontSize_ExoBold}" Text="{Binding DateOfBirth, StringFormat='{0}'}" />
+                    <Span Style="{StaticResource Body2FontSize_ExoRegular}" Text="{Binding Age, StringFormat='{} ({0} years old)'}" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>

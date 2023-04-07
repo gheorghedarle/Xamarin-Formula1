@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
+    x:Class="Formula1.Views.WelcomePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Formula1.Views.WelcomePage"
     BindingContext="{Binding WelcomePage, Source={StaticResource ViewModelLocator}}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid
+            BackgroundColor="{StaticResource PrimaryColor}"
             RowDefinitions="Auto, *"
-            RowSpacing="0"
-            BackgroundColor="{StaticResource PrimaryColor}">
+            RowSpacing="0">
             <Grid
                 Grid.Row="1"
                 RowDefinitions="*, Auto, Auto"
@@ -17,44 +17,40 @@
                 <Image
                     Grid.Row="0"
                     Aspect="AspectFill"
-                    Source="welcome.png"></Image>
-                <StackLayout 
-                    Grid.Row="1"
-                    VerticalOptions="End">
-                    <Label
-                        Margin="20, 10"
-                        Text="Welcome to your Formula 1 App">
+                    Source="welcome.png" />
+                <StackLayout Grid.Row="1" VerticalOptions="End">
+                    <Label Margin="20,10" Text="Welcome to your Formula 1 App">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span
-                                    Text="Welcome to your&#x0a;"
                                     Style="{StaticResource Headline3_ExoRegular}"
-                                    TextColor="{StaticResource DarkPrimaryTextColor}"></Span>
+                                    Text="Welcome to your&#x0a;"
+                                    TextColor="{StaticResource DarkPrimaryTextColor}" />
                                 <Span
-                                    Text="Formula 1 App"
                                     Style="{StaticResource Headline3_ExoBold}"
-                                    TextColor="{StaticResource DarkPrimaryTextColor}"></Span>
+                                    Text="Formula 1 App"
+                                    TextColor="{StaticResource DarkPrimaryTextColor}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
                     <Label
-                        Margin="20, 10, 20, 30"
-                        Text="Drivers | Teams | Results"
+                        Margin="20,10,20,30"
                         LineHeight="0.85"
                         Style="{StaticResource Subtitle1FontSize_ExoRegular}"
-                        TextColor="{StaticResource DarkPrimaryTextColor}"/>
+                        Text="Drivers | Teams | Results"
+                        TextColor="{StaticResource DarkPrimaryTextColor}" />
                 </StackLayout>
                 <Button
                     Grid.Row="2"
-                    Text="LET'S START"
+                    Margin="15,15,15,30"
+                    Padding="15,20"
+                    BackgroundColor="{StaticResource AccentColor}"
+                    Command="{Binding LetsStartCommand}"
+                    CornerRadius="36"
                     FontFamily="Exo_Bold"
                     FontSize="{StaticResource ButtonFontSize}"
-                    BackgroundColor="{StaticResource AccentColor}"
-                    TextColor="{StaticResource DarkPrimaryTextColor}"
-                    Padding="15, 20"
-                    Margin="15, 15, 15, 30"
-                    Command="{Binding LetsStartCommand}"
-                    CornerRadius="36"></Button>
+                    Text="LET'S START"
+                    TextColor="{StaticResource DarkPrimaryTextColor}" />
             </Grid>
         </Grid>
     </ContentPage.Content>

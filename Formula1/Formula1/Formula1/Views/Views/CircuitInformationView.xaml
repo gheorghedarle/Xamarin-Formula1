@@ -1,38 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout
+    x:Class="Formula1.Views.Views.CircuitInformationView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:templates="clr-namespace:Formula1.Views.Templates"
-    x:Class="Formula1.Views.Views.CircuitInformationView"
     Spacing="0">
-    <Grid
-        ColumnDefinitions="*, *, *">
+    <Grid ColumnDefinitions="*, *, *">
         <templates:InformationTemplate
             Grid.Column="0"
             Label="First Grand Prix"
-            Value="{Binding CircuitInformations.FirstGrandPrix}"></templates:InformationTemplate>
+            Value="{Binding CircuitInformations.FirstGrandPrix}" />
         <templates:InformationLapRecordTemplate
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Label="Lap record"
-            Value="{Binding CircuitInformations.LapRecordTime}"
-            SubLabel="{Binding CircuitInformations.LapRecordDriver}"></templates:InformationLapRecordTemplate>
+            SubLabel="{Binding CircuitInformations.LapRecordDriver}"
+            Value="{Binding CircuitInformations.LapRecordTime}" />
     </Grid>
-    <Grid
-        ColumnDefinitions="*, *, *">
+    <Grid ColumnDefinitions="*, *, *">
         <templates:InformationWitSubLabelTemplate
             Grid.Column="0"
             Label="Circuit length"
-            Value="{Binding CircuitInformations.Length}"
-            SubLabel="km"></templates:InformationWitSubLabelTemplate>
+            SubLabel="km"
+            Value="{Binding CircuitInformations.Length}" />
         <templates:InformationWitSubLabelTemplate
             Grid.Column="1"
             Label="Race distance"
-            Value="{Binding CircuitInformations.Distance}"
-            SubLabel="km"></templates:InformationWitSubLabelTemplate>
+            SubLabel="km"
+            Value="{Binding CircuitInformations.Distance}" />
         <templates:InformationTemplate
             Grid.Column="2"
             Label="Number of laps"
-            Value="{Binding CircuitInformations.NumberOfLaps}"></templates:InformationTemplate>
+            Value="{Binding CircuitInformations.NumberOfLaps}" />
     </Grid>
 </StackLayout>

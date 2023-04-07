@@ -1,134 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Grid
+    x:Class="Formula1.Views.Views.ScheduleRaceResultsView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    x:Class="Formula1.Views.Views.ScheduleRaceResultsView"
     x:Name="template">
-    <xct:Expander
-        IsEnabled="{Binding FastestLap, Converter={xct:IsNotNullOrEmptyConverter}}">
+    <xct:Expander IsEnabled="{Binding FastestLap, Converter={xct:IsNotNullOrEmptyConverter}}">
         <xct:Expander.Header>
             <Grid
-                RowDefinitions="Auto, Auto"
+                Padding="15,5"
                 ColumnDefinitions="30, 50, *, Auto"
-                Padding="15, 5"
+                RowDefinitions="Auto, Auto"
                 RowSpacing="3">
                 <Label
                     Grid.Row="0"
                     Grid.RowSpan="2"
                     Grid.Column="0"
-                    Text="{Binding Position}"
                     Margin="5"
-                    Style="{StaticResource Body1FontSize_ExoRegular}"
                     HorizontalOptions="Center"
-                    VerticalOptions="Center"></Label>
+                    Style="{StaticResource Body1FontSize_ExoRegular}"
+                    Text="{Binding Position}"
+                    VerticalOptions="Center" />
                 <Image
                     Grid.Row="0"
                     Grid.RowSpan="2"
                     Grid.Column="1"
-                    Source="{Binding Driver.Image.Front}"
-                    WidthRequest="40"
-                    HeightRequest="40"
                     Aspect="AspectFill"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                                      Dark={StaticResource DarkCardBackgroundColor}}"
+                    HeightRequest="40"
                     HorizontalOptions="Center"
-                    VerticalOptions="Center"        
-                    BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
+                    Source="{Binding Driver.Image.Front}"
+                    VerticalOptions="Center"
+                    WidthRequest="40">
                     <Image.Clip>
                         <EllipseGeometry
                             Center="20,20"
                             RadiusX="20"
-                            RadiusY="20"/>
+                            RadiusY="20" />
                     </Image.Clip>
                 </Image>
-                <Label
-                    Grid.Row="0"
-                    Grid.Column="2">
+                <Label Grid.Row="0" Grid.Column="2">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span
-                                Text="{Binding Driver.GivenName}"
-                                Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                            <Span
-                                Text="{Binding Driver.FamilyName, StringFormat=' {0}'}"
-                                Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                            <Span Style="{StaticResource Body1FontSize_ExoRegular}" Text="{Binding Driver.GivenName}" />
+                            <Span Style="{StaticResource Body1FontSize_ExoBold}" Text="{Binding Driver.FamilyName, StringFormat=' {0}'}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
                 <Label
                     Grid.Row="1"
                     Grid.Column="2"
+                    Style="{StaticResource Body2FontSize_ExoRegular}"
                     Text="{Binding Constructor.Name}"
-                    Style="{StaticResource Body2FontSize_ExoRegular}"        
-                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
-                </Label>
+                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                                Dark={StaticResource DarkSecondaryTextColor}}" />
                 <Label
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="3"
                     IsVisible="{Binding Status, Converter={xct:EqualConverter}, ConverterParameter='Finished'}"
-                    Grid.Row="0"
-                    Grid.RowSpan="2"
-                    Grid.Column="3"
+                    Style="{StaticResource Body2FontSize_ExoBold}"
                     Text="{Binding Time.Time}"
-                    Style="{StaticResource Body2FontSize_ExoBold}"
-                    VerticalOptions="CenterAndExpand">
-                </Label>
+                    VerticalOptions="CenterAndExpand" />
                 <Label
-                    IsVisible="{Binding Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
                     Grid.Row="0"
                     Grid.RowSpan="2"
                     Grid.Column="3"
-                    Text="{Binding Status, StringFormat='{0}'}"
+                    IsVisible="{Binding Status, Converter={xct:NotEqualConverter}, ConverterParameter='Finished'}"
                     Style="{StaticResource Body2FontSize_ExoBold}"
-                    VerticalOptions="CenterAndExpand">
-                </Label>
+                    Text="{Binding Status, StringFormat='{0}'}"
+                    VerticalOptions="CenterAndExpand" />
             </Grid>
         </xct:Expander.Header>
-        <StackLayout
-            Spacing="0">
+        <StackLayout Spacing="0">
             <Label
-                Text="Fastest lap"
+                Margin="20,0,0,2"
                 Style="{StaticResource Body2FontSize_ExoBold}"
-                Margin="20, 0, 0, 2"></Label>
+                Text="Fastest lap" />
             <Grid
+                Margin="20,0,0,0"
                 ColumnDefinitions="*, *, 1.5*, 2*"
-                Margin="20, 0, 0, 0"
                 RowSpacing="0">
-                <StackLayout
-                    Grid.Column="0"
-                    Spacing="0">
-                    <Label 
-                        Text="Rank"
-                        Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
-                    <Label
-                        Text="{Binding FastestLap.Rank}"
-                        Style="{StaticResource Body2FontSize_ExoBold}"></Label>
+                <StackLayout Grid.Column="0" Spacing="0">
+                    <Label Style="{StaticResource Body2FontSize_ExoRegular}" Text="Rank" />
+                    <Label Style="{StaticResource Body2FontSize_ExoBold}" Text="{Binding FastestLap.Rank}" />
                 </StackLayout>
-                <StackLayout
-                    Grid.Column="1"
-                    Spacing="0">
-                    <Label 
-                        Text="Lap"
-                        Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
-                    <Label
-                        Text="{Binding FastestLap.Lap}"
-                        Style="{StaticResource Body2FontSize_ExoBold}"></Label>
+                <StackLayout Grid.Column="1" Spacing="0">
+                    <Label Style="{StaticResource Body2FontSize_ExoRegular}" Text="Lap" />
+                    <Label Style="{StaticResource Body2FontSize_ExoBold}" Text="{Binding FastestLap.Lap}" />
                 </StackLayout>
-                <StackLayout
-                    Grid.Column="2"
-                    Spacing="0">
-                    <Label 
-                        Text="Time"
-                        Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
-                    <Label
-                        Text="{Binding FastestLap.Time.Time}"
-                        Style="{StaticResource Body2FontSize_ExoBold}"></Label>
+                <StackLayout Grid.Column="2" Spacing="0">
+                    <Label Style="{StaticResource Body2FontSize_ExoRegular}" Text="Time" />
+                    <Label Style="{StaticResource Body2FontSize_ExoBold}" Text="{Binding FastestLap.Time.Time}" />
                 </StackLayout>
-                <StackLayout
-                    Grid.Column="3"
-                    Spacing="0">
-                    <Label 
-                        Text="Average speed"
-                        Style="{StaticResource Body2FontSize_ExoRegular}"></Label>
-                    <Label
-                        Style="{StaticResource Body2FontSize_ExoBold}">
+                <StackLayout Grid.Column="3" Spacing="0">
+                    <Label Style="{StaticResource Body2FontSize_ExoRegular}" Text="Average speed" />
+                    <Label Style="{StaticResource Body2FontSize_ExoBold}">
                         <Label.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
                                 <Binding Path="FastestLap.AverageSpeed.Speed" />
@@ -139,13 +107,11 @@
                 </StackLayout>
             </Grid>
             <Label
-                Text="View lap by lap"
+                Margin="20,10,20,10"
                 Style="{StaticResource Link_ExoRegular}"
-                Margin="20, 10, 20, 10">
+                Text="View lap by lap">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding Path=Parent.BindingContext.ViewLapByLapCommand, Source={x:Reference template}}"
-                        CommandParameter="{Binding BindingContext, Source={x:Reference template}}"></TapGestureRecognizer>
+                    <TapGestureRecognizer Command="{Binding Path=Parent.BindingContext.ViewLapByLapCommand, Source={x:Reference template}}" CommandParameter="{Binding BindingContext, Source={x:Reference template}}" />
                 </Label.GestureRecognizers>
             </Label>
         </StackLayout>

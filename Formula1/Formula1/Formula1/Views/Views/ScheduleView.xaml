@@ -1,62 +1,60 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Grid
+    x:Class="Formula1.Views.Views.ScheduleView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Formula1.Views.Views.ScheduleView"
-    RowDefinitions="Auto, Auto, Auto"
+    x:Name="template"
+    Padding="15,5"
     ColumnDefinitions="50, *, Auto"
-    Padding="15, 5"
-    RowSpacing="0"
-    x:Name="template">
+    RowDefinitions="Auto, Auto, Auto"
+    RowSpacing="0">
     <Grid.GestureRecognizers>
-        <TapGestureRecognizer
-            Command="{Binding Path=Parent.BindingContext.CircuitDetailsCommand, Source={x:Reference template}}"
-            CommandParameter="{Binding BindingContext, Source={x:Reference template}}"></TapGestureRecognizer>
+        <TapGestureRecognizer Command="{Binding Path=Parent.BindingContext.CircuitDetailsCommand, Source={x:Reference template}}" CommandParameter="{Binding BindingContext, Source={x:Reference template}}" />
     </Grid.GestureRecognizers>
     <Image
         Grid.Row="0"
         Grid.RowSpan="3"
         Grid.Column="0"
-        Source="{Binding Circuit.Location.Flag}"
-        WidthRequest="40"
-        HeightRequest="40"
         Aspect="AspectFill"
+        HeightRequest="40"
         HorizontalOptions="Center"
-        VerticalOptions="Center">
+        Source="{Binding Circuit.Location.Flag}"
+        VerticalOptions="Center"
+        WidthRequest="40">
         <Image.Clip>
             <EllipseGeometry
                 Center="20,20"
                 RadiusX="20"
-                RadiusY="20"/>
+                RadiusY="20" />
         </Image.Clip>
     </Image>
     <Label
         Grid.Row="0"
         Grid.Column="1"
-        Text="{Binding Round, StringFormat='Round {0}'}"
         Style="{StaticResource CaptionFontSize_ExoMedium}"
+        Text="{Binding Round, StringFormat='Round {0}'}"
         TextColor="{StaticResource AccentColor}"
-        VerticalOptions="Center"></Label>
+        VerticalOptions="Center" />
     <Label
         Grid.Row="1"
         Grid.Column="1"
-        Text="{Binding Circuit.Location.Country}"
         Style="{StaticResource Body1FontSize_ExoBold}"
-        VerticalOptions="Center"></Label>
+        Text="{Binding Circuit.Location.Country}"
+        VerticalOptions="Center" />
     <Label
         Grid.Row="2"
         Grid.Column="1"
-        Text="{Binding Circuit.CircuitName}"
         Style="{StaticResource Body2FontSize_ExoRegular}"
-        VerticalOptions="Center"        
-        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
-    </Label>
+        Text="{Binding Circuit.CircuitName}"
+        TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor},
+                                    Dark={StaticResource DarkSecondaryTextColor}}"
+        VerticalOptions="Center" />
     <Label
         Grid.Row="0"
         Grid.RowSpan="3"
         Grid.Column="2"
-        Style="{StaticResource CaptionFontSize_ExoMedium}"
         HorizontalOptions="End"
+        Style="{StaticResource CaptionFontSize_ExoMedium}"
         VerticalOptions="Center">
         <Label.Text>
             <MultiBinding StringFormat="{}{0:dd MMM} - {1:dd MMM yyyy}">

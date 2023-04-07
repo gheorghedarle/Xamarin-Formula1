@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <StackLayout
+    x:Class="Formula1.Views.Templates.InformationRaceWeekendTemplate"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Formula1.Views.Templates.InformationRaceWeekendTemplate"
     x:Name="this">
     <Grid
         BindingContext="{x:Reference this}"
@@ -13,20 +13,20 @@
             Grid.Row="0"
             Grid.RowSpan="2"
             Grid.Column="0"
-            Text="{Binding EventName}"
             Style="{StaticResource Body2FontSize_ExoRegular}"
-            VerticalOptions="CenterAndExpand"></Label>
+            Text="{Binding EventName}"
+            VerticalOptions="CenterAndExpand" />
         <Label
             Grid.Row="0"
             Grid.Column="1"
-            Text="{Binding Date, StringFormat='{0:ddd, d MMM yyyy}'}"
+            HorizontalTextAlignment="End"
             Style="{StaticResource Body2FontSize_ExoBold}"
-            HorizontalTextAlignment="End"></Label>
+            Text="{Binding Date, StringFormat='{0:ddd, d MMM yyyy}'}" />
         <Label
             Grid.Row="1"
             Grid.Column="1"
-            Text="{Binding Time, StringFormat='{0:HH:mm tt}'}"
+            HorizontalTextAlignment="End"
             Style="{StaticResource Body2FontSize_ExoBold}"
-            HorizontalTextAlignment="End"></Label>
+            Text="{Binding Time, StringFormat='{0:HH:mm tt}'}" />
     </Grid>
 </StackLayout>

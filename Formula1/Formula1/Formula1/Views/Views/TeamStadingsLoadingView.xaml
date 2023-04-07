@@ -1,59 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Grid
+    x:Class="Formula1.Views.Views.TeamStadingsLoadingView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Formula1.Controls"
-    x:Class="Formula1.Views.Views.TeamStadingsLoadingView"
-    RowDefinitions="Auto, Auto"
+    Padding="20,3"
     ColumnDefinitions="30, 3, *, Auto"
-    Padding="20, 3"
+    RowDefinitions="Auto, Auto"
     RowSpacing="0">
     <controls:SkeletonView
         Grid.Row="0"
         Grid.RowSpan="2"
         Grid.Column="0"
-        HeightRequest="15"
-        WidthRequest="15"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                          Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="15"
+        HeightRequest="15"
         HorizontalOptions="Center"
-        VerticalOptions="Center"        
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"></controls:SkeletonView>
+        VerticalOptions="Center"
+        WidthRequest="15" />
     <controls:SkeletonView
         Grid.Row="0"
         Grid.RowSpan="2"
         Grid.Column="1"
-        WidthRequest="10"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                          Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="15"
         HorizontalOptions="Center"
         VerticalOptions="Center"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"></controls:SkeletonView>
+        WidthRequest="10" />
     <controls:SkeletonView
         Grid.Row="0"
         Grid.Column="2"
-        HeightRequest="15"
-        WidthRequest="75"
+        Margin="3,0,0,0"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                          Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="15"
-        Margin="3, 0, 0, 0"
+        HeightRequest="15"
         HorizontalOptions="Start"
         VerticalOptions="Center"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"></controls:SkeletonView>
+        WidthRequest="75" />
     <controls:SkeletonView
         Grid.Row="1"
         Grid.Column="2"
-        HeightRequest="15"
+        Margin="3,0,0,0"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                          Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="15"
-        Margin="3, 0, 0, 0"
+        HeightRequest="15"
         HorizontalOptions="Start"
-        VerticalOptions="Center"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"></controls:SkeletonView>
+        VerticalOptions="Center" />
     <controls:SkeletonView
         Grid.Row="0"
         Grid.RowSpan="2"
         Grid.Column="3"
-        HeightRequest="15"
-        WidthRequest="50"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor},
+                                          Dark={StaticResource DarkCardBackgroundColor}}"
         CornerRadius="15"
+        HeightRequest="15"
         HorizontalOptions="End"
         VerticalOptions="Center"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"></controls:SkeletonView>
+        WidthRequest="50" />
 </Grid>

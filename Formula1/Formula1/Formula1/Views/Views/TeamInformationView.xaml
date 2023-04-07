@@ -1,61 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<StackLayout 
+<StackLayout
+    x:Class="Formula1.Views.Views.TeamInformationView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:templates="clr-namespace:Formula1.Views.Templates"
-    x:Class="Formula1.Views.Views.TeamInformationView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     Spacing="0">
-    <templates:InformationTemplate
-        Label="Team name"
-        Value="{Binding ConstructorInformations.FullTeamName}"></templates:InformationTemplate>
-    <templates:InformationTemplate
-        Label="Base"
-        Value="{Binding ConstructorInformations.Base}"></templates:InformationTemplate>
-    <templates:InformationTemplate
-        Label="Team chief"
-        Value="{Binding ConstructorInformations.TeamChief}"></templates:InformationTemplate>
-    <templates:InformationTemplate
-        Label="Technical chief"
-        Value="{Binding ConstructorInformations.TechnicalChief}"></templates:InformationTemplate>
-    <Grid
-        ColumnDefinitions="*, *">
+    <templates:InformationTemplate Label="Team name" Value="{Binding ConstructorInformations.FullTeamName}" />
+    <templates:InformationTemplate Label="Base" Value="{Binding ConstructorInformations.Base}" />
+    <templates:InformationTemplate Label="Team chief" Value="{Binding ConstructorInformations.TeamChief}" />
+    <templates:InformationTemplate Label="Technical chief" Value="{Binding ConstructorInformations.TechnicalChief}" />
+    <Grid ColumnDefinitions="*, *">
         <templates:InformationTemplate
             Grid.Column="0"
             Label="Chasis"
-            Value="{Binding ConstructorInformations.Chassis}"></templates:InformationTemplate>
+            Value="{Binding ConstructorInformations.Chassis}" />
         <templates:InformationTemplate
             Grid.Column="1"
             Label="Power unit"
-            Value="{Binding ConstructorInformations.PowerUnit}"></templates:InformationTemplate>
+            Value="{Binding ConstructorInformations.PowerUnit}" />
     </Grid>
-    <Grid
-        ColumnDefinitions="*, *, *">
+    <Grid ColumnDefinitions="*, *, *">
         <templates:InformationTemplate
             Grid.Column="0"
             Label="First team entry"
-            Value="{Binding ConstructorInformations.HighestRaceFinish}"></templates:InformationTemplate>
+            Value="{Binding ConstructorInformations.HighestRaceFinish}" />
         <templates:InformationTemplate
+            Grid.Column="1"
             IsVisible="{Binding ConstructorInformations.PolePositions, Converter={xct:NotEqualConverter}, ConverterParameter='N/A'}"
-            Grid.Column="1"
             Label="Pole positions"
-            Value="{Binding ConstructorInformations.PolePositions}"></templates:InformationTemplate>
+            Value="{Binding ConstructorInformations.PolePositions}" />
         <templates:InformationTemplate
-            IsVisible="{Binding ConstructorInformations.FastestLaps, Converter={xct:NotEqualConverter}, ConverterParameter='N/A'}"
             Grid.Column="2"
+            IsVisible="{Binding ConstructorInformations.FastestLaps, Converter={xct:NotEqualConverter}, ConverterParameter='N/A'}"
             Label="Fastest laps"
-            Value="{Binding ConstructorInformations.FastestLaps}"></templates:InformationTemplate>
+            Value="{Binding ConstructorInformations.FastestLaps}" />
     </Grid>
-    <Grid
-        ColumnDefinitions="*, *">
+    <Grid ColumnDefinitions="*, *">
         <templates:InformationTemplate
             Grid.Column="0"
             Label="First team entry"
-            Value="{Binding ConstructorInformations.FirstTeamEntry}"></templates:InformationTemplate>
+            Value="{Binding ConstructorInformations.FirstTeamEntry}" />
         <templates:InformationTemplate
-            IsVisible="{Binding ConstructorInformations.WorldChampionships, Converter={xct:NotEqualConverter}, ConverterParameter='N/A'}"
             Grid.Column="1"
+            IsVisible="{Binding ConstructorInformations.WorldChampionships, Converter={xct:NotEqualConverter}, ConverterParameter='N/A'}"
             Label="World Championships"
-            Value="{Binding ConstructorInformations.WorldChampionships}"></templates:InformationTemplate>
+            Value="{Binding ConstructorInformations.WorldChampionships}" />
     </Grid>
 </StackLayout>

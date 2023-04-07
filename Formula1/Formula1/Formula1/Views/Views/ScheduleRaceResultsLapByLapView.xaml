@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Grid
+    x:Class="Formula1.Views.Views.ScheduleRaceResultsLapByLapView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Formula1.Views.Views.ScheduleRaceResultsLapByLapView"
-    RowDefinitions="Auto, Auto"
     ColumnDefinitions="*, Auto"
+    RowDefinitions="Auto, Auto"
     RowSpacing="0">
     <Label
         Grid.Row="0"
@@ -13,12 +13,8 @@
         VerticalOptions="Center">
         <Label.FormattedText>
             <FormattedString>
-                <Span
-                    Text="Lap "
-                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding Number}"
-                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                <Span Style="{StaticResource Body1FontSize_ExoRegular}" Text="Lap " />
+                <Span Style="{StaticResource Body1FontSize_ExoBold}" Text="{Binding Number}" />
             </FormattedString>
         </Label.FormattedText>
     </Label>
@@ -28,19 +24,15 @@
         HorizontalTextAlignment="End">
         <Label.FormattedText>
             <FormattedString>
-                <Span
-                    Text="Position "
-                    Style="{StaticResource Body1FontSize_ExoRegular}"></Span>
-                <Span
-                    Text="{Binding Timings[0].Position}"
-                    Style="{StaticResource Body1FontSize_ExoBold}"></Span>
+                <Span Style="{StaticResource Body1FontSize_ExoRegular}" Text="Position " />
+                <Span Style="{StaticResource Body1FontSize_ExoBold}" Text="{Binding Timings[0].Position}" />
             </FormattedString>
         </Label.FormattedText>
     </Label>
     <Label
         Grid.Row="1"
         Grid.Column="1"
-        Text="{Binding Timings[0].Time}"
+        HorizontalTextAlignment="End"
         Style="{StaticResource Body1FontSize_ExoBold}"
-        HorizontalTextAlignment="End"></Label>
+        Text="{Binding Timings[0].Time}" />
 </Grid>
