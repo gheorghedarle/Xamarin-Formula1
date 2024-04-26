@@ -56,16 +56,16 @@ namespace Formula1.Helpers
 
         public static Dictionary<string, string> TeamColors = new()
         {
-            { "alfa", "#C92D4B"},
-            { "alphatauri", "#5E8FAA"},
-            { "alpine", "#2293D1"},
-            { "aston_martin", "#358C75"},
-            { "ferrari", "#ED1C24"},
+            { "sauber", "#52e252"},
+            { "rb", "#6692FF"},
+            { "alpine", "#0093CC"},
+            { "aston_martin", "#229971"},
+            { "ferrari", "#E80020"},
             { "haas", "#B6BABD"},
-            { "mclaren", "#F58020"},
-            { "mercedes", "#6CD3BF"},
-            { "red_bull", "#1E5BC6"},
-            { "williams", "#37BEDD"},
+            { "mclaren", "#FF8000"},
+            { "mercedes", "#27F4D2"},
+            { "red_bull", "#3671C6"},
+            { "williams", "#64C4FF"},
         };
 
         #endregion
